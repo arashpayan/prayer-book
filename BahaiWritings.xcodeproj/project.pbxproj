@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* BahaiWritingsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BahaiWritingsAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		5B303AB20E6382770008057A /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303AB10E6382770008057A /* PrayerDatabase.m */; };
+		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
+		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
+		5B303EE20E65DCED0008057A /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303EE10E65DCED0008057A /* RecentViewController.m */; };
+		5B8D630C0E6921A70064981E /* hands.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D630B0E6921A70064981E /* hands.png */; };
+		5B8D63270E692FD40064981E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D63260E692FD40064981E /* AboutViewController.m */; };
+		5B8D64350E69F1610064981E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D64340E69F1610064981E /* CoreGraphics.framework */; };
+		5B8D65B00E6A4C8E0064981E /* BPiP.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D65AF0E6A4C8E0064981E /* BPiP.xml */; };
+		5B8D670E0E6A749B0064981E /* PrayerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D670D0E6A749B0064981E /* PrayerTableCell.m */; };
+		5B9BE7C10E6B371500EE9DF6 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */; };
+		5BB4BA050E7616A00092E132 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB4BA040E7616A00092E132 /* Default.png */; };
+		5BB54C580E661BC7002FEF20 /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB54C570E661BC7002FEF20 /* BookmarksViewController.m */; };
+		5BBB71720E748715004D7CBA /* Prayers2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB716E0E748715004D7CBA /* Prayers2.png */; };
+		5BBB71740E748715004D7CBA /* About2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB71700E748715004D7CBA /* About2.png */; };
+		5BBF666F0F3E51880020712B /* pbdb.db in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF666E0F3E51880020712B /* pbdb.db */; };
+		5BC94C5D0E6B66B700B0208A /* RoundedRectangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */; };
+		5BC94E060E6B89B100B0208A /* NSString_CategoryCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94E050E6B89B100B0208A /* NSString_CategoryCompare.m */; };
+		5BC94EBF0E6B95D900B0208A /* AppleIsStupid.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94EBE0E6B95D900B0208A /* AppleIsStupid.m */; };
+		5BC94F0E0E6BB07400B0208A /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC94F0D0E6BB07400B0208A /* appIcon.png */; };
+		5BD3B80C0E50EB7500A34C37 /* PrayerCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */; };
+		5BD3B9650E515B9E00A34C37 /* PrayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */; };
+		5BEB9E850E8AFE5D000E0C3D /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB9E840E8AFE5D000E0C3D /* about.html */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* BahaiWritingsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BahaiWritingsAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* BahaiWritingsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BahaiWritingsAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Prayer Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prayer Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* BahaiWritings_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BahaiWritings_Prefix.pch; sourceTree = "<group>"; };
+		5B303AB00E6382770008057A /* PrayerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerDatabase.h; sourceTree = "<group>"; };
+		5B303AB10E6382770008057A /* PrayerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerDatabase.m; sourceTree = "<group>"; };
+		5B303B270E6392370008057A /* Prayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prayer.h; sourceTree = "<group>"; };
+		5B303B280E6392370008057A /* Prayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prayer.m; sourceTree = "<group>"; };
+		5B303CCF0E649CAD0008057A /* PrayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerViewController.h; sourceTree = "<group>"; };
+		5B303CD00E649CAD0008057A /* PrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerViewController.m; sourceTree = "<group>"; };
+		5B303EE00E65DCED0008057A /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
+		5B303EE10E65DCED0008057A /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentViewController.m; sourceTree = "<group>"; };
+		5B8D630B0E6921A70064981E /* hands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hands.png; sourceTree = "<group>"; };
+		5B8D63250E692FD40064981E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		5B8D63260E692FD40064981E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		5B8D64340E69F1610064981E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5B8D65AF0E6A4C8E0064981E /* BPiP.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPiP.xml; sourceTree = "<group>"; };
+		5B8D670C0E6A749B0064981E /* PrayerTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerTableCell.h; sourceTree = "<group>"; };
+		5B8D670D0E6A749B0064981E /* PrayerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerTableCell.m; sourceTree = "<group>"; };
+		5B9BE7BF0E6B371500EE9DF6 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		5BB4BA040E7616A00092E132 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5BB54C560E661BC7002FEF20 /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksViewController.h; sourceTree = "<group>"; };
+		5BB54C570E661BC7002FEF20 /* BookmarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksViewController.m; sourceTree = "<group>"; };
+		5BBB716E0E748715004D7CBA /* Prayers2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Prayers2.png; sourceTree = "<group>"; };
+		5BBB71700E748715004D7CBA /* About2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About2.png; sourceTree = "<group>"; };
+		5BBF666E0F3E51880020712B /* pbdb.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = pbdb.db; sourceTree = "<group>"; };
+		5BC94C5B0E6B66B700B0208A /* RoundedRectangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectangleView.h; sourceTree = "<group>"; };
+		5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectangleView.m; sourceTree = "<group>"; };
+		5BC94E040E6B89B100B0208A /* NSString_CategoryCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_CategoryCompare.h; sourceTree = "<group>"; };
+		5BC94E050E6B89B100B0208A /* NSString_CategoryCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_CategoryCompare.m; sourceTree = "<group>"; };
+		5BC94EBD0E6B95D900B0208A /* AppleIsStupid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleIsStupid.h; sourceTree = "<group>"; };
+		5BC94EBE0E6B95D900B0208A /* AppleIsStupid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleIsStupid.m; sourceTree = "<group>"; };
+		5BC94F0D0E6BB07400B0208A /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
+		5BD3B80A0E50EB7500A34C37 /* PrayerCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerCategoryViewController.h; sourceTree = "<group>"; };
+		5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerCategoryViewController.m; sourceTree = "<group>"; };
+		5BD3B9630E515B9E00A34C37 /* PrayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerListViewController.h; sourceTree = "<group>"; };
+		5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerListViewController.m; sourceTree = "<group>"; };
+		5BEB9E840E8AFE5D000E0C3D /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				5B8D64350E69F1610064981E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5BBF66710F3E51DC0020712B /* Models */,
+				5BBF66700F3E51C50020712B /* Controllers */,
+				5BBF66720F3E51E70020712B /* Views */,
+				1D3623240D0F684500981E51 /* BahaiWritingsAppDelegate.h */,
+				1D3623250D0F684500981E51 /* BahaiWritingsAppDelegate.m */,
+				5BC94E040E6B89B100B0208A /* NSString_CategoryCompare.h */,
+				5BC94E050E6B89B100B0208A /* NSString_CategoryCompare.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Prayer Book.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* BahaiWritings_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BBF666E0F3E51880020712B /* pbdb.db */,
+				5BEB9E840E8AFE5D000E0C3D /* about.html */,
+				5BB4BA040E7616A00092E132 /* Default.png */,
+				5BBB716E0E748715004D7CBA /* Prayers2.png */,
+				5BBB71700E748715004D7CBA /* About2.png */,
+				5BC94F0D0E6BB07400B0208A /* appIcon.png */,
+				5B8D65AF0E6A4C8E0064981E /* BPiP.xml */,
+				5B8D630B0E6921A70064981E /* hands.png */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B8D64340E69F1610064981E /* CoreGraphics.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BBF66700F3E51C50020712B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BD3B80A0E50EB7500A34C37 /* PrayerCategoryViewController.h */,
+				5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */,
+				5BD3B9630E515B9E00A34C37 /* PrayerListViewController.h */,
+				5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */,
+				5B303CCF0E649CAD0008057A /* PrayerViewController.h */,
+				5B303CD00E649CAD0008057A /* PrayerViewController.m */,
+				5B303EE00E65DCED0008057A /* RecentViewController.h */,
+				5B303EE10E65DCED0008057A /* RecentViewController.m */,
+				5BB54C560E661BC7002FEF20 /* BookmarksViewController.h */,
+				5BB54C570E661BC7002FEF20 /* BookmarksViewController.m */,
+				5B8D63250E692FD40064981E /* AboutViewController.h */,
+				5B8D63260E692FD40064981E /* AboutViewController.m */,
+				5BC94EBD0E6B95D900B0208A /* AppleIsStupid.h */,
+				5BC94EBE0E6B95D900B0208A /* AppleIsStupid.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5BBF66710F3E51DC0020712B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B303AB00E6382770008057A /* PrayerDatabase.h */,
+				5B303AB10E6382770008057A /* PrayerDatabase.m */,
+				5B303B270E6392370008057A /* Prayer.h */,
+				5B303B280E6392370008057A /* Prayer.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5BBF66720F3E51E70020712B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B8D670C0E6A749B0064981E /* PrayerTableCell.h */,
+				5B8D670D0E6A749B0064981E /* PrayerTableCell.m */,
+				5BC94C5B0E6B66B700B0208A /* RoundedRectangleView.h */,
+				5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */,
+				5B9BE7BF0E6B371500EE9DF6 /* CategoryCell.h */,
+				5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Prayer Book */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Prayer Book" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Prayer Book";
+			productName = BahaiWritings;
+			productReference = 1D6058910D05DD3D006BFB54 /* Prayer Book.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BahaiWritings" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Prayer Book */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				5B8D630C0E6921A70064981E /* hands.png in Resources */,
+				5B8D65B00E6A4C8E0064981E /* BPiP.xml in Resources */,
+				5BC94F0E0E6BB07400B0208A /* appIcon.png in Resources */,
+				5BBB71720E748715004D7CBA /* Prayers2.png in Resources */,
+				5BBB71740E748715004D7CBA /* About2.png in Resources */,
+				5BB4BA050E7616A00092E132 /* Default.png in Resources */,
+				5BEB9E850E8AFE5D000E0C3D /* about.html in Resources */,
+				5BBF666F0F3E51880020712B /* pbdb.db in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* BahaiWritingsAppDelegate.m in Sources */,
+				5BD3B80C0E50EB7500A34C37 /* PrayerCategoryViewController.m in Sources */,
+				5BD3B9650E515B9E00A34C37 /* PrayerListViewController.m in Sources */,
+				5B303AB20E6382770008057A /* PrayerDatabase.m in Sources */,
+				5B303B290E6392370008057A /* Prayer.m in Sources */,
+				5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */,
+				5B303EE20E65DCED0008057A /* RecentViewController.m in Sources */,
+				5BB54C580E661BC7002FEF20 /* BookmarksViewController.m in Sources */,
+				5B8D63270E692FD40064981E /* AboutViewController.m in Sources */,
+				5B8D670E0E6A749B0064981E /* PrayerTableCell.m in Sources */,
+				5B9BE7C10E6B371500EE9DF6 /* CategoryCell.m in Sources */,
+				5BC94C5D0E6B66B700B0208A /* RoundedRectangleView.m in Sources */,
+				5BC94E060E6B89B100B0208A /* NSString_CategoryCompare.m in Sources */,
+				5BC94EBF0E6B95D900B0208A /* AppleIsStupid.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "Prayer Book";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "Prayer Book";
+			};
+			name = Release;
+		};
+		5B4AC4770E79FD4500F2F35E /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Arash Payan";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bahá’í Prayers";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB985D57-5DD2-4325-B79B-B6C1030A63D1";
+				SDKROOT = iphoneos2.0;
+			};
+			name = Distribution;
+		};
+		5B4AC4780E79FD4500F2F35E /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "Prayer Book";
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bahá’í Prayers";
+				SDKROOT = iphoneos2.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bahá’í Prayers";
+				SDKROOT = iphoneos2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Prayer Book" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				5B4AC4780E79FD4500F2F35E /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BahaiWritings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				5B4AC4770E79FD4500F2F35E /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
