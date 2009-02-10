@@ -9,25 +9,24 @@
 #import "PrayerDatabase.h"
 
 
-NSString *const kBookmarksPrefKey = @"BookmarksPrefKey";
-NSString *const kRecentsPrefKey = @"RecentsPrefKey";
+NSString *const kBookmarksPrefKey			= @"BookmarksPrefKey";
+NSString *const kRecentsPrefKey				= @"RecentsPrefKey";
 
-NSString *const kBookmarkKeyCategory = @"BookmarkKeyCategory";
-NSString *const kBookmarkKeyTitle = @"BookmarkKeyTitle";
+NSString *const kBookmarkKeyCategory		= @"BookmarkKeyCategory";
+NSString *const kBookmarkKeyTitle			= @"BookmarkKeyTitle";
 
-NSString *const kRecentsKeyCategory = @"RecentsKeyCategory";
-NSString *const kRecentsKeyTitle = @"RecentsKeyTitle";
-NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
+NSString *const kRecentsKeyCategory			= @"RecentsKeyCategory";
+NSString *const kRecentsKeyTitle			= @"RecentsKeyTitle";
+NSString *const kRecentsKeyAccessTime		= @"RecentsKeyAccessTime";
+
+NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 
 @implementation PrayerDatabase
 
-- (id)init
-{
+- (id)init {
 	self = [super init];
 	if (self)
 	{
-		categoriesDict = [[NSMutableDictionary alloc] init];
-		
 		// get the path to the prayers database
 		NSString *dbPath = [[NSBundle mainBundle] pathForResource:@"pbdb" ofType:@"db"];
 		int rc = sqlite3_open([dbPath UTF8String], &dbHandle);
@@ -35,9 +34,88 @@ NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
 		{
 			NSLog(@"Can't open the database: %s", sqlite3_errmsg(dbHandle));
 		}
+		
+		NSString *dbVersion = (NSString*)CFPreferencesCopyAppValue((CFStringRef)kDatabaseVersionNumber, kCFPreferencesCurrentApplication);
+		if (dbVersion == nil)
+			[self migrateDbFromNilTo1];
+		
+		// cache in the bookmarks and recents
+		[self getBookmarks];
+		[self getRecent];
 	}
 	
 	return self;
+}
+
+- (void)migrateDbFromNilTo1 {
+	// check for bookmarks
+	NSArray *bookmarks = (NSArray*)CFPreferencesCopyAppValue((CFStringRef)kBookmarksPrefKey, kCFPreferencesCurrentApplication);
+	if (bookmarks != nil)
+	{
+		NSMutableArray *newBookmarks = [NSMutableArray arrayWithCapacity:10];
+		for (NSDictionary *bookmark in bookmarks)
+		{
+			NSString *category = [bookmark objectForKey:kBookmarkKeyCategory];
+			NSString *title = [bookmark objectForKey:kBookmarkKeyTitle];
+			
+			NSString *searchForPrayerSQL = [NSString stringWithFormat:@"SELECT id FROM prayers WHERE category='%@' AND openingWords='%@'", category, title];
+			sqlite3_stmt *searchStmt;
+			
+			sqlite3_prepare_v2(dbHandle,
+							   [searchForPrayerSQL UTF8String],
+							   [searchForPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+							   &searchStmt,
+							   0);
+			int rc = sqlite3_step(searchStmt);
+			if (rc == SQLITE_ROW)
+			{
+				long prayerId = sqlite3_column_int(searchStmt, 0);
+				[newBookmarks addObject:[NSNumber numberWithInt:prayerId]];
+			}
+			
+			sqlite3_finalize(searchStmt);
+		}
+		
+		CFPreferencesSetAppValue((CFStringRef)kBookmarksPrefKey, newBookmarks, kCFPreferencesCurrentApplication);
+		
+		CFRelease(bookmarks);	// release the preference we retrieved
+	}
+	
+	// check for recents
+	NSArray *recents = (NSArray*)CFPreferencesCopyAppValue((CFStringRef)kRecentsPrefKey, kCFPreferencesCurrentApplication);
+	if (recents != nil)
+	{
+		NSMutableArray *newRecents = [NSMutableArray arrayWithCapacity:50];
+		for (NSDictionary *recent in recents)
+		{
+			NSString *category = [recent objectForKey:kRecentsKeyCategory];
+			NSString *title = [recent objectForKey:kRecentsKeyTitle];
+			
+			NSString *searchForPrayerSQL = [NSString stringWithFormat:@"SELECT id FROM prayers WHERE category='%@' AND openingWords='%@'", category, title];
+			sqlite3_stmt *searchStmt;
+			
+			sqlite3_prepare_v2(dbHandle,
+							   [searchForPrayerSQL UTF8String],
+							   [searchForPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+							   &searchStmt,
+							   0);
+			
+			int rc = sqlite3_step(searchStmt);
+			if (rc == SQLITE_ROW)
+			{
+				long prayerId = sqlite3_column_int(searchStmt, 0);
+				[newRecents addObject:[NSNumber numberWithInt:prayerId]];
+			}
+				
+				sqlite3_finalize(searchStmt);
+		}
+		
+		CFPreferencesSetAppValue((CFStringRef)kRecentsPrefKey, newRecents, kCFPreferencesCurrentApplication);
+		
+		CFRelease(recents);	// release the preferences we retrieved
+	}
+	
+	CFPreferencesSetAppValue((CFStringRef)kDatabaseVersionNumber, [NSNumber numberWithInt:1], kCFPreferencesCurrentApplication);
 }
 
 + (PrayerDatabase*)sharedInstance {
@@ -55,26 +133,15 @@ NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
 	return prayerDatabase;
 }
 
-- (void)addPrayer:(Prayer*)prayer {
-	NSMutableArray *prayers = [categoriesDict objectForKey:[prayer category]];
-	if (prayers == nil)
-	{
-		prayers = [[NSMutableArray alloc] init];
-		[categoriesDict setValue:prayers forKey:[prayer category]];
-		[prayers release];
-	}
-	[prayers addObject:prayer];
-}
-
 - (NSArray*)getCategories {
-	NSMutableArray *categories = [[NSMutableArray alloc] init];
+	NSMutableArray *categories = [[[NSMutableArray alloc] init] autorelease];
 	NSString *getCategoriesSQL = @"SELECT DISTINCT category FROM prayers";
 	sqlite3_stmt *getCategoriesStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
 								[getCategoriesSQL UTF8String],
 								[getCategoriesSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
-								getCategoriesStmt,
+								&getCategoriesStmt,
 								0);
 	
 	if (rc != SQLITE_OK)
@@ -90,32 +157,78 @@ NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
 	NSArray *sortedCategories = [categories sortedArrayUsingSelector:@selector(compareCategories:)];
 	
 	return sortedCategories;
-	
-	//NSArray *categories = [categoriesDict allKeys];
-//	NSArray *sortedCategories = [categories sortedArrayUsingSelector:@selector(compareCategories:)];
-//	
-//	return sortedCategories;
 }
 
 - (NSArray*)getPrayersForCategory:(NSString*)category {
 	if (category == nil)
 		return nil;
 	
-	NSArray* prayers = [categoriesDict objectForKey:category];
-	prayers = [prayers sortedArrayUsingSelector:@selector(compare:)];
+	NSMutableArray *prayers = [[NSMutableArray alloc] init];
 	
-	return prayers;
+	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category='%@'", category];
+	sqlite3_stmt *getPrayersStmt;
+	
+	int rc = sqlite3_prepare_v2(dbHandle,
+								[getPrayersSQL UTF8String],
+								[getPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								&getPrayersStmt,
+								0);
+	
+	if (rc != SQLITE_OK)
+		NSLog(@"Problem preparing getPrayersStmt in getPrayersForCategory (%d): %s", rc, sqlite3_errmsg(dbHandle));
+	
+	while ((rc = sqlite3_step(getPrayersStmt)) == SQLITE_ROW)
+	{
+		long prayerId = sqlite3_column_int(getPrayersStmt, 0);
+		NSString *prayerText = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 1)];
+		NSString *openingWords = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 2)];
+		NSString *citation = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 3)];
+		NSString *author = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 4)];
+		NSString *language = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 5)];
+		int wordCount = sqlite3_column_int(getPrayersStmt, 6);
+		Prayer *prayer = [[[Prayer alloc] initWithCategory:category withText:prayerText withOpeningWords:openingWords] autorelease];
+		prayer.citation = citation;
+		prayer.author = author;
+		[prayer setAuthor:author];
+		prayer.language = language;
+		prayer.prayerId = prayerId;
+		prayer.wordCount = [[NSNumber numberWithInt:wordCount] stringValue];
+		
+		[prayers addObject:prayer];
+	}
+	
+	sqlite3_finalize(getPrayersStmt);
+	
+	return [prayers autorelease];
 }
 
 - (int)numberOfPrayersForCategory:(NSString*)category {
 	if (category == nil)
 		return -1;
 	
-	NSArray *prayers = [categoriesDict objectForKey:category];
-	if (prayers == nil)
-		return -1;
+	int numPrayers = 0;
+	
+	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\"", category];
+	sqlite3_stmt *countPrayersStmt;
+	
+	int rc = sqlite3_prepare_v2(dbHandle,
+								[countPrayersSQL UTF8String],
+								[countPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								&countPrayersStmt,
+								0);
+	
+	if (rc != SQLITE_OK)
+		NSLog(@"Problem preparing countPrayersStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+	
+	rc = sqlite3_step(countPrayersStmt);
+	if (rc == SQLITE_ROW)
+		numPrayers = sqlite3_column_int(countPrayersStmt, 0);
 	else
-		return [prayers count];
+		NSLog(@"Problem obtaining result from countPrayersStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+	
+	sqlite3_finalize(countPrayersStmt);
+	
+	return numPrayers;
 }
 
 - (NSArray*)getBookmarks {
@@ -140,45 +253,18 @@ NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
 	return [NSArray arrayWithArray:bookmarkedPrayers];
 }
 
-- (BOOL)hasBookmarkForPrayer:(Prayer*)prayer {
-	if (prayer == nil)
-	{
-		printf("[PrayerDatabase hasBookmarkForPrayer] received a nil prayer arg\n");
-		return NO;
-	}
-	
-	//NSDictionary *bookmark = [NSDictionary dictionaryWithObject:[prayer title] forKey:[prayer category]];
-	NSMutableDictionary *bookmark = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[bookmark setObject:[prayer title] forKey:kBookmarkKeyTitle];
-	[bookmark setObject:[prayer category] forKey:kBookmarkKeyCategory];
-	
-	return [bookmarkedPrayers containsObject:bookmark];
+- (BOOL)prayerIsBookmarked:(long)prayerId {	
+	return [bookmarkedPrayers containsObject:[NSNumber numberWithLong:prayerId]];
 }
 
-- (void)addBookmark:(Prayer*)prayer {
-	if (prayer == nil)
-	{
-		printf("addBookmark: called with a nil prayer\n");
-		return;
-	}
-	
-	if (bookmarkedPrayers == nil)
-	{
-		// load up the bookmarks from disk
-		[self getBookmarks];
-	}
-	
-	NSMutableDictionary *bookmark = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[bookmark setObject:[prayer title] forKey:kBookmarkKeyTitle];
-	[bookmark setObject:[prayer category] forKey:kBookmarkKeyCategory];
-	[bookmarkedPrayers addObject:bookmark];
+- (void)addBookmark:(long)prayerId {
+	[bookmarkedPrayers addObject:[NSNumber numberWithLong:prayerId]];
 	
 	CFPreferencesSetAppValue((CFStringRef)kBookmarksPrefKey, bookmarkedPrayers, kCFPreferencesCurrentApplication);
 }
 
-- (void)removeBookmark:(NSDictionary*)bookmark {
-	
-	[bookmarkedPrayers removeObject:bookmark];
+- (void)removeBookmark:(long)prayerId {
+	[bookmarkedPrayers removeObject:[NSNumber numberWithLong:prayerId]];
 	
 	CFPreferencesSetAppValue((CFStringRef)kBookmarksPrefKey, bookmarkedPrayers, kCFPreferencesCurrentApplication);
 }
@@ -190,10 +276,6 @@ NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
 	CFPreferencesSetAppValue((CFStringRef)kRecentsPrefKey, nil, kCFPreferencesCurrentApplication);
 }
 
-/*
- Returns an array of NSDictionary's mapping prayer category to title.
- The first index is the most recently accessed prayer.
-*/
 - (NSArray*)getRecent {
 	if (recentPrayers == nil)
 	{
@@ -216,109 +298,112 @@ NSString *const kRecentsKeyAccessTime = @"RecentsKeyAccessTime";
 	return [NSArray arrayWithArray:recentPrayers];
 }
 
-/*
- When the user views a prayer, this should be called,
- so the recents menu can be updated.
- */
-- (void)accessedPrayer:(Prayer*)prayer {
-	if (prayer == nil)
-	{
-		printf("accessedPrayer was given a nil\n");
-		return;
-	}
-	
-	if (recentPrayers == nil)
-	{
-		// load from the disk
-		[self getRecent];
-	}
-	
-	//NSDictionary *entry = [NSDictionary dictionaryWithObject:[prayer title] forKey:[prayer category]];
-	NSMutableDictionary *entry = [[NSMutableDictionary alloc] initWithCapacity:3];
-	[entry setObject:[prayer title] forKey:kRecentsKeyTitle];
-	[entry setObject:[prayer category] forKey:kRecentsKeyCategory];
-	[recentPrayers removeObject:entry];
-	[recentPrayers insertObject:entry atIndex:0];
 
+- (void)accessedPrayer:(long)prayerId {
+	NSNumber *entry = [NSNumber numberWithLong:prayerId];
+	
+	[recentPrayers removeObject:entry];	// if it's even there
+	[recentPrayers insertObject:entry atIndex:0];
+	
 	CFPreferencesSetAppValue((CFStringRef)kRecentsPrefKey, recentPrayers, kCFPreferencesCurrentApplication);
 }
 
-- (Prayer*)prayerWithCategory:(NSString*)category title:(NSString*)title {
+- (Prayer*)prayerWithId:(long)prayerId {
+	NSString *getPrayerSQL = [NSString stringWithFormat:@"SELECT category, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE id=%d", prayerId];
+	sqlite3_stmt *getPrayerStmt;
 	
-	NSArray *categoryPrayers = [categoriesDict objectForKey:category];
-	if (categoryPrayers != nil)
+	int rc = sqlite3_prepare_v2(dbHandle,
+								[getPrayerSQL UTF8String],
+								[getPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								&getPrayerStmt,
+								0);
+	
+	if (rc != SQLITE_OK)
+		NSLog(@"Problem preparing getPrayerStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+	
+	Prayer *prayer = nil;
+	rc = sqlite3_step(getPrayerStmt);
+	if (rc == SQLITE_ROW)
 	{
-		for (int i=0; i<[categoryPrayers count]; i++)
+		prayer = [[Prayer alloc] init];
+		prayer.category = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 0)];
+		prayer.text = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 1)];
+		prayer.title = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 2)];
+		prayer.citation = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 3)];
+		prayer.author = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 4)];
+		prayer.language = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 5)];
+		prayer.wordCount = [[NSNumber numberWithInt:sqlite3_column_int(getPrayerStmt, 6)] stringValue];
+		prayer.prayerId = prayerId;
+	}
+	
+	sqlite3_finalize(getPrayerStmt);
+	
+	return [prayer autorelease];
+}
+
+- (NSArray*)searchWithKeywords:(NSArray*)keywords {
+	static NSMutableDictionary *prayerCache = nil;
+	if (prayerCache == nil)
+		prayerCache = [[NSMutableDictionary alloc] init];
+	
+	NSMutableArray *results = [[[NSMutableArray alloc] init] autorelease];
+	
+	// build a query with the keywords
+	NSMutableString *query = [[[NSMutableString alloc] init] autorelease];
+	[query appendString:@"SELECT id FROM prayers WHERE"];
+	NSMutableArray *expressions = [NSMutableArray arrayWithCapacity:5];
+	BOOL firstExpression = YES;
+	for (NSString *keyword in keywords)
+	{
+		if ([keyword lengthOfBytesUsingEncoding:NSUTF8StringEncoding] == 0)
+			continue;
+		if (!firstExpression)
+			[query appendFormat:@" AND"];
+		else
+			firstExpression = NO;
+		
+		[query appendFormat:@" prayerText LIKE \"%%%@%%\"", keyword];
+		[expressions addObject:keyword];
+	}
+	
+	if ([expressions count] == 0)
+	{
+		// means there were no valid keywords, and we need to return an empty set of results
+		return results;
+	}
+	else if ([expressions count] == 1)
+	{
+		if ([[expressions objectAtIndex:0] lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < 3)
+			return results;	// this is too short of a query, so exit
+	}
+	
+	//NSLog(@"%@", query);
+	
+	sqlite3_stmt *searchStmt;
+	int rc = sqlite3_prepare_v2(dbHandle,
+								[query UTF8String],
+								[query lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								&searchStmt,
+								0);
+	if (rc != SQLITE_OK)
+		NSLog(@"Problem preparing searchWithKeywordsStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+	
+	while ((rc = sqlite3_step(searchStmt)) == SQLITE_ROW)
+	{
+		NSNumber *prayerId = [NSNumber numberWithLong:sqlite3_column_int(searchStmt, 0)];
+		// check for it in the cache
+		Prayer *currPrayer = nil;
+		if ((currPrayer = (Prayer*)[prayerCache objectForKey:prayerId]) == nil)
 		{
-			if ([[[categoryPrayers objectAtIndex:i] title] isEqual:title])
-				return [categoryPrayers objectAtIndex:i];
+			currPrayer = [self prayerWithId:[prayerId longValue]];
+			// cache it
+			[prayerCache setObject:currPrayer forKey:prayerId];
 		}
+		
+		[results addObject:currPrayer];
 	}
 	
-	return nil;
-}
-
-- (Prayer*)prayerWithBookmark:(NSDictionary*)bookmark {
-	if (bookmark == nil)
-		return nil;
-	
-	return [self prayerWithCategory:[bookmark objectForKey:kBookmarkKeyCategory] title:[bookmark objectForKey:kBookmarkKeyTitle]];
-}
-
-- (Prayer*)prayerWithRecentsEntry:(NSDictionary*)entry {
-	if (entry == nil)
-		return nil;
-	
-	return [self prayerWithCategory:[entry objectForKey:kRecentsKeyCategory] title:[entry objectForKey:kRecentsKeyTitle]];
-}
-
-#pragma mark ParserDelegate
-
-// parsing started
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-	//printf("parserDidStartDocument\n");
-}
-
-// parsing ended
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-	//printf("parserDidEndDocument\n");
-}
-
-// parser error
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-	printf("parseErrorOccurred: %s\n", [[parseError description] UTF8String]);
-}
-
-// parser element start
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
-	//printf("startElement: %s\n", [[elementName description] UTF8String]);
-	if ([elementName isEqual:@"prayer"])
-	{
-		currPrayer = [[Prayer alloc] init];
-		[currPrayer setAuthor:[attributeDict objectForKey:@"author"]];
-		[currPrayer setCategory:[attributeDict objectForKey:@"category"]];
-		[currPrayer setCitation:[attributeDict objectForKey:@"citation"]];
-		[currPrayer setTitle:[attributeDict objectForKey:@"title"]];
-		[currPrayer setWordCount:[attributeDict objectForKey:@"wordCount"]];
-		[self addPrayer:currPrayer];
-		currElementText = [[NSMutableString alloc] init];
-	}
-}
-
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if ([elementName isEqual:@"prayer"])
-	{
-		[currPrayer setPrayerText:currElementText];
-		[currElementText release];
-		currElementText = nil;
-		[currPrayer release];
-		currPrayer = nil;
-	}
-}
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	//printf("found characters %s\n", [string UTF8String]);
-	[currElementText appendString:string];
+	return results;
 }
 
 @end

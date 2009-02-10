@@ -10,28 +10,27 @@
 
 
 @interface Prayer : NSObject {
-	NSString *_category;
-	NSString *_prayerText;
-	NSString *_title;
-	NSString *_citation;
-	NSString *_author;
-	NSString *_wordCount;
+	NSString *category;
+	NSString *text;
+	NSString *title;
+	NSString *citation;
+	NSString *author;
+	NSString *wordCount;
+	NSString *language;
+	long prayerId;
 }
+
+@property (nonatomic, retain) NSString *text;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *category;
+@property (nonatomic, retain) NSString *author;
+@property (nonatomic, retain) NSString *wordCount;
+@property (nonatomic) long prayerId;
+@property (nonatomic, retain) NSString *language;
+@property (nonatomic, retain) NSString *citation;
 
 - (NSString*)description;
 - (id)initWithCategory:(NSString*)category withText:(NSString*)text withOpeningWords:(NSString*)openingWords;
-- (NSString*)category;
-- (void)setCategory:(NSString*)category;
-- (NSString*)prayerText;
-- (void)setPrayerText:(NSString*)prayerText;
-- (NSString*)title;
-- (void)setTitle:(NSString*)title;
-- (NSString*)citation;
-- (void)setCitation:(NSString*)citation;
-- (NSString*)author;
-- (void)setAuthor:(NSString*)author;
-- (NSString*)wordCount;
-- (void)setWordCount:(NSString*)wordCount;
 
 // for comparing prayer titles
 - (NSComparisonResult)compare:(Prayer *)aPrayer;

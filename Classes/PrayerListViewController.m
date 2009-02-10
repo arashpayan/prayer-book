@@ -15,7 +15,7 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
-		self.title = @"Prayers";
+		self.title = NSLocalizedString(@"PRAYERS", nil);
 	}
 	return self;
 }
@@ -101,24 +101,24 @@
 }
 
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-}
+//- (void)viewDidLoad {
+//	[super viewDidLoad];
+//}
+//
+//
+//- (void)viewWillAppear:(BOOL)animated {
+//	[super viewWillAppear:animated];
+//}
+//
+//- (void)viewDidAppear:(BOOL)animated {
+//	[super viewDidAppear:animated];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//}
+//
+//- (void)viewDidDisappear:(BOOL)animated {
+//}
 
 - (void)didReceiveMemoryWarning {
 	printf("PrayerListViewController didReceiveMemoryWarning\n");

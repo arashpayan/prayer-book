@@ -9,9 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>Prayer Book</string>
 	<key>CFBundleIconFile</key>
-	<string>appIcon2</string>
+	<string>Icon.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.arashpayan.Prayer_Book</string>
+	<string>com.arashpayan.prayerbook</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

@@ -5,7 +5,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>English</string>
 		<key>CFBundleIdentifier</key>
-		<string>com.apple.xcode.dsym.com.arashpayan.Prayer_Book</string>
+		<string>com.apple.xcode.dsym.com.arashpayan.prayerbook</string>
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundlePackageType</key>
@@ -17,7 +17,7 @@
 		<key>dSYM_UUID</key>
 		<dict>
 			<key>i386</key>
-			<string>8B9363B6-6FDA-4B58-05DE-BFC786640C4F</string>
+			<string>A6756EC7-0F6E-65D4-5B62-469EF80BA780</string>
 		</dict>
 	</dict>
 </plist>

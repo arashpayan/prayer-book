@@ -14,6 +14,7 @@
 #import "PrayerDatabase.h"
 #import "AboutViewController.h"
 #import "AppleIsStupid.h"
+#import "SearchViewController.h";
 
 @class BahaiWritingsViewController;
 
@@ -24,8 +25,6 @@
 
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UITabBarController *tabBarController;
-
-- (void)initializeDatabase;
 
 @end
 

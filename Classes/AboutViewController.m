@@ -17,9 +17,9 @@
 		[window retain];
 		_window = window;
 		self.title = @"About";
-		[self setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"About"
+		[self setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"ABOUT", nil)
 														  image:[UIImage imageNamed:@"About2.png"]
-															tag:3]];
+															tag:4]];
 	}
 	
 	return self;

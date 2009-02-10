@@ -28,10 +28,10 @@
 }
 
 - (void)clearRecent {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Clear Recents"
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil //NSLocalizedString(@"CLEAR_RECENTS", nil)
 															 delegate:self
-													cancelButtonTitle:@"Cancel"
-											   destructiveButtonTitle:@"Clear All Recents"
+													cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
+											   destructiveButtonTitle:NSLocalizedString(@"CLEAR_ALL_RECENTS", nil)
 													otherButtonTitles:nil];
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	[actionSheet showInView:self.tabBarController.view];
@@ -70,21 +70,20 @@
 		//cell.font = [UIFont boldSystemFontOfSize:16.0];
 	}
 	// Configure the cell
-	NSDictionary *entry = [recentPrayers objectAtIndex:indexPath.row];
-	//NSString *category = [[entry allKeys] objectAtIndex:0];
-	//NSString *title = [entry valueForKey:category];
-	[(PrayerTableCell*)cell titleLabel].text  = [entry objectForKey:kRecentsKeyTitle];
-	[(PrayerTableCell*)cell categoryLabel].text = [entry objectForKey:kRecentsKeyCategory];
+	NSNumber *entry = [recentPrayers objectAtIndex:indexPath.row];
+	Prayer *thePrayer = [prayerDatabase prayerWithId:[entry longValue]];
+	[(PrayerTableCell*)cell titleLabel].text  = thePrayer.title;
+	[(PrayerTableCell*)cell categoryLabel].text = thePrayer.category;
 	
 	return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *entry = [recentPrayers objectAtIndex:indexPath.row];
+	NSNumber *prayerId = [recentPrayers objectAtIndex:indexPath.row];
 	//NSString *category = [[entry allKeys] objectAtIndex:0];
 	//NSString *title = [entry valueForKey:category];
-	Prayer *prayer = [prayerDatabase prayerWithRecentsEntry:entry];
+	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	if (prayer == nil)
 	{
 		printf("Unable to find recent prayer\n");
@@ -121,8 +120,8 @@
 
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
-	NSDictionary *bookmark = [savedState objectAtIndex:0];
-	Prayer *prayer = [prayerDatabase prayerWithBookmark:bookmark];
+	NSNumber *bookmark = [savedState objectAtIndex:0];
+	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
 	
 	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:pvc animated:NO];

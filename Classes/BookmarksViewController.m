@@ -16,7 +16,7 @@
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
 		prayerDatabase = [PrayerDatabase sharedInstance];
 		bookmarks = nil;
-		self.title = @"Bookmarks";
+		self.title = NSLocalizedString(@"BOOKMARKS", nil)
 		[self setTabBarItem:[[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:1] autorelease]];
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
 	}
@@ -43,18 +43,18 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
-	NSDictionary *bookmark = [bookmarks objectAtIndex:indexPath.row];
-	
-	[(PrayerTableCell*)cell titleLabel].text  = [bookmark objectForKey:kBookmarkKeyTitle];
-	[(PrayerTableCell*)cell categoryLabel].text = [bookmark objectForKey:kBookmarkKeyCategory];
+	NSNumber *bookmark = [bookmarks objectAtIndex:indexPath.row];
+	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
+	[(PrayerTableCell*)cell titleLabel].text  = prayer.title;
+	[(PrayerTableCell*)cell categoryLabel].text = prayer.category;
 	
 	return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *bookmark = [bookmarks objectAtIndex:indexPath.row];
-	Prayer *prayer = [prayerDatabase prayerWithBookmark:bookmark];
+	NSNumber *bookmark = [bookmarks objectAtIndex:indexPath.row];
+	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
 	
 	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
@@ -67,7 +67,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[prayerDatabase removeBookmark:[bookmarks objectAtIndex:indexPath.row]];
+		[prayerDatabase removeBookmark:[[bookmarks objectAtIndex:indexPath.row] longValue]];
 		[bookmarks release];
 		bookmarks = [prayerDatabase getBookmarks];
 		[bookmarks retain];
@@ -84,8 +84,8 @@
 }
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
-	NSDictionary *bookmark = [savedState objectAtIndex:0];
-	Prayer *prayer = [prayerDatabase prayerWithBookmark:bookmark];
+	NSNumber *bookmark = [savedState objectAtIndex:0];
+	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
 	
 	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:pvc animated:NO];

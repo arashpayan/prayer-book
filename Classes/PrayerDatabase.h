@@ -23,40 +23,26 @@ extern NSString *const kRecentsKeyTitle;
 extern NSString *const kRecentsKeyAccessTime;
 	
 @interface PrayerDatabase : NSObject {
-	NSMutableString *currElementText;
-	Prayer *currPrayer;
 	sqlite3 *dbHandle;
-	
-	NSDictionary *categoriesDict;
+
 	NSMutableArray *recentPrayers;
 	NSMutableArray *bookmarkedPrayers;
 }
 
 + (PrayerDatabase*)sharedInstance;
-- (void)addPrayer:(Prayer*)prayer;
 - (NSArray*)getCategories;
 - (NSArray*)getPrayersForCategory:(NSString*)category;
 - (int)numberOfPrayersForCategory:(NSString*)category;
-- (void)addBookmark:(Prayer*)prayer;
-- (BOOL)hasBookmarkForPrayer:(Prayer*)prayer;
+- (void)addBookmark:(long)prayerId;
+- (BOOL)prayerIsBookmarked:(long)prayerId;
 - (NSArray*)getBookmarks;
 - (void)clearRecents;
 - (NSArray*)getRecent;
-- (Prayer*)prayerWithCategory:(NSString*)category title:(NSString*)title;
-- (Prayer*)prayerWithBookmark:(NSDictionary*)bookmark;
-- (Prayer*)prayerWithRecentsEntry:(NSDictionary*)entry;
-- (void)accessedPrayer:(Prayer*)prayer;
-- (void)removeBookmark:(NSDictionary*)bookmark;
+- (void)accessedPrayer:(long)prayerId;
+- (void)removeBookmark:(long)prayerId;
+- (Prayer*)prayerWithId:(long)prayerId;
+- (NSArray*)searchWithKeywords:(NSArray*)keywords;
 
-// NSXMLParser delegagte methods
-- (void)parserDidStartDocument:(NSXMLParser *)parser;
-- (void)parserDidEndDocument:(NSXMLParser *)parser;
-- (void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
-  namespaceURI:(NSString *)namespaceURI
- qualifiedName:(NSString *)qualifiedName
-	attributes:(NSDictionary *)attributeDict;
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName;
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string;
+- (void)migrateDbFromNilTo1;
 
 @end
