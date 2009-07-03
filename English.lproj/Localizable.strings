@@ -1,8 +1,10 @@
 "PRAYERS"			= "Prayers";
 "CATEGORIES"		= "Categories";
 "ADD_BOOKMARK"		= "Add Bookmark";
+"MAIL_THIS_PRAYER"	= "Mail This Prayer";
+"RECENTS"			= "Recents";
 "CANCEL"			= "Cancel";
-"CLEAR_RECENTS"		= "Clear Recents";
+"CLEAR"				= "Clear";
 "CLEAR_ALL_RECENTS" = "Clear All Recents";
 "BOOKMARKS"			= "Bookmarks";
 "ABOUT"				= "About";

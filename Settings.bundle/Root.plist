@@ -26,6 +26,32 @@
 			<key>Type</key>
 			<string>PSSliderSpecifier</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>LANGUAGES</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>kEnglishEnabled</string>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Title</key>
+			<string>English</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>kSpanishEnabled</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Title</key>
+			<string>Español</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
 	</array>
 </dict>
 </plist>

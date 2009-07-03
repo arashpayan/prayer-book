@@ -15,7 +15,7 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
-		self.title = NSLocalizedString(@"PRAYERS", nil);
+
 	}
 	return self;
 }

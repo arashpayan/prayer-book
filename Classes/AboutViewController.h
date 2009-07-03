@@ -10,10 +10,7 @@
 //#import "AboutView.h"
 
 @interface AboutViewController : UIViewController <UIWebViewDelegate> {
-	UIWindow *_window;
 	UIWebView *webView;
 }
-
-- (id)initWithWindow:(UIWindow*)window;
 
 @end

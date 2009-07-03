@@ -35,9 +35,32 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 			NSLog(@"Can't open the database: %s", sqlite3_errmsg(dbHandle));
 		}
 		
-		NSString *dbVersion = (NSString*)CFPreferencesCopyAppValue((CFStringRef)kDatabaseVersionNumber, kCFPreferencesCurrentApplication);
+		NSString *dbVersion = [(NSString*)CFPreferencesCopyAppValue((CFStringRef)kDatabaseVersionNumber, kCFPreferencesCurrentApplication) autorelease];
 		if (dbVersion == nil)
 			[self migrateDbFromNilTo1];
+		
+		languages = [[NSMutableArray alloc] init];
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kEnglishEnabled"])
+			[languages addObject:@"en"];
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kSpanishEnabled"])
+			[languages addObject:@"es"];
+		
+		// in case they haven't selected anything
+		if ([languages count] == 0)
+			[languages addObject:@"en"];
+		
+		languageSQL = [[NSMutableString alloc] init];
+		for (int i=0; i<[languages count]; i++)
+		{
+			if (i == [languages count]-1)
+				[languageSQL appendFormat:@"language='%@'", [languages objectAtIndex:i]];
+			else
+				[languageSQL appendFormat:@"language='%@' OR ", [languages objectAtIndex:i]];
+			
+		}
+		
+		// initialize the empty category count cache
+		categoryCountCache = [[NSMutableDictionary alloc] init];
 		
 		// cache in the bookmarks and recents
 		[self getBookmarks];
@@ -135,7 +158,10 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 
 - (NSArray*)getCategories {
 	NSMutableArray *categories = [[[NSMutableArray alloc] init] autorelease];
-	NSString *getCategoriesSQL = @"SELECT DISTINCT category FROM prayers";
+	NSString *getCategoriesSQL = [NSString stringWithFormat:@"SELECT DISTINCT category FROM prayers WHERE %@", languageSQL];
+
+//	NSLog(getCategoriesSQL);
+
 	sqlite3_stmt *getCategoriesStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
@@ -206,6 +232,10 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 	if (category == nil)
 		return -1;
 	
+	NSNumber *cachedCount = [categoryCountCache objectForKey:category];
+	if (cachedCount != nil)
+		return [cachedCount intValue];
+	
 	int numPrayers = 0;
 	
 	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\"", category];
@@ -227,6 +257,9 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 		NSLog(@"Problem obtaining result from countPrayersStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
 	
 	sqlite3_finalize(countPrayersStmt);
+	
+	// cache it for future reference
+	[categoryCountCache setObject:[NSNumber numberWithInt:numPrayers] forKey:category];
 	
 	return numPrayers;
 }
@@ -362,7 +395,7 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 		else
 			firstExpression = NO;
 		
-		[query appendFormat:@" prayerText LIKE \"%%%@%%\"", keyword];
+		[query appendFormat:@" searchText LIKE '%%%@%%'", keyword];
 		[expressions addObject:keyword];
 	}
 	
@@ -377,7 +410,10 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 			return results;	// this is too short of a query, so exit
 	}
 	
-	//NSLog(@"%@", query);
+	// now limit our search by language
+	[query appendFormat:@" AND (%@)", languageSQL];
+	
+	//NSLog(query);
 	
 	sqlite3_stmt *searchStmt;
 	int rc = sqlite3_prepare_v2(dbHandle,
@@ -405,5 +441,15 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 	
 	return results;
 }
+
+- (void) dealloc
+{
+	[languages release];
+	[languageSQL release];
+	[categoryCountCache release];
+	
+	[super dealloc];
+}
+
 
 @end

@@ -8,12 +8,14 @@
 
 #import "SearchViewController.h"
 #import "PrayerTableCell.h"
-//#import "Prayer.h"
 #import "PrayerDatabase.h"
 #import "PrayerViewController.h"
+#import "SearchView.h"
 
 
 @implementation SearchViewController
+
+@synthesize currQuery;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -36,23 +38,10 @@
 	return self;
 }
 
-
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	self.view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 360)] autorelease];
-	
-	UISearchBar *searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] autorelease];
-	searchBar.delegate = self;
-	searchBar.autocapitalizationType = NO;
-	searchBar.autocorrectionType = NO;
-	searchBar.showsCancelButton = YES;
-	searchBar.placeholder = NSLocalizedString(@"SEARCH", nil);
-	[self.view addSubview:searchBar];
-	
-	resultsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 316) style:UITableViewStylePlain];
-	resultsTable.delegate = self;
-	resultsTable.dataSource = self;
-	[self.view addSubview:resultsTable];
+	self.view = [[[SearchView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) searchViewController:self] autorelease];
+	[(SearchView*)self.view loadSaveState:currQuery];
 }
 
 #pragma mark Table Delegate Methods
@@ -76,8 +65,7 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
-	//NSNumber *bookmark = [bookmarks objectAtIndex:indexPath.row];
-	Prayer *prayer = [resultSet objectAtIndex:indexPath.row]; //[prayerDatabase prayerWithId:[bookmark longValue]];
+	Prayer *prayer = [resultSet objectAtIndex:indexPath.row];
 	[(PrayerTableCell*)cell titleLabel].text = prayer.title;
 	[(PrayerTableCell*)cell categoryLabel].text = prayer.category;
 	
@@ -94,16 +82,17 @@
 #pragma mark UISearchBar Delegate Methods
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+	self.currQuery = searchText;
+	
 	NSArray *keywords = [searchBar.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	
 	[resultSet release];
 	resultSet = [[[PrayerDatabase sharedInstance] searchWithKeywords:keywords] retain];
 	
-	[resultsTable reloadData];
+	[((SearchView*)self.view).resultsTable reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-	NSLog(@"searchBarCancelButtonClicked");
 	searchBar.text = @"";
 	[searchBar resignFirstResponder];
 }
@@ -115,30 +104,31 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	
-	NSIndexPath *selectedIndexPath = [resultsTable indexPathForSelectedRow];
+	NSIndexPath *selectedIndexPath = [((SearchView*)self.view).resultsTable indexPathForSelectedRow];
 	if (selectedIndexPath != nil)
-		[resultsTable deselectRowAtIndexPath:selectedIndexPath animated:YES];
+		[((SearchView*)self.view).resultsTable deselectRowAtIndexPath:selectedIndexPath animated:YES];
 }
 
-//- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-//	NSLog(@"searchBarShouldEndEditiong");
-//	return YES;
-//}
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)loadSavedState:(NSArray*)savedState {
+	NSString *searchString = [savedState objectAtIndex:0];
+	currQuery = searchString;
 }
-*/
 
-/*
+- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {
+	CGRect newFrame = CGRectMake(0,
+								 0,
+								 fromInterfaceOrientation == UIInterfaceOrientationPortrait ? 480 : 320,
+								 fromInterfaceOrientation == UIInterfaceOrientationPortrait ? 220 : 367);
+	self.view.frame = newFrame;
+}
+
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
-*/
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -147,8 +137,6 @@
 
 
 - (void)dealloc {
-	[resultsTable release];
-	
     [super dealloc];
 }
 

@@ -11,12 +11,11 @@
 
 @implementation AboutViewController
 
-- (id)initWithWindow:(UIWindow*)window {
+- (id)init {
 	if (self = [super init]) {
 		// Initialization code
-		[window retain];
-		_window = window;
-		self.title = @"About";
+
+		self.title = NSLocalizedString(@"ABOUT", nil);
 		[self setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"ABOUT", nil)
 														  image:[UIImage imageNamed:@"About2.png"]
 															tag:4]];
@@ -50,8 +49,6 @@
 											   encoding:NSUTF8StringEncoding
 												  error:nil];
 	[webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://arashpayan.com/projects/PrayerBook/AboutiPhone/"]];
-	//[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:
-	//												   @"http://arashpayan.com/projects/PrayerBook/AboutiPhone/"]]];
 }
 
 
@@ -70,7 +67,7 @@
 
 - (void)dealloc {
 	[webView release];
-	[_window release];
+
 	[super dealloc];
 }
 

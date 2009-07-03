@@ -24,7 +24,7 @@
 																							   target:self
 																							   action:@selector(promptToBookmark)];
  		[self.navigationItem.rightBarButtonItem release];	// the navigationItem retains it for us now
-		[self.navigationItem.rightBarButtonItem setEnabled:![prayerDatabase prayerIsBookmarked:_prayer.prayerId]];
+		//[self.navigationItem.rightBarButtonItem setEnabled:![prayerDatabase prayerIsBookmarked:_prayer.prayerId]];
 		
 		// set up view rotation
 		self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -38,11 +38,23 @@
 }
 
 - (void)promptToBookmark {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-															 delegate:self
-													cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
-											   destructiveButtonTitle:NSLocalizedString(@"ADD_BOOKMARK", nil)
-													otherButtonTitles:nil];
+	UIActionSheet *actionSheet = nil;
+	if ([prayerDatabase prayerIsBookmarked:_prayer.prayerId])
+	{
+		actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+												  delegate:self
+										 cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
+									destructiveButtonTitle:NSLocalizedString(@"MAIL_THIS_PRAYER", nil)
+										 otherButtonTitles:nil];
+	}
+	else
+	{
+		actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+												  delegate:self
+										 cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
+									destructiveButtonTitle:NSLocalizedString(@"ADD_BOOKMARK", nil)							
+										 otherButtonTitles:NSLocalizedString(@"MAIL_THIS_PRAYER", nil), nil];
+	}
 	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	[actionSheet showInView:self.tabBarController.view];
@@ -51,12 +63,20 @@
 
 // gets called back from the action sheet to bookmark the fee
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if ([prayerDatabase prayerIsBookmarked:_prayer.prayerId])
+		buttonIndex++;
+	
 	if (buttonIndex == 0)
 	{
 		[prayerDatabase addBookmark:_prayer.prayerId];
-		
-		// update the status of the add bookmark button
-		[self.navigationItem.rightBarButtonItem setEnabled:![prayerDatabase prayerIsBookmarked:_prayer.prayerId]];
+	}
+	else if (buttonIndex == 1)
+	{
+		UIApplication *app = [UIApplication sharedApplication];
+		NSString *finalHTML = [self finalPrayerHTML];
+		NSString *escapedHTML = [(NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)finalHTML, NULL, CFSTR("?=&+"), kCFStringEncodingUTF8) autorelease];
+		NSString *mailto = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", [_prayer.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], escapedHTML];
+		[app openURL:[NSURL URLWithString:mailto]];
 	}
 }
 
@@ -67,17 +87,22 @@
 	webView = [[UIWebView alloc] init];
 	self.view = webView;
 	
-	NSMutableString *finalHTML = [[NSMutableString alloc] init];
+	NSString *finalHTML = [self finalPrayerHTML];
+	[webView loadHTMLString:finalHTML baseURL:[NSURL URLWithString:@"file:///"]];
+}
+
+
+- (NSString*)finalPrayerHTML {
+	NSMutableString *finalHTML = [[[NSMutableString alloc] init] autorelease];
 	[finalHTML appendString:[PrayerViewController HTMLPrefix]];
 	[finalHTML appendString:_prayer.text];
 	[finalHTML appendString:[NSString stringWithFormat:@"<h4 id=\"author\">%@</h4>", [_prayer author], nil]];
 	if ([_prayer citation] != nil)
 		[finalHTML appendString:[NSString stringWithFormat:@"<p class=\"comment\"><br/><br/>%@</p>", [_prayer citation], nil]];
 	[finalHTML appendString:[PrayerViewController HTMLSuffix]];
-	[webView loadHTMLString:finalHTML baseURL:[NSURL URLWithString:@"file:///"]];
-	[finalHTML release];
+	
+	return finalHTML;
 }
-
 
 + (NSString*)HTMLPrefix {
 	static NSMutableString *htmlPrefix;

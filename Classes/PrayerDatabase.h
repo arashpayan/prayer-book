@@ -21,12 +21,23 @@ extern NSString *const kBookmarkKeyTitle;
 extern NSString *const kRecentsKeyCategory;
 extern NSString *const kRecentsKeyTitle;
 extern NSString *const kRecentsKeyAccessTime;
-	
+
+enum PBLanguages {
+	PBEnglish = 1,
+	PBSpanish = 2
+};
+
 @interface PrayerDatabase : NSObject {
 	sqlite3 *dbHandle;
 
 	NSMutableArray *recentPrayers;
 	NSMutableArray *bookmarkedPrayers;
+	
+	NSMutableArray *languages;
+	NSMutableString *languageSQL;
+	
+	// mapping of category name (NSString*) to count (NSNumber*)
+	NSMutableDictionary *categoryCountCache;
 }
 
 + (PrayerDatabase*)sharedInstance;

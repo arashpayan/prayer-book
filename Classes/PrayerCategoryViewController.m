@@ -63,22 +63,22 @@
 }
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
-	//NSString* category = [savedState objectAtIndex:0];
-//	int categoryIndex = [prayerCategories indexOfObject:category];
-//	
-//	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
-//	[prayerListViewController setPrayers:[prayerDb getPrayersForCategory:[prayerCategories objectAtIndex:categoryIndex]]];
-//	[prayerListViewController setCategory:category];
-//	[[self navigationController] pushViewController:prayerListViewController animated:NO];
-//	
-//	[savedState removeObjectAtIndex:0];
-//	if ([savedState count] > 0)	// were they viewing a prayer?
-//	{
-//		NSDictionary *bookmark = [savedState objectAtIndex:0];
-//		PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:
-//									 [prayerDb prayerWithBookmark:bookmark]];
-//		[[self navigationController] pushViewController:pvc animated:NO];
-//	}
+	NSString* category = [savedState objectAtIndex:0];
+	int categoryIndex = [prayerCategories indexOfObject:category];
+	
+	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
+	[prayerListViewController setPrayers:[prayerDb getPrayersForCategory:[prayerCategories objectAtIndex:categoryIndex]]];
+	[prayerListViewController setCategory:category];
+	[[self navigationController] pushViewController:prayerListViewController animated:NO];
+	[savedState removeObjectAtIndex:0];
+
+	if ([savedState count] > 0)	// were they viewing a prayer?
+	{
+		NSNumber *prayerIdNumber = [savedState objectAtIndex:0];
+		long prayerId = [prayerIdNumber longValue];
+		PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:[prayerDb prayerWithId:prayerId]];
+		[[self navigationController] pushViewController:pvc animated:NO];
+	}
 }
 
 /*

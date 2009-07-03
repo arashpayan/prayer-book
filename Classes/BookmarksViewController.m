@@ -16,7 +16,7 @@
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
 		prayerDatabase = [PrayerDatabase sharedInstance];
 		bookmarks = nil;
-		self.title = NSLocalizedString(@"BOOKMARKS", nil)
+		self.title = NSLocalizedString(@"BOOKMARKS", nil);
 		[self setTabBarItem:[[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:1] autorelease]];
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
 	}
@@ -84,8 +84,8 @@
 }
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
-	NSNumber *bookmark = [savedState objectAtIndex:0];
-	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
+	NSNumber *prayerId = [savedState objectAtIndex:0];
+	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
 	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:pvc animated:NO];
@@ -145,7 +145,6 @@
 }
 
 - (void)didReceiveMemoryWarning {
-	printf("BookmarksViewController didReceiveMemoryWarning\n");
 	[super didReceiveMemoryWarning];
 }
 

@@ -11,6 +11,10 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		5B0215340FBBFD1B00421CED /* Heartbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0215320FBBFD1B00421CED /* Heartbeat.m */; };
+		5B0215440FBBFE6900421CED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215430FBBFE6900421CED /* SystemConfiguration.framework */; };
+		5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215470FBBFE8800421CED /* CFNetwork.framework */; };
+		5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B10B7C40FC21CF600010104 /* InfoPlist.strings */; };
 		5B303AB20E6382770008057A /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303AB10E6382770008057A /* PrayerDatabase.m */; };
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
@@ -31,6 +35,7 @@
 		5BBF6C680F4116440020712B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6C670F4116440020712B /* Settings.bundle */; };
 		5BBF6D680F4132AC0020712B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6D670F4132AC0020712B /* MainWindow.xib */; };
 		5BBF6D6B0F4133260020712B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6D690F4133260020712B /* Localizable.strings */; };
+		5BC3671E0FECCC750047E0C2 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3671D0FECCC750047E0C2 /* SearchView.m */; };
 		5BC94C5D0E6B66B700B0208A /* RoundedRectangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */; };
 		5BC94E060E6B89B100B0208A /* NSString_CategoryCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94E050E6B89B100B0208A /* NSString_CategoryCompare.m */; };
 		5BC94EBF0E6B95D900B0208A /* AppleIsStupid.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94EBE0E6B95D900B0208A /* AppleIsStupid.m */; };
@@ -49,6 +54,15 @@
 		28AD733E0D9D9553002E5188 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BahaiWritings_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BahaiWritings_Prefix.pch; sourceTree = "<group>"; };
+		5B0215310FBBFD1B00421CED /* Heartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Heartbeat.h; path = Classes/Heartbeat.h; sourceTree = "<group>"; };
+		5B0215320FBBFD1B00421CED /* Heartbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Heartbeat.m; path = Classes/Heartbeat.m; sourceTree = "<group>"; };
+		5B0215330FBBFD1B00421CED /* HeartbeatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartbeatSettings.h; path = Classes/HeartbeatSettings.h; sourceTree = "<group>"; };
+		5B0215430FBBFE6900421CED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5B0215470FBBFE8800421CED /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5B10B6750FC1FA3600010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		5B10B6760FC1FA4A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5B10B7B20FC21A5A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
+		5B10B7C50FC21CF600010104 /* es */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B303AB00E6382770008057A /* PrayerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerDatabase.h; sourceTree = "<group>"; };
 		5B303AB10E6382770008057A /* PrayerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerDatabase.m; sourceTree = "<group>"; };
 		5B303B270E6392370008057A /* Prayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prayer.h; sourceTree = "<group>"; };
@@ -77,6 +91,8 @@
 		5BBF69150F3FC6F50020712B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		5BBF6C670F4116440020712B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5BBF6D6A0F4133260020712B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5BC3671C0FECCC750047E0C2 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		5BC3671D0FECCC750047E0C2 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		5BC94C5B0E6B66B700B0208A /* RoundedRectangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectangleView.h; sourceTree = "<group>"; };
 		5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectangleView.m; sourceTree = "<group>"; };
 		5BC94E040E6B89B100B0208A /* NSString_CategoryCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_CategoryCompare.h; sourceTree = "<group>"; };
@@ -89,7 +105,7 @@
 		5BD3B9630E515B9E00A34C37 /* PrayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerListViewController.h; sourceTree = "<group>"; };
 		5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerListViewController.m; sourceTree = "<group>"; };
 		5BEB9E840E8AFE5D000E0C3D /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +117,8 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				5B8D64350E69F1610064981E /* CoreGraphics.framework in Frameworks */,
 				5BBF66D60F3E60DF0020712B /* libsqlite3.0.dylib in Frameworks */,
+				5B0215440FBBFE6900421CED /* SystemConfiguration.framework in Frameworks */,
+				5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +163,9 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5B0215310FBBFD1B00421CED /* Heartbeat.h */,
+				5B0215320FBBFD1B00421CED /* Heartbeat.m */,
+				5B0215330FBBFD1B00421CED /* HeartbeatSettings.h */,
 				32CA4F630368D1EE00C91783 /* BahaiWritings_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -164,7 +185,8 @@
 				5B8D65AF0E6A4C8E0064981E /* BPiP.xml */,
 				5B8D630B0E6921A70064981E /* hands.png */,
 				5BBF6D670F4132AC0020712B /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Info.plist */,
+				5B10B7B10FC21A4C00010104 /* Info.plist */,
+				5B10B7C40FC21CF600010104 /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -172,6 +194,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B0215470FBBFE8800421CED /* CFNetwork.framework */,
+				5B0215430FBBFE6900421CED /* SystemConfiguration.framework */,
 				5BBF66D50F3E60DF0020712B /* libsqlite3.0.dylib */,
 				5B8D64340E69F1610064981E /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -223,6 +247,8 @@
 				5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */,
 				5B9BE7BF0E6B371500EE9DF6 /* CategoryCell.h */,
 				5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */,
+				5BC3671C0FECCC750047E0C2 /* SearchView.h */,
+				5BC3671D0FECCC750047E0C2 /* SearchView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -255,6 +281,13 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BahaiWritings" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				es,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,6 +313,7 @@
 				5BBF666F0F3E51880020712B /* pbdb.db in Resources */,
 				5BBF6C680F4116440020712B /* Settings.bundle in Resources */,
 				5BBF6D6B0F4133260020712B /* Localizable.strings in Resources */,
+				5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,16 +340,36 @@
 				5BC94E060E6B89B100B0208A /* NSString_CategoryCompare.m in Sources */,
 				5BC94EBF0E6B95D900B0208A /* AppleIsStupid.m in Sources */,
 				5BBF69160F3FC6F50020712B /* SearchViewController.m in Sources */,
+				5B0215340FBBFD1B00421CED /* Heartbeat.m in Sources */,
+				5BC3671E0FECCC750047E0C2 /* SearchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5B10B7B10FC21A4C00010104 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D1107310486CEB800E47090 /* English */,
+				5B10B7B20FC21A5A00010104 /* es */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
+		5B10B7C40FC21CF600010104 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B10B7C50FC21CF600010104 /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		5BBF6D670F4132AC0020712B /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				28AD733E0D9D9553002E5188 /* English */,
+				5B10B6750FC1FA3600010104 /* es */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -324,6 +378,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5BBF6D6A0F4133260020712B /* English */,
+				5B10B6760FC1FA4A00010104 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -341,7 +396,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = English.lproj/Info.plist;
 				PRODUCT_NAME = "Prayer Book";
 			};
 			name = Debug;
@@ -354,7 +409,7 @@
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = English.lproj/Info.plist;
 				PRODUCT_NAME = "Prayer Book";
 			};
 			name = Release;
@@ -382,8 +437,9 @@
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = English.lproj/Info.plist;
 				PRODUCT_NAME = "Prayer Book";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA08C83B-4D03-4B36-8B08-284D72B4273F";
 			};
 			name = Distribution;
 		};

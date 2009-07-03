@@ -17,9 +17,9 @@
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
 		prayerDatabase = [PrayerDatabase sharedInstance];
 		
-		self.title = @"Recents";
+		self.title = NSLocalizedString(@"RECENTS", nil);
 		[self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:2]];
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLEAR", nil)
 																				  style:UIBarButtonItemStylePlain
 																				 target:self
 																				 action:@selector(clearRecent)];
@@ -28,7 +28,7 @@
 }
 
 - (void)clearRecent {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil //NSLocalizedString(@"CLEAR_RECENTS", nil)
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
 															 delegate:self
 													cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
 											   destructiveButtonTitle:NSLocalizedString(@"CLEAR_ALL_RECENTS", nil)
@@ -120,9 +120,10 @@
 
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
-	NSNumber *bookmark = [savedState objectAtIndex:0];
-	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
+	NSNumber *prayerId = [savedState objectAtIndex:0];
+	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
+	NSLog(@"About to try pushing the recents controller");
 	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:pvc animated:NO];
 }

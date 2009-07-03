@@ -22,5 +22,6 @@
 
 - (id)initWithPrayer:(Prayer*)prayer;
 - (Prayer*)prayer;
+- (NSString*)finalPrayerHTML;
 
 @end
