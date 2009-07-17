@@ -55,5 +55,6 @@ enum PBLanguages {
 - (NSArray*)searchWithKeywords:(NSArray*)keywords;
 
 - (void)migrateDbFromNilTo1;
+- (void)migrateDbFrom1To2;
 
 @end

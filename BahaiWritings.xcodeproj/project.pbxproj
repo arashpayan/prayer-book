@@ -439,7 +439,6 @@
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
 				INFOPLIST_FILE = English.lproj/Info.plist;
 				PRODUCT_NAME = "Prayer Book";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA08C83B-4D03-4B36-8B08-284D72B4273F";
 			};
 			name = Distribution;
 		};

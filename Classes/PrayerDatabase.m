@@ -35,9 +35,16 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 			NSLog(@"Can't open the database: %s", sqlite3_errmsg(dbHandle));
 		}
 		
-		NSString *dbVersion = [(NSString*)CFPreferencesCopyAppValue((CFStringRef)kDatabaseVersionNumber, kCFPreferencesCurrentApplication) autorelease];
+		NSNumber *dbVersion = [(NSString*)CFPreferencesCopyAppValue((CFStringRef)kDatabaseVersionNumber, kCFPreferencesCurrentApplication) autorelease];
 		if (dbVersion == nil)
+		{
 			[self migrateDbFromNilTo1];
+			[self migrateDbFrom1To2];
+		}
+		else if ([dbVersion isEqualToNumber:[NSNumber numberWithInt:1]])
+		{
+			[self migrateDbFrom1To2];
+		}
 		
 		languages = [[NSMutableArray alloc] init];
 		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kEnglishEnabled"])
@@ -139,6 +146,17 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 	}
 	
 	CFPreferencesSetAppValue((CFStringRef)kDatabaseVersionNumber, [NSNumber numberWithInt:1], kCFPreferencesCurrentApplication);
+}
+
+- (void)migrateDbFrom1To2 {
+	
+	// fix the bug that caused the app to crash at launch in v1.1
+	NSMutableArray *saveState = [[NSMutableArray alloc] init];
+	[saveState addObject:[NSNumber numberWithInt:0]];
+	CFPreferencesSetAppValue((CFStringRef)@"savedState", saveState, kCFPreferencesCurrentApplication);
+	
+	// update our db version number
+	CFPreferencesSetAppValue((CFStringRef)kDatabaseVersionNumber, [NSNumber numberWithInt:2], kCFPreferencesCurrentApplication);
 }
 
 + (PrayerDatabase*)sharedInstance {

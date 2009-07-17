@@ -123,7 +123,6 @@
 	NSNumber *prayerId = [savedState objectAtIndex:0];
 	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
-	NSLog(@"About to try pushing the recents controller");
 	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:pvc animated:NO];
 }
