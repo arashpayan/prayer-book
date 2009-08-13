@@ -10,6 +10,7 @@
 #import "PrayerView.h"
 #import "QiblihFinder.h"
 
+#define PI 3.141592653589793
 
 @implementation PrayerViewController
 
@@ -275,6 +276,21 @@
 #pragma mark QiblihWatcherDelegate
 
 - (void)qiblihBearingUpdated:(float)newBearing {
+	if (newBearing == -1)	// can't do anything with -1 orientation
+		return;
+	
+	switch ([UIDevice currentDevice].orientation) {
+		case UIDeviceOrientationLandscapeLeft:
+			newBearing -= PI/2.0;
+			break;
+		case UIDeviceOrientationLandscapeRight:
+			newBearing += PI/2.0;
+			break;
+		default:
+			break;
+	}
+	//NSLog(@"device orientation is %d", [UIApplication sharedApplication].statusBarOrientation);
+	
 	[(PrayerView*)self.view setCompassNeedleAngle:newBearing];
 }
 

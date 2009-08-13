@@ -32,7 +32,7 @@
 					CGPoint endPos = [aTouch locationInView:aTouch.view];
 					CGFloat dx = endPos.x - startPos.x;
 					CGFloat dy = endPos.y - startPos.y;
-					if ((dx*dx + dy*dy) < 25)
+					if ((dx*dx + dy*dy) < 100)	// a movement of <= 10 pixels
 					{
 						[[PrayerDatabase sharedInstance].prayerView webViewWasTapped];
 					}

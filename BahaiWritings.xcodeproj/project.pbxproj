@@ -17,9 +17,6 @@
 		5B0215440FBBFE6900421CED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215430FBBFE6900421CED /* SystemConfiguration.framework */; };
 		5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215470FBBFE8800421CED /* CFNetwork.framework */; };
 		5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B10B7C40FC21CF600010104 /* InfoPlist.strings */; };
-		5B1F1934101999DA003825DF /* BadgeRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F1931101999DA003825DF /* BadgeRight.png */; };
-		5B1F1935101999DA003825DF /* BadgeLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F1932101999DA003825DF /* BadgeLeft.png */; };
-		5B1F1936101999DA003825DF /* BadgeCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F1933101999DA003825DF /* BadgeCenter.png */; };
 		5B303AB20E6382770008057A /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303AB10E6382770008057A /* PrayerDatabase.m */; };
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
@@ -82,9 +79,6 @@
 		5B10B6760FC1FA4A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B10B7B20FC21A5A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 		5B10B7C50FC21CF600010104 /* es */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5B1F1931101999DA003825DF /* BadgeRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BadgeRight.png; path = Graphics/BadgeRight.png; sourceTree = "<group>"; };
-		5B1F1932101999DA003825DF /* BadgeLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BadgeLeft.png; path = Graphics/BadgeLeft.png; sourceTree = "<group>"; };
-		5B1F1933101999DA003825DF /* BadgeCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BadgeCenter.png; path = Graphics/BadgeCenter.png; sourceTree = "<group>"; };
 		5B303AB00E6382770008057A /* PrayerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerDatabase.h; sourceTree = "<group>"; };
 		5B303AB10E6382770008057A /* PrayerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerDatabase.m; sourceTree = "<group>"; };
 		5B303B270E6392370008057A /* Prayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prayer.h; sourceTree = "<group>"; };
@@ -257,9 +251,6 @@
 				5BC7472E102259A6005AB5B0 /* PrayerBar-CompassNeedle.png */,
 				5BC7472F102259A6005AB5B0 /* PrayerBar-DecreaseSize.png */,
 				5BC74730102259A6005AB5B0 /* PrayerBar-IncreaseSize.png */,
-				5B1F1931101999DA003825DF /* BadgeRight.png */,
-				5B1F1932101999DA003825DF /* BadgeLeft.png */,
-				5B1F1933101999DA003825DF /* BadgeCenter.png */,
 				5B01F9151016F94A003101C7 /* TabBarAbout.png */,
 				5B01F8251016BECB003101C7 /* TabBarList.png */,
 			);
@@ -385,9 +376,6 @@
 				5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */,
 				5B01F8261016BECB003101C7 /* TabBarList.png in Resources */,
 				5B01F9161016F94A003101C7 /* TabBarAbout.png in Resources */,
-				5B1F1934101999DA003825DF /* BadgeRight.png in Resources */,
-				5B1F1935101999DA003825DF /* BadgeLeft.png in Resources */,
-				5B1F1936101999DA003825DF /* BadgeCenter.png in Resources */,
 				5BC74731102259A6005AB5B0 /* PrayerBar-Add.png in Resources */,
 				5BC74732102259A6005AB5B0 /* PrayerBar-CompassBackground.png in Resources */,
 				5BC74733102259A6005AB5B0 /* PrayerBar-CompassNeedle.png in Resources */,

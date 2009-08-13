@@ -34,7 +34,6 @@
 		navBar.barStyle = UIBarStyleBlackTranslucent;
 		UIImage *buttonImage = [UIImage imageNamed:@"NavBar-Back.png"];
 		UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		//backButton.titleLabel.baselineAdjustment = UIBaselineAdjustmentNone;
 		backButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
 		NSString *formattedTitle = [NSString stringWithFormat:@" %@", backTitle];
 		CGSize buttonSize = [formattedTitle sizeWithFont:[UIFont boldSystemFontOfSize:14]];
