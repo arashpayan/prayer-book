@@ -34,51 +34,31 @@
 	
 	static NSString *MyIdentifier = @"SomeIdentifier";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
 		cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		//cell.font = [UIFont boldSystemFontOfSize:16.0];
 	}
 	// Configure the cell
 	Prayer *selectedPrayer = [prayers objectAtIndex:indexPath.row];
-	[(PrayerTableCell*)cell titleLabel].text  = [selectedPrayer title];
-	[(PrayerTableCell*)cell categoryLabel].text = [selectedPrayer author];
-	[(PrayerTableCell*)cell rightLabel].text = [NSString stringWithFormat:@"~%@ words", [selectedPrayer wordCount]];
+	cell.title.text = selectedPrayer.title;
+	cell.subtitle.text = selectedPrayer.author;
+	cell.rightLabel.text = [NSString stringWithFormat:@"~%@ %@", selectedPrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
 	
 	return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:[prayers objectAtIndex:indexPath.row]];
+	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:[prayers objectAtIndex:indexPath.row]
+																			  backButtonTitle:self.title];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 	[prayerViewController release];
 }
 
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-	}
-	if (editingStyle == UITableViewCellEditingStyleInsert) {
-	}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 50;
 }
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
 
 - (void)setCategory:(NSString*)aCategory {
 	if (category != aCategory)

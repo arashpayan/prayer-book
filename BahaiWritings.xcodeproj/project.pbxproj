@@ -11,10 +11,15 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		5B01F8261016BECB003101C7 /* TabBarList.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B01F8251016BECB003101C7 /* TabBarList.png */; };
+		5B01F9161016F94A003101C7 /* TabBarAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B01F9151016F94A003101C7 /* TabBarAbout.png */; };
 		5B0215340FBBFD1B00421CED /* Heartbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0215320FBBFD1B00421CED /* Heartbeat.m */; };
 		5B0215440FBBFE6900421CED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215430FBBFE6900421CED /* SystemConfiguration.framework */; };
 		5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215470FBBFE8800421CED /* CFNetwork.framework */; };
 		5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B10B7C40FC21CF600010104 /* InfoPlist.strings */; };
+		5B1F1934101999DA003825DF /* BadgeRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F1931101999DA003825DF /* BadgeRight.png */; };
+		5B1F1935101999DA003825DF /* BadgeLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F1932101999DA003825DF /* BadgeLeft.png */; };
+		5B1F1936101999DA003825DF /* BadgeCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F1933101999DA003825DF /* BadgeCenter.png */; };
 		5B303AB20E6382770008057A /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303AB10E6382770008057A /* PrayerDatabase.m */; };
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
@@ -36,13 +41,25 @@
 		5BBF6D680F4132AC0020712B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6D670F4132AC0020712B /* MainWindow.xib */; };
 		5BBF6D6B0F4133260020712B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6D690F4133260020712B /* Localizable.strings */; };
 		5BC3671E0FECCC750047E0C2 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3671D0FECCC750047E0C2 /* SearchView.m */; };
+		5BC74631102240C7005AB5B0 /* APWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC74630102240C7005AB5B0 /* APWindow.m */; };
+		5BC746D11022537C005AB5B0 /* PrayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC746D01022537C005AB5B0 /* PrayerView.m */; };
+		5BC74731102259A6005AB5B0 /* PrayerBar-Add.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC7472C102259A6005AB5B0 /* PrayerBar-Add.png */; };
+		5BC74732102259A6005AB5B0 /* PrayerBar-CompassBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC7472D102259A6005AB5B0 /* PrayerBar-CompassBackground.png */; };
+		5BC74733102259A6005AB5B0 /* PrayerBar-CompassNeedle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC7472E102259A6005AB5B0 /* PrayerBar-CompassNeedle.png */; };
+		5BC74734102259A6005AB5B0 /* PrayerBar-DecreaseSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC7472F102259A6005AB5B0 /* PrayerBar-DecreaseSize.png */; };
+		5BC74735102259A6005AB5B0 /* PrayerBar-IncreaseSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC74730102259A6005AB5B0 /* PrayerBar-IncreaseSize.png */; };
+		5BC747531022959A005AB5B0 /* PrayerBar-Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC747521022959A005AB5B0 /* PrayerBar-Email.png */; };
 		5BC94C5D0E6B66B700B0208A /* RoundedRectangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */; };
 		5BC94E060E6B89B100B0208A /* NSString_CategoryCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94E050E6B89B100B0208A /* NSString_CategoryCompare.m */; };
 		5BC94EBF0E6B95D900B0208A /* AppleIsStupid.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC94EBE0E6B95D900B0208A /* AppleIsStupid.m */; };
 		5BC94F0E0E6BB07400B0208A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC94F0D0E6BB07400B0208A /* Icon.png */; };
 		5BD3B80C0E50EB7500A34C37 /* PrayerCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */; };
 		5BD3B9650E515B9E00A34C37 /* PrayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */; };
+		5BE4F3EC10323E2F00BE1456 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE4F3EB10323E2F00BE1456 /* CoreLocation.framework */; };
+		5BE4F4281032457000BE1456 /* QiblihFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4F4271032457000BE1456 /* QiblihFinder.m */; };
 		5BEB9E850E8AFE5D000E0C3D /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB9E840E8AFE5D000E0C3D /* about.html */; };
+		5BEE635510238FA400E96FE2 /* NavBar-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE635410238FA400E96FE2 /* NavBar-Back.png */; };
+		5BEE655510242A6D00E96FE2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE655410242A6D00E96FE2 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +71,8 @@
 		28AD733E0D9D9553002E5188 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BahaiWritings_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BahaiWritings_Prefix.pch; sourceTree = "<group>"; };
+		5B01F8251016BECB003101C7 /* TabBarList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarList.png; path = Graphics/TabBarList.png; sourceTree = "<group>"; };
+		5B01F9151016F94A003101C7 /* TabBarAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarAbout.png; path = Graphics/TabBarAbout.png; sourceTree = "<group>"; };
 		5B0215310FBBFD1B00421CED /* Heartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Heartbeat.h; path = Classes/Heartbeat.h; sourceTree = "<group>"; };
 		5B0215320FBBFD1B00421CED /* Heartbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Heartbeat.m; path = Classes/Heartbeat.m; sourceTree = "<group>"; };
 		5B0215330FBBFD1B00421CED /* HeartbeatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartbeatSettings.h; path = Classes/HeartbeatSettings.h; sourceTree = "<group>"; };
@@ -63,6 +82,9 @@
 		5B10B6760FC1FA4A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B10B7B20FC21A5A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 		5B10B7C50FC21CF600010104 /* es */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B1F1931101999DA003825DF /* BadgeRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BadgeRight.png; path = Graphics/BadgeRight.png; sourceTree = "<group>"; };
+		5B1F1932101999DA003825DF /* BadgeLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BadgeLeft.png; path = Graphics/BadgeLeft.png; sourceTree = "<group>"; };
+		5B1F1933101999DA003825DF /* BadgeCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BadgeCenter.png; path = Graphics/BadgeCenter.png; sourceTree = "<group>"; };
 		5B303AB00E6382770008057A /* PrayerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerDatabase.h; sourceTree = "<group>"; };
 		5B303AB10E6382770008057A /* PrayerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerDatabase.m; sourceTree = "<group>"; };
 		5B303B270E6392370008057A /* Prayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prayer.h; sourceTree = "<group>"; };
@@ -93,6 +115,16 @@
 		5BBF6D6A0F4133260020712B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5BC3671C0FECCC750047E0C2 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		5BC3671D0FECCC750047E0C2 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		5BC7462F102240C7005AB5B0 /* APWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APWindow.h; sourceTree = "<group>"; };
+		5BC74630102240C7005AB5B0 /* APWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APWindow.m; sourceTree = "<group>"; };
+		5BC746CF1022537C005AB5B0 /* PrayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerView.h; sourceTree = "<group>"; };
+		5BC746D01022537C005AB5B0 /* PrayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerView.m; sourceTree = "<group>"; };
+		5BC7472C102259A6005AB5B0 /* PrayerBar-Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-Add.png"; path = "Graphics/PrayerBar-Add.png"; sourceTree = "<group>"; };
+		5BC7472D102259A6005AB5B0 /* PrayerBar-CompassBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-CompassBackground.png"; path = "Graphics/PrayerBar-CompassBackground.png"; sourceTree = "<group>"; };
+		5BC7472E102259A6005AB5B0 /* PrayerBar-CompassNeedle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-CompassNeedle.png"; path = "Graphics/PrayerBar-CompassNeedle.png"; sourceTree = "<group>"; };
+		5BC7472F102259A6005AB5B0 /* PrayerBar-DecreaseSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-DecreaseSize.png"; path = "Graphics/PrayerBar-DecreaseSize.png"; sourceTree = "<group>"; };
+		5BC74730102259A6005AB5B0 /* PrayerBar-IncreaseSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-IncreaseSize.png"; path = "Graphics/PrayerBar-IncreaseSize.png"; sourceTree = "<group>"; };
+		5BC747521022959A005AB5B0 /* PrayerBar-Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-Email.png"; path = "Graphics/PrayerBar-Email.png"; sourceTree = "<group>"; };
 		5BC94C5B0E6B66B700B0208A /* RoundedRectangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectangleView.h; sourceTree = "<group>"; };
 		5BC94C5C0E6B66B700B0208A /* RoundedRectangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectangleView.m; sourceTree = "<group>"; };
 		5BC94E040E6B89B100B0208A /* NSString_CategoryCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_CategoryCompare.h; sourceTree = "<group>"; };
@@ -104,7 +136,13 @@
 		5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerCategoryViewController.m; sourceTree = "<group>"; };
 		5BD3B9630E515B9E00A34C37 /* PrayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerListViewController.h; sourceTree = "<group>"; };
 		5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerListViewController.m; sourceTree = "<group>"; };
+		5BE4F3EB10323E2F00BE1456 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5BE4F4261032457000BE1456 /* QiblihFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiblihFinder.h; sourceTree = "<group>"; };
+		5BE4F4271032457000BE1456 /* QiblihFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiblihFinder.m; sourceTree = "<group>"; };
+		5BE4F4E61032A70E00BE1456 /* QiblihWatcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiblihWatcherDelegate.h; sourceTree = "<group>"; };
 		5BEB9E840E8AFE5D000E0C3D /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		5BEE635410238FA400E96FE2 /* NavBar-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NavBar-Back.png"; path = "Graphics/NavBar-Back.png"; sourceTree = "<group>"; };
+		5BEE655410242A6D00E96FE2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +157,8 @@
 				5BBF66D60F3E60DF0020712B /* libsqlite3.0.dylib in Frameworks */,
 				5B0215440FBBFE6900421CED /* SystemConfiguration.framework in Frameworks */,
 				5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */,
+				5BEE655510242A6D00E96FE2 /* MessageUI.framework in Frameworks */,
+				5BE4F3EC10323E2F00BE1456 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +191,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5B01F81B1016BEAA003101C7 /* Graphics */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -194,6 +235,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BE4F3EB10323E2F00BE1456 /* CoreLocation.framework */,
+				5BEE655410242A6D00E96FE2 /* MessageUI.framework */,
 				5B0215470FBBFE8800421CED /* CFNetwork.framework */,
 				5B0215430FBBFE6900421CED /* SystemConfiguration.framework */,
 				5BBF66D50F3E60DF0020712B /* libsqlite3.0.dylib */,
@@ -202,6 +245,25 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B01F81B1016BEAA003101C7 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				5BEE635410238FA400E96FE2 /* NavBar-Back.png */,
+				5BC747521022959A005AB5B0 /* PrayerBar-Email.png */,
+				5BC7472C102259A6005AB5B0 /* PrayerBar-Add.png */,
+				5BC7472D102259A6005AB5B0 /* PrayerBar-CompassBackground.png */,
+				5BC7472E102259A6005AB5B0 /* PrayerBar-CompassNeedle.png */,
+				5BC7472F102259A6005AB5B0 /* PrayerBar-DecreaseSize.png */,
+				5BC74730102259A6005AB5B0 /* PrayerBar-IncreaseSize.png */,
+				5B1F1931101999DA003825DF /* BadgeRight.png */,
+				5B1F1932101999DA003825DF /* BadgeLeft.png */,
+				5B1F1933101999DA003825DF /* BadgeCenter.png */,
+				5B01F9151016F94A003101C7 /* TabBarAbout.png */,
+				5B01F8251016BECB003101C7 /* TabBarList.png */,
+			);
+			name = Graphics;
 			sourceTree = "<group>";
 		};
 		5BBF66700F3E51C50020712B /* Controllers */ = {
@@ -234,6 +296,9 @@
 				5B303AB10E6382770008057A /* PrayerDatabase.m */,
 				5B303B270E6392370008057A /* Prayer.h */,
 				5B303B280E6392370008057A /* Prayer.m */,
+				5BE4F4261032457000BE1456 /* QiblihFinder.h */,
+				5BE4F4271032457000BE1456 /* QiblihFinder.m */,
+				5BE4F4E61032A70E00BE1456 /* QiblihWatcherDelegate.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -249,6 +314,10 @@
 				5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */,
 				5BC3671C0FECCC750047E0C2 /* SearchView.h */,
 				5BC3671D0FECCC750047E0C2 /* SearchView.m */,
+				5BC7462F102240C7005AB5B0 /* APWindow.h */,
+				5BC74630102240C7005AB5B0 /* APWindow.m */,
+				5BC746CF1022537C005AB5B0 /* PrayerView.h */,
+				5BC746D01022537C005AB5B0 /* PrayerView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -314,6 +383,18 @@
 				5BBF6C680F4116440020712B /* Settings.bundle in Resources */,
 				5BBF6D6B0F4133260020712B /* Localizable.strings in Resources */,
 				5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */,
+				5B01F8261016BECB003101C7 /* TabBarList.png in Resources */,
+				5B01F9161016F94A003101C7 /* TabBarAbout.png in Resources */,
+				5B1F1934101999DA003825DF /* BadgeRight.png in Resources */,
+				5B1F1935101999DA003825DF /* BadgeLeft.png in Resources */,
+				5B1F1936101999DA003825DF /* BadgeCenter.png in Resources */,
+				5BC74731102259A6005AB5B0 /* PrayerBar-Add.png in Resources */,
+				5BC74732102259A6005AB5B0 /* PrayerBar-CompassBackground.png in Resources */,
+				5BC74733102259A6005AB5B0 /* PrayerBar-CompassNeedle.png in Resources */,
+				5BC74734102259A6005AB5B0 /* PrayerBar-DecreaseSize.png in Resources */,
+				5BC74735102259A6005AB5B0 /* PrayerBar-IncreaseSize.png in Resources */,
+				5BC747531022959A005AB5B0 /* PrayerBar-Email.png in Resources */,
+				5BEE635510238FA400E96FE2 /* NavBar-Back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +423,9 @@
 				5BBF69160F3FC6F50020712B /* SearchViewController.m in Sources */,
 				5B0215340FBBFD1B00421CED /* Heartbeat.m in Sources */,
 				5BC3671E0FECCC750047E0C2 /* SearchView.m in Sources */,
+				5BC74631102240C7005AB5B0 /* APWindow.m in Sources */,
+				5BC746D11022537C005AB5B0 /* PrayerView.m in Sources */,
+				5BE4F4281032457000BE1456 /* QiblihFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,3 +9,5 @@
 "BOOKMARKS"			= "Bookmarks";
 "ABOUT"				= "About";
 "SEARCH"			= "Search";
+"WORDS"				= "words";
+"MAIL_ERR_MSG"		= "Your device is not setup to send email messages. Add an email account in the Settings screen, and try again.";

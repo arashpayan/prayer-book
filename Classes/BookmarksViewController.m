@@ -37,7 +37,7 @@
 	
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
 		cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -45,8 +45,8 @@
 	// Configure the cell
 	NSNumber *bookmark = [bookmarks objectAtIndex:indexPath.row];
 	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
-	[(PrayerTableCell*)cell titleLabel].text  = prayer.title;
-	[(PrayerTableCell*)cell categoryLabel].text = prayer.category;
+	cell.title.text = prayer.title;
+	cell.subtitle.text = prayer.category;
 	
 	return cell;
 }
@@ -56,7 +56,7 @@
 	NSNumber *bookmark = [bookmarks objectAtIndex:indexPath.row];
 	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
 	
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer];
+	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"BOOKMARKS", NULL)];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 	
 }
@@ -87,25 +87,13 @@
 	NSNumber *prayerId = [savedState objectAtIndex:0];
 	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
+	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"BOOKMARKS", NULL)];
 	[[self navigationController] pushViewController:pvc animated:NO];
 }
 
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 50;
 }
-*/
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
 
 - (void)dealloc {
 	[super dealloc];

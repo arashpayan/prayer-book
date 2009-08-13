@@ -22,6 +22,7 @@
 		
 		searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 44)] autorelease];
 		searchBar.delegate = controller;
+		searchBar.barStyle = UIBarStyleBlackOpaque;
 		searchBar.autocapitalizationType = NO;
 		searchBar.autocorrectionType = NO;
 		searchBar.showsCancelButton = YES;

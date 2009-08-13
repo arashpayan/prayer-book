@@ -7,23 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-#import "BookmarksViewController.h"
-#import "RecentViewController.h"
-#import "PrayerCategoryViewController.h"
-#import "PrayerDatabase.h"
-#import "AboutViewController.h"
-#import "AppleIsStupid.h"
-#import "SearchViewController.h";
 
-@class BahaiWritingsViewController;
+@class APWindow;
 
-@interface BahaiWritingsAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-	IBOutlet UIWindow *window;
+@interface BahaiWritingsAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, CLLocationManagerDelegate> {
+	IBOutlet APWindow *window;
 	UITabBarController *tabBarController;
 }
 
-@property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) APWindow *window;
 @property (nonatomic, retain) UITabBarController *tabBarController;
 
 @end

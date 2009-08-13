@@ -40,8 +40,9 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	self.view = [[[SearchView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) searchViewController:self] autorelease];
-	[(SearchView*)self.view loadSaveState:currQuery];
+	SearchView *searchView = [[[SearchView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) searchViewController:self] autorelease];
+	self.view = searchView;
+	[searchView loadSaveState:currQuery];
 }
 
 #pragma mark Table Delegate Methods
@@ -59,22 +60,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *MyIdentifier = @"UnselectedIdentifier";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
 		cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
 	Prayer *prayer = [resultSet objectAtIndex:indexPath.row];
-	[(PrayerTableCell*)cell titleLabel].text = prayer.title;
-	[(PrayerTableCell*)cell categoryLabel].text = prayer.category;
+	cell.title.text = prayer.title;
+	cell.subtitle.text = prayer.category;
+	cell.rightLabel.text = [NSString stringWithFormat:@"~%@ %@", prayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
 	
 	return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PrayerViewController *pvc = [[[PrayerViewController alloc] initWithPrayer:[resultSet objectAtIndex:indexPath.row]] autorelease];
+	PrayerViewController *pvc = [[[PrayerViewController alloc] initWithPrayer:[resultSet objectAtIndex:indexPath.row] backButtonTitle:NSLocalizedString(@"SEARCH", NULL)] autorelease];
 	[[self navigationController] pushViewController:pvc animated:YES];
 }
 

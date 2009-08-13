@@ -10,13 +10,13 @@
 
 
 @interface PrayerTableCell : UITableViewCell {
-	UILabel *titleLabel;
-	UILabel *categoryLabel;
+	UILabel *title;
+	UILabel *subtitle;
 	UILabel *rightLabel;
 }
 
-- (UILabel*)titleLabel;
-- (UILabel*)categoryLabel;
-- (UILabel*)rightLabel;
+@property (nonatomic, readonly) UILabel *title;
+@property (nonatomic, readonly) UILabel *subtitle;
+@property (nonatomic, readonly) UILabel *rightLabel;
 
 @end

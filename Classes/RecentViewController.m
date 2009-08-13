@@ -63,7 +63,7 @@
 	
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
 		cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -72,8 +72,9 @@
 	// Configure the cell
 	NSNumber *entry = [recentPrayers objectAtIndex:indexPath.row];
 	Prayer *thePrayer = [prayerDatabase prayerWithId:[entry longValue]];
-	[(PrayerTableCell*)cell titleLabel].text  = thePrayer.title;
-	[(PrayerTableCell*)cell categoryLabel].text = thePrayer.category;
+	cell.title.text = thePrayer.title;
+	cell.subtitle.text = thePrayer.category;
+	cell.rightLabel.text = [NSString stringWithFormat:@"~%@ %@", thePrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
 	
 	return cell;
 }
@@ -90,40 +91,19 @@
 		return;
 	}
 	
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer];
+	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 }
 
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-	}
-	if (editingStyle == UITableViewCellEditingStyleInsert) {
-	}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 50;
 }
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
 	NSNumber *prayerId = [savedState objectAtIndex:0];
 	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer];
+	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)];
 	[[self navigationController] pushViewController:pvc animated:NO];
 }
 

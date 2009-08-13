@@ -17,7 +17,7 @@
 
 		self.title = NSLocalizedString(@"ABOUT", nil);
 		[self setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"ABOUT", nil)
-														  image:[UIImage imageNamed:@"About2.png"]
+														  image:[UIImage imageNamed:@"TabBarAbout.png"]
 															tag:4]];
 	}
 	

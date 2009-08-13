@@ -10,3 +10,5 @@
 "ABOUT"				= "Acerca de";
 "SEARCH"			= "Buscador";
 "PRODUCT_NAME"		= "Oraciones";
+"WORDS"				= "palabras";
+"MAIL_ERR_MSG"		= "Your device is not setup to send email messages. Add an email account in the Settings screen, and try again.";

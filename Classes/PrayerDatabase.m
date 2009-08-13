@@ -19,9 +19,14 @@ NSString *const kRecentsKeyCategory			= @"RecentsKeyCategory";
 NSString *const kRecentsKeyTitle			= @"RecentsKeyTitle";
 NSString *const kRecentsKeyAccessTime		= @"RecentsKeyAccessTime";
 
+NSString *const kPrefsFontSize				= @"fontSizePref";
+
 NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 
 @implementation PrayerDatabase
+
+@synthesize prayerBeingViewed;
+@synthesize prayerView;
 
 - (id)init {
 	self = [super init];
@@ -40,19 +45,46 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 		{
 			[self migrateDbFromNilTo1];
 			[self migrateDbFrom1To2];
+			[self migrateDbFrom2To3];
 		}
 		else if ([dbVersion isEqualToNumber:[NSNumber numberWithInt:1]])
 		{
 			[self migrateDbFrom1To2];
+			[self migrateDbFrom2To3];
+		}
+		else if ([dbVersion isEqualToNumber:[NSNumber numberWithInt:2]])
+		{
+			[self migrateDbFrom2To3];
 		}
 		
+		// check for manually enable languages
 		languages = [[NSMutableArray alloc] init];
 		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kEnglishEnabled"])
 			[languages addObject:@"en"];
 		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kSpanishEnabled"])
 			[languages addObject:@"es"];
 		
-		// in case they haven't selected anything
+		// if no languages was enabled, try and enable a language based on their preferrences
+		if ([languages count] == 0)
+		{
+			// find the first language that we support
+			NSArray *preferredLanguages = [NSLocale preferredLanguages];
+			for (NSString *lang in preferredLanguages)
+			{
+				if ([lang isEqualToString:@"en"])
+				{
+					[languages addObject:@"en"];
+					break;
+				}
+				else if ([lang isEqualToString:@"es"])
+				{
+					[languages addObject:@"es"];
+					break;
+				}
+			}
+		}
+		
+		// in the odd case that nothing could be found
 		if ([languages count] == 0)
 			[languages addObject:@"en"];
 		
@@ -159,6 +191,17 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 	CFPreferencesSetAppValue((CFStringRef)kDatabaseVersionNumber, [NSNumber numberWithInt:2], kCFPreferencesCurrentApplication);
 }
 
+- (void)migrateDbFrom2To3 {
+	// set the font size multiple to 1.0 (because it may have been some weird number due to the previous version
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setFloat:1.0 forKey:kPrefsFontSize];
+	
+	// update our db version number
+	CFPreferencesSetAppValue((CFStringRef)kDatabaseVersionNumber, [NSNumber numberWithInt:3], kCFPreferencesCurrentApplication);
+	
+	NSLog(@"migratedDBFrom2To3");
+}
+
 + (PrayerDatabase*)sharedInstance {
 	static PrayerDatabase *prayerDatabase;
 	
@@ -207,8 +250,10 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 	if (category == nil)
 		return nil;
 	
-	NSMutableArray *prayers = [[NSMutableArray alloc] init];
+	// escape any single quotes
+	category = [category stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
 	
+	NSMutableArray *prayers = [[NSMutableArray alloc] init];
 	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category='%@'", category];
 	sqlite3_stmt *getPrayersStmt;
 	

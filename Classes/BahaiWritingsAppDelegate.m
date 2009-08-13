@@ -8,6 +8,15 @@
 
 #import "BahaiWritingsAppDelegate.h"
 #import "Heartbeat.h"
+#import "PrayerCategoryViewController.h"
+#import "BookmarksViewController.h"
+#import "RecentViewController.h"
+#import "SearchViewController.h"
+#import "AboutViewController.h"
+#import "PrayerListViewController.h"
+#import "Prayer.h"
+#import "AppleIsStupid.h"
+#import"QiblihFinder.h"
 
 @implementation BahaiWritingsAppDelegate
 
@@ -16,13 +25,16 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+	
 	NSMutableArray *allViewControllers = [NSMutableArray arrayWithCapacity:5];
 	
 	// Create the prayer category view
 	PrayerCategoryViewController *prayerCategoryViewController = [[PrayerCategoryViewController alloc] init];
 	UINavigationController *prayerNavController = [[UINavigationController alloc] initWithRootViewController:prayerCategoryViewController];
-	UIImage *prayersTabImg = [UIImage imageNamed:@"Prayers2.png"];
-	[prayerNavController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"PRAYERS", nil) image:prayersTabImg tag:0]];
+	prayerNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+	UIImage *prayersTabImg = [UIImage imageNamed:@"TabBarList.png"];
+	[prayerNavController setTabBarItem:[[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"PRAYERS", nil) image:prayersTabImg tag:0] autorelease]];
 	[prayerCategoryViewController release];	// the nav controller will retain it
 	[allViewControllers addObject:prayerNavController];
 	[prayerNavController release];
@@ -30,6 +42,7 @@
 	// Create the Bookmarks view
 	BookmarksViewController *bookmarksViewController = [[BookmarksViewController alloc] init];
 	UINavigationController *bookmarksNavController = [[UINavigationController alloc] initWithRootViewController:bookmarksViewController];
+	bookmarksNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[bookmarksViewController release];
 	[allViewControllers addObject:bookmarksNavController];
 	[bookmarksNavController release];
@@ -37,12 +50,14 @@
 	// Create the Recents view
 	RecentViewController *recentViewController = [[RecentViewController alloc] init];
 	UINavigationController *recentNavController = [[UINavigationController alloc] initWithRootViewController:recentViewController];
+	recentNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[allViewControllers addObject:recentNavController];
 	[recentNavController release];
 	
 	// Add the search view
 	SearchViewController *searchViewController = [[SearchViewController alloc] init];
 	UINavigationController *searchNavController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+	searchNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[allViewControllers addObject:searchNavController];
 	
 	// Create the About view
@@ -54,32 +69,38 @@
 	tabBarController = [[AppleIsStupid alloc] init];
 	[tabBarController setViewControllers:allViewControllers];
 	
-	// Load up the saved state
-	NSArray *savedPrefs = (NSArray*)CFPreferencesCopyAppValue((CFStringRef)@"savedState", kCFPreferencesCurrentApplication);
-	if (savedPrefs != nil)
-	{
-		NSMutableArray *savedState = [[NSMutableArray alloc] init];
-		[savedState addObjectsFromArray:savedPrefs];
-		NSNumber *indexNumber = (NSNumber*)[savedState objectAtIndex:0];
-		[savedState removeObjectAtIndex:0];
-		int index = [indexNumber intValue];
-		[tabBarController setSelectedIndex:index];
-		
-		if ([savedState count] > 0)
+	// Try to load up the saved state
+	@try {
+		NSArray *savedPrefs = (NSArray*)CFPreferencesCopyAppValue((CFStringRef)@"savedState", kCFPreferencesCurrentApplication);
+		if (savedPrefs != nil)
 		{
-			if (index == 0)
-				[prayerCategoryViewController loadSavedState:savedState];
-			else if (index == 1)
-				[bookmarksViewController loadSavedState:savedState];
-			else if (index == 2)
-				[recentViewController loadSavedState:savedState];
-			else if (index == 3)
-				[searchViewController loadSavedState:savedState];
+			NSMutableArray *savedState = [[NSMutableArray alloc] init];
+			[savedState addObjectsFromArray:savedPrefs];
+			NSNumber *indexNumber = (NSNumber*)[savedState objectAtIndex:0];
+			[savedState removeObjectAtIndex:0];
+			int index = [indexNumber intValue];
+			[tabBarController setSelectedIndex:index];
+			
+			if ([savedState count] > 0)
+			{
+				if (index == 0)
+					[prayerCategoryViewController loadSavedState:savedState];
+				else if (index == 1)
+					[bookmarksViewController loadSavedState:savedState];
+				else if (index == 2)
+					[recentViewController loadSavedState:savedState];
+				else if (index == 3)
+					[searchViewController loadSavedState:savedState];
+			}
+			
+			[savedState release];
+			
+			CFRelease(savedPrefs);
 		}
-		
-		[savedState release];
-		
-		CFRelease(savedPrefs);
+	}
+	@catch (NSException *exception) {
+		NSLog(@"Trouble loading up the app's saved state. Maybe you changed languages?");
+		CFPreferencesSetAppValue((CFStringRef)@"savedState", nil, kCFPreferencesCurrentApplication);
 	}
 	
 	// remove the launch image view and add the real app view

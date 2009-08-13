@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
+@class PrayerView;
 
 #import "Prayer.h"
 #import "NSString_CategoryCompare.h"
@@ -21,6 +22,8 @@ extern NSString *const kBookmarkKeyTitle;
 extern NSString *const kRecentsKeyCategory;
 extern NSString *const kRecentsKeyTitle;
 extern NSString *const kRecentsKeyAccessTime;
+
+extern NSString *const kPrefsFontSize;
 
 enum PBLanguages {
 	PBEnglish = 1,
@@ -38,7 +41,13 @@ enum PBLanguages {
 	
 	// mapping of category name (NSString*) to count (NSNumber*)
 	NSMutableDictionary *categoryCountCache;
+	
+	BOOL prayerBeingViewed;
+	PrayerView *prayerView;
 }
+
+@property(nonatomic, assign, getter=isPrayerBeingViewed) BOOL prayerBeingViewed;
+@property(nonatomic, assign) PrayerView *prayerView;
 
 + (PrayerDatabase*)sharedInstance;
 - (NSArray*)getCategories;
@@ -56,5 +65,6 @@ enum PBLanguages {
 
 - (void)migrateDbFromNilTo1;
 - (void)migrateDbFrom1To2;
+- (void)migrateDbFrom2To3;
 
 @end

@@ -76,7 +76,8 @@
 	{
 		NSNumber *prayerIdNumber = [savedState objectAtIndex:0];
 		long prayerId = [prayerIdNumber longValue];
-		PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:[prayerDb prayerWithId:prayerId]];
+		Prayer *thePrayer = [prayerDb prayerWithId:prayerId];
+		PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:thePrayer backButtonTitle:thePrayer.category];
 		[[self navigationController] pushViewController:pvc animated:NO];
 	}
 }
