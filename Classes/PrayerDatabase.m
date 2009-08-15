@@ -59,10 +59,13 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 		
 		// check for manually enable languages
 		languages = [[NSMutableArray alloc] init];
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kEnglishEnabled"])
+		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+		if ([userDefaults boolForKey:@"kEnglishEnabled"])
 			[languages addObject:@"en"];
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kSpanishEnabled"])
+		if ([userDefaults boolForKey:@"kSpanishEnabled"])
 			[languages addObject:@"es"];
+		if ([userDefaults boolForKey:@"kFrenchEnabled"])
+			[languages addObject:@"fr"];
 		
 		// if no languages was enabled, try and enable a language based on their preferrences
 		if ([languages count] == 0)
@@ -79,6 +82,11 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 				else if ([lang isEqualToString:@"es"])
 				{
 					[languages addObject:@"es"];
+					break;
+				}
+				else if ([lang isEqualToString:@"fr"])
+				{
+					[languages addObject:@"fr"];
 					break;
 				}
 			}

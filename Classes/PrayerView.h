@@ -16,6 +16,8 @@
 	UIToolbar *navBar;
 	PrayerViewController *controller;
 	UIImageView *compassNeedle;
+	UIBarButtonItem *increaseSizeButton;
+	UIBarButtonItem *decreaseSizeButton;
 	
 	BOOL barsHidden;
 }
@@ -25,5 +27,6 @@
 - (id)initWithFrame:(CGRect)frame backTitle:(NSString*)backTitle controller:(PrayerViewController*)aController;
 - (void)webViewWasTapped;
 - (void)setCompassNeedleAngle:(float)angle;
+- (void)refreshTextSizeButtons;
 
 @end

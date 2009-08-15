@@ -59,17 +59,19 @@
 																						target:nil
 																						action:nil] autorelease];
 		
-		UIBarButtonItem *increaseSizeButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-IncreaseSize.png"]
+		increaseSizeButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-IncreaseSize.png"]
 																				style:UIBarButtonItemStylePlain
 																			   target:controller
 																			   action:@selector(increaseTextSizeAction)] autorelease];
 		increaseSizeButton.width = 38;
+		increaseSizeButton.enabled = [controller increaseTextSizeActionEnabled];
 		
-		UIBarButtonItem *decreaseSizeButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-DecreaseSize.png"]
+		decreaseSizeButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-DecreaseSize.png"]
 																				style:UIBarButtonItemStylePlain
 																			   target:controller
 																			   action:@selector(decreaseTextSizeAction)] autorelease];
 		decreaseSizeButton.width = 38;
+		decreaseSizeButton.enabled = [controller decreaseTextSizeActionEnabled];
 		
 		UIBarButtonItem *compassButton = [[[UIBarButtonItem alloc] initWithCustomView:compassView] autorelease];
 		
@@ -123,6 +125,11 @@
 	[UIView setAnimationDuration:0.05];
 	compassNeedle.transform = CGAffineTransformMakeRotation(angle + PI/4.0);
 	[UIView commitAnimations];
+}
+
+- (void)refreshTextSizeButtons {
+	increaseSizeButton.enabled = [controller increaseTextSizeActionEnabled];
+	decreaseSizeButton.enabled = [controller decreaseTextSizeActionEnabled];
 }
 
 

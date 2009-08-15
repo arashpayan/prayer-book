@@ -25,11 +25,6 @@ extern NSString *const kRecentsKeyAccessTime;
 
 extern NSString *const kPrefsFontSize;
 
-enum PBLanguages {
-	PBEnglish = 1,
-	PBSpanish = 2
-};
-
 @interface PrayerDatabase : NSObject {
 	sqlite3 *dbHandle;
 

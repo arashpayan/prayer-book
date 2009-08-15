@@ -29,5 +29,7 @@
 - (Prayer*)prayer;
 - (BOOL)bookmarkingEnabled;
 - (NSString*)finalPrayerHTML;
+- (BOOL)increaseTextSizeActionEnabled;
+- (BOOL)decreaseTextSizeActionEnabled;
 
 @end

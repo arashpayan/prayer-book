@@ -1,0 +1,13 @@
+"PRAYERS"			= "Prières";
+"CATEGORIES"		= "Catégories";
+"ADD_BOOKMARK"		= "Ajouter un signet";
+"MAIL_THIS_PRAYER"	= "Envoyer cette prière";
+"RECENTS"			= "Historique";
+"CANCEL"			= "Annuler";
+"CLEAR"				= "Effacer";
+"CLEAR_ALL_RECENTS" = "Effacer l'historique";
+"BOOKMARKS"			= "Signets";
+"ABOUT"				= "Informations";
+"SEARCH"			= "Recherche";
+"WORDS"				= "mots";
+"MAIL_ERR_MSG"		= "Your device is not setup to send email messages. Add an email account in the Settings screen, and try again.";

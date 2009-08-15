@@ -34,6 +34,16 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
+		<dict>
+			<key>Key</key>
+			<string>kFrenchEnabled</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>Title</key>
+			<string>Français</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
 	</array>
 </dict>
 </plist>
