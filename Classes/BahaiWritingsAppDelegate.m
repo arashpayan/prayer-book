@@ -23,7 +23,7 @@
 @synthesize window;
 @synthesize tabBarController;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
 	
@@ -108,6 +108,8 @@
     [window makeKeyAndVisible];
 	
 	[Heartbeat postHitNotification];
+	
+	return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -154,6 +156,14 @@
 	// we don't need to do anything else if index == 4 (the about page)
 
 	CFPreferencesSetAppValue((CFStringRef)@"savedState", saveState, kCFPreferencesCurrentApplication);
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+	[QiblihFinder sharedInstance].applicationActive = NO;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	[QiblihFinder sharedInstance].applicationActive = YES;
 }
 
 - (void)dealloc {

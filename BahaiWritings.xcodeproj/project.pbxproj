@@ -21,10 +21,8 @@
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
 		5B303EE20E65DCED0008057A /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303EE10E65DCED0008057A /* RecentViewController.m */; };
-		5B8D630C0E6921A70064981E /* hands.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D630B0E6921A70064981E /* hands.png */; };
 		5B8D63270E692FD40064981E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D63260E692FD40064981E /* AboutViewController.m */; };
 		5B8D64350E69F1610064981E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D64340E69F1610064981E /* CoreGraphics.framework */; };
-		5B8D65B00E6A4C8E0064981E /* BPiP.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D65AF0E6A4C8E0064981E /* BPiP.xml */; };
 		5B8D670E0E6A749B0064981E /* PrayerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D670D0E6A749B0064981E /* PrayerTableCell.m */; };
 		5B9BE7C10E6B371500EE9DF6 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */; };
 		5BB4BA050E7616A00092E132 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB4BA040E7616A00092E132 /* Default.png */; };
@@ -88,11 +86,9 @@
 		5B303CD00E649CAD0008057A /* PrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerViewController.m; sourceTree = "<group>"; };
 		5B303EE00E65DCED0008057A /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
 		5B303EE10E65DCED0008057A /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentViewController.m; sourceTree = "<group>"; };
-		5B8D630B0E6921A70064981E /* hands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hands.png; sourceTree = "<group>"; };
 		5B8D63250E692FD40064981E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		5B8D63260E692FD40064981E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		5B8D64340E69F1610064981E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5B8D65AF0E6A4C8E0064981E /* BPiP.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPiP.xml; sourceTree = "<group>"; };
 		5B8D670C0E6A749B0064981E /* PrayerTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerTableCell.h; sourceTree = "<group>"; };
 		5B8D670D0E6A749B0064981E /* PrayerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerTableCell.m; sourceTree = "<group>"; };
 		5B92834710360DAC00FD6D01 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -221,8 +217,6 @@
 				5BBB716E0E748715004D7CBA /* Prayers2.png */,
 				5BBB71700E748715004D7CBA /* About2.png */,
 				5BC94F0D0E6BB07400B0208A /* Icon.png */,
-				5B8D65AF0E6A4C8E0064981E /* BPiP.xml */,
-				5B8D630B0E6921A70064981E /* hands.png */,
 				5BBF6D670F4132AC0020712B /* MainWindow.xib */,
 				5B10B7B10FC21A4C00010104 /* Info.plist */,
 				5B10B7C40FC21CF600010104 /* InfoPlist.strings */,
@@ -368,8 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BBF6D680F4132AC0020712B /* MainWindow.xib in Resources */,
-				5B8D630C0E6921A70064981E /* hands.png in Resources */,
-				5B8D65B00E6A4C8E0064981E /* BPiP.xml in Resources */,
 				5BC94F0E0E6BB07400B0208A /* Icon.png in Resources */,
 				5BBB71720E748715004D7CBA /* Prayers2.png in Resources */,
 				5BBB71740E748715004D7CBA /* About2.png in Resources */,
@@ -527,13 +519,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Arash Payan";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "812E4B81-C96E-4CA1-AB7B-E72EA6294EBE";
 				SDKROOT = iphoneos2.0;
 			};
 			name = Debug;

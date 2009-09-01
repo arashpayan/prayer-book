@@ -12,7 +12,8 @@
 
 @implementation QiblihFinder
 
-@synthesize qiblihWatcher;
+//@synthesize qiblihWatcher;
+@synthesize applicationActive;
 
 + (QiblihFinder*)sharedInstance {
 	static QiblihFinder *singleton;
@@ -40,11 +41,11 @@
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		locationManager.distanceFilter = 1;
 		
-		if (locationManager.headingAvailable)
-		{
-			[locationManager startUpdatingLocation];
-			[locationManager startUpdatingHeading];
-		}
+		//if (locationManager.headingAvailable)
+//		{
+//			[locationManager startUpdatingLocation];
+//			[locationManager startUpdatingHeading];
+//		}
 	}
 	
 	return self;
@@ -52,6 +53,31 @@
 
 - (BOOL)isQiblihFinderEnabled {
 	return locationManager.headingAvailable;
+}
+
+- (id<QiblihWatcherDelegate>)qiblihWatcher {
+	return qiblihWatcher;
+}
+
+- (void)setQiblihWatcher:(id<QiblihWatcherDelegate>)aWatcher {
+	if (aWatcher != nil)
+	{
+		if (locationManager.headingAvailable)
+		{
+			[locationManager startUpdatingLocation];
+			[locationManager startUpdatingHeading];
+		}
+	}
+	else
+	{
+		if (locationManager.headingAvailable)
+		{
+			[locationManager stopUpdatingHeading];
+			[locationManager stopUpdatingLocation];
+		}
+	}
+	
+	qiblihWatcher = aWatcher;
 }
 
 - (void)dealloc {
@@ -95,7 +121,7 @@
 		else if (delta.latitude < 0)
 			qiblihBearing = 0;
 		else
-			qiblihBearing == -1;	// they're standing directly on the qiblih
+			qiblihBearing == -1;	// they're standing directly on the qiblih (unless you're inside the room and cleaning it, this shouldn't happen)
 	}
 }
 
@@ -106,6 +132,9 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+	if (!applicationActive)
+		return;
+	
 	double relativeBearing = qiblihBearing - newHeading.trueHeading*PI/180.0;
 	if (qiblihWatcher != nil)
 		[qiblihWatcher qiblihBearingUpdated:relativeBearing];

@@ -19,7 +19,6 @@
 
 @property (nonatomic, readonly) UITableView *resultsTable;
 
-//@property (nonatomic, retain) NSString *currQuery;
 - (id)initWithFrame:(CGRect)frame searchViewController:(SearchViewController*)aController;
 - (void)loadSaveState:(NSString*)aQuery;
 

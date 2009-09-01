@@ -45,8 +45,8 @@ extern NSString *const kPrefsFontSize;
 @property(nonatomic, assign) PrayerView *prayerView;
 
 + (PrayerDatabase*)sharedInstance;
-- (NSArray*)getCategories;
-- (NSArray*)getPrayersForCategory:(NSString*)category;
+- (NSDictionary*)categories;
+- (NSArray*)prayersForCategory:(NSString*)category;
 - (int)numberOfPrayersForCategory:(NSString*)category;
 - (void)addBookmark:(long)prayerId;
 - (BOOL)prayerIsBookmarked:(long)prayerId;

@@ -13,9 +13,11 @@
 #import "CategoryCell.h"
 
 @interface PrayerCategoryViewController : UITableViewController {
-	NSArray *prayerCategories;
+	NSDictionary *categories;
 	PrayerDatabase *prayerDb;
 	UILabel *countLabel;
+	
+	NSArray *languages;
 }
 
 - (void)loadSavedState:(NSMutableArray*)savedState;

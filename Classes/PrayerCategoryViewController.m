@@ -15,8 +15,11 @@
 	if (self = [super initWithStyle:UITableViewStylePlain])
 	{
 		prayerDb = [PrayerDatabase sharedInstance];
-		prayerCategories = [prayerDb getCategories];
-		[prayerCategories retain];
+		
+		categories = [prayerDb categories];
+		[categories retain];
+		languages = [[categories allKeys] sortedArrayUsingSelector:@selector(compareCategories:)];
+		[languages retain];
 		
 		self.title = NSLocalizedString(@"CATEGORIES", nil);
 	}
@@ -25,12 +28,18 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return [categories count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if ([categories count] == 1)
+		return nil;
+	else
+		return [languages objectAtIndex:section];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [prayerCategories count];
+	return [[categories objectForKey:[languages objectAtIndex:section]] count];
 }
 
 
@@ -45,9 +54,9 @@
 	}
 	
 	// Configure the cell
-	NSString *category = [prayerCategories objectAtIndex:indexPath.row];
+	NSString *category = [[categories objectForKey:[languages objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
 	[(CategoryCell*)cell setCategory:category];
-	[(CategoryCell*)cell setCount:[NSString stringWithFormat:@"%d", [prayerDb numberOfPrayersForCategory:category], nil]];
+	[(CategoryCell*)cell setCount:[NSString stringWithFormat:@"%d", [prayerDb numberOfPrayersForCategory:category]]];
 	
 	return cell;
 }
@@ -56,18 +65,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
-	[prayerListViewController setPrayers:[prayerDb getPrayersForCategory:[prayerCategories objectAtIndex:indexPath.row]]];
-	[prayerListViewController setCategory:[prayerCategories objectAtIndex:indexPath.row]];
+	NSString *category = [[categories objectForKey:[languages objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+	[prayerListViewController setPrayers:[prayerDb prayersForCategory:category]];
+	[prayerListViewController setCategory:category];
 	[[self navigationController] pushViewController:prayerListViewController animated:YES];
 	[prayerListViewController release];
 }
 
 - (void)loadSavedState:(NSMutableArray*)savedState {
 	NSString* category = [savedState objectAtIndex:0];
-	int categoryIndex = [prayerCategories indexOfObject:category];
 	
 	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
-	[prayerListViewController setPrayers:[prayerDb getPrayersForCategory:[prayerCategories objectAtIndex:categoryIndex]]];
+	[prayerListViewController setPrayers:[prayerDb prayersForCategory:category]];
 	[prayerListViewController setCategory:category];
 	[[self navigationController] pushViewController:prayerListViewController animated:NO];
 	[savedState removeObjectAtIndex:0];
@@ -82,33 +91,10 @@
 	}
 }
 
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-	}
-	if (editingStyle == UITableViewCellEditingStyleInsert) {
-	}
-}
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-/*
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-
 - (void)dealloc {
-	[prayerCategories release];
+	[categories release];
+	[languages release];
+	
 	[super dealloc];
 }
 
@@ -133,7 +119,6 @@
 }
 
 - (void)didReceiveMemoryWarning {
-	printf("PrayerCategoryViewController didReceiveMemoryWarning\n");
 	[super didReceiveMemoryWarning];
 }
 

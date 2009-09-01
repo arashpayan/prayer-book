@@ -11,3 +11,6 @@
 "SEARCH"			= "Buscador";
 "WORDS"				= "palabras";
 "MAIL_ERR_MSG"		= "Your device is not setup to send email messages. Add an email account in the Settings screen, and try again.";
+"en"				= "English";
+"es"				= "Español";
+"fr"				= "Français";

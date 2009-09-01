@@ -16,10 +16,6 @@
 		// Initialization code
 		radius = 10;
 		self.opaque = YES;
-		//fillComponents[0] = 140.0/255.0;
-		//fillComponents[1] = 153.0/255.0;
-		//fillComponents[2] = 180.0/255.0;
-		//fillComponents[3] = 1.0;
 	}
 	return self;
 }
@@ -37,8 +33,8 @@
 	
 	if (!highlighted)
 	{
-		//CGContextSetRGBFillColor(context, 140.0/255.0, 153.0/255.0, 180.0/255.0, 1);
-		CGContextSetRGBFillColor(context, 198.0/255.0, 41.0/255.0, 26.0/255.0, 1);
+		CGContextSetRGBFillColor(context, 140.0/255.0, 153.0/255.0, 180.0/255.0, 1);
+		//CGContextSetRGBFillColor(context, 198.0/255.0, 41.0/255.0, 26.0/255.0, 1);
 	}
 	else
 		CGContextSetRGBFillColor(context, 1, 1, 1, 1);

@@ -14,13 +14,14 @@
 	id<QiblihWatcherDelegate> qiblihWatcher;
 	
 	CLLocationCoordinate2D qiblihCoordinate;
-	//CLLocationCoordinate2D delta;
 	double qiblihBearing;
 	
 	CLLocationManager *locationManager;
+	BOOL applicationActive;
 }
 
 @property (nonatomic, assign) id<QiblihWatcherDelegate>  qiblihWatcher;
+@property (nonatomic, assign) BOOL applicationActive;
 
 + (QiblihFinder*)sharedInstance;
 - (BOOL)isQiblihFinderEnabled;

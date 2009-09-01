@@ -225,36 +225,118 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 	return prayerDatabase;
 }
 
-- (NSArray*)getCategories {
+- (NSArray*)categoriesForLanguage:(NSString*)aLanguage {
 	NSMutableArray *categories = [[[NSMutableArray alloc] init] autorelease];
-	NSString *getCategoriesSQL = [NSString stringWithFormat:@"SELECT DISTINCT category FROM prayers WHERE %@", languageSQL];
-
-//	NSLog(getCategoriesSQL);
-
-	sqlite3_stmt *getCategoriesStmt;
+	NSString *categoriesSQL = [NSString stringWithFormat:@"SELECT DISTINCT category FROM prayers WHERE language='%@'", aLanguage];
+	
+	sqlite3_stmt *categoriesStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
-								[getCategoriesSQL UTF8String],
-								[getCategoriesSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
-								&getCategoriesStmt,
+								[categoriesSQL UTF8String],
+								[categoriesSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								&categoriesStmt,
 								0);
 	
 	if (rc != SQLITE_OK)
-		NSLog(@"Problem preparing getCategoriesStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
-	
-	while ((rc = sqlite3_step(getCategoriesStmt)) == SQLITE_ROW)
 	{
-		[categories addObject:[NSString stringWithUTF8String:(const char*)sqlite3_column_text(getCategoriesStmt, 0)]];
+		NSLog(@"Problem preparing categoriesForLanguageStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+		return categories;
 	}
 	
-	sqlite3_finalize(getCategoriesStmt);
+	while ((rc = sqlite3_step(categoriesStmt)) == SQLITE_ROW)
+	{
+		[categories addObject:[NSString stringWithUTF8String:(const char*)sqlite3_column_text(categoriesStmt, 0)]];
+	}
+	
+	sqlite3_finalize(categoriesStmt);
 	
 	NSArray *sortedCategories = [categories sortedArrayUsingSelector:@selector(compareCategories:)];
 	
 	return sortedCategories;
 }
 
-- (NSArray*)getPrayersForCategory:(NSString*)category {
+- (NSDictionary*)categories {
+	NSMutableDictionary *categories = [[[NSMutableDictionary alloc] init] autorelease];
+	for (NSString *lang in languages)
+	{
+		[categories setObject:[self categoriesForLanguage:lang] forKey:NSLocalizedString(lang, NULL)];
+	}
+	
+	return categories;
+}
+
+//- (NSArray*)getCategories {
+//	NSMutableArray *categories = [[[NSMutableArray alloc] init] autorelease];
+//	NSString *getCategoriesSQL = [NSString stringWithFormat:@"SELECT DISTINCT category FROM prayers WHERE %@", languageSQL];
+//
+////	NSLog(getCategoriesSQL);
+//
+//	sqlite3_stmt *getCategoriesStmt;
+//	
+//	int rc = sqlite3_prepare_v2(dbHandle,
+//								[getCategoriesSQL UTF8String],
+//								[getCategoriesSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+//								&getCategoriesStmt,
+//								0);
+//	
+//	if (rc != SQLITE_OK)
+//		NSLog(@"Problem preparing getCategoriesStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+//	
+//	while ((rc = sqlite3_step(getCategoriesStmt)) == SQLITE_ROW)
+//	{
+//		[categories addObject:[NSString stringWithUTF8String:(const char*)sqlite3_column_text(getCategoriesStmt, 0)]];
+//	}
+//	
+//	sqlite3_finalize(getCategoriesStmt);
+//	
+//	NSArray *sortedCategories = [categories sortedArrayUsingSelector:@selector(compareCategories:)];
+//	
+//	return sortedCategories;
+//}
+
+//- (NSArray*)prayersForCategory:(NSString*)category language:(NSString*)language {
+//	if (category == nil || language == nil)
+//		return nil;
+//	
+//	NSMutableArray *prayers = [[NSMutableArray alloc] init];
+//	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category='%@' AND language='%@'", category, language];
+//	sqlite3_stmt *getPrayersStmt;
+//	
+//	int rc = sqlite3_prepare_v2(dbHandle,
+//								[getPrayersSQL UTF8String],
+//								[getPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+//								&getPrayersStmt,
+//								0);
+//	
+//	if (rc != SQLITE_OK)
+//		NSLog(@"Problem preparing getPrayersStmt in getPrayersForCategory (%d): %s", rc, sqlite3_errmsg(dbHandle));
+//	
+//	while ((rc = sqlite3_step(getPrayersStmt)) == SQLITE_ROW)
+//	{
+//		long prayerId = sqlite3_column_int(getPrayersStmt, 0);
+//		NSString *prayerText = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 1)];
+//		NSString *openingWords = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 2)];
+//		NSString *citation = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 3)];
+//		NSString *author = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 4)];
+//		NSString *language = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 5)];
+//		int wordCount = sqlite3_column_int(getPrayersStmt, 6);
+//		Prayer *prayer = [[[Prayer alloc] initWithCategory:category withText:prayerText withOpeningWords:openingWords] autorelease];
+//		prayer.citation = citation;
+//		prayer.author = author;
+//		[prayer setAuthor:author];
+//		prayer.language = language;
+//		prayer.prayerId = prayerId;
+//		prayer.wordCount = [[NSNumber numberWithInt:wordCount] stringValue];
+//		
+//		[prayers addObject:prayer];
+//	}
+//	
+//	sqlite3_finalize(getPrayersStmt);
+//	
+//	return [prayers autorelease];
+//}
+
+- (NSArray*)prayersForCategory:(NSString*)category {
 	if (category == nil)
 		return nil;
 	

@@ -20,7 +20,6 @@
 }
 
 @property (nonatomic, retain) NSString *currQuery;
-//@property (nonatomic, retain) UISearchBar *theSearchBar;
 
 - (void)loadSavedState:(NSArray*)savedState;
 

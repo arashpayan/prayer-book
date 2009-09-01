@@ -67,7 +67,6 @@
 	if (cell == nil) {
 		cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		//cell.font = [UIFont boldSystemFontOfSize:16.0];
 	}
 	// Configure the cell
 	NSNumber *entry = [recentPrayers objectAtIndex:indexPath.row];
@@ -82,8 +81,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSNumber *prayerId = [recentPrayers objectAtIndex:indexPath.row];
-	//NSString *category = [[entry allKeys] objectAtIndex:0];
-	//NSString *title = [entry valueForKey:category];
 	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	if (prayer == nil)
 	{
@@ -147,7 +144,6 @@
 }
 
 - (void)didReceiveMemoryWarning {
-	printf("RecentViewController didReceiveMemoryWarning\n");
 	[super didReceiveMemoryWarning];
 }
 
