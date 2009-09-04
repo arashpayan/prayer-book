@@ -28,6 +28,8 @@
 		countLabel.highlightedTextColor = [UIColor colorWithRed:2.0/255.0 green:114.0/255.0 blue:237.0/255.0 alpha:1];
 		roundedRectangle = [[RoundedRectangleView alloc] initWithFrame:countRect];
 		
+		//[self.contentView addSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"prayerBackground.jpg"]] autorelease]];
+		
 		[self.contentView addSubview:categoryLabel];
 		[self.contentView addSubview:roundedRectangle];
 		[self.contentView addSubview:countLabel];

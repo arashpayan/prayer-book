@@ -56,7 +56,7 @@
 	NSNumber *bookmark = [bookmarks objectAtIndex:indexPath.row];
 	Prayer *prayer = [prayerDatabase prayerWithId:[bookmark longValue]];
 	
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"BOOKMARKS", NULL)];
+	PrayerViewController *prayerViewController = [[[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"BOOKMARKS", NULL)] autorelease];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 	
 }
@@ -87,7 +87,7 @@
 	NSNumber *prayerId = [savedState objectAtIndex:0];
 	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"BOOKMARKS", NULL)];
+	PrayerViewController *pvc = [[[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"BOOKMARKS", NULL)] autorelease];
 	[[self navigationController] pushViewController:pvc animated:NO];
 }
 

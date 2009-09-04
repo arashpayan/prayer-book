@@ -46,7 +46,7 @@
 		navBar.items = [NSArray arrayWithObject:backButtonItem];
 		[self addSubview:navBar];
 		
-		UIView *compassView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 25, 31)];
+		UIView *compassView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 25, 31)] autorelease];
 		[compassView addSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-CompassBackground.png"]] autorelease]];
 		compassNeedle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-CompassNeedle.png"]];
 		compassNeedle.transform = CGAffineTransformMakeRotation(PI/4.0);

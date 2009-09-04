@@ -55,6 +55,7 @@
 		5BEB9E850E8AFE5D000E0C3D /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB9E840E8AFE5D000E0C3D /* about.html */; };
 		5BEE635510238FA400E96FE2 /* NavBar-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE635410238FA400E96FE2 /* NavBar-Back.png */; };
 		5BEE655510242A6D00E96FE2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE655410242A6D00E96FE2 /* MessageUI.framework */; };
+		5BEE9CC0104EFCAE008EA8C7 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE9CBF104EFCAE008EA8C7 /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		5BEB9E840E8AFE5D000E0C3D /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		5BEE635410238FA400E96FE2 /* NavBar-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NavBar-Back.png"; path = "Graphics/NavBar-Back.png"; sourceTree = "<group>"; };
 		5BEE655410242A6D00E96FE2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5BEE9CBF104EFCAE008EA8C7 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				5BEE9CBF104EFCAE008EA8C7 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				5BC74735102259A6005AB5B0 /* PrayerBar-IncreaseSize.png in Resources */,
 				5BC747531022959A005AB5B0 /* PrayerBar-Email.png in Resources */,
 				5BEE635510238FA400E96FE2 /* NavBar-Back.png in Resources */,
+				5BEE9CC0104EFCAE008EA8C7 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Arash Payan (7YFV696B48)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -497,7 +502,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB985D57-5DD2-4325-B79B-B6C1030A63D1";
 				SDKROOT = iphoneos2.0;
 			};
 			name = Distribution;
@@ -515,6 +519,35 @@
 			};
 			name = Distribution;
 		};
+		5BDB50D9104E0E2600FC3762 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bahá’í Prayers";
+				SDKROOT = iphoneos2.0;
+			};
+			name = "Ad Hoc";
+		};
+		5BDB50DA104E0E2600FC3762 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Arash Payan";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
+				INFOPLIST_FILE = English.lproj/Info.plist;
+				PRODUCT_NAME = "Prayer Book";
+			};
+			name = "Ad Hoc";
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -526,7 +559,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "812E4B81-C96E-4CA1-AB7B-E72EA6294EBE";
 				SDKROOT = iphoneos2.0;
 			};
 			name = Debug;
@@ -553,6 +585,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				5BDB50DA104E0E2600FC3762 /* Ad Hoc */,
 				5B4AC4780E79FD4500F2F35E /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -563,6 +596,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				5BDB50D9104E0E2600FC3762 /* Ad Hoc */,
 				5B4AC4770E79FD4500F2F35E /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;

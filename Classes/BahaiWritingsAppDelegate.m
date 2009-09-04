@@ -156,6 +156,8 @@
 	// we don't need to do anything else if index == 4 (the about page)
 
 	CFPreferencesSetAppValue((CFStringRef)@"savedState", saveState, kCFPreferencesCurrentApplication);
+	
+	[saveState release];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -75,7 +75,7 @@
 - (void)loadSavedState:(NSMutableArray*)savedState {
 	NSString* category = [savedState objectAtIndex:0];
 	
-	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
+	PrayerListViewController *prayerListViewController = [[[PrayerListViewController alloc] init] autorelease];
 	[prayerListViewController setPrayers:[prayerDb prayersForCategory:category]];
 	[prayerListViewController setCategory:category];
 	[[self navigationController] pushViewController:prayerListViewController animated:NO];
@@ -86,7 +86,7 @@
 		NSNumber *prayerIdNumber = [savedState objectAtIndex:0];
 		long prayerId = [prayerIdNumber longValue];
 		Prayer *thePrayer = [prayerDb prayerWithId:prayerId];
-		PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:thePrayer backButtonTitle:thePrayer.category];
+		PrayerViewController *pvc = [[[PrayerViewController alloc] initWithPrayer:thePrayer backButtonTitle:thePrayer.category] autorelease];
 		[[self navigationController] pushViewController:pvc animated:NO];
 	}
 }

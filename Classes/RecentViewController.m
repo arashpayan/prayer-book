@@ -18,21 +18,21 @@
 		prayerDatabase = [PrayerDatabase sharedInstance];
 		
 		self.title = NSLocalizedString(@"RECENTS", nil);
-		[self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:2]];
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLEAR", nil)
+		[self setTabBarItem:[[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:2] autorelease]];
+		self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLEAR", nil)
 																				  style:UIBarButtonItemStylePlain
 																				 target:self
-																				 action:@selector(clearRecent)];
+																				 action:@selector(clearRecent)] autorelease];
 	}
 	return self;
 }
 
 - (void)clearRecent {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-															 delegate:self
-													cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
-											   destructiveButtonTitle:NSLocalizedString(@"CLEAR_ALL_RECENTS", nil)
-													otherButtonTitles:nil];
+	UIActionSheet *actionSheet = [[[UIActionSheet alloc] initWithTitle:nil
+															  delegate:self
+													 cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
+												destructiveButtonTitle:NSLocalizedString(@"CLEAR_ALL_RECENTS", nil)
+													 otherButtonTitles:nil] autorelease];
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	[actionSheet showInView:self.tabBarController.view];
 }
@@ -88,7 +88,7 @@
 		return;
 	}
 	
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)];
+	PrayerViewController *prayerViewController = [[[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)] autorelease];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 }
 
@@ -100,7 +100,7 @@
 	NSNumber *prayerId = [savedState objectAtIndex:0];
 	Prayer *prayer = [prayerDatabase prayerWithId:[prayerId longValue]];
 	
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)];
+	PrayerViewController *pvc = [[[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)] autorelease];
 	[[self navigationController] pushViewController:pvc animated:NO];
 }
 

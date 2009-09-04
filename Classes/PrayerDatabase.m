@@ -191,7 +191,7 @@ NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 - (void)migrateDbFrom1To2 {
 	
 	// fix the bug that caused the app to crash at launch in v1.1
-	NSMutableArray *saveState = [[NSMutableArray alloc] init];
+	NSMutableArray *saveState = [[[NSMutableArray alloc] init] autorelease];
 	[saveState addObject:[NSNumber numberWithInt:0]];
 	CFPreferencesSetAppValue((CFStringRef)@"savedState", saveState, kCFPreferencesCurrentApplication);
 	
