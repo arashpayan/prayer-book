@@ -86,7 +86,10 @@
 // gets called back from the action sheet to bookmark the fee
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0)
+	{
 		[prayerDatabase addBookmark:_prayer.prayerId];
+		[(PrayerView*)self.view setBookmarkingEnabled:NO];
+	}
 }
 
 - (void)increaseTextSizeAction {

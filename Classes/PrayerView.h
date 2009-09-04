@@ -18,6 +18,7 @@
 	UIImageView *compassNeedle;
 	UIBarButtonItem *increaseSizeButton;
 	UIBarButtonItem *decreaseSizeButton;
+	UIBarButtonItem *bookmarkButton;
 	
 	BOOL barsHidden;
 }
@@ -28,5 +29,6 @@
 - (void)webViewWasTapped;
 - (void)setCompassNeedleAngle:(float)angle;
 - (void)refreshTextSizeButtons;
+- (void)setBookmarkingEnabled:(BOOL)shouldEnable;
 
 @end

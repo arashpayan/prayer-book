@@ -75,10 +75,10 @@
 		
 		UIBarButtonItem *compassButton = [[[UIBarButtonItem alloc] initWithCustomView:compassView] autorelease];
 		
-		UIBarButtonItem *bookmarkButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-Add.png"]
-																			style:UIBarButtonItemStylePlain
-																		   target:controller
-																		   action:@selector(promptToBookmark)] autorelease];
+		bookmarkButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-Add.png"]
+														   style:UIBarButtonItemStylePlain
+														  target:controller
+														  action:@selector(promptToBookmark)] autorelease];
 		bookmarkButton.enabled = [controller bookmarkingEnabled];
 		bookmarkButton.width = 38;
 
@@ -130,6 +130,10 @@
 - (void)refreshTextSizeButtons {
 	increaseSizeButton.enabled = [controller increaseTextSizeActionEnabled];
 	decreaseSizeButton.enabled = [controller decreaseTextSizeActionEnabled];
+}
+
+- (void)setBookmarkingEnabled:(BOOL)shouldEnable {
+	bookmarkButton.enabled = shouldEnable;
 }
 
 
