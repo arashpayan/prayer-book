@@ -50,6 +50,7 @@
 		5BC94F0E0E6BB07400B0208A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC94F0D0E6BB07400B0208A /* Icon.png */; };
 		5BD3B80C0E50EB7500A34C37 /* PrayerCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */; };
 		5BD3B9650E515B9E00A34C37 /* PrayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */; };
+		5BE22AF210549F8300B6B10E /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE22AF110549F8300B6B10E /* Appirater.m */; };
 		5BE4F3EC10323E2F00BE1456 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE4F3EB10323E2F00BE1456 /* CoreLocation.framework */; };
 		5BE4F4281032457000BE1456 /* QiblihFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4F4271032457000BE1456 /* QiblihFinder.m */; };
 		5BEB9E850E8AFE5D000E0C3D /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB9E840E8AFE5D000E0C3D /* about.html */; };
@@ -131,6 +132,8 @@
 		5BD3B80B0E50EB7500A34C37 /* PrayerCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerCategoryViewController.m; sourceTree = "<group>"; };
 		5BD3B9630E515B9E00A34C37 /* PrayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerListViewController.h; sourceTree = "<group>"; };
 		5BD3B9640E515B9E00A34C37 /* PrayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerListViewController.m; sourceTree = "<group>"; };
+		5BE22AF010549F8300B6B10E /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Classes/Appirater.h; sourceTree = "<group>"; };
+		5BE22AF110549F8300B6B10E /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Classes/Appirater.m; sourceTree = "<group>"; };
 		5BE4F3EB10323E2F00BE1456 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5BE4F4261032457000BE1456 /* QiblihFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiblihFinder.h; sourceTree = "<group>"; };
 		5BE4F4271032457000BE1456 /* QiblihFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiblihFinder.m; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5BE22AF010549F8300B6B10E /* Appirater.h */,
+				5BE22AF110549F8300B6B10E /* Appirater.m */,
 				5B0215310FBBFD1B00421CED /* Heartbeat.h */,
 				5B0215320FBBFD1B00421CED /* Heartbeat.m */,
 				5B0215330FBBFD1B00421CED /* HeartbeatSettings.h */,
@@ -415,6 +420,7 @@
 				5BC74631102240C7005AB5B0 /* APWindow.m in Sources */,
 				5BC746D11022537C005AB5B0 /* PrayerView.m in Sources */,
 				5BE4F4281032457000BE1456 /* QiblihFinder.m in Sources */,
+				5BE22AF210549F8300B6B10E /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

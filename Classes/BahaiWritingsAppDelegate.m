@@ -16,7 +16,8 @@
 #import "PrayerListViewController.h"
 #import "Prayer.h"
 #import "AppleIsStupid.h"
-#import"QiblihFinder.h"
+#import "QiblihFinder.h"
+#import "Appirater.h"
 
 @implementation BahaiWritingsAppDelegate
 
@@ -108,6 +109,8 @@
     [window makeKeyAndVisible];
 	
 	[Heartbeat postHitNotification];
+	
+	[Appirater appLaunched];
 	
 	return YES;
 }
