@@ -1,21 +1,37 @@
-/* This file is part of Appirater.
+/*
+ This file is part of Appirater.
  
- Appirater is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License (or the Lesser GPL)
- as published by the Free Software Foundation; either version 3 of the
- License, or (at your option) any later version.
+ Copyright (c) 2010, Arash Payan
+ All rights reserved.
  
- Appirater is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
  */
 /*
  * Appirater.m
  * appirater
  *
  * Created by Arash Payan on 9/5/09.
- * Copyright 2009 Paxdot. All rights reserved.
+ * http://arashpayan.com
+ * Copyright 2010 Arash Payan. All rights reserved.
  */
 
 #import "Appirater.h"
@@ -28,7 +44,7 @@ NSString *const kAppiraterCurrentVersion			= @"kAppiraterCurrentVersion";
 NSString *const kAppiraterRatedCurrentVersion		= @"kAppiraterRatedCurrentVersion";
 NSString *const kAppiraterDeclinedToRate			= @"kAppiraterDeclinedToRate";
 
-NSString *templateReviewURL = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APP_ID&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
+NSString *templateReviewURL = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APP_ID&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
 
 @interface Appirater (hidden)
 - (BOOL)connectedToNetwork;
@@ -75,7 +91,6 @@ NSString *templateReviewURL = @"http://itunes.apple.com/WebObjects/MZStore.woa/w
 + (void)appLaunched {
 	Appirater *appirater = [[Appirater alloc] init];
 	[NSThread detachNewThreadSelector:@selector(_appLaunched) toTarget:appirater withObject:nil];
-	//[appirater release];
 }
 
 - (void)_appLaunched {
@@ -87,6 +102,8 @@ NSString *templateReviewURL = @"http://itunes.apple.com/WebObjects/MZStore.woa/w
 		
 		return;
 	}
+	
+	BOOL willShowPrompt = NO;
 	
 	// get the app's version
 	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
@@ -134,8 +151,11 @@ NSString *templateReviewURL = @"http://itunes.apple.com/WebObjects/MZStore.woa/w
 			!declinedToRate &&
 			!ratedApp)
 		{
-			if ([self connectedToNetwork])
+			if ([self connectedToNetwork])	// check if they can reach the app store
+			{
+				willShowPrompt = YES;
 				[self performSelectorOnMainThread:@selector(showPrompt) withObject:nil waitUntilDone:NO];
+			}
 		}
 	}
 	else
@@ -150,6 +170,8 @@ NSString *templateReviewURL = @"http://itunes.apple.com/WebObjects/MZStore.woa/w
 
 	
 	[userDefaults synchronize];
+	if (!willShowPrompt)
+		[self autorelease];
 	
 	[pool release];
 }
@@ -166,18 +188,10 @@ NSString *templateReviewURL = @"http://itunes.apple.com/WebObjects/MZStore.woa/w
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	
-	//if (buttonIndex == 1)
-//	{
-//		NSString *reviewURL = [templateReviewURL stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%d", APPIRATER_APP_ID]];
-//		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewURL]];
-//		
-//		[userDefaults setBool:YES forKey:kAppiraterRatedCurrentVersion];
-//	}
-	
 	switch (buttonIndex) {
 		case 0:
 		{
-			// they don't want to rate
+			// they don't want to rate it
 			[userDefaults setBool:YES forKey:kAppiraterDeclinedToRate];
 			break;
 		}

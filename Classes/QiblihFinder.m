@@ -41,11 +41,8 @@
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		locationManager.distanceFilter = 1;
 		
-		//if (locationManager.headingAvailable)
-//		{
-//			[locationManager startUpdatingLocation];
-//			[locationManager startUpdatingHeading];
-//		}
+		adjust = 0;
+		bearing = 0;
 	}
 	
 	return self;
@@ -95,34 +92,65 @@
 	delta.latitude = qiblihCoordinate.latitude - userPos.latitude;
 	delta.longitude = qiblihCoordinate.longitude - userPos.longitude;
 	
-	if (delta.longitude > 0)
+	float DEG2RAD = PI/180.0;
+	float x1 = userPos.longitude * DEG2RAD;
+	float y1 = userPos.latitude * DEG2RAD;
+	float x2 = qiblihCoordinate.longitude * DEG2RAD;
+	float y2 = qiblihCoordinate.latitude * DEG2RAD;
+	
+	float a = cosf(y2) * sinf(x2 - x1);
+	float b = cosf(y1) * sinf(y2) * cosf(y2) * cosf(x2 - x1);
+	adjust = 0;
+	
+	bearing = 0;
+	if ((a == 0) && (b == 0))
 	{
-		qiblihBearing = acos(delta.latitude/delta.longitude);
+		bearing = 0;
 	}
-	else if (delta.longitude < 0)
-	{
-		if (delta.latitude < 0)
-		{
-			qiblihBearing = atan(delta.longitude/delta.latitude) + PI;
-		}
-		else if (delta.latitude > 0)
-		{
-			qiblihBearing = atan(delta.longitude/delta.latitude) + 2.0*PI;
-		}
-		else	// latitude difference is 0
-		{
-			qiblihBearing = 1.5*PI;
-		}
-	}
-	else	// longitude difference is 0
-	{
-		if (delta.latitude > 0)
-			qiblihBearing = PI;
-		else if (delta.latitude < 0)
-			qiblihBearing = 0;
+	else if (b == 0) {
+		if (a < 0)
+			bearing = 3 * PI / 2.0;
 		else
-			qiblihBearing == -1;	// they're standing directly on the qiblih (unless you're inside the room and cleaning it, this shouldn't happen)
+			bearing = PI / 2.0;
 	}
+	else if (b<0)
+		adjust = PI;
+	else {
+		if (a < 0)
+			adjust = 2 * PI;
+		else
+			adjust = 0;
+	}
+	bearing = (atanf(a/b) + adjust) * 180.0 / PI;
+	
+	//if (delta.longitude > 0)
+//	{
+//		qiblihBearing = acos(delta.latitude/delta.longitude);
+//	}
+//	else if (delta.longitude < 0)
+//	{
+//		if (delta.latitude < 0)
+//		{
+//			qiblihBearing = atan(delta.longitude/delta.latitude) + PI;
+//		}
+//		else if (delta.latitude > 0)
+//		{
+//			qiblihBearing = atan(delta.longitude/delta.latitude) + 2.0*PI;
+//		}
+//		else	// latitude difference is 0
+//		{
+//			qiblihBearing = 1.5*PI;
+//		}
+//	}
+//	else	// longitude difference is 0
+//	{
+//		if (delta.latitude > 0)
+//			qiblihBearing = PI;
+//		else if (delta.latitude < 0)
+//			qiblihBearing = 0;
+//		else
+//			qiblihBearing == -1;	// they're standing directly on the qiblih (unless you're inside the room and cleaning it, this shouldn't happen)
+//	}
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -135,13 +163,16 @@
 	if (!applicationActive)
 		return;
 	
-	double relativeBearing = qiblihBearing - newHeading.trueHeading*PI/180.0;
+	double relativeBearing = bearing - newHeading.trueHeading*PI/180.0;
 	if (qiblihWatcher != nil)
 		[qiblihWatcher qiblihBearingUpdated:relativeBearing];
+	//double relativeBearing = qiblihBearing - newHeading.trueHeading*PI/180.0;
+//	if (qiblihWatcher != nil)
+//		[qiblihWatcher qiblihBearingUpdated:relativeBearing];
 }
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager {
-	return YES;
+	return NO;
 }
 
 

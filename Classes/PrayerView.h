@@ -13,7 +13,7 @@
 @interface PrayerView : UIView {
 	UIWebView *webView;
 	UIToolbar *toolbar;
-	UIToolbar *navBar;
+	//UIToolbar *navBar;
 	PrayerViewController *controller;
 	UIImageView *compassNeedle;
 	UIBarButtonItem *increaseSizeButton;

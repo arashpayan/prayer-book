@@ -19,4 +19,6 @@
 @property (nonatomic, readonly) UILabel *subtitle;
 @property (nonatomic, readonly) UILabel *rightLabel;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

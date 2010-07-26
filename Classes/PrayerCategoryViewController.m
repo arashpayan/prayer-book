@@ -49,7 +49,8 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myIdentifier];
 	if (cell == nil)		
 	{
-		cell = [[[CategoryCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:myIdentifier] autorelease];
+		//cell = [[[CategoryCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:myIdentifier] autorelease];
+		cell = [[[CategoryCell alloc] initWithReuseIdentifier:myIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
@@ -63,7 +64,6 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
 	NSString *category = [[categories objectForKey:[languages objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
 	[prayerListViewController setPrayers:[prayerDb prayersForCategory:category]];

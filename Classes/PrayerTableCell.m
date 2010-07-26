@@ -15,8 +15,8 @@
 @synthesize subtitle;
 @synthesize rightLabel;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-	if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
+	if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
 		// Initialization code
 		UIColor *blackColor = [UIColor blackColor];
 		UIColor *whiteColor = [UIColor whiteColor];

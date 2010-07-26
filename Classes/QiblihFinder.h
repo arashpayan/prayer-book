@@ -18,6 +18,9 @@
 	
 	CLLocationManager *locationManager;
 	BOOL applicationActive;
+	
+	float adjust;
+	float bearing;
 }
 
 @property (nonatomic, assign) id<QiblihWatcherDelegate>  qiblihWatcher;

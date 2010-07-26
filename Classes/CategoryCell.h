@@ -16,6 +16,11 @@
 	RoundedRectangleView *roundedRectangle;
 }
 
+@property (nonatomic, retain) UILabel *categoryLabel;
+@property (nonatomic, retain) UILabel *countLabel;
+@property (nonatomic, retain) RoundedRectangleView *roundedRectangle;
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 - (void)setCategory:(NSString*)aCategory;
 - (void)setCount:(NSString*)aCount;
 
