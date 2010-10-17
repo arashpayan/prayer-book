@@ -13,14 +13,15 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		5B01F8261016BECB003101C7 /* TabBarList.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B01F8251016BECB003101C7 /* TabBarList.png */; };
 		5B01F9161016F94A003101C7 /* TabBarAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B01F9151016F94A003101C7 /* TabBarAbout.png */; };
-		5B0215340FBBFD1B00421CED /* Heartbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0215320FBBFD1B00421CED /* Heartbeat.m */; };
 		5B0215440FBBFE6900421CED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215430FBBFE6900421CED /* SystemConfiguration.framework */; };
 		5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0215470FBBFE8800421CED /* CFNetwork.framework */; };
 		5B10B7C60FC21CF600010104 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B10B7C40FC21CF600010104 /* InfoPlist.strings */; };
+		5B2289491194CA200091DB66 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2289451194CA200091DB66 /* MainWindow-iPad.xib */; };
 		5B303AB20E6382770008057A /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303AB10E6382770008057A /* PrayerDatabase.m */; };
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
 		5B303EE20E65DCED0008057A /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303EE10E65DCED0008057A /* RecentViewController.m */; };
+		5B7E74FB11802F000092F3A0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B7E74FA11802F000092F3A0 /* QuartzCore.framework */; };
 		5B8D63270E692FD40064981E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D63260E692FD40064981E /* AboutViewController.m */; };
 		5B8D64350E69F1610064981E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D64340E69F1610064981E /* CoreGraphics.framework */; };
 		5B8D670E0E6A749B0064981E /* PrayerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D670D0E6A749B0064981E /* PrayerTableCell.m */; };
@@ -35,8 +36,9 @@
 		5BBF6C680F4116440020712B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6C670F4116440020712B /* Settings.bundle */; };
 		5BBF6D680F4132AC0020712B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6D670F4132AC0020712B /* MainWindow.xib */; };
 		5BBF6D6B0F4133260020712B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF6D690F4133260020712B /* Localizable.strings */; };
+		5BBF8E5411FD1174001BC822 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF8E5211FD1174001BC822 /* Icon-72.png */; };
+		5BBF8E5511FD1174001BC822 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBF8E5311FD1174001BC822 /* Icon@2x.png */; };
 		5BC3671E0FECCC750047E0C2 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3671D0FECCC750047E0C2 /* SearchView.m */; };
-		5BC74631102240C7005AB5B0 /* APWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC74630102240C7005AB5B0 /* APWindow.m */; };
 		5BC746D11022537C005AB5B0 /* PrayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC746D01022537C005AB5B0 /* PrayerView.m */; };
 		5BC74731102259A6005AB5B0 /* PrayerBar-Add.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC7472C102259A6005AB5B0 /* PrayerBar-Add.png */; };
 		5BC74732102259A6005AB5B0 /* PrayerBar-CompassBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC7472D102259A6005AB5B0 /* PrayerBar-CompassBackground.png */; };
@@ -71,15 +73,15 @@
 		5B01E9CC1036157300D1CA44 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B01F8251016BECB003101C7 /* TabBarList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarList.png; path = Graphics/TabBarList.png; sourceTree = "<group>"; };
 		5B01F9151016F94A003101C7 /* TabBarAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarAbout.png; path = Graphics/TabBarAbout.png; sourceTree = "<group>"; };
-		5B0215310FBBFD1B00421CED /* Heartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Heartbeat.h; path = Classes/Heartbeat.h; sourceTree = "<group>"; };
-		5B0215320FBBFD1B00421CED /* Heartbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Heartbeat.m; path = Classes/Heartbeat.m; sourceTree = "<group>"; };
-		5B0215330FBBFD1B00421CED /* HeartbeatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartbeatSettings.h; path = Classes/HeartbeatSettings.h; sourceTree = "<group>"; };
 		5B0215430FBBFE6900421CED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5B0215470FBBFE8800421CED /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5B10B6750FC1FA3600010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		5B10B6760FC1FA4A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B10B7B20FC21A5A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 		5B10B7C50FC21CF600010104 /* es */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B2289461194CA200091DB66 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = "Resources-iPad/English.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		5B2289471194CA200091DB66 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = "Resources-iPad/es.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		5B2289481194CA200091DB66 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = "Resources-iPad/fr.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		5B303AB00E6382770008057A /* PrayerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerDatabase.h; sourceTree = "<group>"; };
 		5B303AB10E6382770008057A /* PrayerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerDatabase.m; sourceTree = "<group>"; };
 		5B303B270E6392370008057A /* Prayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prayer.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		5B303CD00E649CAD0008057A /* PrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerViewController.m; sourceTree = "<group>"; };
 		5B303EE00E65DCED0008057A /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
 		5B303EE10E65DCED0008057A /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentViewController.m; sourceTree = "<group>"; };
+		5B7E74FA11802F000092F3A0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		5B8D63250E692FD40064981E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		5B8D63260E692FD40064981E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		5B8D64340E69F1610064981E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,10 +112,10 @@
 		5BBF69150F3FC6F50020712B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		5BBF6C670F4116440020712B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5BBF6D6A0F4133260020712B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5BBF8E5211FD1174001BC822 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		5BBF8E5311FD1174001BC822 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		5BC3671C0FECCC750047E0C2 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		5BC3671D0FECCC750047E0C2 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
-		5BC7462F102240C7005AB5B0 /* APWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APWindow.h; sourceTree = "<group>"; };
-		5BC74630102240C7005AB5B0 /* APWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APWindow.m; sourceTree = "<group>"; };
 		5BC746CF1022537C005AB5B0 /* PrayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerView.h; sourceTree = "<group>"; };
 		5BC746D01022537C005AB5B0 /* PrayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerView.m; sourceTree = "<group>"; };
 		5BC7472C102259A6005AB5B0 /* PrayerBar-Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PrayerBar-Add.png"; path = "Graphics/PrayerBar-Add.png"; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 				5B0215480FBBFE8800421CED /* CFNetwork.framework in Frameworks */,
 				5BEE655510242A6D00E96FE2 /* MessageUI.framework in Frameworks */,
 				5BE4F3EC10323E2F00BE1456 /* CoreLocation.framework in Frameworks */,
+				5B7E74FB11802F000092F3A0 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +198,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				5B2289441194CA1F0091DB66 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				5BEE9CBF104EFCAE008EA8C7 /* Entitlements.plist */,
@@ -206,9 +211,6 @@
 			children = (
 				5BE22AF010549F8300B6B10E /* Appirater.h */,
 				5BE22AF110549F8300B6B10E /* Appirater.m */,
-				5B0215310FBBFD1B00421CED /* Heartbeat.h */,
-				5B0215320FBBFD1B00421CED /* Heartbeat.m */,
-				5B0215330FBBFD1B00421CED /* HeartbeatSettings.h */,
 				32CA4F630368D1EE00C91783 /* BahaiWritings_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -218,6 +220,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BBF8E5211FD1174001BC822 /* Icon-72.png */,
+				5BBF8E5311FD1174001BC822 /* Icon@2x.png */,
 				5BBF6D690F4133260020712B /* Localizable.strings */,
 				5BBF666E0F3E51880020712B /* pbdb.db */,
 				5BEB9E840E8AFE5D000E0C3D /* about.html */,
@@ -243,6 +247,7 @@
 				5B8D64340E69F1610064981E /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				5B7E74FA11802F000092F3A0 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -261,6 +266,14 @@
 				5B01F8251016BECB003101C7 /* TabBarList.png */,
 			);
 			name = Graphics;
+			sourceTree = "<group>";
+		};
+		5B2289441194CA1F0091DB66 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				5B2289451194CA200091DB66 /* MainWindow-iPad.xib */,
+			);
+			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
 		5BBF66700F3E51C50020712B /* Controllers */ = {
@@ -311,8 +324,6 @@
 				5B9BE7C00E6B371500EE9DF6 /* CategoryCell.m */,
 				5BC3671C0FECCC750047E0C2 /* SearchView.h */,
 				5BC3671D0FECCC750047E0C2 /* SearchView.m */,
-				5BC7462F102240C7005AB5B0 /* APWindow.h */,
-				5BC74630102240C7005AB5B0 /* APWindow.m */,
 				5BC746CF1022537C005AB5B0 /* PrayerView.h */,
 				5BC746D01022537C005AB5B0 /* PrayerView.m */,
 			);
@@ -346,6 +357,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BahaiWritings" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -389,6 +401,9 @@
 				5BC747531022959A005AB5B0 /* PrayerBar-Email.png in Resources */,
 				5BEE635510238FA400E96FE2 /* NavBar-Back.png in Resources */,
 				5BEE9CC0104EFCAE008EA8C7 /* Entitlements.plist in Resources */,
+				5B2289491194CA200091DB66 /* MainWindow-iPad.xib in Resources */,
+				5BBF8E5411FD1174001BC822 /* Icon-72.png in Resources */,
+				5BBF8E5511FD1174001BC822 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +430,7 @@
 				5BC94E060E6B89B100B0208A /* NSString_CategoryCompare.m in Sources */,
 				5BC94EBF0E6B95D900B0208A /* AppleIsStupid.m in Sources */,
 				5BBF69160F3FC6F50020712B /* SearchViewController.m in Sources */,
-				5B0215340FBBFD1B00421CED /* Heartbeat.m in Sources */,
 				5BC3671E0FECCC750047E0C2 /* SearchView.m in Sources */,
-				5BC74631102240C7005AB5B0 /* APWindow.m in Sources */,
 				5BC746D11022537C005AB5B0 /* PrayerView.m in Sources */,
 				5BE4F4281032457000BE1456 /* QiblihFinder.m in Sources */,
 				5BE22AF210549F8300B6B10E /* Appirater.m in Sources */,
@@ -444,6 +457,16 @@
 				5B928394103611C600FD6D01 /* fr */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5B2289451194CA200091DB66 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B2289461194CA200091DB66 /* English */,
+				5B2289471194CA200091DB66 /* es */,
+				5B2289481194CA200091DB66 /* fr */,
+			);
+			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
 		};
 		5BBF6D670F4132AC0020712B /* MainWindow.xib */ = {
@@ -473,6 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Arash Payan (7YFV696B48)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0;
@@ -481,7 +505,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
 				INFOPLIST_FILE = English.lproj/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/mobclix.lib\"",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "Prayer Book";
+				SDKROOT = iphoneos4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -489,12 +521,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
 				INFOPLIST_FILE = English.lproj/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/mobclix.lib\"",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "Prayer Book";
+				SDKROOT = iphoneos4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -506,9 +547,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Distribution;
 		};
@@ -516,12 +558,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
 				INFOPLIST_FILE = English.lproj/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/mobclix.lib\"",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "Prayer Book";
+				SDKROOT = iphoneos4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
 		};
@@ -533,9 +584,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = "Ad Hoc";
 		};
@@ -543,6 +595,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Arash Payan";
 				COPY_PHASE_STRIP = YES;
@@ -550,7 +603,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BahaiWritings_Prefix.pch;
 				INFOPLIST_FILE = English.lproj/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/mobclix.lib\"",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "Prayer Book";
+				SDKROOT = iphoneos4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
 		};
@@ -562,10 +623,11 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
@@ -577,9 +639,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Release;
 		};

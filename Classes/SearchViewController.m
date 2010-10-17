@@ -10,7 +10,6 @@
 #import "PrayerTableCell.h"
 #import "PrayerDatabase.h"
 #import "PrayerViewController.h"
-#import "SearchView.h"
 
 
 @implementation SearchViewController
@@ -30,9 +29,25 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	SearchView *searchView = [[[SearchView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) searchViewController:self] autorelease];
-	self.view = searchView;
-	[searchView loadSaveState:currQuery];
+	CGRect appFrame = [UIScreen mainScreen].applicationFrame;
+	table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(appFrame), CGRectGetHeight(appFrame)) style:UITableViewStylePlain];
+	searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(appFrame), 44)];
+	searchBar.delegate = self;
+	searchBar.tintColor = [UIColor blackColor];
+	table.tableHeaderView = searchBar;
+	searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+	searchController.searchResultsDataSource = self;
+	searchController.searchResultsDelegate = self;
+	self.view = table;
+}
+
+- (void)viewDidUnload {
+	[table release];
+	table = nil;
+	[searchBar release];
+	searchBar = nil;
+	[searchController release];
+	searchController = nil;
 }
 
 #pragma mark Table Delegate Methods
@@ -52,7 +67,7 @@
 	
 	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
-		cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
+		cell = [[[PrayerTableCell alloc] initWithReuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
@@ -70,50 +85,35 @@
 	[[self navigationController] pushViewController:pvc animated:YES];
 }
 
+#pragma mark -
+#pragma mark UISearchDisplayDelegate
 
+
+
+#pragma mark -
 #pragma mark UISearchBar Delegate Methods
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+- (void)searchBar:(UISearchBar *)aSearchBar textDidChange:(NSString *)searchText {
 	self.currQuery = searchText;
 	
-	NSArray *keywords = [searchBar.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	NSArray *keywords = [aSearchBar.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	
 	[resultSet release];
 	resultSet = [[[PrayerDatabase sharedInstance] searchWithKeywords:keywords] retain];
-	
-	[((SearchView*)self.view).resultsTable reloadData];
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-	searchBar.text = @"";
-	[searchBar resignFirstResponder];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-	[searchBar resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
-	
-	NSIndexPath *selectedIndexPath = [((SearchView*)self.view).resultsTable indexPathForSelectedRow];
-	if (selectedIndexPath != nil)
-		[((SearchView*)self.view).resultsTable deselectRowAtIndexPath:selectedIndexPath animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
 }
 
 - (void)loadSavedState:(NSArray*)savedState {
 	NSString *searchString = [savedState objectAtIndex:0];
 	currQuery = searchString;
 }
-
-- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {
-	CGRect newFrame = CGRectMake(0,
-								 0,
-								 fromInterfaceOrientation == UIInterfaceOrientationPortrait ? 480 : 320,
-								 fromInterfaceOrientation == UIInterfaceOrientationPortrait ? 220 : 367);
-	self.view.frame = newFrame;
-}
-
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

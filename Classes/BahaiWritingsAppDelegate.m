@@ -7,7 +7,6 @@
 //
 
 #import "BahaiWritingsAppDelegate.h"
-#import "Heartbeat.h"
 #import "PrayerCategoryViewController.h"
 #import "BookmarksViewController.h"
 #import "RecentViewController.h"
@@ -60,6 +59,7 @@
 	UINavigationController *searchNavController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
 	searchNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[allViewControllers addObject:searchNavController];
+	[searchViewController release];
 	
 	// Create the About view
 	AboutViewController *aboutViewController = [[AboutViewController alloc] init];
@@ -108,9 +108,7 @@
 	[window addSubview:[tabBarController view]];
     [window makeKeyAndVisible];
 	
-	[Heartbeat postHitNotification];
-	
-	[Appirater appLaunched];
+	[Appirater appLaunched:YES];
 	
 	return YES;
 }
@@ -169,6 +167,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	[QiblihFinder sharedInstance].applicationActive = YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+	[Appirater appEnteredForeground:YES];
 }
 
 - (void)dealloc {

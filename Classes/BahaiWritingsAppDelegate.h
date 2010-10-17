@@ -10,14 +10,12 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@class APWindow;
-
 @interface BahaiWritingsAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, CLLocationManagerDelegate> {
-	IBOutlet APWindow *window;
+	IBOutlet UIWindow *window;
 	UITabBarController *tabBarController;
 }
 
-@property (nonatomic, retain) APWindow *window;
+@property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UITabBarController *tabBarController;
 
 @end

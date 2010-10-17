@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface SearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate> {
 	NSMutableArray *resultSet;
 	
 	//UITableView *resultsTable;
 	
 	NSString *currQuery;
+	
+	UITableView *table;
+	UISearchBar *searchBar;
+	UISearchDisplayController *searchController;
 	
 	//UISearchBar *theSearchBar;
 }

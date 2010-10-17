@@ -30,22 +30,6 @@
 		
 		[self addSubview:webView];
 		
-		//navBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height == 460 ? 44 : 33)];
-//		navBar.barStyle = UIBarStyleBlackTranslucent;
-//		UIImage *buttonImage = [UIImage imageNamed:@"NavBar-Back.png"];
-//		UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//		backButton.titleLabel.font = [UIFont boldSystemFontOfSize:13];
-//		NSString *formattedTitle = [NSString stringWithFormat:@" %@", backTitle];
-//		CGSize buttonSize = [formattedTitle sizeWithFont:[UIFont boldSystemFontOfSize:14]];
-//		buttonSize.width += 12;
-//		backButton.frame = CGRectMake(10, 1, buttonSize.width, 30);
-//		[backButton setTitle:formattedTitle forState:UIControlStateNormal];
-//		[backButton setBackgroundImage:[buttonImage stretchableImageWithLeftCapWidth:15 topCapHeight:0] forState:UIControlStateNormal];
-//		[backButton addTarget:controller action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-//		UIBarButtonItem *backButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
-//		navBar.items = [NSArray arrayWithObject:backButtonItem];
-//		[self addSubview:navBar];
-		
 		UIView *compassView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 25, 31)] autorelease];
 		[compassView addSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-CompassBackground.png"]] autorelease]];
 		compassNeedle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-CompassNeedle.png"]];
@@ -105,7 +89,6 @@
 	float barHeight = newHeight == 460 ? 44 : 33;
 	
 	webView.frame = CGRectMake(0, 0, newWidth, newHeight);
-	//navBar.frame = CGRectMake(0, 0, newWidth, barHeight);
 	toolbar.frame = CGRectMake(0, newHeight-barHeight, newWidth, barHeight);
 }
 
@@ -114,7 +97,6 @@
 
 	[UIView beginAnimations:@"foo" context:nil];
 	toolbar.alpha = finalAlpha;
-	//navBar.alpha = finalAlpha;
 	[UIView commitAnimations];
 	
 	barsHidden = !barsHidden;
@@ -139,7 +121,6 @@
 
 - (void)dealloc {
 	[webView release];
-	//[navBar release];
 	[toolbar release];
 	
     [super dealloc];
