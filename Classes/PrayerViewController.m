@@ -255,15 +255,9 @@
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return YES;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
-
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-}
-
 
 - (void)dealloc {
 	[_prayer release];

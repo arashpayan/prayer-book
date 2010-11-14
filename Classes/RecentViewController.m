@@ -109,12 +109,6 @@
 	[super dealloc];
 }
 
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-}
-
-
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
@@ -133,20 +127,9 @@
 	[self.tableView reloadData];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-}
-
 
 @end
 

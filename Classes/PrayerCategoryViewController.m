@@ -91,35 +91,15 @@
 	}
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
 - (void)dealloc {
 	[categories release];
 	[languages release];
 	
 	[super dealloc];
-}
-
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
 }
 
 

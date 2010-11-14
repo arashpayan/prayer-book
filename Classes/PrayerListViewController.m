@@ -75,16 +75,15 @@
 	return category;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
 - (void)dealloc {
 	[category release];
 	[prayers release];
 	[super dealloc];
 }
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-}
-
 
 @end
 

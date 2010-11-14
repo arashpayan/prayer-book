@@ -21,6 +21,9 @@
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
 		5B303EE20E65DCED0008057A /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303EE10E65DCED0008057A /* RecentViewController.m */; };
+		5B418CA01287D5AE000E1B4F /* Default-Portrait-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B418C9F1287D5AE000E1B4F /* Default-Portrait-iPad.png */; };
+		5B418CB91287DB47000E1B4F /* Default-Landscape-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B418CB81287DB47000E1B4F /* Default-Landscape-iPad.png */; };
+		5B418CE81287E4CD000E1B4F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B418CE71287E4CD000E1B4F /* Default@2x.png */; };
 		5B7E74FB11802F000092F3A0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B7E74FA11802F000092F3A0 /* QuartzCore.framework */; };
 		5B8D63270E692FD40064981E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D63260E692FD40064981E /* AboutViewController.m */; };
 		5B8D64350E69F1610064981E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D64340E69F1610064981E /* CoreGraphics.framework */; };
@@ -90,6 +93,9 @@
 		5B303CD00E649CAD0008057A /* PrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerViewController.m; sourceTree = "<group>"; };
 		5B303EE00E65DCED0008057A /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
 		5B303EE10E65DCED0008057A /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentViewController.m; sourceTree = "<group>"; };
+		5B418C9F1287D5AE000E1B4F /* Default-Portrait-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-iPad.png"; sourceTree = "<group>"; };
+		5B418CB81287DB47000E1B4F /* Default-Landscape-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-iPad.png"; sourceTree = "<group>"; };
+		5B418CE71287E4CD000E1B4F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5B7E74FA11802F000092F3A0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		5B8D63250E692FD40064981E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		5B8D63260E692FD40064981E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -220,6 +226,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B418CE71287E4CD000E1B4F /* Default@2x.png */,
+				5B418CB81287DB47000E1B4F /* Default-Landscape-iPad.png */,
+				5B418C9F1287D5AE000E1B4F /* Default-Portrait-iPad.png */,
 				5BBF8E5211FD1174001BC822 /* Icon-72.png */,
 				5BBF8E5311FD1174001BC822 /* Icon@2x.png */,
 				5BBF6D690F4133260020712B /* Localizable.strings */,
@@ -404,6 +413,9 @@
 				5B2289491194CA200091DB66 /* MainWindow-iPad.xib in Resources */,
 				5BBF8E5411FD1174001BC822 /* Icon-72.png in Resources */,
 				5BBF8E5511FD1174001BC822 /* Icon@2x.png in Resources */,
+				5B418CA01287D5AE000E1B4F /* Default-Portrait-iPad.png in Resources */,
+				5B418CB91287DB47000E1B4F /* Default-Landscape-iPad.png in Resources */,
+				5B418CE81287E4CD000E1B4F /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Arash Payan (7YFV696B48)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0;
@@ -508,7 +520,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/mobclix.lib\"",
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
@@ -521,7 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -530,7 +541,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/mobclix.lib\"",
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
@@ -558,7 +568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -567,7 +577,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/mobclix.lib\"",
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
@@ -595,7 +604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Arash Payan";
 				COPY_PHASE_STRIP = YES;
@@ -606,7 +615,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/mobclix.lib\"",
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";

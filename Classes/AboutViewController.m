@@ -25,7 +25,10 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-	if ([[[request URL] absoluteString] isEqual:@"http://arashpayan.com/projects/PrayerBook/AboutiPhone/"])
+	NSLog(@"url to load: %@", [[request URL] absoluteString]);
+	NSString *url = [[request URL] absoluteString];
+	if ([url isEqualToString:@"http://arashpayan.com/in_app_pages/prayer_book/about"] ||
+		[url isEqualToString:@"http://arashpayan.com/in_app_pages/prayer_book/about/"])
 		return YES;
 	
 	[[UIApplication sharedApplication] openURL:[request URL]];
@@ -45,24 +48,14 @@
 
 // If you need to do additional setup after loading the view, override viewDidLoad.
 - (void)viewDidLoad {
-	NSString *html = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"]
-											   encoding:NSUTF8StringEncoding
-												  error:nil];
-	[webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://arashpayan.com/projects/PrayerBook/AboutiPhone/"]];
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://arashpayan.com/in_app_pages/prayer_book/about"]] autorelease];
+	[webView loadRequest:request];
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return YES;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
-
-
-- (void)didReceiveMemoryWarning {
-	printf("AboutViewController didReceiveMemoryWarning\n");
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-}
-
 
 - (void)dealloc {
 	[webView release];

@@ -1,2 +1,4 @@
 build/*
 iTunesConnect/*
+BahaiWritings.xcodeproj/*.mode*
+BahaiWritings.xcodeproj/*.pbxuser

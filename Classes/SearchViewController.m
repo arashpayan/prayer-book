@@ -50,6 +50,10 @@
 	searchController = nil;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
 #pragma mark Table Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -102,31 +106,10 @@
 	resultSet = [[[PrayerDatabase sharedInstance] searchWithKeywords:keywords] retain];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-}
-
 - (void)loadSavedState:(NSArray*)savedState {
 	NSString *searchString = [savedState objectAtIndex:0];
 	currQuery = searchString;
 }
-
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
-}
-
 
 - (void)dealloc {
     [super dealloc];
