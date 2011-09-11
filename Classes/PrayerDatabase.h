@@ -23,6 +23,14 @@ extern NSString *const kRecentsKeyCategory;
 extern NSString *const kRecentsKeyTitle;
 extern NSString *const kRecentsKeyAccessTime;
 
+extern NSString *const kLanguageDutch;
+extern NSString *const kLanguageEnglish;
+extern NSString *const kLanguageFrench;
+extern NSString *const kLanguagePersian;
+extern NSString *const kLanguageSpanish;
+
+extern NSString *const PBNotificationLanguagesPreferenceChanged;
+
 extern NSString *const kPrefsFontSize;
 
 @interface PrayerDatabase : NSObject {
@@ -39,10 +47,21 @@ extern NSString *const kPrefsFontSize;
 	
 	BOOL prayerBeingViewed;
 	PrayerView *prayerView;
+    
+    BOOL showDutchPrayers;
+    BOOL showEnglishPrayers;
+    BOOL showFrenchPrayers;
+    BOOL showPersianPrayers;
+    BOOL showSpanishPrayers;
 }
 
 @property(nonatomic, assign, getter=isPrayerBeingViewed) BOOL prayerBeingViewed;
 @property(nonatomic, assign) PrayerView *prayerView;
+@property (nonatomic, assign) BOOL showDutchPrayers;
+@property (nonatomic, assign) BOOL showEnglishPrayers;
+@property (nonatomic, assign) BOOL showFrenchPrayers;
+@property (nonatomic, assign) BOOL showPersianPrayers;
+@property (nonatomic, assign) BOOL showSpanishPrayers;
 
 + (PrayerDatabase*)sharedInstance;
 - (NSDictionary*)categories;

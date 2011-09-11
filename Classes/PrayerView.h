@@ -14,15 +14,18 @@
 	UIWebView *webView;
 	UIToolbar *toolbar;
 	PrayerViewController *controller;
+	UIView *compassView;
 	UIImageView *compassNeedle;
 	UIBarButtonItem *increaseSizeButton;
 	UIBarButtonItem *decreaseSizeButton;
 	UIBarButtonItem *bookmarkButton;
 	
+	BOOL compassHidden;
 	BOOL barsHidden;
 }
 
 @property (nonatomic, readonly) UIWebView *webView;
+@property (nonatomic, assign) BOOL compassHidden;
 
 - (id)initWithFrame:(CGRect)frame backTitle:(NSString*)backTitle controller:(PrayerViewController*)aController;
 - (void)webViewWasTapped;

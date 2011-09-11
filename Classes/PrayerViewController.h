@@ -12,9 +12,11 @@
 #import "Prayer.h"
 #import "PrayerDatabase.h"
 #import "QiblihWatcherDelegate.h"
+@class PrayerView;
 
 @interface PrayerViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, QiblihWatcherDelegate> {
 	Prayer *_prayer;
+	PrayerView *prayerView;
 	PrayerDatabase *prayerDatabase;
 	NSString *backButtonTitle;
 	//NSString *prayerHTML;
@@ -22,7 +24,7 @@
 	BOOL composingMail;
 }
 
-+ (NSString*)HTMLPrefix;
++ (NSString*)HTMLPrefix:(NSString*)language;
 + (NSString*)HTMLSuffix;
 
 - (id)initWithPrayer:(Prayer*)prayer backButtonTitle:(NSString*)aBackButtonTitle;

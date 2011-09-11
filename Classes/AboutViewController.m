@@ -25,7 +25,6 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-	NSLog(@"url to load: %@", [[request URL] absoluteString]);
 	NSString *url = [[request URL] absoluteString];
 	if ([url isEqualToString:@"http://arashpayan.com/in_app_pages/prayer_book/about"] ||
 		[url isEqualToString:@"http://arashpayan.com/in_app_pages/prayer_book/about/"])

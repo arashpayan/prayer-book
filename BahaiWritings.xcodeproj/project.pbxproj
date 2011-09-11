@@ -62,6 +62,7 @@
 		5BEE635510238FA400E96FE2 /* NavBar-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE635410238FA400E96FE2 /* NavBar-Back.png */; };
 		5BEE655510242A6D00E96FE2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE655410242A6D00E96FE2 /* MessageUI.framework */; };
 		5BEE9CC0104EFCAE008EA8C7 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE9CBF104EFCAE008EA8C7 /* Entitlements.plist */; };
+		5BF7B75C141CB165006F8126 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7B75B141CB165006F8126 /* SettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,8 @@
 		5BEE635410238FA400E96FE2 /* NavBar-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NavBar-Back.png"; path = "Graphics/NavBar-Back.png"; sourceTree = "<group>"; };
 		5BEE655410242A6D00E96FE2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		5BEE9CBF104EFCAE008EA8C7 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		5BF7B75A141CB165006F8126 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		5BF7B75B141CB165006F8126 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +307,8 @@
 				5BC94EBE0E6B95D900B0208A /* AppleIsStupid.m */,
 				5BBF69140F3FC6F50020712B /* SearchViewController.h */,
 				5BBF69150F3FC6F50020712B /* SearchViewController.m */,
+				5BF7B75A141CB165006F8126 /* SettingsController.h */,
+				5BF7B75B141CB165006F8126 /* SettingsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				5BC746D11022537C005AB5B0 /* PrayerView.m in Sources */,
 				5BE4F4281032457000BE1456 /* QiblihFinder.m in Sources */,
 				5BE22AF210549F8300B6B10E /* Appirater.m in Sources */,
+				5BF7B75C141CB165006F8126 /* SettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +529,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -580,7 +586,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
@@ -635,7 +641,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Bahá’í Prayers";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};

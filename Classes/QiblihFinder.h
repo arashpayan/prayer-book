@@ -19,6 +19,7 @@
 	CLLocationManager *locationManager;
 	BOOL applicationActive;
 	
+	BOOL hasLocation;
 	float adjust;
 	float bearing;
 }

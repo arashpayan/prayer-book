@@ -25,10 +25,6 @@
 		composingMail = NO;
 		
 		self.hidesBottomBarWhenPushed = YES;
-		//self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-//																							   target:self
-//																							   action:@selector(promptToBookmark)];
-// 		[self.navigationItem.rightBarButtonItem release];	// the navigationItem retains it for us now
 		
 		// set up view rotation
 		self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -102,10 +98,9 @@
 		[userDefaults setFloat:currMultiplier forKey:kPrefsFontSize];
 		[userDefaults synchronize];
 		
-		PrayerView *prayerView = (PrayerView*)self.view;
 		[prayerView.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
 		
-		[(PrayerView*)self.view refreshTextSizeButtons];
+		[prayerView refreshTextSizeButtons];
 	}
 }
 
@@ -127,10 +122,9 @@
 		[userDefaults setFloat:currMultiplier forKey:kPrefsFontSize];
 		[userDefaults synchronize];
 		
-		PrayerView *prayerView = (PrayerView*)self.view;
 		[prayerView.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
 		
-		[(PrayerView*)self.view refreshTextSizeButtons];
+		[prayerView refreshTextSizeButtons];
 	}
 }
 
@@ -148,15 +142,20 @@
 - (void)loadView {
 	[super loadView];
 
-	PrayerView *prayerView = [[[PrayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) backTitle:backButtonTitle controller:self] autorelease];
+	prayerView = [[PrayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) backTitle:backButtonTitle controller:self];
 	self.view = prayerView;
 
 	[prayerView.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
 }
 
+- (void)viewDidUnload {
+	[prayerView release];
+	prayerView = nil;
+}
+
 - (NSString*)finalPrayerHTML {
 	NSMutableString *finalHTML = [[[NSMutableString alloc] init] autorelease];
-	[finalHTML appendString:[PrayerViewController HTMLPrefix]];
+	[finalHTML appendString:[PrayerViewController HTMLPrefix:[_prayer language]]];
 	[finalHTML appendString:_prayer.text];
 	[finalHTML appendString:[NSString stringWithFormat:@"<h4 id=\"author\">%@</h4>", [_prayer author], nil]];
 	if ([_prayer citation] != nil)
@@ -166,7 +165,7 @@
 	return finalHTML;
 }
 
-+ (NSString*)HTMLPrefix {
++ (NSString*)HTMLPrefix:(NSString*)language {
 	float multiplier;
 	// get the value for the font multiplier
 	multiplier = [[NSUserDefaults standardUserDefaults] floatForKey:kPrefsFontSize];
@@ -183,7 +182,10 @@
 	NSMutableString *htmlPrefix = [[[NSMutableString alloc] init] autorelease];
 	[htmlPrefix appendString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"];
 	[htmlPrefix appendString:@"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"];
-	[htmlPrefix appendString:@"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
+    if ([language isEqualToString:@"fa"])
+        [htmlPrefix appendString:@"<html dir=\"rtl\" xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
+    else
+        [htmlPrefix appendString:@"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
 	[htmlPrefix appendString:@"<head>"];
 	[htmlPrefix appendString:@"<style type=\"text/css\">"];
 	[htmlPrefix appendString:@"#prayer p {margin: 0 0px .75em 5px; color: #330000; font: normal "];
@@ -269,7 +271,12 @@
 
 - (void)qiblihBearingUpdated:(float)newBearing {
 	if (newBearing == -1)	// can't do anything with -1 orientation
+	{
+		prayerView.compassHidden = YES;
 		return;
+	}
+	else
+		prayerView.compassHidden = NO;
 	
 	switch ([UIDevice currentDevice].orientation) {
 		case UIDeviceOrientationLandscapeLeft:

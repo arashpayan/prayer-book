@@ -22,8 +22,26 @@
 		[languages retain];
 		
 		self.title = NSLocalizedString(@"CATEGORIES", nil);
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(languagesPreferenceChanged:)
+                                                     name:PBNotificationLanguagesPreferenceChanged
+                                                   object:nil];
 	}
 	return self;
+}
+
+- (void)languagesPreferenceChanged:(NSNotification*)notification {
+    [categories release];
+    categories = [[prayerDb categories] retain];
+    [languages release];
+    languages = [[[categories allKeys] sortedArrayUsingSelector:@selector(compareCategories:)] retain];
+    
+    if ([self isViewLoaded])
+    {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        [self.tableView reloadData];
+    }
 }
 
 
@@ -96,6 +114,8 @@
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 	[categories release];
 	[languages release];
 	

@@ -12,6 +12,7 @@
 #import "RecentViewController.h"
 #import "SearchViewController.h"
 #import "AboutViewController.h"
+#import "SettingsController.h"
 #import "PrayerListViewController.h"
 #import "Prayer.h"
 #import "AppleIsStupid.h"
@@ -60,11 +61,12 @@
 	searchNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[allViewControllers addObject:searchNavController];
 	[searchViewController release];
-	
-	// Create the About view
-	AboutViewController *aboutViewController = [[AboutViewController alloc] init];
-	[allViewControllers addObject:aboutViewController];
-	[aboutViewController release];
+    
+    // Create the settings view
+    SettingsController *settingsController = [[[SettingsController alloc] init] autorelease];
+    UINavigationController *settingsNC = [[UINavigationController alloc] initWithRootViewController:settingsController];
+    settingsNC.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    [allViewControllers addObject:settingsNC];
 	
 	// Create a tab bar controller to hold all the view controllers
 	tabBarController = [[AppleIsStupid alloc] init];

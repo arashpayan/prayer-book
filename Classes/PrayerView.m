@@ -15,6 +15,7 @@
 @implementation PrayerView
 
 @synthesize webView;
+@synthesize compassHidden;
 
 - (id)initWithFrame:(CGRect)frame backTitle:(NSString*)backTitle controller:(PrayerViewController*)aController {
     if (self = [super initWithFrame:frame]) {
@@ -30,11 +31,12 @@
 		
 		[self addSubview:webView];
 		
-		UIView *compassView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 25, 31)] autorelease];
+		compassView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 25, 31)];
 		[compassView addSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-CompassBackground.png"]] autorelease]];
 		compassNeedle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-CompassNeedle.png"]];
 		compassNeedle.transform = CGAffineTransformMakeRotation(PI/4.0);
 		[compassView addSubview:compassNeedle];
+		compassHidden = NO;	// this doesn't take into consideration whether the device actually has a compass
 		
 		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, frame.size.height-88, frame.size.width, 44)];
 		toolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -118,10 +120,19 @@
 	bookmarkButton.enabled = shouldEnable;
 }
 
+- (void)setCompassHidden:(BOOL)shouldHide {
+	if (compassHidden == shouldHide)
+		return;
+	
+	compassHidden = shouldHide;
+	compassView.hidden = compassHidden;
+}
+
 
 - (void)dealloc {
 	[webView release];
 	[toolbar release];
+	[compassView release];
 	
     [super dealloc];
 }
