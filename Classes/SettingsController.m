@@ -27,8 +27,27 @@ typedef enum {
     if (self) {
         // Custom initialization
         self.title = NSLocalizedString(@"Settings", nil);
+        self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil)
+                                                         image:[UIImage imageNamed:@"TabBarSettings.png"]
+                                                           tag:4] autorelease];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(languagePreferenceChanged:)
+                                                     name:PBNotificationLanguagesPreferenceChanged
+                                                   object:nil];
     }
     return self;
+}
+
+- (void)languagePreferenceChanged:(NSNotification*)notification {
+    if ([self isViewLoaded])
+    {
+        dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
+        englishSwitch.on = [PrayerDatabase sharedInstance].showEnglishPrayers;
+        frenchSwitch.on = [PrayerDatabase sharedInstance].showFrenchPrayers;
+        persianSwitch.on = [PrayerDatabase sharedInstance].showPersianPrayers;
+        spanishSwitch.on = [PrayerDatabase sharedInstance].showSpanishPrayers;
+    }
 }
 
 - (void)dutchSwitchToggled {
@@ -134,22 +153,27 @@ typedef enum {
         switch (indexPath.row) {
             case LG_ENGLISH:
                 cell.textLabel.text = @"English";
+                englishSwitch.on = [PrayerDatabase sharedInstance].showEnglishPrayers;
                 cell.accessoryView = englishSwitch;
                 break;
             case LG_SPANISH:
                 cell.textLabel.text = @"Español";
+                spanishSwitch.on = [PrayerDatabase sharedInstance].showSpanishPrayers;
                 cell.accessoryView = spanishSwitch;
                 break;
             case LG_DUTCH:
                 cell.textLabel.text = @"Nederlands";
+                dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
                 cell.accessoryView = dutchSwitch;
                 break;
             case LG_FRENCH:
                 cell.textLabel.text = @"Français";
+                frenchSwitch.on = [PrayerDatabase sharedInstance].showFrenchPrayers;
                 cell.accessoryView = frenchSwitch;
                 break;
             case LG_PERSIAN:
                 cell.textLabel.text = @"فارسی";
+                persianSwitch.on = [PrayerDatabase sharedInstance].showPersianPrayers;
                 cell.accessoryView = persianSwitch;
             default:
                 break;
@@ -189,6 +213,8 @@ typedef enum {
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [dutchSwitch release];
     [englishSwitch release];
     [frenchSwitch release];

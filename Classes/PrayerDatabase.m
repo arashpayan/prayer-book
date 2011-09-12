@@ -113,26 +113,31 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
             {
                 if ([lang isEqualToString:kLanguageEnglish])
                 {
+                    showEnglishPrayers = YES;
                     [languages addObject:kLanguageEnglish];
                     break;
                 }
                 else if ([lang isEqualToString:kLanguageSpanish])
                 {
+                    showSpanishPrayers = YES;
                     [languages addObject:kLanguageSpanish];
                     break;
                 }
                 else if ([lang isEqualToString:kLanguageFrench])
                 {
+                    showFrenchPrayers = YES;
                     [languages addObject:kLanguageFrench];
                     break;
                 }
                 else if ([lang isEqualToString:kLanguageDutch])
                 {
+                    showDutchPrayers = YES;
                     [languages addObject:kLanguageDutch];
                     break;
                 }
                 else if ([lang isEqualToString:kLanguagePersian])
                 {
+                    showPersianPrayers = YES;
                     [languages addObject:kLanguagePersian];
                     break;
                 }
@@ -313,7 +318,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	category = [category stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
 	
 	NSMutableArray *prayers = [[NSMutableArray alloc] init];
-	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category='%@'", category];
+	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category='%@' AND %@", category, languageSQL];
 	sqlite3_stmt *getPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
@@ -575,8 +580,6 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
             [languageSQL appendFormat:@"language='%@' OR ", [languages objectAtIndex:i]];
         
     }
-    
-    NSLog(@"buildLanguages: %@", languageSQL);
 }
 
 #pragma mark - Language accessors
@@ -596,6 +599,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
         [languages addObject:kLanguageDutch];
     else
         [languages removeObject:kLanguageDutch];
+    
+    if ([languages count] == 0)
+        self.showEnglishPrayers = YES;
     
     [self buildLanguages];
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
@@ -618,6 +624,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     else
         [languages removeObject:kLanguageEnglish];
     
+    if ([languages count] == 0)
+        self.showEnglishPrayers = YES;
+    
     [self buildLanguages];
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
                                                         object:nil];
@@ -638,6 +647,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
         [languages addObject:kLanguageFrench];
     else
         [languages removeObject:kLanguageFrench];
+    
+    if ([languages count] == 0)
+        self.showEnglishPrayers = YES;
     
     [self buildLanguages];
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
@@ -660,6 +672,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     else
         [languages removeObject:kLanguagePersian];
     
+    if ([languages count] == 0)
+        self.showEnglishPrayers = YES;
+    
     [self buildLanguages];
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
                                                         object:nil];
@@ -680,6 +695,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
         [languages addObject:kLanguageSpanish];
     else
         [languages removeObject:kLanguageSpanish];
+    
+    if ([languages count] == 0)
+        self.showEnglishPrayers = YES;
     
     [self buildLanguages];
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
