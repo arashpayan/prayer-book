@@ -21,9 +21,9 @@
 		5B303B290E6392370008057A /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303B280E6392370008057A /* Prayer.m */; };
 		5B303CD10E649CAD0008057A /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303CD00E649CAD0008057A /* PrayerViewController.m */; };
 		5B303EE20E65DCED0008057A /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B303EE10E65DCED0008057A /* RecentViewController.m */; };
-		5B418CA01287D5AE000E1B4F /* Default-Portrait-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B418C9F1287D5AE000E1B4F /* Default-Portrait-iPad.png */; };
-		5B418CB91287DB47000E1B4F /* Default-Landscape-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B418CB81287DB47000E1B4F /* Default-Landscape-iPad.png */; };
 		5B418CE81287E4CD000E1B4F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B418CE71287E4CD000E1B4F /* Default@2x.png */; };
+		5B500D501426A24200369714 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B500D4F1426A24200369714 /* Default-Portrait~ipad.png */; };
+		5B500D521426A24F00369714 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B500D511426A24F00369714 /* Default-Landscape~ipad.png */; };
 		5B7E079A141D6D36008A7314 /* TabBarSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7E0799141D6D36008A7314 /* TabBarSettings.png */; };
 		5B7E74FB11802F000092F3A0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B7E74FA11802F000092F3A0 /* QuartzCore.framework */; };
 		5B8D63270E692FD40064981E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D63260E692FD40064981E /* AboutViewController.m */; };
@@ -94,9 +94,9 @@
 		5B303CD00E649CAD0008057A /* PrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerViewController.m; sourceTree = "<group>"; };
 		5B303EE00E65DCED0008057A /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
 		5B303EE10E65DCED0008057A /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentViewController.m; sourceTree = "<group>"; };
-		5B418C9F1287D5AE000E1B4F /* Default-Portrait-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait-iPad.png"; sourceTree = "<group>"; };
-		5B418CB81287DB47000E1B4F /* Default-Landscape-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-iPad.png"; sourceTree = "<group>"; };
 		5B418CE71287E4CD000E1B4F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5B500D4F1426A24200369714 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		5B500D511426A24F00369714 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		5B7E0799141D6D36008A7314 /* TabBarSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarSettings.png; path = Graphics/TabBarSettings.png; sourceTree = "<group>"; };
 		5B7E74FA11802F000092F3A0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		5B8D63250E692FD40064981E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -202,6 +202,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5B500D511426A24F00369714 /* Default-Landscape~ipad.png */,
+				5B500D4F1426A24200369714 /* Default-Portrait~ipad.png */,
 				5B01F81B1016BEAA003101C7 /* Graphics */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -229,8 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				5B418CE71287E4CD000E1B4F /* Default@2x.png */,
-				5B418CB81287DB47000E1B4F /* Default-Landscape-iPad.png */,
-				5B418C9F1287D5AE000E1B4F /* Default-Portrait-iPad.png */,
 				5BBF8E5211FD1174001BC822 /* Icon-72.png */,
 				5BBF8E5311FD1174001BC822 /* Icon@2x.png */,
 				5BBF6D690F4133260020712B /* Localizable.strings */,
@@ -417,10 +417,10 @@
 				5B2289491194CA200091DB66 /* MainWindow-iPad.xib in Resources */,
 				5BBF8E5411FD1174001BC822 /* Icon-72.png in Resources */,
 				5BBF8E5511FD1174001BC822 /* Icon@2x.png in Resources */,
-				5B418CA01287D5AE000E1B4F /* Default-Portrait-iPad.png in Resources */,
-				5B418CB91287DB47000E1B4F /* Default-Landscape-iPad.png in Resources */,
 				5B418CE81287E4CD000E1B4F /* Default@2x.png in Resources */,
 				5B7E079A141D6D36008A7314 /* TabBarSettings.png in Resources */,
+				5B500D501426A24200369714 /* Default-Portrait~ipad.png in Resources */,
+				5B500D521426A24F00369714 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +541,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Arash Payan";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1.0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -552,6 +553,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8013BE0C-4017-452D-8759-9DD594B517A1";
 				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -591,7 +593,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "Prayer Book";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FA418B3D-27AD-4914-9798-7E65D948BA28";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8013BE0C-4017-452D-8759-9DD594B517A1";
 				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
