@@ -67,7 +67,6 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myIdentifier];
 	if (cell == nil)		
 	{
-		//cell = [[[CategoryCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:myIdentifier] autorelease];
 		cell = [[[CategoryCell alloc] initWithReuseIdentifier:myIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
