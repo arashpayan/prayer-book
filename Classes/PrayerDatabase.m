@@ -318,7 +318,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	category = [category stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
 	
 	NSMutableArray *prayers = [[NSMutableArray alloc] init];
-	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category='%@' AND %@", category, languageSQL];
+	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category=\"%@\" AND (%@)", category, languageSQL];
 	sqlite3_stmt *getPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
@@ -356,16 +356,16 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 }
 
 - (int)numberOfPrayersForCategory:(NSString*)category {
-	if (category == nil)
-		return -1;
-	
-	NSNumber *cachedCount = [categoryCountCache objectForKey:category];
-	if (cachedCount != nil)
-		return [cachedCount intValue];
-	
+//	if (category == nil)
+//		return -1;
+//	
+//	NSNumber *cachedCount = [categoryCountCache objectForKey:category];
+//	if (cachedCount != nil)
+//		return [cachedCount intValue];
+//	
 	int numPrayers = 0;
 	
-	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\"", category];
+	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\" AND (%@)", category, languageSQL];
 	sqlite3_stmt *countPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
