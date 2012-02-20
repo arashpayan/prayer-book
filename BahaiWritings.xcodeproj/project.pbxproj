@@ -83,6 +83,11 @@
 		5B10B6760FC1FA4A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B10B7B20FC21A5A00010104 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 		5B10B7C50FC21CF600010104 /* es */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B1281EE14F2256700DE0783 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = /Users/arash/coding/BahaiWritings/nl.lproj/Localizable.strings; sourceTree = "<absolute>"; };
+		5B1281EF14F2256700DE0783 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = "/Users/arash/coding/BahaiWritings/nl.lproj/MainWindow-iPad.xib"; sourceTree = "<absolute>"; };
+		5B1281F014F2256700DE0783 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = /Users/arash/coding/BahaiWritings/nl.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
+		5B1281F114F2256700DE0783 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = nl; path = /Users/arash/coding/BahaiWritings/nl.lproj/Info.plist; sourceTree = "<absolute>"; };
+		5B1281F314F22E9900DE0783 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B2289461194CA200091DB66 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = "Resources-iPad/English.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		5B2289471194CA200091DB66 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = "Resources-iPad/es.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		5B2289481194CA200091DB66 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = "Resources-iPad/fr.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
@@ -380,6 +385,7 @@
 				German,
 				es,
 				fr,
+				nl,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -464,6 +470,7 @@
 				8D1107310486CEB800E47090 /* English */,
 				5B10B7B20FC21A5A00010104 /* es */,
 				5B92835A10360FC100FD6D01 /* fr */,
+				5B1281F114F2256700DE0783 /* nl */,
 			);
 			name = Info.plist;
 			sourceTree = "<group>";
@@ -473,6 +480,7 @@
 			children = (
 				5B10B7C50FC21CF600010104 /* es */,
 				5B928394103611C600FD6D01 /* fr */,
+				5B1281F314F22E9900DE0783 /* nl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -483,6 +491,7 @@
 				5B2289461194CA200091DB66 /* English */,
 				5B2289471194CA200091DB66 /* es */,
 				5B2289481194CA200091DB66 /* fr */,
+				5B1281EF14F2256700DE0783 /* nl */,
 			);
 			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
@@ -493,6 +502,7 @@
 				28AD733E0D9D9553002E5188 /* English */,
 				5B10B6750FC1FA3600010104 /* es */,
 				5B92834710360DAC00FD6D01 /* fr */,
+				5B1281F014F2256700DE0783 /* nl */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -503,6 +513,7 @@
 				5BBF6D6A0F4133260020712B /* English */,
 				5B10B6760FC1FA4A00010104 /* es */,
 				5B01E9CC1036157300D1CA44 /* fr */,
+				5B1281EE14F2256700DE0783 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
