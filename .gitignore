@@ -1,6 +1,1 @@
-build/*
-iTunesConnect/*
-BahaiWritings.xcodeproj/*.mode*
-BahaiWritings.xcodeproj/*.pbxuser
-BahaiWritings.xcodeproj/xcuserdata*
-BahaiWritings.xcodeproj/project.xcworkspace*
+*.DS_Store
