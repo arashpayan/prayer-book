@@ -42,7 +42,7 @@
 	Prayer *selectedPrayer = [self.prayers objectAtIndex:indexPath.row];
 	cell.title.text = selectedPrayer.title;
 	cell.subtitle.text = selectedPrayer.author;
-	cell.rightLabel.text = [NSString stringWithFormat:@"~%@ %@", selectedPrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
+	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", selectedPrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
 	
 	return cell;
 }

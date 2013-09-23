@@ -20,12 +20,12 @@
 //	if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
 		// Initialization code
 		self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 240, 30)];
-		self.categoryLabel.font = [UIFont boldSystemFontOfSize:20];
+//		self.categoryLabel.font = [UIFont systemFontOfSize:20];
 		self.categoryLabel.highlightedTextColor = [UIColor whiteColor];
 		
 		CGRect countRect = CGRectMake(260, 12, 32, 20);
 		self.countLabel = [[UILabel alloc] initWithFrame:countRect];
-		self.countLabel.font = [UIFont boldSystemFontOfSize:14];
+//		self.countLabel.font = [UIFont systemFontOfSize:14];
 		self.countLabel.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
 		self.countLabel.opaque = YES;
 		self.countLabel.textColor = [UIColor whiteColor];

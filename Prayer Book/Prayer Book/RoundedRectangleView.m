@@ -33,7 +33,7 @@
 	
 	if (!highlighted)
 	{
-		CGContextSetRGBFillColor(context, 140.0/255.0, 153.0/255.0, 180.0/255.0, 1);
+		CGContextSetRGBFillColor(context, 200.0/255.0, 200.0/255.0, 200.0/255.0, 1);
 		//CGContextSetRGBFillColor(context, 198.0/255.0, 41.0/255.0, 26.0/255.0, 1);
 	}
 	else

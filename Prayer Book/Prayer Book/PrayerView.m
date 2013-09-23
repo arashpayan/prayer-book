@@ -24,11 +24,13 @@
 		webView = [[UIWebView alloc] initWithFrame:frame];
 		webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		webView.autoresizesSubviews = YES;
+        webView.backgroundColor = [UIColor whiteColor];
+        webView.opaque = NO;
 		
 		[self addSubview:webView];
 		
 		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, frame.size.height-88, frame.size.width, 44)];
-		toolbar.barStyle = UIBarStyleBlackTranslucent;
+//		toolbar.barStyle = UIBarStyleBlackTranslucent;
 		
 		UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                        target:nil

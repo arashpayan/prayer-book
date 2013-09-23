@@ -19,8 +19,8 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
-		self.title = NSLocalizedString(@"BOOKMARKS", nil);
-		[self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:1]];
+		[self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1]];
+        self.tabBarItem.title = NSLocalizedString(@"BOOKMARKS", nil);
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
 	}
 	
