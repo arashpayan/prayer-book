@@ -28,7 +28,7 @@
 		self.languages = [[self.categories allKeys] sortedArrayUsingSelector:@selector(compareCategories:)];
 		
 		self.title = NSLocalizedString(@"CATEGORIES", nil);
-        [self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:1]];
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarPrayersSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarPrayers.png"]];
         self.tabBarItem.title = NSLocalizedString(@"PRAYERS", nil);
         
         [[NSNotificationCenter defaultCenter] addObserver:self

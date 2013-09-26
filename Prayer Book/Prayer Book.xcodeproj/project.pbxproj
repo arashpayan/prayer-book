@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00E02D2817F48649002DDD9A /* TabBarSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2617F48649002DDD9A /* TabBarSettings@2x.png */; };
+		00E02D2917F48649002DDD9A /* TabBarSettingsSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2717F48649002DDD9A /* TabBarSettingsSelected@2x.png */; };
+		00E02D2C17F48741002DDD9A /* TabBarPrayers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2A17F48741002DDD9A /* TabBarPrayers@2x.png */; };
+		00E02D2D17F48741002DDD9A /* TabBarPrayersSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2B17F48741002DDD9A /* TabBarPrayersSelected@2x.png */; };
 		5BF8520217E07A0900F3921D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520117E07A0900F3921D /* Foundation.framework */; };
 		5BF8520417E07A0900F3921D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520317E07A0900F3921D /* CoreGraphics.framework */; };
 		5BF8520617E07A0900F3921D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520517E07A0900F3921D /* UIKit.framework */; };
@@ -34,8 +38,6 @@
 		5BF8525A17E3FE9F00F3921D /* PrayerBar-Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8525217E3FE9F00F3921D /* PrayerBar-Email.png */; };
 		5BF8525B17E3FE9F00F3921D /* PrayerBar-IncreaseSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8525317E3FE9F00F3921D /* PrayerBar-IncreaseSize.png */; };
 		5BF8525C17E3FE9F00F3921D /* TabBarAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8525417E3FE9F00F3921D /* TabBarAbout.png */; };
-		5BF8525D17E3FE9F00F3921D /* TabBarList.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8525517E3FE9F00F3921D /* TabBarList.png */; };
-		5BF8525E17E3FE9F00F3921D /* TabBarSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8525617E3FE9F00F3921D /* TabBarSettings.png */; };
 		5BF8526017E427A100F3921D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8525F17E427A100F3921D /* libsqlite3.dylib */; };
 		5BF8526217E4295200F3921D /* pbdb.db in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8526117E4295200F3921D /* pbdb.db */; };
 		5BF8526517E42A1E00F3921D /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8526417E42A1E00F3921D /* BookmarksViewController.m */; };
@@ -65,6 +67,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00E02D2617F48649002DDD9A /* TabBarSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarSettings@2x.png"; sourceTree = "<group>"; };
+		00E02D2717F48649002DDD9A /* TabBarSettingsSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarSettingsSelected@2x.png"; sourceTree = "<group>"; };
+		00E02D2A17F48741002DDD9A /* TabBarPrayers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarPrayers@2x.png"; sourceTree = "<group>"; };
+		00E02D2B17F48741002DDD9A /* TabBarPrayersSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarPrayersSelected@2x.png"; sourceTree = "<group>"; };
 		5BF851FE17E07A0900F3921D /* Prayer Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prayer Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF8520117E07A0900F3921D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BF8520317E07A0900F3921D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,8 +112,6 @@
 		5BF8525217E3FE9F00F3921D /* PrayerBar-Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrayerBar-Email.png"; sourceTree = "<group>"; };
 		5BF8525317E3FE9F00F3921D /* PrayerBar-IncreaseSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrayerBar-IncreaseSize.png"; sourceTree = "<group>"; };
 		5BF8525417E3FE9F00F3921D /* TabBarAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarAbout.png; sourceTree = "<group>"; };
-		5BF8525517E3FE9F00F3921D /* TabBarList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarList.png; sourceTree = "<group>"; };
-		5BF8525617E3FE9F00F3921D /* TabBarSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarSettings.png; sourceTree = "<group>"; };
 		5BF8525F17E427A100F3921D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5BF8526117E4295200F3921D /* pbdb.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = pbdb.db; sourceTree = "<group>"; };
 		5BF8526317E42A1E00F3921D /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksViewController.h; sourceTree = "<group>"; };
@@ -294,13 +298,15 @@
 		5BF8524E17E3FE9F00F3921D /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				00E02D2A17F48741002DDD9A /* TabBarPrayers@2x.png */,
+				00E02D2B17F48741002DDD9A /* TabBarPrayersSelected@2x.png */,
+				00E02D2617F48649002DDD9A /* TabBarSettings@2x.png */,
+				00E02D2717F48649002DDD9A /* TabBarSettingsSelected@2x.png */,
 				5BF8525017E3FE9F00F3921D /* PrayerBar-Add.png */,
 				5BF8525117E3FE9F00F3921D /* PrayerBar-DecreaseSize.png */,
 				5BF8525217E3FE9F00F3921D /* PrayerBar-Email.png */,
 				5BF8525317E3FE9F00F3921D /* PrayerBar-IncreaseSize.png */,
 				5BF8525417E3FE9F00F3921D /* TabBarAbout.png */,
-				5BF8525517E3FE9F00F3921D /* TabBarList.png */,
-				5BF8525617E3FE9F00F3921D /* TabBarSettings.png */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -450,8 +456,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BF8525B17E3FE9F00F3921D /* PrayerBar-IncreaseSize.png in Resources */,
+				00E02D2D17F48741002DDD9A /* TabBarPrayersSelected@2x.png in Resources */,
 				5BF8528617E4594E00F3921D /* InfoPlist.strings in Resources */,
 				5BF852F417E4687500F3921D /* AppiraterLocalizable.strings in Resources */,
+				00E02D2817F48649002DDD9A /* TabBarSettings@2x.png in Resources */,
 				5BF8527417E44CDC00F3921D /* Localizable.strings in Resources */,
 				5BF8525C17E3FE9F00F3921D /* TabBarAbout.png in Resources */,
 				5BF8527F17E44EC300F3921D /* Localizable.strings in Resources */,
@@ -460,13 +468,13 @@
 				5BF8520C17E07A0900F3921D /* InfoPlist.strings in Resources */,
 				5BF8525917E3FE9F00F3921D /* PrayerBar-DecreaseSize.png in Resources */,
 				5BF8526217E4295200F3921D /* pbdb.db in Resources */,
+				00E02D2917F48649002DDD9A /* TabBarSettingsSelected@2x.png in Resources */,
 				5BF8521417E07A0900F3921D /* Images.xcassets in Resources */,
 				5BF8525A17E3FE9F00F3921D /* PrayerBar-Email.png in Resources */,
+				00E02D2C17F48741002DDD9A /* TabBarPrayers@2x.png in Resources */,
 				5BF8525817E3FE9F00F3921D /* PrayerBar-Add.png in Resources */,
 				5BF8528017E44EC300F3921D /* Localizable.strings in Resources */,
 				5BF8527E17E44EC300F3921D /* Localizable.strings in Resources */,
-				5BF8525E17E3FE9F00F3921D /* TabBarSettings.png in Resources */,
-				5BF8525D17E3FE9F00F3921D /* TabBarList.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

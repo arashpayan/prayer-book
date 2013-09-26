@@ -49,8 +49,8 @@
                                                recentNavController,
                                                searchNavController,
                                                settingsNavController, nil]];
-    
     self.window.rootViewController = self.tabBarController;
+//    [[UITabBar appearance] setSelectedImageTintColor:[UIColor redColor]];
     
     [self.window makeKeyAndVisible];
     
