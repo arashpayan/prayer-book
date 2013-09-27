@@ -19,6 +19,7 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
+        self.title = NSLocalizedString(@"BOOKMARKS", nil);
 		[self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarBookmarkSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarBookmark.png"]];
         self.tabBarItem.title = NSLocalizedString(@"BOOKMARKS", nil);
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
