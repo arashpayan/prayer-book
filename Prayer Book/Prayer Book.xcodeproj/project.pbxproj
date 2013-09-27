@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B4863C17F5D488008B7764 /* TabBarBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B4863B17F5D488008B7764 /* TabBarBookmark@2x.png */; };
+		00B4864117F5D828008B7764 /* ToolBarBigger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B4863D17F5D828008B7764 /* ToolBarBigger@2x.png */; };
+		00B4864217F5D828008B7764 /* ToolBarSmaller@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B4863E17F5D828008B7764 /* ToolBarSmaller@2x.png */; };
+		00B4864317F5D828008B7764 /* TabBarBookmarkSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B4863F17F5D828008B7764 /* TabBarBookmarkSelected@2x.png */; };
+		00B4864417F5D828008B7764 /* ToolBarBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B4864017F5D828008B7764 /* ToolBarBookmark@2x.png */; };
+		00B4864617F5D855008B7764 /* ToolBarShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B4864517F5D855008B7764 /* ToolBarShare@2x.png */; };
 		00E02D2817F48649002DDD9A /* TabBarSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2617F48649002DDD9A /* TabBarSettings@2x.png */; };
 		00E02D2917F48649002DDD9A /* TabBarSettingsSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2717F48649002DDD9A /* TabBarSettingsSelected@2x.png */; };
 		00E02D2C17F48741002DDD9A /* TabBarPrayers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E02D2A17F48741002DDD9A /* TabBarPrayers@2x.png */; };
@@ -67,6 +73,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00B4863B17F5D488008B7764 /* TabBarBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarBookmark@2x.png"; sourceTree = "<group>"; };
+		00B4863D17F5D828008B7764 /* ToolBarBigger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarBigger@2x.png"; sourceTree = "<group>"; };
+		00B4863E17F5D828008B7764 /* ToolBarSmaller@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarSmaller@2x.png"; sourceTree = "<group>"; };
+		00B4863F17F5D828008B7764 /* TabBarBookmarkSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarBookmarkSelected@2x.png"; sourceTree = "<group>"; };
+		00B4864017F5D828008B7764 /* ToolBarBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarBookmark@2x.png"; sourceTree = "<group>"; };
+		00B4864517F5D855008B7764 /* ToolBarShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarShare@2x.png"; sourceTree = "<group>"; };
 		00E02D2617F48649002DDD9A /* TabBarSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarSettings@2x.png"; sourceTree = "<group>"; };
 		00E02D2717F48649002DDD9A /* TabBarSettingsSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarSettingsSelected@2x.png"; sourceTree = "<group>"; };
 		00E02D2A17F48741002DDD9A /* TabBarPrayers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarPrayers@2x.png"; sourceTree = "<group>"; };
@@ -298,6 +310,12 @@
 		5BF8524E17E3FE9F00F3921D /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				00B4864517F5D855008B7764 /* ToolBarShare@2x.png */,
+				00B4863D17F5D828008B7764 /* ToolBarBigger@2x.png */,
+				00B4863E17F5D828008B7764 /* ToolBarSmaller@2x.png */,
+				00B4863F17F5D828008B7764 /* TabBarBookmarkSelected@2x.png */,
+				00B4864017F5D828008B7764 /* ToolBarBookmark@2x.png */,
+				00B4863B17F5D488008B7764 /* TabBarBookmark@2x.png */,
 				00E02D2A17F48741002DDD9A /* TabBarPrayers@2x.png */,
 				00E02D2B17F48741002DDD9A /* TabBarPrayersSelected@2x.png */,
 				00E02D2617F48649002DDD9A /* TabBarSettings@2x.png */,
@@ -457,23 +475,29 @@
 			files = (
 				5BF8525B17E3FE9F00F3921D /* PrayerBar-IncreaseSize.png in Resources */,
 				00E02D2D17F48741002DDD9A /* TabBarPrayersSelected@2x.png in Resources */,
+				00B4864417F5D828008B7764 /* ToolBarBookmark@2x.png in Resources */,
 				5BF8528617E4594E00F3921D /* InfoPlist.strings in Resources */,
 				5BF852F417E4687500F3921D /* AppiraterLocalizable.strings in Resources */,
+				00B4864217F5D828008B7764 /* ToolBarSmaller@2x.png in Resources */,
 				00E02D2817F48649002DDD9A /* TabBarSettings@2x.png in Resources */,
 				5BF8527417E44CDC00F3921D /* Localizable.strings in Resources */,
 				5BF8525C17E3FE9F00F3921D /* TabBarAbout.png in Resources */,
 				5BF8527F17E44EC300F3921D /* Localizable.strings in Resources */,
 				5BF8528917E4596C00F3921D /* InfoPlist.strings in Resources */,
 				5BF8528317E4593500F3921D /* InfoPlist.strings in Resources */,
+				00B4864617F5D855008B7764 /* ToolBarShare@2x.png in Resources */,
 				5BF8520C17E07A0900F3921D /* InfoPlist.strings in Resources */,
 				5BF8525917E3FE9F00F3921D /* PrayerBar-DecreaseSize.png in Resources */,
 				5BF8526217E4295200F3921D /* pbdb.db in Resources */,
+				00B4864117F5D828008B7764 /* ToolBarBigger@2x.png in Resources */,
 				00E02D2917F48649002DDD9A /* TabBarSettingsSelected@2x.png in Resources */,
 				5BF8521417E07A0900F3921D /* Images.xcassets in Resources */,
+				00B4863C17F5D488008B7764 /* TabBarBookmark@2x.png in Resources */,
 				5BF8525A17E3FE9F00F3921D /* PrayerBar-Email.png in Resources */,
 				00E02D2C17F48741002DDD9A /* TabBarPrayers@2x.png in Resources */,
 				5BF8525817E3FE9F00F3921D /* PrayerBar-Add.png in Resources */,
 				5BF8528017E44EC300F3921D /* Localizable.strings in Resources */,
+				00B4864317F5D828008B7764 /* TabBarBookmarkSelected@2x.png in Resources */,
 				5BF8527E17E44EC300F3921D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

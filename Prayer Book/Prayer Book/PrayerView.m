@@ -39,7 +39,7 @@
         // we use sel_registerName instead of @selector so the selector gets registered with the runtime and we
         // don't get a warning
         SEL increaseTextSelector = sel_registerName("increaseTextSizeAction");
-		increaseSizeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-IncreaseSize.png"]
+		increaseSizeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarBigger.png"]
                                                               style:UIBarButtonItemStylePlain
                                                              target:controller
                                                              action:increaseTextSelector];
@@ -47,7 +47,7 @@
 		increaseSizeButton.enabled = [controller increaseTextSizeActionEnabled];
 		
         SEL decreaseTextSelector = sel_registerName("decreaseTextSizeAction");
-		decreaseSizeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-DecreaseSize.png"]
+		decreaseSizeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarSmaller.png"]
                                                               style:UIBarButtonItemStylePlain
                                                              target:controller
                                                              action:decreaseTextSelector];
@@ -55,21 +55,21 @@
 		decreaseSizeButton.enabled = [controller decreaseTextSizeActionEnabled];
 		
         SEL promptToBookmarkSelector = sel_registerName("promptToBookmark");
-		bookmarkButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-Add.png"]
+		bookmarkButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarBookmark.png"]
                                                           style:UIBarButtonItemStylePlain
                                                          target:controller
                                                          action:promptToBookmarkSelector];
 		bookmarkButton.enabled = [controller bookmarkingEnabled];
-		bookmarkButton.width = 38;
+		bookmarkButton.width = 60;
 
         SEL mailActionSelector = sel_registerName("mailAction");
-		UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"PrayerBar-Email.png"]
+		UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarShare.png"]
                                                                         style:UIBarButtonItemStylePlain
                                                                        target:controller
                                                                        action:mailActionSelector];
 		emailButton.width = 38;
 
-		toolbar.items = [NSArray arrayWithObjects:increaseSizeButton, decreaseSizeButton, flexibleSpace, bookmarkButton, emailButton, nil];
+		toolbar.items = [NSArray arrayWithObjects:decreaseSizeButton, increaseSizeButton, flexibleSpace, bookmarkButton, emailButton, nil];
 		
 		[self addSubview:toolbar];
     }
@@ -80,7 +80,7 @@
 	float newHeight = self.frame.size.height;
 	float newWidth = self.frame.size.width;
 	
-	float barHeight = newHeight == 460 ? 44 : 33;
+	float barHeight = newHeight == 460 ? 44 : 44;
 	
 	webView.frame = CGRectMake(0, 0, newWidth, newHeight);
 	toolbar.frame = CGRectMake(0, newHeight-barHeight, newWidth, barHeight);
