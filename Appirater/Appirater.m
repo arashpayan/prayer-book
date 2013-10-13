@@ -51,7 +51,7 @@ NSString *const kAppiraterDeclinedToRate			= @"kAppiraterDeclinedToRate";
 NSString *const kAppiraterReminderRequestDate		= @"kAppiraterReminderRequestDate";
 
 NSString *templateReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=APP_ID";
-NSString *templateReviewURLiOS7 = @"itms-apps://itunes.apple.com/LANGUAGE/app/idAPP_ID";
+NSString *templateReviewURLiOS7 = @"itms-apps://itunes.apple.com/app/idAPP_ID";
 
 static NSString *_appId;
 static double _daysUntilPrompt = 30;
@@ -65,7 +65,6 @@ static BOOL _debug = NO;
 	__weak static id<AppiraterDelegate> _delegate;
 #endif
 static BOOL _usesAnimation = TRUE;
-static BOOL _openInAppStore = NO;
 static UIStatusBarStyle _statusBarStyle;
 static BOOL _modalOpen = false;
 static BOOL _alwaysUseMainBundle = NO;
@@ -113,7 +112,7 @@ static BOOL _alwaysUseMainBundle = NO;
 	_usesAnimation = animation;
 }
 + (void)setOpenInAppStore:(BOOL)openInAppStore {
-    _openInAppStore = openInAppStore;
+    [Appirater sharedInstance].openInAppStore = openInAppStore;
 }
 + (void)setStatusBarStyle:(UIStatusBarStyle)style {
 	_statusBarStyle = style;
@@ -143,6 +142,19 @@ static BOOL _alwaysUseMainBundle = NO;
     }
 
     return bundle;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
+            self.openInAppStore = YES;
+        } else {
+            self.openInAppStore = NO;
+        }
+    }
+    
+    return self;
 }
 
 - (BOOL)connectedToNetwork {
@@ -470,7 +482,7 @@ static BOOL _alwaysUseMainBundle = NO;
 	[userDefaults synchronize];
 
 	//Use the in-app StoreKit view if available (iOS 6) and imported. This works in the simulator.
-	if (!_openInAppStore && NSStringFromClass([SKStoreProductViewController class]) != nil) {
+	if (![Appirater sharedInstance].openInAppStore && NSStringFromClass([SKStoreProductViewController class]) != nil) {
 		
 		SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
 		NSNumber *appId = [NSNumber numberWithInteger:_appId.integerValue];
@@ -485,7 +497,9 @@ static BOOL _alwaysUseMainBundle = NO;
 			[self setModalOpen:YES];
 			//Temporarily use a black status bar to match the StoreKit view.
 			[self setStatusBarStyle:[UIApplication sharedApplication].statusBarStyle];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 			[[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent animated:_usesAnimation];
+#endif
 		}];
 	
 	//Use the standard openUrl method if StoreKit is unavailable.
@@ -499,7 +513,6 @@ static BOOL _alwaysUseMainBundle = NO;
 		// iOS 7 needs a different templateReviewURL @see https://github.com/arashpayan/appirater/issues/131
 		if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 			reviewURL = [templateReviewURLiOS7 stringByReplacingOccurrencesOfString:@"APP_ID" withString:[NSString stringWithFormat:@"%@", _appId]];
-			reviewURL = [reviewURL stringByReplacingOccurrencesOfString:@"LANGUAGE" withString:[NSString stringWithFormat:@"%@", [[NSLocale preferredLanguages] objectAtIndex:0]]];
 		}
 
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewURL]];

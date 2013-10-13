@@ -53,13 +53,15 @@
     self.window.rootViewController = self.tabBarController;
     
     [self.window makeKeyAndVisible];
+    NSLog(@"after makeKeyVisible");
     
     [Appirater setAppId:@"292151014"];
+    [Appirater setOpenInAppStore:YES];
     [Appirater setDaysUntilPrompt:30];
     [Appirater setUsesUntilPrompt:20];
     [Appirater setSignificantEventsUntilPrompt:-1];
     [Appirater setTimeBeforeReminding:7];
-    
+
     [Appirater appLaunched:YES];
     
     return YES;
