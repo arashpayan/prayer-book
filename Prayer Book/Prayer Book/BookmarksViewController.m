@@ -20,7 +20,15 @@
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
         self.title = NSLocalizedString(@"BOOKMARKS", nil);
+if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0)
+{
 		[self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarBookmarkSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarBookmark.png"]];
+    }
+        if ([UIDevice currentDevice].systemVersion.floatValue < 7.0)
+        {
+        
+        self.tabBarItem.image = [UIImage imageNamed:@"TabBarBookmark.png"];
+        }
         self.tabBarItem.title = NSLocalizedString(@"BOOKMARKS", nil);
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
 	}

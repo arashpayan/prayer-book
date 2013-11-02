@@ -38,7 +38,8 @@ typedef enum {
         // Custom initialization
         self.title = NSLocalizedString(@"Settings", nil);
         self.tabBarItem.title = NSLocalizedString(@"Settings", nil);
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarSettingsSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarSettings.png"]];
+//        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarSettingsSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarSettings.png"]];
+        self.tabBarItem.image = [UIImage imageNamed:@"TabBarSettings.png"];
         self.tabBarItem.tag = 4;
         
         [[NSNotificationCenter defaultCenter] addObserver:self

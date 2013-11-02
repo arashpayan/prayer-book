@@ -49,8 +49,8 @@
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:NSLocalizedString(@"CANCEL", NULL)
-                                               destructiveButtonTitle:NSLocalizedString(@"ADD_BOOKMARK", NULL)
-                                                    otherButtonTitles:nil];
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:NSLocalizedString(@"ADD_BOOKMARK", NULL), nil];
 	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	[actionSheet showInView:self.tabBarController.view];

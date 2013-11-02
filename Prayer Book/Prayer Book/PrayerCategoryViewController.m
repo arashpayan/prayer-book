@@ -28,7 +28,8 @@
 		self.languages = [[self.categories allKeys] sortedArrayUsingSelector:@selector(compareCategories:)];
 		
 		self.title = NSLocalizedString(@"CATEGORIES", nil);
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarPrayersSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarPrayers.png"]];
+//        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarPrayersSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarPrayers.png"]];
+        self.tabBarItem.image = [UIImage imageNamed:@"TabBarPrayers.png"];
         self.tabBarItem.title = NSLocalizedString(@"PRAYERS", nil);
         
         [[NSNotificationCenter defaultCenter] addObserver:self

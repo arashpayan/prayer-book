@@ -73,7 +73,7 @@
 	Prayer *thePrayer = [[PrayerDatabase sharedInstance] prayerWithId:[entry longValue]];
 	cell.title.text = thePrayer.title;
 	cell.subtitle.text = thePrayer.category;
-	cell.rightLabel.text = [NSString stringWithFormat:@"~%@ %@", thePrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
+	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", thePrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
 	
 	return cell;
 }

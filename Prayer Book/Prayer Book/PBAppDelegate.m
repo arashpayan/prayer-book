@@ -21,26 +21,38 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+//    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:76.0/255.0 green:2.0/255.0 blue:77.0/255.0 alpha:1]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//    [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed:76.0/255.0 green:2.0/255.0 blue:77.0/255.0 alpha:1]];
+//    [[UINavigationBar appearance] setTitleTextAttributes: @{
+//                                                            UITextAttributeTextColor: [UIColor whiteColor],
+//                                                            }];
+//    
+//
+    
+    
+    
+    
     
     PrayerCategoryViewController *pcvc = [[PrayerCategoryViewController alloc] init];
     UINavigationController *pcvcNavController = [[UINavigationController alloc] initWithRootViewController:pcvc];
-    pcvcNavController.navigationBar.barTintColor = [UIColor whiteColor];
+//    pcvcNavController.navigationBar.barTintColor = [UIColor purpleColor];
     
     BookmarksViewController *bookmarksController = [[BookmarksViewController alloc] init];
     UINavigationController *bookmarksNavController = [[UINavigationController alloc] initWithRootViewController:bookmarksController];
-    bookmarksNavController.navigationBar.barTintColor = [UIColor whiteColor];
+//    bookmarksNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     RecentViewController *recentController = [[RecentViewController alloc] init];
     UINavigationController *recentNavController = [[UINavigationController alloc] initWithRootViewController:recentController];
-    recentNavController.navigationBar.barTintColor = [UIColor whiteColor];
+//    recentNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     SearchViewController *searchController = [[SearchViewController alloc] init];
     UINavigationController *searchNavController = [[UINavigationController alloc] initWithRootViewController:searchController];
-    searchNavController.navigationBar.barTintColor = [UIColor whiteColor];
+//    searchNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     SettingsController *settingsController = [[SettingsController alloc] init];
     UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingsController];
-    settingsNavController.navigationBar.barTintColor = [UIColor whiteColor];
+//    settingsNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     self.tabBarController = [[UITabBarController alloc] init];
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:
