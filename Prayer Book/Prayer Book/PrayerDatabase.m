@@ -23,11 +23,13 @@ NSString *const kPrefsFontSize				= @"fontSizePref";
 
 NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 
+NSString *const kLanguageCzech              = @"cs";
 NSString *const kLanguageDutch              = @"nl";
 NSString *const kLanguageEnglish            = @"en";
 NSString *const kLanguageFrench             = @"fr";
 NSString *const kLanguagePersian            = @"fa";
 NSString *const kLanguageSpanish            = @"es";
+NSString *const kLanguageSlovak             = @"sk";
 
 NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLanguagesPreferenceChanged";
 
@@ -71,12 +73,18 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		// check what languages are enabled
 		self.languages = [[NSMutableArray alloc] init];
         self.languageSQL = [[NSMutableString alloc] init];
+        _showCzechPrayers = NO;
         _showDutchPrayers = NO;
         _showEnglishPrayers = NO;
         _showFrenchPrayers = NO;
         _showPersianPrayers = NO;
         _showSpanishPrayers = NO;
+        _showSlovakPrayers = NO;
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        if ([userDefaults boolForKey:kLanguageCzech]) {
+            _showCzechPrayers = YES;
+            [self.languages addObject:kLanguageCzech];
+        }
         if ([userDefaults boolForKey:kLanguageDutch])
         {
             _showDutchPrayers = YES;
@@ -102,6 +110,10 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
             _showSpanishPrayers = YES;
             [self.languages addObject:kLanguageSpanish];
         }
+        if ([userDefaults boolForKey:kLanguageSlovak]) {
+            _showSlovakPrayers = YES;
+            [self.languages addObject:kLanguageSlovak];
+        }
         
         // if no languages was enabled, try and enable a language based on their preferrences
         if ([self.languages count] == 0)
@@ -110,34 +122,33 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
             NSArray *preferredLanguages = [NSLocale preferredLanguages];
             for (NSString *lang in preferredLanguages)
             {
-                if ([lang isEqualToString:kLanguageEnglish])
-                {
+                if ([lang isEqualToString:kLanguageEnglish]) {
                     _showEnglishPrayers = YES;
                     [self.languages addObject:kLanguageEnglish];
                     break;
-                }
-                else if ([lang isEqualToString:kLanguageSpanish])
-                {
+                } else if ([lang isEqualToString:kLanguageSpanish]) {
                     _showSpanishPrayers = YES;
                     [self.languages addObject:kLanguageSpanish];
                     break;
-                }
-                else if ([lang isEqualToString:kLanguageFrench])
-                {
+                } else if ([lang isEqualToString:kLanguageFrench]) {
                     _showFrenchPrayers = YES;
                     [self.languages addObject:kLanguageFrench];
                     break;
-                }
-                else if ([lang isEqualToString:kLanguageDutch])
-                {
+                } else if ([lang isEqualToString:kLanguageDutch]) {
                     _showDutchPrayers = YES;
                     [self.languages addObject:kLanguageDutch];
                     break;
-                }
-                else if ([lang isEqualToString:kLanguagePersian])
-                {
+                } else if ([lang isEqualToString:kLanguagePersian]) {
                     _showPersianPrayers = YES;
                     [self.languages addObject:kLanguagePersian];
+                    break;
+                } else if ([lang isEqualToString:kLanguageCzech]) {
+                    _showCzechPrayers = YES;
+                    [self.languages addObject:kLanguageCzech];
+                    break;
+                } else if ([lang isEqualToString:kLanguageSlovak]) {
+                    _showSlovakPrayers = YES;
+                    [self.languages addObject:kLanguageSlovak];
                     break;
                 }
             }
@@ -556,6 +567,33 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 
 #pragma mark - Language accessors
 
+@synthesize showCzechPrayers = _showCzechPrayers;
+- (void)setShowCzechPrayers:(BOOL)shouldShowCzechPrayers {
+    if (_showCzechPrayers == shouldShowCzechPrayers) {
+        return;
+    }
+    
+    _showCzechPrayers = shouldShowCzechPrayers;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:_showCzechPrayers forKey:kLanguageCzech];
+    [userDefaults synchronize];
+    
+    if (_showCzechPrayers) {
+        [self.languages addObject:kLanguageCzech];
+    } else {
+        [self.languages removeObject:kLanguageCzech];
+    }
+    
+    if ([self.languages count] == 0) {
+        self.showEnglishPrayers = YES;
+    }
+    
+    [self buildLanguages];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
+                                                        object:nil];
+}
+
 @synthesize showDutchPrayers = _showDutchPrayers;
 - (void)setShowDutchPrayers:(BOOL)shouldShowDutchPrayers {
     if (_showDutchPrayers == shouldShowDutchPrayers)
@@ -670,6 +708,33 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     
     if ([self.languages count] == 0)
         self.showEnglishPrayers = YES;
+    
+    [self buildLanguages];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
+                                                        object:nil];
+}
+
+@synthesize showSlovakPrayers = _showSlovakPrayers;
+- (void)setShowSlovakPrayers:(BOOL)shouldShowSlovakPrayers {
+    if (_showSlovakPrayers == shouldShowSlovakPrayers) {
+        return;
+    }
+    
+    _showSlovakPrayers = shouldShowSlovakPrayers;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:_showSlovakPrayers forKey:kLanguageSlovak];
+    [userDefaults synchronize];
+    
+    if (_showSlovakPrayers) {
+        [self.languages addObject:kLanguageSlovak];
+    } else {
+        [self.languages removeObject:kLanguageSlovak];
+    }
+    
+    if ([self.languages count] == 0) {
+        self.showEnglishPrayers = YES;
+    }
     
     [self buildLanguages];
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged

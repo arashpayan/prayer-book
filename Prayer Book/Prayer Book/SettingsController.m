@@ -10,21 +10,26 @@
 #import "AboutViewController.h"
 #import "PrayerDatabase.h"
 
+// the enums are in phonetically (english) alphabetical order
 typedef enum {
+    LG_CZECH,
     LG_ENGLISH,
     LG_SPANISH,
     LG_PERSIAN,
     LG_FRENCH,
     LG_DUTCH,
+    LG_SLOVAK,
 } LANGUAGES;
 
 
 @interface SettingsController ()
 
+@property (nonatomic, strong) UISwitch *czechSwitch;
 @property (nonatomic, strong) UISwitch *dutchSwitch;
 @property (nonatomic, strong) UISwitch *englishSwitch;
 @property (nonatomic, strong) UISwitch *frenchSwitch;
 @property (nonatomic, strong) UISwitch *persianSwitch;
+@property (nonatomic, strong) UISwitch *slovakSwitch;
 @property (nonatomic, strong) UISwitch *spanishSwitch;
 
 @end
@@ -52,12 +57,18 @@ typedef enum {
 - (void)languagePreferenceChanged:(NSNotification*)notification {
     if ([self isViewLoaded])
     {
+        self.czechSwitch.on = [PrayerDatabase sharedInstance].showCzechPrayers;
         self.dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
         self.englishSwitch.on = [PrayerDatabase sharedInstance].showEnglishPrayers;
         self.frenchSwitch.on = [PrayerDatabase sharedInstance].showFrenchPrayers;
         self.persianSwitch.on = [PrayerDatabase sharedInstance].showPersianPrayers;
         self.spanishSwitch.on = [PrayerDatabase sharedInstance].showSpanishPrayers;
+        self.slovakSwitch.on = [PrayerDatabase sharedInstance].showSlovakPrayers;
     }
+}
+
+- (void)czechSwitchToggled {
+    [PrayerDatabase sharedInstance].showCzechPrayers = self.czechSwitch.on;
 }
 
 - (void)dutchSwitchToggled {
@@ -80,12 +91,19 @@ typedef enum {
     [PrayerDatabase sharedInstance].showSpanishPrayers = self.spanishSwitch.on;
 }
 
+- (void)slovakSwitchToggled {
+    [PrayerDatabase sharedInstance].showSlovakPrayers = self.slovakSwitch.on;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    self.czechSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.czechSwitch.on = [PrayerDatabase sharedInstance].showCzechPrayers;
+    [self.czechSwitch addTarget:self action:@selector(czechSwitchToggled) forControlEvents:UIControlEventValueChanged];
     self.dutchSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     self.dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
     [self.dutchSwitch addTarget:self action:@selector(dutchSwitchToggled) forControlEvents:UIControlEventValueChanged];
@@ -101,6 +119,9 @@ typedef enum {
     self.spanishSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     self.spanishSwitch.on = [PrayerDatabase sharedInstance].showSpanishPrayers;
     [self.spanishSwitch addTarget:self action:@selector(spanishSwitchToggled) forControlEvents:UIControlEventValueChanged];
+    self.slovakSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.slovakSwitch.on = [PrayerDatabase sharedInstance].showSlovakPrayers;
+    [self.slovakSwitch addTarget:self action:@selector(slovakSwitchToggled) forControlEvents:UIControlEventValueChanged];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -121,7 +142,7 @@ typedef enum {
     // Return the number of rows in the section.
     // English, Español, Français, Nederlands, فارسی
     if (section == 0)
-        return 5;
+        return 7;
     else
         return 1;
 }
@@ -141,6 +162,11 @@ typedef enum {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
         switch (indexPath.row) {
+            case LG_CZECH:
+                cell.textLabel.text = @"Čeština";
+                self.czechSwitch.on = PrayerDatabase.sharedInstance.showCzechPrayers;
+                cell.accessoryView = self.czechSwitch;
+                break;
             case LG_ENGLISH:
                 cell.textLabel.text = @"English";
                 self.englishSwitch.on = [PrayerDatabase sharedInstance].showEnglishPrayers;
@@ -151,20 +177,26 @@ typedef enum {
                 self.spanishSwitch.on = [PrayerDatabase sharedInstance].showSpanishPrayers;
                 cell.accessoryView = self.spanishSwitch;
                 break;
-            case LG_DUTCH:
-                cell.textLabel.text = @"Nederlands";
-                self.dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
-                cell.accessoryView = self.dutchSwitch;
+            case LG_PERSIAN:
+                cell.textLabel.text = @"فارسی";
+                self.persianSwitch.on = [PrayerDatabase sharedInstance].showPersianPrayers;
+                cell.accessoryView = self.persianSwitch;
                 break;
             case LG_FRENCH:
                 cell.textLabel.text = @"Français";
                 self.frenchSwitch.on = [PrayerDatabase sharedInstance].showFrenchPrayers;
                 cell.accessoryView = self.frenchSwitch;
                 break;
-            case LG_PERSIAN:
-                cell.textLabel.text = @"فارسی";
-                self.persianSwitch.on = [PrayerDatabase sharedInstance].showPersianPrayers;
-                cell.accessoryView = self.persianSwitch;
+            case LG_DUTCH:
+                cell.textLabel.text = @"Nederlands";
+                self.dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
+                cell.accessoryView = self.dutchSwitch;
+                break;
+            case LG_SLOVAK:
+                cell.textLabel.text = @"Slovenčina";
+                self.slovakSwitch.on = PrayerDatabase.sharedInstance.showSlovakPrayers;
+                cell.accessoryView = self.slovakSwitch;
+                break;
             default:
                 break;
         }
@@ -203,18 +235,6 @@ typedef enum {
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    self.dutchSwitch = nil;
-    self.englishSwitch = nil;
-    self.frenchSwitch = nil;
-    self.persianSwitch = nil;
-    self.spanishSwitch = nil;
 }
 
 @end
