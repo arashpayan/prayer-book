@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) PrayerView *prayerView;
 @property (nonatomic, strong) NSString *backButtonTitle;
-@property (nonatomic, assign) BOOL composingMail;
 @property (nonatomic, strong) Prayer *prayer;
 
 @end
@@ -26,7 +25,6 @@
 	{
         self.prayer = prayer;
 		self.backButtonTitle = aBackButtonTitle;
-		self.composingMail = NO;
 		
 		self.hidesBottomBarWhenPushed = YES;
 		
@@ -58,7 +56,6 @@
 
 - (void)mailAction {
 	if ([MFMailComposeViewController canSendMail]) {
-		self.composingMail = YES;
 		MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 		mailController.mailComposeDelegate = self;
 		[mailController setSubject:self.prayer.category];
@@ -77,7 +74,6 @@
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:nil];
-	self.composingMail = NO;
 }
 
 // gets called back from the action sheet to bookmark the fee
@@ -232,12 +228,9 @@
 	[PrayerDatabase sharedInstance].prayerView = (PrayerView*)self.view;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-	if (self.composingMail)
-		return;
-}
-
 - (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
 	[PrayerDatabase sharedInstance].prayerBeingViewed = NO;
 	[PrayerDatabase sharedInstance].prayerView = nil;
 }
