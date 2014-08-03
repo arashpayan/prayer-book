@@ -16,7 +16,6 @@
 		5B89EB0A198DA1E900570F76 /* TabBarBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B89EB04198DA1E900570F76 /* TabBarBookmark@2x.png */; };
 		5B92A9FB17E4EB5B00E4830F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B92A9FA17E4EB5B00E4830F /* CFNetwork.framework */; };
 		5B92A9FD17E4EB6800E4830F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B92A9FC17E4EB6800E4830F /* SystemConfiguration.framework */; };
-		5B92A9FF17E4EB7100E4830F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B92A9FE17E4EB7100E4830F /* StoreKit.framework */; };
 		5BF8520217E07A0900F3921D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520117E07A0900F3921D /* Foundation.framework */; };
 		5BF8520417E07A0900F3921D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520317E07A0900F3921D /* CoreGraphics.framework */; };
 		5BF8520617E07A0900F3921D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520517E07A0900F3921D /* UIKit.framework */; };
@@ -24,11 +23,6 @@
 		5BF8520E17E07A0900F3921D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8520D17E07A0900F3921D /* main.m */; };
 		5BF8521217E07A0900F3921D /* PBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8521117E07A0900F3921D /* PBAppDelegate.m */; };
 		5BF8521417E07A0900F3921D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8521317E07A0900F3921D /* Images.xcassets */; };
-		5BF8521B17E07A0900F3921D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8521A17E07A0900F3921D /* XCTest.framework */; };
-		5BF8521C17E07A0900F3921D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520117E07A0900F3921D /* Foundation.framework */; };
-		5BF8521D17E07A0900F3921D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520517E07A0900F3921D /* UIKit.framework */; };
-		5BF8522517E07A0900F3921D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8522317E07A0900F3921D /* InfoPlist.strings */; };
-		5BF8522717E07A0900F3921D /* Prayer_BookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8522617E07A0900F3921D /* Prayer_BookTests.m */; };
 		5BF8523217E0839900F3921D /* PrayerCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8523117E0839900F3921D /* PrayerCategoryViewController.m */; };
 		5BF8523517E3A55E00F3921D /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8523417E3A55E00F3921D /* PrayerDatabase.m */; };
 		5BF8523817E3A57200F3921D /* Prayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8523717E3A57200F3921D /* Prayer.m */; };
@@ -56,16 +50,6 @@
 		5BF852F417E4687500F3921D /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BF852D817E4687500F3921D /* AppiraterLocalizable.strings */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5BF8521E17E07A0900F3921D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5BF851F617E07A0900F3921D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BF851FD17E07A0900F3921D;
-			remoteInfo = "Prayer Book";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		5B89EAF8198DA07100570F76 /* TabBarSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarSettings@2x.png"; sourceTree = "<group>"; };
 		5B89EAFA198DA07100570F76 /* TabBarPrayers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarPrayers@2x.png"; sourceTree = "<group>"; };
@@ -76,7 +60,6 @@
 		5B89EB04198DA1E900570F76 /* TabBarBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarBookmark@2x.png"; sourceTree = "<group>"; };
 		5B92A9FA17E4EB5B00E4830F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5B92A9FC17E4EB6800E4830F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5B92A9FE17E4EB7100E4830F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5BF851FE17E07A0900F3921D /* Prayer Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prayer Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF8520117E07A0900F3921D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BF8520317E07A0900F3921D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,11 +71,6 @@
 		5BF8521017E07A0900F3921D /* PBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBAppDelegate.h; sourceTree = "<group>"; };
 		5BF8521117E07A0900F3921D /* PBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBAppDelegate.m; sourceTree = "<group>"; };
 		5BF8521317E07A0900F3921D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5BF8521917E07A0900F3921D /* Prayer BookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Prayer BookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BF8521A17E07A0900F3921D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		5BF8522217E07A0900F3921D /* Prayer BookTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Prayer BookTests-Info.plist"; sourceTree = "<group>"; };
-		5BF8522417E07A0900F3921D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5BF8522617E07A0900F3921D /* Prayer_BookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Prayer_BookTests.m; sourceTree = "<group>"; };
 		5BF8523017E0839900F3921D /* PrayerCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerCategoryViewController.h; sourceTree = "<group>"; };
 		5BF8523117E0839900F3921D /* PrayerCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerCategoryViewController.m; sourceTree = "<group>"; };
 		5BF8523317E3A55E00F3921D /* PrayerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerDatabase.h; sourceTree = "<group>"; };
@@ -166,23 +144,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B92A9FF17E4EB7100E4830F /* StoreKit.framework in Frameworks */,
 				5B92A9FD17E4EB6800E4830F /* SystemConfiguration.framework in Frameworks */,
 				5B92A9FB17E4EB5B00E4830F /* CFNetwork.framework in Frameworks */,
 				5BF8526017E427A100F3921D /* libsqlite3.dylib in Frameworks */,
 				5BF8520417E07A0900F3921D /* CoreGraphics.framework in Frameworks */,
 				5BF8520617E07A0900F3921D /* UIKit.framework in Frameworks */,
 				5BF8520217E07A0900F3921D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BF8521617E07A0900F3921D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BF8521B17E07A0900F3921D /* XCTest.framework in Frameworks */,
-				5BF8521D17E07A0900F3921D /* UIKit.framework in Frameworks */,
-				5BF8521C17E07A0900F3921D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +161,6 @@
 			children = (
 				5BF852D417E4687500F3921D /* Appirater */,
 				5BF8520717E07A0900F3921D /* Prayer Book */,
-				5BF8522017E07A0900F3921D /* Prayer BookTests */,
 				5BF8520017E07A0900F3921D /* Frameworks */,
 				5BF851FF17E07A0900F3921D /* Products */,
 			);
@@ -204,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				5BF851FE17E07A0900F3921D /* Prayer Book.app */,
-				5BF8521917E07A0900F3921D /* Prayer BookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,14 +177,12 @@
 		5BF8520017E07A0900F3921D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B92A9FE17E4EB7100E4830F /* StoreKit.framework */,
 				5B92A9FC17E4EB6800E4830F /* SystemConfiguration.framework */,
 				5B92A9FA17E4EB5B00E4830F /* CFNetwork.framework */,
 				5BF8525F17E427A100F3921D /* libsqlite3.dylib */,
 				5BF8520117E07A0900F3921D /* Foundation.framework */,
 				5BF8520317E07A0900F3921D /* CoreGraphics.framework */,
 				5BF8520517E07A0900F3921D /* UIKit.framework */,
-				5BF8521A17E07A0900F3921D /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,24 +239,6 @@
 				5BF8520A17E07A0900F3921D /* InfoPlist.strings */,
 				5BF8520D17E07A0900F3921D /* main.m */,
 				5BF8520F17E07A0900F3921D /* Prayer Book-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5BF8522017E07A0900F3921D /* Prayer BookTests */ = {
-			isa = PBXGroup;
-			children = (
-				5BF8522617E07A0900F3921D /* Prayer_BookTests.m */,
-				5BF8522117E07A0900F3921D /* Supporting Files */,
-			);
-			path = "Prayer BookTests";
-			sourceTree = "<group>";
-		};
-		5BF8522117E07A0900F3921D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BF8522217E07A0900F3921D /* Prayer BookTests-Info.plist */,
-				5BF8522317E07A0900F3921D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -371,24 +316,6 @@
 			productReference = 5BF851FE17E07A0900F3921D /* Prayer Book.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5BF8521817E07A0900F3921D /* Prayer BookTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5BF8522D17E07A0900F3921D /* Build configuration list for PBXNativeTarget "Prayer BookTests" */;
-			buildPhases = (
-				5BF8521517E07A0900F3921D /* Sources */,
-				5BF8521617E07A0900F3921D /* Frameworks */,
-				5BF8521717E07A0900F3921D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5BF8521F17E07A0900F3921D /* PBXTargetDependency */,
-			);
-			name = "Prayer BookTests";
-			productName = "Prayer BookTests";
-			productReference = 5BF8521917E07A0900F3921D /* Prayer BookTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -396,14 +323,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PB;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Arash Payan";
 				TargetAttributes = {
 					5BF851FD17E07A0900F3921D = {
 						DevelopmentTeam = 3HDTD4H95Q;
-					};
-					5BF8521817E07A0900F3921D = {
-						TestTargetID = 5BF851FD17E07A0900F3921D;
 					};
 				};
 			};
@@ -446,7 +370,6 @@
 			projectRoot = "";
 			targets = (
 				5BF851FD17E07A0900F3921D /* Prayer Book */,
-				5BF8521817E07A0900F3921D /* Prayer BookTests */,
 			);
 		};
 /* End PBXProject section */
@@ -477,14 +400,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BF8521717E07A0900F3921D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BF8522517E07A0900F3921D /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -512,37 +427,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BF8521517E07A0900F3921D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BF8522717E07A0900F3921D /* Prayer_BookTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5BF8521F17E07A0900F3921D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5BF851FD17E07A0900F3921D /* Prayer Book */;
-			targetProxy = 5BF8521E17E07A0900F3921D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5BF8520A17E07A0900F3921D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5BF8520B17E07A0900F3921D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5BF8522317E07A0900F3921D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BF8522417E07A0900F3921D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -643,7 +534,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -672,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,7 +573,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -706,7 +595,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -716,7 +605,6 @@
 		5BF8522B17E07A0900F3921D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -732,7 +620,6 @@
 		5BF8522C17E07A0900F3921D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -742,48 +629,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		5BF8522E17E07A0900F3921D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Prayer Book.app/Prayer Book";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Prayer Book/Prayer Book-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Prayer BookTests/Prayer BookTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		5BF8522F17E07A0900F3921D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Prayer Book.app/Prayer Book";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Prayer Book/Prayer Book-Prefix.pch";
-				INFOPLIST_FILE = "Prayer BookTests/Prayer BookTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -804,15 +649,6 @@
 			buildConfigurations = (
 				5BF8522B17E07A0900F3921D /* Debug */,
 				5BF8522C17E07A0900F3921D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5BF8522D17E07A0900F3921D /* Build configuration list for PBXNativeTarget "Prayer BookTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BF8522E17E07A0900F3921D /* Debug */,
-				5BF8522F17E07A0900F3921D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
