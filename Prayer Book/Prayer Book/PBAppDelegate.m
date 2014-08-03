@@ -24,23 +24,17 @@
     
     PrayerCategoryViewController *pcvc = [[PrayerCategoryViewController alloc] init];
     UINavigationController *pcvcNavController = [[UINavigationController alloc] initWithRootViewController:pcvc];
-    pcvcNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     BookmarksViewController *bookmarksController = [[BookmarksViewController alloc] init];
     UINavigationController *bookmarksNavController = [[UINavigationController alloc] initWithRootViewController:bookmarksController];
-    bookmarksNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     RecentViewController *recentController = [[RecentViewController alloc] init];
     UINavigationController *recentNavController = [[UINavigationController alloc] initWithRootViewController:recentController];
-    recentNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     SearchViewController *searchController = [[SearchViewController alloc] init];
     UINavigationController *searchNavController = [[UINavigationController alloc] initWithRootViewController:searchController];
-    searchNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     SettingsController *settingsController = [[SettingsController alloc] init];
-    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingsController];
-    settingsNavController.navigationBar.barTintColor = [UIColor whiteColor];
     
     self.tabBarController = [[UITabBarController alloc] init];
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:
@@ -48,7 +42,7 @@
                                                bookmarksNavController,
                                                recentNavController,
                                                searchNavController,
-                                               settingsNavController, nil]];
+                                               settingsController, nil]];
     
     self.window.rootViewController = self.tabBarController;
     

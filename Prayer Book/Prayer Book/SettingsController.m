@@ -7,7 +7,6 @@
 //
 
 #import "SettingsController.h"
-#import "AboutViewController.h"
 #import "PrayerDatabase.h"
 
 // the enums are in phonetically (english) alphabetical order
@@ -226,8 +225,7 @@ typedef enum {
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        AboutViewController *aboutController = [[AboutViewController alloc] init];
-        [self.navigationController pushViewController:aboutController animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://arashpayan.com/in_app_pages/prayer_book/about"]];
     }
 }
 

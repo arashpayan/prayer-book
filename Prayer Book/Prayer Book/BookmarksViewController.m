@@ -19,8 +19,13 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
-		self.title = NSLocalizedString(@"BOOKMARKS", nil);
-        [self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1]];
+        self.title = NSLocalizedString(@"BOOKMARKS", nil);
+        if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0) {
+            [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"TabBarBookmarkSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"TabBarBookmark.png"]];
+        } else {
+            self.tabBarItem.image = [UIImage imageNamed:@"TabBarBookmark.png"];
+        }
+		
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
 	}
 	

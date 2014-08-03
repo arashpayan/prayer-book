@@ -81,7 +81,7 @@
 	Prayer *prayer = [self.resultSet objectAtIndex:indexPath.row];
 	cell.title.text = prayer.title;
 	cell.subtitle.text = prayer.category;
-	cell.rightLabel.text = [NSString stringWithFormat:@"~%@ %@", prayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
+	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", prayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
 	
 	return cell;
 }
