@@ -11,11 +11,6 @@
 
 
 @interface CategoryCell : UITableViewCell
-//{
-//	UILabel *categoryLabel;
-//	UILabel *countLabel;
-//	RoundedRectangleView *roundedRectangle;
-//}
 
 @property (nonatomic, strong) UILabel *categoryLabel;
 @property (nonatomic, strong) UILabel *countLabel;

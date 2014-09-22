@@ -18,11 +18,20 @@ typedef enum {
     LG_FRENCH,
     LG_DUTCH,
     LG_SLOVAK,
+    SettingsNumLanguages
 } LANGUAGES;
+
+typedef enum {
+    SettingsLanguagesSection,
+    SettingsAboutSection,
+    SettingsNumSections,
+    SettingsThemeSection,
+} SettingsSections;
 
 
 @interface SettingsController ()
 
+@property (nonatomic, readwrite) UISwitch *classicThemeSwitch;
 @property (nonatomic, strong) UISwitch *czechSwitch;
 @property (nonatomic, strong) UISwitch *dutchSwitch;
 @property (nonatomic, strong) UISwitch *englishSwitch;
@@ -35,8 +44,7 @@ typedef enum {
 
 @implementation SettingsController
 
-- (id)init
-{
+- (id)init {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         // Custom initialization
@@ -54,8 +62,7 @@ typedef enum {
 }
 
 - (void)languagePreferenceChanged:(NSNotification*)notification {
-    if ([self isViewLoaded])
-    {
+    if ([self isViewLoaded]) {
         self.czechSwitch.on = [PrayerDatabase sharedInstance].showCzechPrayers;
         self.dutchSwitch.on = [PrayerDatabase sharedInstance].showDutchPrayers;
         self.englishSwitch.on = [PrayerDatabase sharedInstance].showEnglishPrayers;
@@ -96,8 +103,7 @@ typedef enum {
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.czechSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -123,31 +129,33 @@ typedef enum {
     [self.slovakSwitch addTarget:self action:@selector(slovakSwitchToggled) forControlEvents:UIControlEventValueChanged];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return SettingsNumSections;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     // English, Español, Français, Nederlands, فارسی
-    if (section == 0)
-        return 7;
-    else
+    if (section == SettingsThemeSection) {
         return 1;
+    } else if (section == SettingsLanguagesSection) {
+        return SettingsNumLanguages;
+    } else if (section == SettingsAboutSection) {
+        return 1;
+    }
+    
+    [NSException raise:@"InvalidSection" format:@"Invalid section number %ld", (long)section];
+    return 0;   // never gets here
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -156,8 +164,7 @@ typedef enum {
     }
     
     // Configure the cell...
-    if (indexPath.section == 0)
-    {
+    if (indexPath.section == SettingsLanguagesSection) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
         switch (indexPath.row) {
@@ -200,8 +207,7 @@ typedef enum {
                 break;
         }
     }
-    else if (indexPath.section == 1)
-    {
+    else if (indexPath.section == SettingsAboutSection) {
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.textLabel.text = NSLocalizedString(@"ABOUT", nil);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -211,7 +217,7 @@ typedef enum {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0)
+    if (section == SettingsLanguagesSection)
         return NSLocalizedString(@"Prayer Languages", nil);
     
     return nil;
@@ -219,10 +225,8 @@ typedef enum {
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 1)
-    {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == SettingsAboutSection) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://arashpayan.com/in_app_pages/prayer_book/about"]];

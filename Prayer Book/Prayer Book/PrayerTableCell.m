@@ -7,7 +7,7 @@
 //
 
 #import "PrayerTableCell.h"
-
+#import "PBUI.h"
 
 @implementation PrayerTableCell
 
@@ -17,14 +17,14 @@
 		UIColor *blackColor = [UIColor blackColor];
 		UIColor *whiteColor = [UIColor whiteColor];
 		
-		self.title = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, 280, 20)];
+		self.title = [[UILabel alloc] initWithFrame:CGRectZero];
 		self.title.backgroundColor = whiteColor;
 		self.title.textColor = blackColor;
 		self.title.highlightedTextColor = whiteColor;
 		self.title.opaque = YES;
 		self.title.font = [UIFont systemFontOfSize:16];
 		
-		self.subtitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 28, 200, 14)];
+		self.subtitle = [[UILabel alloc] initWithFrame:CGRectMake(PBUI.cellMargin, 28, 200, 14)];
 		self.subtitle.backgroundColor = whiteColor;
 		self.subtitle.textColor = [UIColor colorWithRed:130.0/255.0 green:130.0/255.0 blue:130.0/255.0 alpha:1];
 		self.subtitle.highlightedTextColor = whiteColor;
@@ -51,7 +51,7 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-	CGRect titleRect = CGRectMake(10, 4, CGRectGetMaxX(frame)-40, 20);
+	CGRect titleRect = CGRectMake(PBUI.cellMargin, 4, CGRectGetMaxX(frame)-40, 20);
 	self.title.frame = titleRect;
 	
 	CGRect rightRect = CGRectMake(CGRectGetMaxX(frame)-135, 28, 100, 14);

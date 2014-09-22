@@ -186,13 +186,13 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 			
 			sqlite3_prepare_v2(dbHandle,
 							   [searchForPrayerSQL UTF8String],
-							   [searchForPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+							   (int)[searchForPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 							   &searchStmt,
 							   0);
 			int rc = sqlite3_step(searchStmt);
 			if (rc == SQLITE_ROW) {
 				long prayerId = sqlite3_column_int(searchStmt, 0);
-				[newBookmarks addObject:[NSNumber numberWithInt:prayerId]];
+				[newBookmarks addObject:[NSNumber numberWithLong:prayerId]];
 			}
 			
 			sqlite3_finalize(searchStmt);
@@ -216,7 +216,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 			
 			sqlite3_prepare_v2(dbHandle,
 							   [searchForPrayerSQL UTF8String],
-							   [searchForPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+							   (int)[searchForPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 							   &searchStmt,
 							   0);
 			
@@ -224,7 +224,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 			if (rc == SQLITE_ROW)
 			{
 				long prayerId = sqlite3_column_int(searchStmt, 0);
-				[newRecents addObject:[NSNumber numberWithInt:prayerId]];
+				[newRecents addObject:[NSNumber numberWithLong:prayerId]];
 			}
 				
 				sqlite3_finalize(searchStmt);
@@ -281,7 +281,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
 								[categoriesSQL UTF8String],
-								[categoriesSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								(int)[categoriesSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 								&categoriesStmt,
 								0);
 	
@@ -326,7 +326,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
 								[getPrayersSQL UTF8String],
-								[getPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								(int)[getPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 								&getPrayersStmt,
 								0);
 	
@@ -366,7 +366,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
 								[countPrayersSQL UTF8String],
-								[countPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								(int)[countPrayersSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 								&countPrayersStmt,
 								0);
 	
@@ -457,7 +457,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
 								[getPrayerSQL UTF8String],
-								[getPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								(int)[getPrayerSQL lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 								&getPrayerStmt,
 								0);
 	
@@ -528,7 +528,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	sqlite3_stmt *searchStmt;
 	int rc = sqlite3_prepare_v2(dbHandle,
 								[query UTF8String],
-								[query lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+								(int)[query lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 								&searchStmt,
 								0);
 	if (rc != SQLITE_OK)

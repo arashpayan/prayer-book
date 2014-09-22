@@ -144,6 +144,8 @@
 }
 
 - (void)viewDidUnload {
+    [super viewDidUnload];
+    
     self.prayerView = nil;
 }
 

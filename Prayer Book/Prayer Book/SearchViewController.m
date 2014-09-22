@@ -48,6 +48,8 @@
 }
 
 - (void)viewDidUnload {
+    [super viewDidUnload];
+    
 	self.table = nil;
 	self.searchBar = nil;
 	self.searchController = nil;

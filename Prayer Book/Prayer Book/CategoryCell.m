@@ -7,30 +7,25 @@
 //
 
 #import "CategoryCell.h"
-
+#import "PBUI.h"
 
 @implementation CategoryCell
-
-//@synthesize categoryLabel;
-//@synthesize countLabel;
-//@synthesize roundedRectangle;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
 		// Initialization code
-		self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 240, 30)];
+        self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		self.categoryLabel.font = [UIFont systemFontOfSize:20];
 		self.categoryLabel.highlightedTextColor = [UIColor whiteColor];
 		
-		CGRect countRect = CGRectMake(260, 12, 32, 20);
-		self.countLabel = [[UILabel alloc] initWithFrame:countRect];
+		self.countLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		self.countLabel.font = [UIFont systemFontOfSize:14];
 		self.countLabel.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
 		self.countLabel.opaque = YES;
 		self.countLabel.textColor = [UIColor whiteColor];
 		self.countLabel.textAlignment = NSTextAlignmentCenter;
 		self.countLabel.highlightedTextColor = [UIColor colorWithRed:2.0/255.0 green:114.0/255.0 blue:237.0/255.0 alpha:1];
-		self.roundedRectangle = [[RoundedRectangleView alloc] initWithFrame:countRect];
+		self.roundedRectangle = [[RoundedRectangleView alloc] initWithFrame:CGRectZero];
 		
 		[self.contentView addSubview:self.categoryLabel];
 		[self.contentView addSubview:self.roundedRectangle];
@@ -44,7 +39,7 @@
 	self.countLabel.frame = countRect;
 	self.roundedRectangle.frame = countRect;
 	
-	CGRect categoryRect = CGRectMake(10, 6, CGRectGetMaxX(frame)-90, 30);
+	CGRect categoryRect = CGRectMake(PBUI.cellMargin, 6, CGRectGetMaxX(frame)-90, 30);
 	self.categoryLabel.frame = categoryRect;
 	
 	[super setFrame:frame];

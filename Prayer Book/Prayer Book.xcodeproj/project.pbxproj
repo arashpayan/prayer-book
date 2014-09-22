@@ -14,8 +14,11 @@
 		5B89EB07198DA1E900570F76 /* ToolBarBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B89EB01198DA1E900570F76 /* ToolBarBookmark@2x.png */; };
 		5B89EB08198DA1E900570F76 /* ToolBarBigger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B89EB02198DA1E900570F76 /* ToolBarBigger@2x.png */; };
 		5B89EB0A198DA1E900570F76 /* TabBarBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B89EB04198DA1E900570F76 /* TabBarBookmark@2x.png */; };
+		5B8B03FD19CF85EF0017C2F9 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B03FC19CF85EF0017C2F9 /* Launch Screen.xib */; };
+		5B8B040019CFB2D10017C2F9 /* PBUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B03FF19CFB2D10017C2F9 /* PBUI.m */; };
 		5B92A9FB17E4EB5B00E4830F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B92A9FA17E4EB5B00E4830F /* CFNetwork.framework */; };
 		5B92A9FD17E4EB6800E4830F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B92A9FC17E4EB6800E4830F /* SystemConfiguration.framework */; };
+		5BC3D33219AED8D9000DF9BA /* Prefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3D33119AED8D9000DF9BA /* Prefs.m */; };
 		5BF8520217E07A0900F3921D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520117E07A0900F3921D /* Foundation.framework */; };
 		5BF8520417E07A0900F3921D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520317E07A0900F3921D /* CoreGraphics.framework */; };
 		5BF8520617E07A0900F3921D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8520517E07A0900F3921D /* UIKit.framework */; };
@@ -58,8 +61,13 @@
 		5B89EB01198DA1E900570F76 /* ToolBarBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarBookmark@2x.png"; sourceTree = "<group>"; };
 		5B89EB02198DA1E900570F76 /* ToolBarBigger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarBigger@2x.png"; sourceTree = "<group>"; };
 		5B89EB04198DA1E900570F76 /* TabBarBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarBookmark@2x.png"; sourceTree = "<group>"; };
+		5B8B03FC19CF85EF0017C2F9 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		5B8B03FE19CFB2D10017C2F9 /* PBUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBUI.h; sourceTree = "<group>"; };
+		5B8B03FF19CFB2D10017C2F9 /* PBUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBUI.m; sourceTree = "<group>"; };
 		5B92A9FA17E4EB5B00E4830F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5B92A9FC17E4EB6800E4830F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5BC3D33019AED8D9000DF9BA /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefs.h; sourceTree = "<group>"; };
+		5BC3D33119AED8D9000DF9BA /* Prefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prefs.m; sourceTree = "<group>"; };
 		5BF851FE17E07A0900F3921D /* Prayer Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prayer Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF8520117E07A0900F3921D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BF8520317E07A0900F3921D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,6 +198,7 @@
 		5BF8520717E07A0900F3921D /* Prayer Book */ = {
 			isa = PBXGroup;
 			children = (
+				5B8B03FC19CF85EF0017C2F9 /* Launch Screen.xib */,
 				5BF8527517E44EC300F3921D /* es.lproj */,
 				5BF8527817E44EC300F3921D /* fr.lproj */,
 				5BF8527B17E44EC300F3921D /* nl.lproj */,
@@ -227,6 +236,10 @@
 				5BF8526C17E43F3F00F3921D /* SettingsController.h */,
 				5BF8526D17E43F3F00F3921D /* SettingsController.m */,
 				5BF8520817E07A0900F3921D /* Supporting Files */,
+				5BC3D33019AED8D9000DF9BA /* Prefs.h */,
+				5BC3D33119AED8D9000DF9BA /* Prefs.m */,
+				5B8B03FE19CFB2D10017C2F9 /* PBUI.h */,
+				5B8B03FF19CFB2D10017C2F9 /* PBUI.m */,
 			);
 			path = "Prayer Book";
 			sourceTree = "<group>";
@@ -388,6 +401,7 @@
 				5BF8528917E4596C00F3921D /* InfoPlist.strings in Resources */,
 				5B89EB05198DA1E900570F76 /* ToolBarSmaller@2x.png in Resources */,
 				5BF8528317E4593500F3921D /* InfoPlist.strings in Resources */,
+				5B8B03FD19CF85EF0017C2F9 /* Launch Screen.xib in Resources */,
 				5BF8520C17E07A0900F3921D /* InfoPlist.strings in Resources */,
 				5BF8526217E4295200F3921D /* pbdb.db in Resources */,
 				5BF8521417E07A0900F3921D /* Images.xcassets in Resources */,
@@ -413,9 +427,11 @@
 				5BF8524717E3A61A00F3921D /* CategoryCell.m in Sources */,
 				5BF8520E17E07A0900F3921D /* main.m in Sources */,
 				5BF8526E17E43F3F00F3921D /* SettingsController.m in Sources */,
+				5BC3D33219AED8D9000DF9BA /* Prefs.m in Sources */,
 				5BF8524417E3A60100F3921D /* PrayerTableCell.m in Sources */,
 				5BF8523E17E3A5B900F3921D /* PrayerListViewController.m in Sources */,
 				5BF8524117E3A5D500F3921D /* PrayerViewController.m in Sources */,
+				5B8B040019CFB2D10017C2F9 /* PBUI.m in Sources */,
 				5BF8526B17E4348E00F3921D /* SearchViewController.m in Sources */,
 				5BF8523217E0839900F3921D /* PrayerCategoryViewController.m in Sources */,
 				5BF8523517E3A55E00F3921D /* PrayerDatabase.m in Sources */,
