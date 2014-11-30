@@ -31,6 +31,32 @@ NSString *const kLanguagePersian            = @"fa";
 NSString *const kLanguageSpanish            = @"es";
 NSString *const kLanguageSlovak             = @"sk";
 
+extern NSString* ISOCodeFromLanguage(NSString *language) {
+    if ([language isEqualToString:@"English"]) {
+        return @"en";
+    }
+    if ([language isEqualToString:@"Español"]) {
+        return @"es";
+    }
+    if ([language isEqualToString:@"Français"]) {
+        return @"fr";
+    }
+    if ([language isEqualToString:@"فارسی"]) {
+        return @"fa";
+    }
+    if ([language isEqualToString:@"Nederlands"]) {
+        return @"nl";
+    }
+    if ([language isEqualToString:@"Čeština"]) {
+        return @"cs";
+    }
+    if ([language isEqualToString:@"Slovenčina"]) {
+        return @"sk";
+    }
+    
+    return @"";
+}
+
 NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLanguagesPreferenceChanged";
 
 @interface PrayerDatabase ()
@@ -313,15 +339,15 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	return categories;
 }
 
-- (NSArray*)prayersForCategory:(NSString*)category {
-	if (category == nil)
+- (NSArray*)prayersForCategory:(NSString*)category language:(NSString*)lang {
+    lang = ISOCodeFromLanguage(lang);
+    NSLog(@"category - %@, language - %@", category, lang);
+    if (category == nil) {
 		return nil;
-	
-	// escape any single quotes
-	category = [category stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+    }
 	
 	NSMutableArray *prayers = [[NSMutableArray alloc] init];
-	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category=\"%@\" AND (%@)", category, self.languageSQL];
+	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category=\"%@\" AND language=\"%@\"", category, lang];
 	sqlite3_stmt *getPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
@@ -358,10 +384,11 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	return prayers;
 }
 
-- (int)numberOfPrayersForCategory:(NSString*)category {
+- (int)numberOfPrayersForCategory:(NSString*)category language:(NSString*)lang {
 	int numPrayers = 0;
+    lang = ISOCodeFromLanguage(lang);
 	
-	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\" AND (%@)", category, self.languageSQL];
+	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\" AND language=\"%@\"", category, lang];
 	sqlite3_stmt *countPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,

@@ -11,6 +11,4 @@
 
 @interface SearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
-- (void)loadSavedState:(NSArray*)savedState;
-
 @end

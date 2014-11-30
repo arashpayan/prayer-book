@@ -22,6 +22,7 @@
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain])
 	{
+        NSLog(@"PrayerCategoryViewController");
 		self.prayerDb = [PrayerDatabase sharedInstance];
 		
 		self.categories = [self.prayerDb categories];
@@ -78,9 +79,10 @@
 	}
 	
 	// Configure the cell
-	NSString *category = [[self.categories objectForKey:[self.languages objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    NSString *lang = self.languages[indexPath.section];
+	NSString *category = self.categories[lang][indexPath.row];
 	[(CategoryCell*)cell setCategory:category];
-	[(CategoryCell*)cell setCount:[NSString stringWithFormat:@"%d", [self.prayerDb numberOfPrayersForCategory:category]]];
+	[(CategoryCell*)cell setCount:[NSString stringWithFormat:@"%d", [self.prayerDb numberOfPrayersForCategory:category language:lang]]];
 	
 	return cell;
 }
@@ -88,30 +90,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
-	NSString *category = [[self.categories objectForKey:[self.languages objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category]];
+    NSString *lang = self.languages[indexPath.section];
+    NSString *category = self.categories[lang][indexPath.row];
+	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category language:self.languages[indexPath.section]]];
     prayerListViewController.category = category;
     prayerListViewController.title = category;
 	[[self navigationController] pushViewController:prayerListViewController animated:YES];
-}
-
-- (void)loadSavedState:(NSMutableArray*)savedState {
-	NSString* category = [savedState objectAtIndex:0];
-	
-	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
-	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category]];
-	[prayerListViewController setCategory:category];
-	[[self navigationController] pushViewController:prayerListViewController animated:NO];
-	[savedState removeObjectAtIndex:0];
-
-	if ([savedState count] > 0)	// were they viewing a prayer?
-	{
-		NSNumber *prayerIdNumber = [savedState objectAtIndex:0];
-		long prayerId = [prayerIdNumber longValue];
-		Prayer *thePrayer = [self.prayerDb prayerWithId:prayerId];
-		PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:thePrayer backButtonTitle:thePrayer.category];
-		[[self navigationController] pushViewController:pvc animated:NO];
-	}
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

@@ -13,6 +13,4 @@
 
 @interface BookmarksViewController : UITableViewController
 
-- (void)loadSavedState:(NSMutableArray*)savedState;
-
 @end

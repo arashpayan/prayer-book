@@ -35,14 +35,10 @@ extern NSString *const PBNotificationLanguagesPreferenceChanged;
 
 extern NSString *const kPrefsFontSize;
 
+extern NSString* ISOCodeFromLanguage(NSString *language);
+
 @interface PrayerDatabase : NSObject {
 	sqlite3 *dbHandle;
-
-//	NSMutableArray *recentPrayers;
-//	NSMutableArray *bookmarkedPrayers;
-	
-	// mapping of category name (NSString*) to count (NSNumber*)
-//	NSMutableDictionary *categoryCountCache;
 }
 
 @property(nonatomic, assign, getter=isPrayerBeingViewed) BOOL prayerBeingViewed;
@@ -57,8 +53,8 @@ extern NSString *const kPrefsFontSize;
 
 + (PrayerDatabase*)sharedInstance;
 - (NSDictionary*)categories;
-- (NSArray*)prayersForCategory:(NSString*)category;
-- (int)numberOfPrayersForCategory:(NSString*)category;
+- (NSArray*)prayersForCategory:(NSString*)category language:(NSString*)language;
+- (int)numberOfPrayersForCategory:(NSString*)category language:(NSString*)lang;
 - (void)addBookmark:(long)prayerId;
 - (BOOL)prayerIsBookmarked:(long)prayerId;
 - (NSArray*)getBookmarks;

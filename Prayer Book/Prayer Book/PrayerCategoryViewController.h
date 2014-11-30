@@ -14,6 +14,4 @@
 
 @interface PrayerCategoryViewController : UITableViewController
 
-- (void)loadSavedState:(NSMutableArray*)savedState;
-
 @end

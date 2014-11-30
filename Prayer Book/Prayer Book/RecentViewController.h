@@ -12,6 +12,4 @@
 
 @interface RecentViewController : UITableViewController <UIActionSheetDelegate>
 
-- (void)loadSavedState:(NSMutableArray*)savedState;
-
 @end

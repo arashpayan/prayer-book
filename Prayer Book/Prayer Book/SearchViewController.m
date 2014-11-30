@@ -104,9 +104,4 @@
 	self.resultSet = [[PrayerDatabase sharedInstance] searchWithKeywords:keywords];
 }
 
-- (void)loadSavedState:(NSArray*)savedState {
-	NSString *searchString = [savedState objectAtIndex:0];
-	self.currQuery = searchString;
-}
-
 @end

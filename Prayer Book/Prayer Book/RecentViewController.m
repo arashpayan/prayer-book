@@ -95,14 +95,6 @@
 	return 50;
 }
 
-- (void)loadSavedState:(NSMutableArray*)savedState {
-	NSNumber *prayerId = [savedState objectAtIndex:0];
-	Prayer *prayer = [[PrayerDatabase sharedInstance] prayerWithId:[prayerId longValue]];
-	
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)];
-	[[self navigationController] pushViewController:pvc animated:NO];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
