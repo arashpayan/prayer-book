@@ -228,6 +228,7 @@
     
 	[PrayerDatabase sharedInstance].prayerBeingViewed = YES;
 	[PrayerDatabase sharedInstance].prayerView = (PrayerView*)self.view;
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -235,6 +236,7 @@
     
 	[PrayerDatabase sharedInstance].prayerBeingViewed = NO;
 	[PrayerDatabase sharedInstance].prayerView = nil;
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 
