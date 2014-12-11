@@ -51,7 +51,7 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
-	NSNumber *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
+	NSNumber *bookmark = self.bookmarks[indexPath.row];
 	Prayer *prayer = [[PrayerDatabase sharedInstance] prayerWithId:[bookmark longValue]];
 	cell.title.text = prayer.title;
 	cell.subtitle.text = prayer.category;
@@ -61,7 +61,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSNumber *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
+	NSNumber *bookmark = self.bookmarks[indexPath.row];
 	Prayer *prayer = [[PrayerDatabase sharedInstance] prayerWithId:[bookmark longValue]];
 	
 	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer];
@@ -74,7 +74,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[[PrayerDatabase sharedInstance] removeBookmark:[[self.bookmarks objectAtIndex:indexPath.row] longValue]];
+		[[PrayerDatabase sharedInstance] removeBookmark:[self.bookmarks[indexPath.row] longValue]];
 		self.bookmarks = [[PrayerDatabase sharedInstance] getBookmarks];
 		
 		[tableView reloadData];

@@ -204,8 +204,8 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	if (bookmarks != nil) {
 		NSMutableArray *newBookmarks = [NSMutableArray arrayWithCapacity:10];
 		for (NSDictionary *bookmark in bookmarks) {
-			NSString *category = [bookmark objectForKey:kBookmarkKeyCategory];
-			NSString *title = [bookmark objectForKey:kBookmarkKeyTitle];
+			NSString *category = bookmark[kBookmarkKeyCategory];
+			NSString *title = bookmark[kBookmarkKeyTitle];
 			
 			NSString *searchForPrayerSQL = [NSString stringWithFormat:@"SELECT id FROM prayers WHERE category='%@' AND openingWords='%@'", category, title];
 			sqlite3_stmt *searchStmt;
@@ -234,8 +234,8 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		NSMutableArray *newRecents = [NSMutableArray arrayWithCapacity:50];
 		for (NSDictionary *recent in recents)
 		{
-			NSString *category = [recent objectForKey:kRecentsKeyCategory];
-			NSString *title = [recent objectForKey:kRecentsKeyTitle];
+			NSString *category = recent[kRecentsKeyCategory];
+			NSString *title = recent[kRecentsKeyTitle];
 			
 			NSString *searchForPrayerSQL = [NSString stringWithFormat:@"SELECT id FROM prayers WHERE category='%@' AND openingWords='%@'", category, title];
 			sqlite3_stmt *searchStmt;
@@ -542,7 +542,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	}
 	else if ([expressions count] == 1)
 	{
-		if ([[expressions objectAtIndex:0] lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < 3)
+		if ([expressions[0] lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < 3)
 			return results;	// this is too short of a query, so exit
 	}
 	
@@ -565,7 +565,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		NSNumber *prayerId = [NSNumber numberWithLong:sqlite3_column_int(searchStmt, 0)];
 		// check for it in the cache
 		Prayer *currPrayer = nil;
-		if ((currPrayer = (Prayer*)[prayerCache objectForKey:prayerId]) == nil)
+		if ((currPrayer = (Prayer*)prayerCache[prayerId]) == nil)
 		{
 			currPrayer = [self prayerWithId:[prayerId longValue]];
 			// cache it
@@ -584,9 +584,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     for (int i=0; i<[self.languages count]; i++)
     {
         if (i == [self.languages count]-1)
-            [self.languageSQL appendFormat:@"language='%@'", [self.languages objectAtIndex:i]];
+            [self.languageSQL appendFormat:@"language='%@'", self.languages[i]];
         else
-            [self.languageSQL appendFormat:@"language='%@' OR ", [self.languages objectAtIndex:i]];
+            [self.languageSQL appendFormat:@"language='%@' OR ", self.languages[i]];
         
     }
 }

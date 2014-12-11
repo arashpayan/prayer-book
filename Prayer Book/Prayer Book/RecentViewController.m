@@ -69,7 +69,7 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
-	NSNumber *entry = [self.recentPrayers objectAtIndex:indexPath.row];
+	NSNumber *entry = self.recentPrayers[indexPath.row];
 	Prayer *thePrayer = [[PrayerDatabase sharedInstance] prayerWithId:[entry longValue]];
 	cell.title.text = thePrayer.title;
 	cell.subtitle.text = thePrayer.category;
@@ -80,7 +80,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSNumber *prayerId = [self.recentPrayers objectAtIndex:indexPath.row];
+	NSNumber *prayerId = self.recentPrayers[indexPath.row];
 	Prayer *prayer = [[PrayerDatabase sharedInstance] prayerWithId:[prayerId longValue]];
 	if (prayer == nil) {
 		printf("Unable to find recent prayer\n");

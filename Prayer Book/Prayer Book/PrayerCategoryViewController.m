@@ -59,11 +59,11 @@
 	if ([self.categories count] == 1)
 		return nil;
 	else
-		return [self.languages objectAtIndex:section];
+		return self.languages[section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [[self.categories objectForKey:[self.languages objectAtIndex:section]] count];
+	return [self.categories[self.languages[section]] count];
 }
 
 

@@ -72,7 +72,7 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
-	Prayer *prayer = [self.resultSet objectAtIndex:indexPath.row];
+	Prayer *prayer = self.resultSet[indexPath.row];
 	cell.title.text = prayer.title;
 	cell.subtitle.text = prayer.category;
 	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", prayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
@@ -82,7 +82,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:[self.resultSet objectAtIndex:indexPath.row]];
+	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:self.resultSet[indexPath.row]];
 	[[self navigationController] pushViewController:pvc animated:YES];
 }
 
