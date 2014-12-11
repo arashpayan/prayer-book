@@ -11,17 +11,9 @@
 
 #import "Prayer.h"
 #import "PrayerDatabase.h"
-@class PrayerView;
 
-@interface PrayerViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface PrayerViewController : UIViewController
 
-+ (NSString*)HTMLPrefix:(NSString*)language;
-+ (NSString*)HTMLSuffix;
-
-- (id)initWithPrayer:(Prayer*)prayer backButtonTitle:(NSString*)aBackButtonTitle;
-- (BOOL)bookmarkingEnabled;
-- (NSString*)finalPrayerHTML;
-- (BOOL)increaseTextSizeActionEnabled;
-- (BOOL)decreaseTextSizeActionEnabled;
+- (id)initWithPrayer:(Prayer*)prayer;
 
 @end

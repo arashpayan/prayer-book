@@ -35,7 +35,6 @@
 		5BF8524417E3A60100F3921D /* PrayerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8524317E3A60100F3921D /* PrayerTableCell.m */; };
 		5BF8524717E3A61A00F3921D /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8524617E3A61A00F3921D /* CategoryCell.m */; };
 		5BF8524A17E3A62D00F3921D /* RoundedRectangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8524917E3A62D00F3921D /* RoundedRectangleView.m */; };
-		5BF8524D17E3A8CB00F3921D /* PrayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8524C17E3A8CB00F3921D /* PrayerView.m */; };
 		5BF8526017E427A100F3921D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF8525F17E427A100F3921D /* libsqlite3.dylib */; };
 		5BF8526217E4295200F3921D /* pbdb.db in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8526117E4295200F3921D /* pbdb.db */; };
 		5BF8526517E42A1E00F3921D /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8526417E42A1E00F3921D /* BookmarksViewController.m */; };
@@ -97,8 +96,6 @@
 		5BF8524617E3A61A00F3921D /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		5BF8524817E3A62D00F3921D /* RoundedRectangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectangleView.h; sourceTree = "<group>"; };
 		5BF8524917E3A62D00F3921D /* RoundedRectangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectangleView.m; sourceTree = "<group>"; };
-		5BF8524B17E3A8CB00F3921D /* PrayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerView.h; sourceTree = "<group>"; };
-		5BF8524C17E3A8CB00F3921D /* PrayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerView.m; sourceTree = "<group>"; };
 		5BF8525F17E427A100F3921D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5BF8526117E4295200F3921D /* pbdb.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = pbdb.db; sourceTree = "<group>"; };
 		5BF8526317E42A1E00F3921D /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksViewController.h; sourceTree = "<group>"; };
@@ -223,8 +220,6 @@
 				5BF8523D17E3A5B900F3921D /* PrayerListViewController.m */,
 				5BF8524217E3A60100F3921D /* PrayerTableCell.h */,
 				5BF8524317E3A60100F3921D /* PrayerTableCell.m */,
-				5BF8524B17E3A8CB00F3921D /* PrayerView.h */,
-				5BF8524C17E3A8CB00F3921D /* PrayerView.m */,
 				5BF8523F17E3A5D500F3921D /* PrayerViewController.h */,
 				5BF8524017E3A5D500F3921D /* PrayerViewController.m */,
 				5BF8526617E42F4700F3921D /* RecentViewController.h */,
@@ -436,7 +431,6 @@
 				5BF8523217E0839900F3921D /* PrayerCategoryViewController.m in Sources */,
 				5BF8523517E3A55E00F3921D /* PrayerDatabase.m in Sources */,
 				5BF8523817E3A57200F3921D /* Prayer.m in Sources */,
-				5BF8524D17E3A8CB00F3921D /* PrayerView.m in Sources */,
 				5BF8526817E42F4700F3921D /* RecentViewController.m in Sources */,
 				5BF8523B17E3A58400F3921D /* NSString_CategoryCompare.m in Sources */,
 				5BF8524A17E3A62D00F3921D /* RoundedRectangleView.m in Sources */,

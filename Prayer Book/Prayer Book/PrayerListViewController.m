@@ -49,8 +49,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:[self.prayers objectAtIndex:indexPath.row]
-																			  backButtonTitle:self.title];
+	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:[self.prayers objectAtIndex:indexPath.row]];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 }
 

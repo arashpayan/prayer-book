@@ -341,7 +341,6 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 
 - (NSArray*)prayersForCategory:(NSString*)category language:(NSString*)lang {
     lang = ISOCodeFromLanguage(lang);
-    NSLog(@"category - %@, language - %@", category, lang);
     if (category == nil) {
 		return nil;
     }

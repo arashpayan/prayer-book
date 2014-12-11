@@ -7,33 +7,28 @@
 //
 
 #import "PrayerViewController.h"
-#import "PrayerView.h"
 
-@interface PrayerViewController ()
+@interface PrayerViewController () <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
 
-@property (nonatomic, strong) PrayerView *prayerView;
-@property (nonatomic, strong) NSString *backButtonTitle;
-@property (nonatomic, strong) Prayer *prayer;
+@property (nonatomic, readwrite) Prayer *prayer;
+@property (nonatomic, readwrite) UIWebView *webView;
+@property (nonatomic, readwrite) UIBarButtonItem *increaseSizeItem;
+@property (nonatomic, readwrite) UIBarButtonItem *decreaseSizeItem;
+@property (nonatomic, readwrite) UIBarButtonItem *bookmarkItem;
+@property (nonatomic, readwrite) UIBarButtonItem *emailItem;
+
+@property (nonatomic, readwrite) CGPoint lastScrollOffset;
 
 @end
 
 @implementation PrayerViewController
 
-- (id)initWithPrayer:(Prayer*)prayer backButtonTitle:(NSString*)aBackButtonTitle {
+- (id)initWithPrayer:(Prayer*)prayer {
 	self = [super init];
 	if (self)
 	{
         self.prayer = prayer;
-		self.backButtonTitle = aBackButtonTitle;
-		
 		self.hidesBottomBarWhenPushed = YES;
-		
-		// set up view rotation
-		self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		self.view.autoresizesSubviews = YES;
-		
-		// notify the prayer database that this prayer is being accessed
-		[[PrayerDatabase sharedInstance] accessedPrayer:self.prayer.prayerId];
 	}
 	
 	return self;
@@ -54,7 +49,7 @@
 	[actionSheet showInView:self.tabBarController.view];
 }
 
-- (void)mailAction {
+- (void)mailPrayer {
 	if ([MFMailComposeViewController canSendMail]) {
 		MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 		mailController.mailComposeDelegate = self;
@@ -76,16 +71,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-// gets called back from the action sheet to bookmark the fee
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 0)
-	{
-		[[PrayerDatabase sharedInstance] addBookmark:self.prayer.prayerId];
-		[(PrayerView*)self.view setBookmarkingEnabled:NO];
-	}
-}
-
-- (void)increaseTextSizeAction {
+- (void)increaseTextSize {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	float currMultiplier = [userDefaults floatForKey:kPrefsFontSize];
 	
@@ -94,9 +80,9 @@
 		[userDefaults setFloat:currMultiplier forKey:kPrefsFontSize];
 		[userDefaults synchronize];
 		
-		[self.prayerView.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+		[self.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
 		
-		[self.prayerView refreshTextSizeButtons];
+		[self refreshTextSizeButtons];
 	}
 }
 
@@ -108,7 +94,7 @@
 	return NO;
 }
 
-- (void)decreaseTextSizeAction {
+- (void)decreaseTextSize {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	float currMultiplier = [userDefaults floatForKey:kPrefsFontSize];
 	
@@ -117,9 +103,9 @@
 		[userDefaults setFloat:currMultiplier forKey:kPrefsFontSize];
 		[userDefaults synchronize];
 		
-		[self.prayerView.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+		[self.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
 		
-		[self.prayerView refreshTextSizeButtons];
+		[self refreshTextSizeButtons];
 	}
 }
 
@@ -131,22 +117,51 @@
 	return NO;
 }
 
-/*
- Implement loadView if you want to create a view hierarchy programmatically
-*/
 - (void)loadView {
-	[super loadView];
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.webView.autoresizesSubviews = YES;
+    self.webView.backgroundColor = [UIColor whiteColor];
+    self.webView.opaque = NO;
+    self.webView.scrollView.delegate = self;
 
-	self.prayerView = [[PrayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) backTitle:self.backButtonTitle controller:self];
-	self.view = self.prayerView;
-
-	[self.prayerView.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+    self.view = self.webView;
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    self.prayerView = nil;
+    [self.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+    
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                   target:nil
+                                                                                   action:nil];
+    
+    self.increaseSizeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarBigger"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(increaseTextSize)];
+    self.increaseSizeItem.width = 38;
+    
+    self.decreaseSizeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarSmaller"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(decreaseTextSize)];
+    self.decreaseSizeItem.width = 38;
+    
+    self.bookmarkItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarBookmark"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(promptToBookmark)];
+    self.bookmarkItem.width = 38;
+    
+    UIBarButtonItem *emailItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarShare"]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(mailPrayer)];
+    emailItem.width = 38;
+    
+    self.toolbarItems = [NSArray arrayWithObjects:self.decreaseSizeItem, self.increaseSizeItem, flexibleSpace, self.bookmarkItem, emailItem, nil];
 }
 
 - (NSString*)finalPrayerHTML {
@@ -210,38 +225,59 @@
 }
 
 + (NSString*)HTMLSuffix {
-	static NSString *htmlSuffix;
-	
-	if (htmlSuffix == nil) {
-		htmlSuffix = @"</div></body></html>";
-	}
-	
-	return htmlSuffix;
-}
-
-- (void)backAction {
-	[self.navigationController popViewControllerAnimated:YES];
+	return @"</div></body></html>";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-	[PrayerDatabase sharedInstance].prayerBeingViewed = YES;
-	[PrayerDatabase sharedInstance].prayerView = (PrayerView*)self.view;
+    // notify the prayer database that this prayer is being accessed
+    [PrayerDatabase.sharedInstance accessedPrayer:self.prayer.prayerId];
+	PrayerDatabase.sharedInstance.prayerBeingViewed = YES;
+	PrayerDatabase.sharedInstance.prayerView = (PrayerView*)self.view;
     [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-	[PrayerDatabase sharedInstance].prayerBeingViewed = NO;
-	[PrayerDatabase sharedInstance].prayerView = nil;
+	PrayerDatabase.sharedInstance.prayerBeingViewed = NO;
+	PrayerDatabase.sharedInstance.prayerView = nil;
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
 	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
+- (void)refreshTextSizeButtons {
+    self.increaseSizeItem.enabled = [self increaseTextSizeActionEnabled];
+    self.decreaseSizeItem.enabled = [self decreaseTextSizeActionEnabled];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0)
+    {
+        [PrayerDatabase.sharedInstance addBookmark:self.prayer.prayerId];
+        self.bookmarkItem.enabled = NO;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y > self.lastScrollOffset.y && scrollView.contentOffset.y > 0) {
+        [self.navigationController setToolbarHidden:YES animated:YES];
+    } else if (scrollView.contentOffset.y < self.lastScrollOffset.y && self.navigationController.toolbarHidden) {
+        [self.navigationController setToolbarHidden:NO animated:YES];
+    }
+    
+    self.lastScrollOffset = scrollView.contentOffset;
 }
 
 @end

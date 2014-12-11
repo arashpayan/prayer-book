@@ -87,7 +87,7 @@
 		return;
 	}
 	
-	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer backButtonTitle:NSLocalizedString(@"RECENTS", NULL)];
+	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 }
 

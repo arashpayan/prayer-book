@@ -47,14 +47,6 @@
 	self.view = self.table;
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    
-	self.table = nil;
-	self.searchBar = nil;
-	self.searchController = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
 	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
@@ -90,7 +82,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:[self.resultSet objectAtIndex:indexPath.row] backButtonTitle:NSLocalizedString(@"SEARCH", NULL)];
+	PrayerViewController *pvc = [[PrayerViewController alloc] initWithPrayer:[self.resultSet objectAtIndex:indexPath.row]];
 	[[self navigationController] pushViewController:pvc animated:YES];
 }
 

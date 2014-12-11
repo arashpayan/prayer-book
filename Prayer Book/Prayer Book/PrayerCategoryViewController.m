@@ -22,7 +22,6 @@
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain])
 	{
-        NSLog(@"PrayerCategoryViewController");
 		self.prayerDb = [PrayerDatabase sharedInstance];
 		
 		self.categories = [self.prayerDb categories];

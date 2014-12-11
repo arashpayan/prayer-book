@@ -24,6 +24,7 @@
     
     PrayerCategoryViewController *pcvc = [[PrayerCategoryViewController alloc] init];
     UINavigationController *pcvcNavController = [[UINavigationController alloc] initWithRootViewController:pcvc];
+//    pcvcNavController.navigationBar.translucent = NO;
     
     BookmarksViewController *bookmarksController = [[BookmarksViewController alloc] init];
     UINavigationController *bookmarksNavController = [[UINavigationController alloc] initWithRootViewController:bookmarksController];
