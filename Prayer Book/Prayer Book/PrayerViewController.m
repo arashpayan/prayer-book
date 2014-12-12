@@ -261,8 +261,7 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0)
-    {
+    if (buttonIndex == 0) {
         [PrayerDatabase.sharedInstance addBookmark:self.prayer.prayerId];
         self.bookmarkItem.enabled = NO;
     }
@@ -271,7 +270,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y > self.lastScrollOffset.y && scrollView.contentOffset.y > 0) {
+    if (scrollView.contentOffset.y > self.lastScrollOffset.y) {
         [self.navigationController setToolbarHidden:YES animated:YES];
     } else if (scrollView.contentOffset.y < self.lastScrollOffset.y && self.navigationController.toolbarHidden) {
         [self.navigationController setToolbarHidden:NO animated:YES];
