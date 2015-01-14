@@ -270,7 +270,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y > self.lastScrollOffset.y) {
+    if (scrollView.contentOffset.y > self.lastScrollOffset.y && scrollView.contentOffset.y > 1) {
         [self.navigationController setToolbarHidden:YES animated:YES];
     } else if (scrollView.contentOffset.y < self.lastScrollOffset.y && self.navigationController.toolbarHidden) {
         [self.navigationController setToolbarHidden:NO animated:YES];
