@@ -11,6 +11,8 @@
 #import "PrayerDatabase.h"
 #import "PrayerViewController.h"
 
+dispatch_queue_t SEARCH_QUEUE;
+
 @interface SearchViewController ()
 
 @property (nonatomic, strong) NSArray *resultSet;
@@ -24,11 +26,17 @@
 @implementation SearchViewController
 
 - (id)init {
-	if (self = [super init]) {
-		self.title = NSLocalizedString(@"SEARCH", nil);
-		[self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:3]];
-		self.resultSet = [[NSMutableArray alloc] init];
-	}
+    self = [super init];
+    if (!self) return nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SEARCH_QUEUE = dispatch_queue_create("sh.ara.prayerbook.searchqueue", DISPATCH_QUEUE_SERIAL);
+    });
+    
+    self.title = NSLocalizedString(@"SEARCH", nil);
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:3]];
+    self.resultSet = [[NSMutableArray alloc] init];
 	
 	return self;
 }
@@ -90,10 +98,15 @@
 
 - (void)searchBar:(UISearchBar *)aSearchBar textDidChange:(NSString *)searchText {
 	self.currQuery = searchText;
-	
-	NSArray *keywords = [aSearchBar.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	
-	self.resultSet = [[PrayerDatabase sharedInstance] searchWithKeywords:keywords];
+    
+    dispatch_async(SEARCH_QUEUE, ^{
+        NSArray *keywords = [aSearchBar.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSArray *results = [[PrayerDatabase sharedInstance] searchWithKeywords:keywords];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.resultSet = results;
+            [self.searchController.searchResultsTableView reloadData];
+        });
+    });
 }
 
 @end

@@ -237,7 +237,7 @@
 	PrayerDatabase.sharedInstance.prayerView = (PrayerView*)self.view;
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
