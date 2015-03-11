@@ -107,6 +107,8 @@
 	
 	// force the reload, because UIKit caches the table
 	[self.tableView reloadData];
+    
+    [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

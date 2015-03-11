@@ -102,6 +102,8 @@
 		[self.navigationItem.rightBarButtonItem setEnabled:NO];
 	
 	[self.tableView reloadData];
+    
+    [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

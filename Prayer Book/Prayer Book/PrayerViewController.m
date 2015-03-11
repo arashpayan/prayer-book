@@ -234,7 +234,6 @@
     // notify the prayer database that this prayer is being accessed
     [PrayerDatabase.sharedInstance accessedPrayer:self.prayer.prayerId];
 	PrayerDatabase.sharedInstance.prayerBeingViewed = YES;
-	PrayerDatabase.sharedInstance.prayerView = (PrayerView*)self.view;
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [self.navigationController setToolbarHidden:NO animated:animated];
@@ -244,10 +243,8 @@
     [super viewDidDisappear:animated];
     
 	PrayerDatabase.sharedInstance.prayerBeingViewed = NO;
-	PrayerDatabase.sharedInstance.prayerView = nil;
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
 	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;

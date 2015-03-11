@@ -59,6 +59,12 @@ dispatch_queue_t SEARCH_QUEUE;
 	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:YES animated:animated];
+}
+
 #pragma mark - Table Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

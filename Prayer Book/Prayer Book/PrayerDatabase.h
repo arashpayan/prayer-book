@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
-@class PrayerView;
-
 #import "Prayer.h"
 #import "NSString_CategoryCompare.h"
 
@@ -42,7 +40,6 @@ extern NSString* ISOCodeFromLanguage(NSString *language);
 }
 
 @property(nonatomic, assign, getter=isPrayerBeingViewed) BOOL prayerBeingViewed;
-@property(nonatomic, strong) PrayerView *prayerView;
 @property (nonatomic, assign) BOOL showCzechPrayers;
 @property (nonatomic, assign) BOOL showDutchPrayers;
 @property (nonatomic, assign) BOOL showEnglishPrayers;
