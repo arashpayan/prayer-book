@@ -1,5 +1,5 @@
 //
-//  PrayerListViewController.h
+//  CategoryPrayersController.h
 //  BahaiWritings
 //
 //  Created by Arash Payan on 8/11/08.
@@ -11,7 +11,7 @@
 #import "PrayerViewController.h"
 #import "PrayerTableCell.h"
 
-@interface PrayerListViewController : UITableViewController
+@interface CategoryPrayersController : UITableViewController
 
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSArray *prayers;

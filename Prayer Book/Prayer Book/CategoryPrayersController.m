@@ -1,15 +1,15 @@
 //
-//  PrayerListViewController.m
+//  CategoryPrayersController.m
 //  BahaiWritings
 //
 //  Created by Arash Payan on 8/11/08.
 //  Copyright 2008 Arash Payan. All rights reserved.
 //
 
-#import "PrayerListViewController.h"
+#import "CategoryPrayersController.h"
 
 
-@implementation PrayerListViewController
+@implementation CategoryPrayersController
 
 - (id)init {
 	self = [super initWithStyle:UITableViewStylePlain];

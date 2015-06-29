@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrayerListViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerListViewController.m">
+      <file leaf-file-name="CategoryPrayersController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prayer Book/CategoryPrayersController.m">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1140">
-              <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+              <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -66,27 +66,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrayerViewController.m" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PrayerViewController.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7717391" vertical-offset="2150" max-vertical-offset="4290">
-              <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4290">
+              <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
               <folding>
                 <element signature="e#1293#1327#0" expanded="true" />
                 <element signature="e#1472#1512#0" expanded="true" />
                 <element signature="e#2259#2299#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Prayer.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prayer Book/Prayer.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#123#142#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,24 +102,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrayerListViewController.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerListViewController.h">
+      <file leaf-file-name="CategoryPrayersController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prayer Book/CategoryPrayersController.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrayerCategoryViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerCategoryViewController.m">
+      <file leaf-file-name="CategoriesController.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Prayer Book/CategoriesController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1161" max-vertical-offset="1860">
-              <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.032608695" vertical-offset="0" max-vertical-offset="1860">
+              <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
               <folding>
-                <element signature="e#145#185#0" expanded="true" />
+                <element signature="e#147#179#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoriesController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prayer Book/CategoriesController.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -152,6 +150,12 @@
         <option value="$PROJECT_DIR$/Prayer Book/Prayer.h" />
         <option value="$PROJECT_DIR$/Prayer Book/PrayerViewController.m" />
         <option value="$PROJECT_DIR$/Prayer Book/PrayerDatabase.m" />
+        <option value="$PROJECT_DIR$/Prayer Book/PrayerCategoryViewController.h" />
+        <option value="$PROJECT_DIR$/Prayer Book/PrayerListViewController.h" />
+        <option value="$PROJECT_DIR$/Prayer Book/CategoryPrayersController.h" />
+        <option value="$PROJECT_DIR$/Prayer Book/CategoryPrayersController.m" />
+        <option value="$PROJECT_DIR$/Prayer Book/CategoriesController.h" />
+        <option value="$PROJECT_DIR$/Prayer Book/CategoriesController.m" />
       </list>
     </option>
   </component>
@@ -459,24 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerCategoryViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="460">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerCategoryViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1161" max-vertical-offset="1860">
-          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding>
-            <element signature="e#145#185#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prayer Book/Prayer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
@@ -487,26 +473,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerListViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prayer Book/Prayer.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="765">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerListViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1140">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -549,12 +519,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prayer Book/PrayerViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7717391" vertical-offset="2150" max-vertical-offset="4290">
-          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4290">
+          <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
           <folding>
             <element signature="e#1293#1327#0" expanded="true" />
             <element signature="e#1472#1512#0" expanded="true" />
             <element signature="e#2259#2299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prayer Book/CategoryPrayersController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prayer Book/CategoryPrayersController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1140">
+          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prayer Book/CategoriesController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prayer Book/CategoriesController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032608695" vertical-offset="0" max-vertical-offset="1860">
+          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+          <folding>
+            <element signature="e#147#179#0" expanded="true" />
           </folding>
         </state>
       </provider>

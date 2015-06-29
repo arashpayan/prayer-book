@@ -1,15 +1,15 @@
 //
-//  RootViewController.m
+//  CategoriesController.m
 //  BahaiWritings
 //
 //  Created by Arash Payan on 8/11/08.
 //  Copyright 2008 Arash Payan. All rights reserved.
 //
 
-#import "PrayerCategoryViewController.h"
+#import "CategoriesController.h"
 #import "Prefs.h"
 
-@interface PrayerCategoryViewController ()
+@interface CategoriesController ()
 
 @property (nonatomic, strong) PrayerDatabase *prayerDb;
 @property (nonatomic, readwrite) NSMutableArray *languageCategories;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation PrayerCategoryViewController
+@implementation CategoriesController
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain])
@@ -96,7 +96,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
+	CategoryPrayersController *prayerListViewController = [[CategoryPrayersController alloc] init];
     PBLanguage *lang = self.enabledLanguages[indexPath.section];
     NSString *category = self.languageCategories[indexPath.section][indexPath.row];
 	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category language:lang]];

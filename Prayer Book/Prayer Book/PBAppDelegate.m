@@ -7,7 +7,7 @@
 //
 
 #import "PBAppDelegate.h"
-#import "PrayerCategoryViewController.h"
+#import "CategoriesController.h"
 #import "BookmarksViewController.h"
 #import "RecentViewController.h"
 #import "SearchViewController.h"
@@ -22,7 +22,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    PrayerCategoryViewController *pcvc = [[PrayerCategoryViewController alloc] init];
+    CategoriesController *pcvc = [[CategoriesController alloc] init];
     UINavigationController *pcvcNavController = [[UINavigationController alloc] initWithRootViewController:pcvc];
 //    pcvcNavController.navigationBar.translucent = NO;
     

@@ -1,5 +1,5 @@
 //
-//  PrayerCategoryViewController.h
+//  CategoriesController.h
 //  BahaiWritings
 //
 //  Created by Arash Payan on 8/11/08.
@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "PrayerDatabase.h"
-#import "PrayerListViewController.h"
+#import "CategoryPrayersController.h"
 #import "CategoryCell.h"
 
-@interface PrayerCategoryViewController : UITableViewController
+@interface CategoriesController : UITableViewController
 
 @end
