@@ -268,13 +268,18 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y > self.lastScrollOffset.y && scrollView.contentOffset.y > 1) {
+    if (scrollView.contentOffset.y > self.lastScrollOffset.y && scrollView.contentOffset.y > 0) {
         [self.navigationController setToolbarHidden:YES animated:YES];
-    } else if (scrollView.contentOffset.y < self.lastScrollOffset.y && self.navigationController.toolbarHidden) {
+    } else if (scrollView.contentOffset.y < self.lastScrollOffset.y) {
         [self.navigationController setToolbarHidden:NO animated:YES];
     }
     
-    self.lastScrollOffset = scrollView.contentOffset;
+    // we should be updating the scroll offset every time, but we DON'T want to to update it when
+    // the scroll view is bouncing
+    CGFloat maxOffset = scrollView.contentSize.height - scrollView.bounds.size.height;
+    if (scrollView.contentOffset.y < maxOffset) {
+        self.lastScrollOffset = scrollView.contentOffset;
+    }
 }
 
 @end
