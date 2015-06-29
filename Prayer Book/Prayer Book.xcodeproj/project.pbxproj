@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58C34DB1CAC1FC8B5D522D65 /* PBLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34B8FC7E65268B43282A5 /* PBLanguage.m */; };
 		5B7D5E9A1AB0DCC600277A87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7D5E961AB0DCC600277A87 /* InfoPlist.strings */; };
 		5B7D5E9B1AB0DCC600277A87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7D5E981AB0DCC600277A87 /* Localizable.strings */; };
 		5B7D5EA11AB0DD3200277A87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7D5E9D1AB0DD3200277A87 /* InfoPlist.strings */; };
@@ -61,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58C347A12E0D9F3E1444A49D /* PBLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBLanguage.h; sourceTree = "<group>"; };
+		58C34B8FC7E65268B43282A5 /* PBLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBLanguage.m; sourceTree = "<group>"; };
 		5B7D5E971AB0DCC600277A87 /* is */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = is; path = InfoPlist.strings; sourceTree = "<group>"; };
 		5B7D5E991AB0DCC600277A87 /* is */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = is; path = Localizable.strings; sourceTree = "<group>"; };
 		5B7D5E9E1AB0DD3200277A87 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				5BC3D33119AED8D9000DF9BA /* Prefs.m */,
 				5B8B03FE19CFB2D10017C2F9 /* PBUI.h */,
 				5B8B03FF19CFB2D10017C2F9 /* PBUI.m */,
+				58C34B8FC7E65268B43282A5 /* PBLanguage.m */,
+				58C347A12E0D9F3E1444A49D /* PBLanguage.h */,
 			);
 			path = "Prayer Book";
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				5BF8526817E42F4700F3921D /* RecentViewController.m in Sources */,
 				5BF8523B17E3A58400F3921D /* NSString_CategoryCompare.m in Sources */,
 				5BF8524A17E3A62D00F3921D /* RoundedRectangleView.m in Sources */,
+				58C34DB1CAC1FC8B5D522D65 /* PBLanguage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -176,7 +176,7 @@
 	return finalHTML;
 }
 
-+ (NSString*)HTMLPrefix:(NSString*)language {
++ (NSString*)HTMLPrefix:(PBLanguage *)language {
 	float multiplier;
 	// get the value for the font multiplier
 	multiplier = [[NSUserDefaults standardUserDefaults] floatForKey:kPrefsFontSize];
@@ -193,10 +193,11 @@
 	NSMutableString *htmlPrefix = [[NSMutableString alloc] init];
 	[htmlPrefix appendString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"];
 	[htmlPrefix appendString:@"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"];
-    if ([language isEqualToString:@"fa"])
+    if (language.rightToLeft) {
         [htmlPrefix appendString:@"<html dir=\"rtl\" xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
-    else
+    } else {
         [htmlPrefix appendString:@"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
+    }
 	[htmlPrefix appendString:@"<head>"];
 	[htmlPrefix appendString:@"<style type=\"text/css\">"];
 	[htmlPrefix appendString:@"#prayer p {margin: 0 0px .75em 5px; color: #333333; font: normal "];

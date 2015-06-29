@@ -7,6 +7,7 @@
 //
 
 #import "PrayerDatabase.h"
+#import "Prefs.h"
 
 
 NSString *const kBookmarksPrefKey			= @"BookmarksPrefKey";
@@ -23,50 +24,13 @@ NSString *const kPrefsFontSize				= @"fontSizePref";
 
 NSString *const kDatabaseVersionNumber		= @"DatabaseVersionNumber";
 
-NSString *const kLanguageCzech              = @"cs";
-NSString *const kLanguageDutch              = @"nl";
-NSString *const kLanguageEnglish            = @"en";
-NSString *const kLanguageFrench             = @"fr";
-NSString *const kLanguagePersian            = @"fa";
-NSString *const kLanguageSpanish            = @"es";
-NSString *const kLanguageSlovak             = @"sk";
-
-extern NSString* ISOCodeFromLanguage(NSString *language) {
-    if ([language isEqualToString:@"English"]) {
-        return @"en";
-    }
-    if ([language isEqualToString:@"Español"]) {
-        return @"es";
-    }
-    if ([language isEqualToString:@"Français"]) {
-        return @"fr";
-    }
-    if ([language isEqualToString:@"فارسی"]) {
-        return @"fa";
-    }
-    if ([language isEqualToString:@"Nederlands"]) {
-        return @"nl";
-    }
-    if ([language isEqualToString:@"Čeština"]) {
-        return @"cs";
-    }
-    if ([language isEqualToString:@"Slovenčina"]) {
-        return @"sk";
-    }
-    
-    return @"";
-}
-
 NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLanguagesPreferenceChanged";
 
 @interface PrayerDatabase ()
 
 @property (nonatomic, strong) NSMutableArray *bookmarkedPrayers;
 @property (nonatomic, strong) NSMutableDictionary *categoryCountCache;
-@property (nonatomic, strong) NSMutableArray *languages;
-@property (nonatomic, strong) NSMutableString *languageSQL;
 @property (nonatomic, strong) NSMutableArray *recentPrayers;
-- (void)buildLanguages;
 
 @end
 
@@ -95,98 +59,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
             default:
                 break;
         }
-		
-		// check what languages are enabled
-		self.languages = [[NSMutableArray alloc] init];
-        self.languageSQL = [[NSMutableString alloc] init];
-        _showCzechPrayers = NO;
-        _showDutchPrayers = NO;
-        _showEnglishPrayers = NO;
-        _showFrenchPrayers = NO;
-        _showPersianPrayers = NO;
-        _showSpanishPrayers = NO;
-        _showSlovakPrayers = NO;
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        if ([userDefaults boolForKey:kLanguageCzech]) {
-            _showCzechPrayers = YES;
-            [self.languages addObject:kLanguageCzech];
-        }
-        if ([userDefaults boolForKey:kLanguageDutch])
-        {
-            _showDutchPrayers = YES;
-            [self.languages addObject:kLanguageDutch];
-        }
-        if ([userDefaults boolForKey:kLanguageEnglish])
-        {
-            _showEnglishPrayers = YES;
-            [self.languages addObject:kLanguageEnglish];
-        }
-        if ([userDefaults boolForKey:kLanguageFrench])
-        {
-            _showFrenchPrayers = YES;
-            [self.languages addObject:kLanguageFrench];
-        }
-        if ([userDefaults boolForKey:kLanguagePersian])
-        {
-            _showPersianPrayers = YES;
-            [self.languages addObject:kLanguagePersian];
-        }
-        if ([userDefaults boolForKey:kLanguageSpanish])
-        {
-            _showSpanishPrayers = YES;
-            [self.languages addObject:kLanguageSpanish];
-        }
-        if ([userDefaults boolForKey:kLanguageSlovak]) {
-            _showSlovakPrayers = YES;
-            [self.languages addObject:kLanguageSlovak];
-        }
-        
-        // if no languages was enabled, try and enable a language based on their preferrences
-        if ([self.languages count] == 0)
-        {
-            // find the first language that we support
-            NSArray *preferredLanguages = [NSLocale preferredLanguages];
-            for (NSString *lang in preferredLanguages)
-            {
-                if ([lang isEqualToString:kLanguageEnglish]) {
-                    _showEnglishPrayers = YES;
-                    [self.languages addObject:kLanguageEnglish];
-                    break;
-                } else if ([lang isEqualToString:kLanguageSpanish]) {
-                    _showSpanishPrayers = YES;
-                    [self.languages addObject:kLanguageSpanish];
-                    break;
-                } else if ([lang isEqualToString:kLanguageFrench]) {
-                    _showFrenchPrayers = YES;
-                    [self.languages addObject:kLanguageFrench];
-                    break;
-                } else if ([lang isEqualToString:kLanguageDutch]) {
-                    _showDutchPrayers = YES;
-                    [self.languages addObject:kLanguageDutch];
-                    break;
-                } else if ([lang isEqualToString:kLanguagePersian]) {
-                    _showPersianPrayers = YES;
-                    [self.languages addObject:kLanguagePersian];
-                    break;
-                } else if ([lang isEqualToString:kLanguageCzech]) {
-                    _showCzechPrayers = YES;
-                    [self.languages addObject:kLanguageCzech];
-                    break;
-                } else if ([lang isEqualToString:kLanguageSlovak]) {
-                    _showSlovakPrayers = YES;
-                    [self.languages addObject:kLanguageSlovak];
-                    break;
-                }
-            }
-        }
-        
-        // in the odd case that nothing could be found
-        if ([self.languages count] == 0)
-            self.showEnglishPrayers = YES;
-        
-        [self buildLanguages];
-        
-		
+
 		// initialize the empty category count cache
 		self.categoryCountCache = [[NSMutableDictionary alloc] init];
 		
@@ -299,9 +172,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	return prayerDatabase;
 }
 
-- (NSArray*)categoriesForLanguage:(NSString*)aLanguage {
+- (NSArray*)categoriesForLanguage:(PBLanguage *)aLanguage {
 	NSMutableArray *categories = [[NSMutableArray alloc] init];
-	NSString *categoriesSQL = [NSString stringWithFormat:@"SELECT DISTINCT category FROM prayers WHERE language='%@'", aLanguage];
+	NSString *categoriesSQL = [NSString stringWithFormat:@"SELECT DISTINCT category FROM prayers WHERE language='%@' ORDER BY category ASC", aLanguage.code];
 	
 	sqlite3_stmt *categoriesStmt;
 	
@@ -323,30 +196,26 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	}
 	
 	sqlite3_finalize(categoriesStmt);
-	
-	NSArray *sortedCategories = [categories sortedArrayUsingSelector:@selector(compareCategories:)];
-	
-	return sortedCategories;
+
+    return categories;
 }
 
 - (NSDictionary*)categories {
 	NSMutableDictionary *categories = [[NSMutableDictionary alloc] init];
-	for (NSString *lang in self.languages)
-	{
-		[categories setObject:[self categoriesForLanguage:lang] forKey:NSLocalizedString(lang, NULL)];
-	}
+    for (PBLanguage *l in PBLanguage.all) {
+        categories[l] = [self categoriesForLanguage:l];
+    }
 	
 	return categories;
 }
 
-- (NSArray*)prayersForCategory:(NSString*)category language:(NSString*)lang {
-    lang = ISOCodeFromLanguage(lang);
+- (NSArray*)prayersForCategory:(NSString*)category language:(PBLanguage *)language {
     if (category == nil) {
 		return nil;
     }
 	
 	NSMutableArray *prayers = [[NSMutableArray alloc] init];
-	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE category=\"%@\" AND language=\"%@\"", category, lang];
+	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, wordCount FROM prayers WHERE category=\"%@\" AND language=\"%@\"", category, language.code];
 	sqlite3_stmt *getPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
@@ -365,15 +234,14 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		NSString *openingWords = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 2)];
 		NSString *citation = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 3)];
 		NSString *author = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 4)];
-		NSString *language = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 5)];
-		int wordCount = sqlite3_column_int(getPrayersStmt, 6);
+		int wordCount = sqlite3_column_int(getPrayersStmt, 5);
 		Prayer *prayer = [[Prayer alloc] initWithCategory:category withText:prayerText withOpeningWords:openingWords];
 		prayer.citation = citation;
 		prayer.author = author;
 		[prayer setAuthor:author];
 		prayer.language = language;
 		prayer.prayerId = prayerId;
-		prayer.wordCount = [[NSNumber numberWithInt:wordCount] stringValue];
+		prayer.wordCount = @(wordCount).stringValue;
 		
 		[prayers addObject:prayer];
 	}
@@ -383,9 +251,13 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	return prayers;
 }
 
-- (int)numberOfPrayersForCategory:(NSString*)category language:(NSString*)lang {
+- (int)numberOfPrayersForCategory:(NSString*)category language:(PBLanguage *)lang {
+    if (self.categoryCountCache[category] != nil) {
+        NSNumber *n = self.categoryCountCache[category];
+        return n.intValue;
+    }
+
 	int numPrayers = 0;
-    lang = ISOCodeFromLanguage(lang);
 	
 	NSString *countPrayersSQL = [NSString stringWithFormat:@"SELECT COUNT(id) FROM prayers WHERE category=\"%@\" AND language=\"%@\"", category, lang];
 	sqlite3_stmt *countPrayersStmt;
@@ -408,7 +280,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	sqlite3_finalize(countPrayersStmt);
 	
 	// cache it for future reference
-	[self.categoryCountCache setObject:[NSNumber numberWithInt:numPrayers] forKey:category];
+	self.categoryCountCache[category] = @(numPrayers);
 	
 	return numPrayers;
 }
@@ -430,17 +302,17 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 }
 
 - (BOOL)prayerIsBookmarked:(long)prayerId {	
-	return [self.bookmarkedPrayers containsObject:[NSNumber numberWithLong:prayerId]];
+	return [self.bookmarkedPrayers containsObject:@(prayerId)];
 }
 
 - (void)addBookmark:(long)prayerId {
-	[self.bookmarkedPrayers addObject:[NSNumber numberWithLong:prayerId]];
+    [self.bookmarkedPrayers addObject:@(prayerId)];
 	
     [[NSUserDefaults standardUserDefaults] setObject:self.bookmarkedPrayers forKey:kBookmarksPrefKey];
 }
 
 - (void)removeBookmark:(long)prayerId {
-	[self.bookmarkedPrayers removeObject:[NSNumber numberWithLong:prayerId]];
+    [self.bookmarkedPrayers removeObject:@(prayerId)];
 	
     [[NSUserDefaults standardUserDefaults] setObject:self.bookmarkedPrayers forKey:kBookmarksPrefKey];
 }
@@ -469,7 +341,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 
 
 - (void)accessedPrayer:(long)prayerId {
-	NSNumber *entry = [NSNumber numberWithLong:prayerId];
+	NSNumber *entry = @(prayerId);
 	
 	[self.recentPrayers removeObject:entry];	// if it's even there
 	[self.recentPrayers insertObject:entry atIndex:0];
@@ -501,7 +373,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		prayer.citation = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 3)];
 		prayer.author = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 4)];
 		prayer.language = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 5)];
-		prayer.wordCount = [[NSNumber numberWithInt:sqlite3_column_int(getPrayerStmt, 6)] stringValue];
+		prayer.wordCount = @(sqlite3_column_int(getPrayerStmt, 6)).stringValue;
 		prayer.prayerId = prayerId;
 	}
 	
@@ -547,7 +419,17 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	}
 	
 	// now limit our search by language
-	[query appendFormat:@" AND (%@)", self.languageSQL];
+    NSMutableString *langClause = [NSMutableString new];
+    NSArray *enabledLangs = Prefs.shared.enabledLanguages;
+    for (int i=0; i<enabledLangs.count; i++) {
+        PBLanguage *l = enabledLangs[i];
+        if (i == enabledLangs.count-1) {
+            [langClause appendFormat:@"language='%@'", l.code];
+        } else {
+            [langClause appendFormat:@"language='%@' OR ", l.code];
+        }
+    }
+	[query appendFormat:@" AND (%@)", langClause];
 	
 	//NSLog(query);
 	
@@ -576,195 +458,6 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	}
 	
 	return results;
-}
-
-- (void)buildLanguages {
-    // wipe out the current string, then rebuild the query
-    [self.languageSQL setString:@""];
-    for (int i=0; i<[self.languages count]; i++)
-    {
-        if (i == [self.languages count]-1)
-            [self.languageSQL appendFormat:@"language='%@'", self.languages[i]];
-        else
-            [self.languageSQL appendFormat:@"language='%@' OR ", self.languages[i]];
-        
-    }
-}
-
-#pragma mark - Language accessors
-
-@synthesize showCzechPrayers = _showCzechPrayers;
-- (void)setShowCzechPrayers:(BOOL)shouldShowCzechPrayers {
-    if (_showCzechPrayers == shouldShowCzechPrayers) {
-        return;
-    }
-    
-    _showCzechPrayers = shouldShowCzechPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showCzechPrayers forKey:kLanguageCzech];
-    [userDefaults synchronize];
-    
-    if (_showCzechPrayers) {
-        [self.languages addObject:kLanguageCzech];
-    } else {
-        [self.languages removeObject:kLanguageCzech];
-    }
-    
-    if ([self.languages count] == 0) {
-        self.showEnglishPrayers = YES;
-    }
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
-}
-
-@synthesize showDutchPrayers = _showDutchPrayers;
-- (void)setShowDutchPrayers:(BOOL)shouldShowDutchPrayers {
-    if (_showDutchPrayers == shouldShowDutchPrayers)
-        return;
-    
-    _showDutchPrayers = shouldShowDutchPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showDutchPrayers forKey:kLanguageDutch];
-    [userDefaults synchronize];
-    
-    if (_showDutchPrayers)
-        [self.languages addObject:kLanguageDutch];
-    else
-        [self.languages removeObject:kLanguageDutch];
-    
-    if ([self.languages count] == 0)
-        self.showEnglishPrayers = YES;
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
-}
-
-@synthesize showEnglishPrayers = _showEnglishPrayers;
-- (void)setShowEnglishPrayers:(BOOL)shouldShowEnglishPrayers {
-    if (_showEnglishPrayers == shouldShowEnglishPrayers)
-        return;
-    
-    _showEnglishPrayers = shouldShowEnglishPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showEnglishPrayers forKey:kLanguageEnglish];
-    [userDefaults synchronize];
-    
-    if (_showEnglishPrayers)
-        [self.languages addObject:kLanguageEnglish];
-    else
-        [self.languages removeObject:kLanguageEnglish];
-    
-    if ([self.languages count] == 0)
-        self.showEnglishPrayers = YES;
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
-}
-
-@synthesize showFrenchPrayers = _showFrenchPrayers;
-- (void)setShowFrenchPrayers:(BOOL)shouldShowFrenchPrayers {
-    if (_showFrenchPrayers == shouldShowFrenchPrayers)
-        return;
-    
-    _showFrenchPrayers = shouldShowFrenchPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showFrenchPrayers forKey:kLanguageFrench];
-    [userDefaults synchronize];
-    
-    if (_showFrenchPrayers)
-        [self.languages addObject:kLanguageFrench];
-    else
-        [self.languages removeObject:kLanguageFrench];
-    
-    if ([self.languages count] == 0)
-        self.showEnglishPrayers = YES;
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
-}
-
-@synthesize showPersianPrayers = _showPersianPrayers;
-- (void)setShowPersianPrayers:(BOOL)shouldShowPersianPrayers {
-    if (_showPersianPrayers == shouldShowPersianPrayers)
-        return;
-    
-    _showPersianPrayers = shouldShowPersianPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showPersianPrayers forKey:kLanguagePersian];
-    [userDefaults synchronize];
-    
-    if (_showPersianPrayers)
-        [self.languages addObject:kLanguagePersian];
-    else
-        [self.languages removeObject:kLanguagePersian];
-    
-    if ([self.languages count] == 0)
-        self.showEnglishPrayers = YES;
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
-}
-
-@synthesize showSpanishPrayers = _showSpanishPrayers;
-- (void)setShowSpanishPrayers:(BOOL)shouldShowSpanishPrayers {
-    if (_showSpanishPrayers == shouldShowSpanishPrayers)
-        return;
-    
-    _showSpanishPrayers = shouldShowSpanishPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showSpanishPrayers forKey:kLanguageSpanish];
-    [userDefaults synchronize];
-    
-    if (_showSpanishPrayers)
-        [self.languages addObject:kLanguageSpanish];
-    else
-        [self.languages removeObject:kLanguageSpanish];
-    
-    if ([self.languages count] == 0)
-        self.showEnglishPrayers = YES;
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
-}
-
-@synthesize showSlovakPrayers = _showSlovakPrayers;
-- (void)setShowSlovakPrayers:(BOOL)shouldShowSlovakPrayers {
-    if (_showSlovakPrayers == shouldShowSlovakPrayers) {
-        return;
-    }
-    
-    _showSlovakPrayers = shouldShowSlovakPrayers;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:_showSlovakPrayers forKey:kLanguageSlovak];
-    [userDefaults synchronize];
-    
-    if (_showSlovakPrayers) {
-        [self.languages addObject:kLanguageSlovak];
-    } else {
-        [self.languages removeObject:kLanguageSlovak];
-    }
-    
-    if ([self.languages count] == 0) {
-        self.showEnglishPrayers = YES;
-    }
-    
-    [self buildLanguages];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
-                                                        object:nil];
 }
 
 @end

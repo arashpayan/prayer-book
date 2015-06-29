@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
 #import "Prayer.h"
+#import "PBLanguage.h"
 #import "NSString_CategoryCompare.h"
 
 extern NSString *const kBookmarksPrefKey;
@@ -21,37 +22,20 @@ extern NSString *const kRecentsKeyCategory;
 extern NSString *const kRecentsKeyTitle;
 extern NSString *const kRecentsKeyAccessTime;
 
-extern NSString *const kLanguageCzech;
-extern NSString *const kLanguageDutch;
-extern NSString *const kLanguageEnglish;
-extern NSString *const kLanguageFrench;
-extern NSString *const kLanguagePersian;
-extern NSString *const kLanguageSpanish;
-extern NSString *const kLanguageSlovak;
-
 extern NSString *const PBNotificationLanguagesPreferenceChanged;
 
 extern NSString *const kPrefsFontSize;
-
-extern NSString* ISOCodeFromLanguage(NSString *language);
 
 @interface PrayerDatabase : NSObject {
 	sqlite3 *dbHandle;
 }
 
 @property(nonatomic, assign, getter=isPrayerBeingViewed) BOOL prayerBeingViewed;
-@property (nonatomic, assign) BOOL showCzechPrayers;
-@property (nonatomic, assign) BOOL showDutchPrayers;
-@property (nonatomic, assign) BOOL showEnglishPrayers;
-@property (nonatomic, assign) BOOL showFrenchPrayers;
-@property (nonatomic, assign) BOOL showPersianPrayers;
-@property (nonatomic, assign) BOOL showSpanishPrayers;
-@property (nonatomic, assign) BOOL showSlovakPrayers;
 
 + (PrayerDatabase*)sharedInstance;
-- (NSDictionary*)categories;
-- (NSArray*)prayersForCategory:(NSString*)category language:(NSString*)language;
-- (int)numberOfPrayersForCategory:(NSString*)category language:(NSString*)lang;
+- (NSArray*)categoriesForLanguage:(PBLanguage *)aLanguage;
+- (NSArray*)prayersForCategory:(NSString*)category language:(PBLanguage *)language;
+- (int)numberOfPrayersForCategory:(NSString*)category language:(PBLanguage *)lang;
 - (void)addBookmark:(long)prayerId;
 - (BOOL)prayerIsBookmarked:(long)prayerId;
 - (NSArray*)getBookmarks;

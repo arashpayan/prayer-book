@@ -7,13 +7,13 @@
 //
 
 #import "PrayerCategoryViewController.h"
+#import "Prefs.h"
 
 @interface PrayerCategoryViewController ()
 
-@property (nonatomic, strong) NSDictionary *categories;
 @property (nonatomic, strong) PrayerDatabase *prayerDb;
-@property (nonatomic, strong) UILabel *countLabel;
-@property (nonatomic, strong) NSArray *languages;
+@property (nonatomic, readwrite) NSMutableArray *languageCategories;
+@property (nonatomic, readwrite) NSArray *enabledLanguages;
 
 @end
 
@@ -23,9 +23,12 @@
 	if (self = [super initWithStyle:UITableViewStylePlain])
 	{
 		self.prayerDb = [PrayerDatabase sharedInstance];
-		
-		self.categories = [self.prayerDb categories];
-		self.languages = [[self.categories allKeys] sortedArrayUsingSelector:@selector(compareCategories:)];
+
+        self.enabledLanguages = Prefs.shared.enabledLanguages;
+        self.languageCategories = [NSMutableArray new];
+        for (PBLanguage *l in self.enabledLanguages) {
+            [self.languageCategories addObject:[[PrayerDatabase sharedInstance] categoriesForLanguage:l]];
+        }
 		
 		self.title = NSLocalizedString(@"CATEGORIES", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"TabBarPrayers.png"];
@@ -40,11 +43,13 @@
 }
 
 - (void)languagesPreferenceChanged:(NSNotification*)notification {
-    self.categories = [self.prayerDb categories];
-    self.languages = [[self.categories allKeys] sortedArrayUsingSelector:@selector(compareCategories:)];
+    self.enabledLanguages = Prefs.shared.enabledLanguages;
+    [self.languageCategories removeAllObjects];
+    for (PBLanguage *l in self.enabledLanguages) {
+        [self.languageCategories addObject:[PrayerDatabase.sharedInstance categoriesForLanguage:l]];
+    }
     
-    if ([self isViewLoaded])
-    {
+    if ([self isViewLoaded]) {
         [self.navigationController popToRootViewControllerAnimated:NO];
         [self.tableView reloadData];
     }
@@ -52,18 +57,21 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [self.categories count];
+    return self.enabledLanguages.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if ([self.categories count] == 1)
-		return nil;
-	else
-		return self.languages[section];
+    if (self.enabledLanguages.count == 1) {
+        return nil;
+    } else {
+        PBLanguage *l = self.enabledLanguages[section];
+        return l.humanName;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.categories[self.languages[section]] count];
+    NSArray *categories = self.languageCategories[section];
+    return categories.count;
 }
 
 
@@ -78,8 +86,8 @@
 	}
 	
 	// Configure the cell
-    NSString *lang = self.languages[indexPath.section];
-	NSString *category = self.categories[lang][indexPath.row];
+    PBLanguage *lang = self.enabledLanguages[indexPath.section];
+    NSString *category = self.languageCategories[indexPath.section][indexPath.row];
 	[(CategoryCell*)cell setCategory:category];
 	[(CategoryCell*)cell setCount:[NSString stringWithFormat:@"%d", [self.prayerDb numberOfPrayersForCategory:category language:lang]]];
 	
@@ -89,9 +97,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	PrayerListViewController *prayerListViewController = [[PrayerListViewController alloc] init];
-    NSString *lang = self.languages[indexPath.section];
-    NSString *category = self.categories[lang][indexPath.row];
-	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category language:self.languages[indexPath.section]]];
+    PBLanguage *lang = self.enabledLanguages[indexPath.section];
+    NSString *category = self.languageCategories[indexPath.section][indexPath.row];
+	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category language:lang]];
     prayerListViewController.category = category;
     prayerListViewController.title = category;
 	[[self navigationController] pushViewController:prayerListViewController animated:YES];

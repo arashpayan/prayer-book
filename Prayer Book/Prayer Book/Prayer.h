@@ -6,7 +6,8 @@
 //  Copyright 2008 Arash Payan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
+#import "PBLanguage.h"
 
 
 @interface Prayer : NSObject
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *wordCount;
 @property (nonatomic) long prayerId;
-@property (nonatomic, strong) NSString *language;
+@property (nonatomic, readwrite) PBLanguage *language;
 @property (nonatomic, strong) NSString *citation;
 
 - (NSString*)description;

@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class PBLanguage;
+
 @interface Prefs : NSObject
 
-- (void)setUseClassicTheme:(BOOL)useClassicTheme;
-- (BOOL)useClassicTheme;
++ (Prefs *)shared;
+- (NSArray*)enabledLanguages;
+- (BOOL)isLanguageEnabled:(PBLanguage*)lang;
+- (void)setLanguage:(PBLanguage *)lang enabled:(BOOL)shouldEnable;
 
 @end

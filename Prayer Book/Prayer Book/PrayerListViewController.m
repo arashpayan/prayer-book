@@ -12,9 +12,9 @@
 @implementation PrayerListViewController
 
 - (id)init {
-	if (self = [super initWithStyle:UITableViewStylePlain]) {
+	self = [super initWithStyle:UITableViewStylePlain];
+    if (!self) return nil;
 
-	}
 	return self;
 }
 
@@ -35,7 +35,6 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	static NSString *MyIdentifier = @"SomeIdentifier";
 	
 	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
