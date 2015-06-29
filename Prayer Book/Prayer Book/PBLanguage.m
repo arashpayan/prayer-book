@@ -80,6 +80,16 @@
     return [PBLanguage languageWithCode:@"sk" humanName:@"Slovenčina" rtl:NO];
 }
 
++ (PBLanguage *)languageFromCode:(NSString *)code {
+    for (PBLanguage *l in PBLanguage.all) {
+        if ([l.code isEqualToString:code]) {
+            return l;
+        }
+    }
+    
+    return nil;
+}
+
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;

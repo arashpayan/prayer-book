@@ -366,13 +366,14 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	rc = sqlite3_step(getPrayerStmt);
 	if (rc == SQLITE_ROW)
 	{
-		prayer = [[Prayer alloc] init];
+		prayer = [Prayer new];
 		prayer.category = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 0)];
 		prayer.text = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 1)];
 		prayer.title = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 2)];
 		prayer.citation = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 3)];
 		prayer.author = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 4)];
-		prayer.language = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 5)];
+        NSString *langCode = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 5)];
+        prayer.language = [PBLanguage languageFromCode:langCode];
 		prayer.wordCount = @(sqlite3_column_int(getPrayerStmt, 6)).stringValue;
 		prayer.prayerId = prayerId;
 	}

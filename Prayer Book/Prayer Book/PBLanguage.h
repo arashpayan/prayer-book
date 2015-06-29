@@ -22,6 +22,8 @@
 + (PBLanguage *)dutch;
 + (PBLanguage *)slovak;
 
++ (PBLanguage *)languageFromCode:(NSString *)code;
+
 - (BOOL)isEqual:(id)other;
 
 - (BOOL)isEqualToLanguage:(PBLanguage *)language;
