@@ -66,13 +66,13 @@
     if (self.enabledLanguages.count == 1) {
         return nil;
     } else {
-        PBLanguage *l = self.enabledLanguages[section];
+        PBLanguage *l = self.enabledLanguages[(NSUInteger) section];
         return l.humanName;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *categories = self.languageCategories[section];
+    NSArray *categories = self.languageCategories[(NSUInteger) section];
     return categories.count;
 }
 
@@ -88,8 +88,8 @@
 	}
 	
 	// Configure the cell
-    PBLanguage *lang = self.enabledLanguages[indexPath.section];
-    NSString *category = self.languageCategories[indexPath.section][indexPath.row];
+    PBLanguage *lang = self.enabledLanguages[(NSUInteger) indexPath.section];
+    NSString *category = self.languageCategories[(NSUInteger) indexPath.section][(NSUInteger) indexPath.row];
 	[(CategoryCell*)cell setCategory:category];
 	[(CategoryCell*)cell setCount:[NSString stringWithFormat:@"%d", [self.prayerDb numberOfPrayersForCategory:category language:lang]]];
 	
@@ -99,8 +99,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	CategoryPrayersController *prayerListViewController = [[CategoryPrayersController alloc] init];
-    PBLanguage *lang = self.enabledLanguages[indexPath.section];
-    NSString *category = self.languageCategories[indexPath.section][indexPath.row];
+    PBLanguage *lang = self.enabledLanguages[(NSUInteger) indexPath.section];
+    NSString *category = self.languageCategories[(NSUInteger) indexPath.section][(NSUInteger) indexPath.row];
 	[prayerListViewController setPrayers:[self.prayerDb prayersForCategory:category language:lang]];
     prayerListViewController.category = category;
     prayerListViewController.title = category;

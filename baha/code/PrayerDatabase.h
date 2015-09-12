@@ -29,8 +29,6 @@ extern NSString *const kPrefsFontSize;
 	sqlite3 *dbHandle;
 }
 
-@property(nonatomic, assign, getter=isPrayerBeingViewed) BOOL prayerBeingViewed;
-
 + (PrayerDatabase*)sharedInstance;
 - (NSArray*)categoriesForLanguage:(PBLanguage *)aLanguage;
 - (NSArray*)prayersForCategory:(NSString*)category language:(PBLanguage *)language;

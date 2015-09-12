@@ -227,7 +227,6 @@
     
     // notify the prayer database that this prayer is being accessed
     [PrayerDatabase.sharedInstance accessedPrayer:self.prayer.prayerId];
-	PrayerDatabase.sharedInstance.prayerBeingViewed = YES;
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [self.navigationController setToolbarHidden:NO animated:animated];
@@ -235,8 +234,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
-	PrayerDatabase.sharedInstance.prayerBeingViewed = NO;
+
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 

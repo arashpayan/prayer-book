@@ -70,7 +70,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSNumber *bmark = self.bookmarks[indexPath.row];
+        NSNumber *bmark = self.bookmarks[(NSUInteger) indexPath.row];
         [Prefs.shared deleteBookmark:bmark.longValue];
         self.bookmarks = Prefs.shared.bookmarks;
 		
@@ -92,11 +92,8 @@
 	[super viewWillAppear:animated];
 	
 	self.bookmarks = Prefs.shared.bookmarks;
-	
-	if ([self.bookmarks count] > 0)
-		[self.navigationItem.rightBarButtonItem setEnabled:YES];
-	else
-		[self.navigationItem.rightBarButtonItem setEnabled:NO];
+
+	[self.navigationItem.rightBarButtonItem setEnabled:[self.bookmarks count] > 0];
 	
 	[self.tableView reloadData];
     
