@@ -7,6 +7,8 @@
 //
 
 #import "PrayerViewController.h"
+#import "Prefs.h"
+#import <GRMustache.h>
 
 @interface PrayerViewController () <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
 
@@ -15,7 +17,6 @@
 @property (nonatomic, readwrite) UIBarButtonItem *increaseSizeItem;
 @property (nonatomic, readwrite) UIBarButtonItem *decreaseSizeItem;
 @property (nonatomic, readwrite) UIBarButtonItem *bookmarkItem;
-@property (nonatomic, readwrite) UIBarButtonItem *emailItem;
 
 @property (nonatomic, readwrite) CGPoint lastScrollOffset;
 
@@ -54,7 +55,7 @@
 		MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 		mailController.mailComposeDelegate = self;
 		[mailController setSubject:self.prayer.category];
-		[mailController setMessageBody:[self finalPrayerHTML] isHTML:YES];
+		[mailController setMessageBody:self.html isHTML:YES];
         [self presentViewController:mailController animated:YES completion:nil];
 	} else {
 		// notify the user they need to setup their email
@@ -80,7 +81,7 @@
 		[userDefaults setFloat:currMultiplier forKey:kPrefsFontSize];
 		[userDefaults synchronize];
 		
-		[self.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+		[self.webView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"file:///"]];
 		
 		[self refreshTextSizeButtons];
 	}
@@ -88,10 +89,7 @@
 
 - (BOOL)increaseTextSizeActionEnabled {
 	float currMultiplier = [[NSUserDefaults standardUserDefaults] floatForKey:kPrefsFontSize];
-	if (currMultiplier < 1.4)
-		return YES;
-	
-	return NO;
+    return currMultiplier < 1.4;
 }
 
 - (void)decreaseTextSize {
@@ -103,7 +101,7 @@
 		[userDefaults setFloat:currMultiplier forKey:kPrefsFontSize];
 		[userDefaults synchronize];
 		
-		[self.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+		[self.webView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"file:///"]];
 		
 		[self refreshTextSizeButtons];
 	}
@@ -111,10 +109,8 @@
 
 - (BOOL)decreaseTextSizeActionEnabled {
 	float currMultiplier = [[NSUserDefaults standardUserDefaults] floatForKey:kPrefsFontSize];
-	if (currMultiplier > 0.9)
-		return YES;
-	
-	return NO;
+    return currMultiplier > 0.9f;
+
 }
 
 - (void)loadView {
@@ -131,7 +127,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.webView loadHTMLString:[self finalPrayerHTML] baseURL:[NSURL URLWithString:@"file:///"]];
+    [self.webView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"file:///"]];
     
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
@@ -161,72 +157,68 @@
                                                                     action:@selector(mailPrayer)];
     emailItem.width = 38;
     
-    self.toolbarItems = [NSArray arrayWithObjects:self.decreaseSizeItem, self.increaseSizeItem, flexibleSpace, self.bookmarkItem, emailItem, nil];
+    self.toolbarItems = @[self.decreaseSizeItem, self.increaseSizeItem, flexibleSpace, self.bookmarkItem, emailItem];
 }
 
-- (NSString*)finalPrayerHTML {
-	NSMutableString *finalHTML = [[NSMutableString alloc] init];
-	[finalHTML appendString:[PrayerViewController HTMLPrefix:[self.prayer language]]];
-	[finalHTML appendString:self.prayer.text];
-	[finalHTML appendString:[NSString stringWithFormat:@"<h4 id=\"author\">%@</h4>", [self.prayer author], nil]];
-	if ([self.prayer citation] != nil)
-		[finalHTML appendString:[NSString stringWithFormat:@"<p class=\"comment\"><br/><br/>%@</p>", [self.prayer citation], nil]];
-	[finalHTML appendString:[PrayerViewController HTMLSuffix]];
-	
-	return finalHTML;
-}
+- (NSString *)html {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    float scale = [userDefaults floatForKey:kPrefsFontSize];
 
-+ (NSString*)HTMLPrefix:(PBLanguage *)language {
-	float multiplier;
-	// get the value for the font multiplier
-	multiplier = [[NSUserDefaults standardUserDefaults] floatForKey:kPrefsFontSize];
-	if (multiplier == 0)
-		multiplier = 1.0;	// the default
-	
-	float pFontWidth = 1.1f * multiplier;
-	float pFontHeight = 1.575f * multiplier;
-	float pComment = 0.8f * multiplier;
-	float authorWidth = 1.03f * multiplier;
-	float authorHeight = 1.825f * multiplier;
-	float versalWidth = 3.5f * multiplier;
-	float versalHeight = 0.75f * multiplier;
-	NSMutableString *htmlPrefix = [[NSMutableString alloc] init];
-	[htmlPrefix appendString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"];
-	[htmlPrefix appendString:@"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"];
-    if (language.rightToLeft) {
-        [htmlPrefix appendString:@"<html dir=\"rtl\" xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
+    float pFontWidth = 1.1f * scale;
+    float pFontHeight = 1.575f * scale;
+    float pComment = .8f * scale;
+    float authorWidth = 1.03f * scale;
+    float authorHeight = 1.825f * scale;
+    float versalWidth = 3.5f * scale;
+    float versalHeight = 0.75f * scale;
+
+    NSMutableDictionary *args = [NSMutableDictionary new];
+    args[@"fontWidth"] = [NSString stringWithFormat:@"%f", pFontWidth];
+    args[@"fontHeight"] = [NSString stringWithFormat:@"%f", pFontHeight];
+    args[@"commentSize"] = [NSString stringWithFormat:@"%f", pComment];
+    args[@"authorWidth"] = [NSString stringWithFormat:@"%f", authorWidth];
+    args[@"authorHeight"] = [NSString stringWithFormat:@"%f", authorHeight];
+    args[@"versalWidth"] = [NSString stringWithFormat:@"%f", versalWidth];
+    args[@"versalHeight"] = [NSString stringWithFormat:@"%f", versalHeight];
+    BOOL useClassicTheme = Prefs.shared.useClassicTheme;
+    NSString *bgColor;
+    NSString *versalAndAuthorColor;
+    NSString *font;
+    NSString *italicOrNothing;
+    if (useClassicTheme) {
+        bgColor = @"#D6D2C9";
+        versalAndAuthorColor = @"#992222";
+        font = @"Georgia";
+        italicOrNothing = @"italic";
     } else {
-        [htmlPrefix appendString:@"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"];
+        bgColor = @"#ffffff";
+        versalAndAuthorColor = @"#33b5e5";
+        font = @"sans-serif";
+        italicOrNothing = @"";
     }
-	[htmlPrefix appendString:@"<head>"];
-	[htmlPrefix appendString:@"<style type=\"text/css\">"];
-	[htmlPrefix appendString:@"#prayer p {margin: 0 0px .75em 5px; color: #333333; font: normal "];
-	[htmlPrefix appendFormat:@"%fem/%fem", pFontWidth, pFontHeight];
-	[htmlPrefix appendString:@" HelveticaNeue-Light, \"Times New Roman\", Times, serif; clear: both; text-indent: 1em;}"];
-	[htmlPrefix appendString:@"#prayer p.opening {text-indent: 0;}"];
-	[htmlPrefix appendString:@"#prayer p.commentcaps {font: normal "];
-	[htmlPrefix appendFormat:@"%fem", pComment];
-	[htmlPrefix appendString:@" Arial, Helvetica, sans-serif; color: #444433; text-transform: uppercase; margin: 0 0px 20px 5px; text-indent: 0; }"];
-	[htmlPrefix appendString:@"#prayer p.comment {font: normal "];
-	[htmlPrefix appendFormat:@"%fem", pComment];
-	[htmlPrefix appendString:@" Arial, Helvetica, sans-serif; color: #444433; margin: 0 0px .825em 1.5em; text-indent: 0; }"];
-	[htmlPrefix appendString:@"#prayer p.noindent {text-indent: 0; margin-bottom: .25em;}"];
-	[htmlPrefix appendString:@"#prayer p.commentnoindent {font: normal "];
-	[htmlPrefix appendFormat:@"%fem", pComment];
-	[htmlPrefix appendString:@" Arial, Helvetica, sans-serif; color: #444433; margin: 0 0px 15px 5px; text-indent: 0;}"];
-	[htmlPrefix appendString:@"#prayer h4#author { float: right; margin: 0 5px 25px 0; font: "];
-	[htmlPrefix appendFormat:@"%fem/%fem", authorWidth, authorHeight];
-    [htmlPrefix appendString:@" HelveticaNeue-Light, \"Times New Roman\", Times, serif; color: #007aff; text-indent: 0.325em; font-weight: normal; font-size:1.25em }"];
-    [htmlPrefix appendString:@"span.versal {float: left; display: inline; position: relative; color: #007aff; font: normal "];
-	[htmlPrefix appendFormat:@"%fem/%fem", versalWidth, versalHeight];
-	[htmlPrefix appendString:@" HelveticaNeue-UltraLight, \"Times New Roman\", Times, serif; margin: .115em .15em 0 0em; padding: 0;}"];
-	[htmlPrefix appendString:@"</style></head><body><div id=\"prayer\">"];
-	
-	return htmlPrefix;
-}
+    args[@"backgroundColor"] = bgColor;
+    args[@"versalAndAuthorColor"] = versalAndAuthorColor;
+    args[@"font"] = font;
+    args[@"italicOrNothing"] = italicOrNothing;
 
-+ (NSString*)HTMLSuffix {
-	return @"</div></body></html>";
+    args[@"prayer"] = self.prayer.text;
+    args[@"author"] = self.prayer.author;
+    if (self.prayer.citation.length == 0) {
+        args[@"citation"] = @"";
+    } else {
+        NSString *citationHTML = [NSString stringWithFormat:@"<p class=\"comment\"><br/><br/>%@</p>", self.prayer.citation];
+        args[@"citation"] = citationHTML;
+    }
+
+    if (self.prayer.language.rightToLeft) {
+        args[@"layoutDirection"] = @"rtl";
+    } else {
+        args[@"layoutDirection"] = @"ltr";
+    }
+
+    [GRMustacheConfiguration defaultConfiguration].contentType = GRMustacheContentTypeText;
+    NSString *rendering = [GRMustacheTemplate renderObject:args fromResource:@"prayer_template" bundle:nil error:NULL];
+    return rendering;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

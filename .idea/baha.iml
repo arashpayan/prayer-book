@@ -1,10 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CIDR_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/libsqlite3.0.dylib">
-      <sourceFolder url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib/libsqlite3.0.dylib" isTestSource="false" />
+    <content url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libsqlite3.0.dylib">
+      <sourceFolder url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libsqlite3.0.dylib" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheExpression.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheExpressionVisitor_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheExpression_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheFilteredExpression.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheFilteredExpression_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheIdentifierExpression.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheIdentifierExpression_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheImplicitIteratorExpression.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheImplicitIteratorExpression_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheScopedExpression.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/Expressions/GRMustacheScopedExpression_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/GRMustacheCompiler.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/GRMustacheCompiler_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheInheritablePartialNode.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheInheritablePartialNode_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheInheritableSectionNode.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheInheritableSectionNode_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustachePartialNode.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustachePartialNode_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheSectionTag.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheSectionTag_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTag.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTag.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTag_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTemplateAST.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTemplateASTNode_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTemplateASTVisitor_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTemplateAST_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTextNode.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheTextNode_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheVariableTag.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Compiling/TemplateAST/GRMustacheVariableTag_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Configuration/GRMustacheConfiguration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Configuration/GRMustacheConfiguration.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Configuration/GRMustacheConfiguration_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/GRMustache.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/GRMustache.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/GRMustacheVersion.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/GRMustache_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Parsing/GRMustacheExpressionParser.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Parsing/GRMustacheExpressionParser_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Parsing/GRMustacheTemplateParser.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Parsing/GRMustacheTemplateParser_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Parsing/GRMustacheToken.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Parsing/GRMustacheToken_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheContext.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheContext.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheContext_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheExpressionInvocation.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheExpressionInvocation_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheFilter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheFilter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheFilter_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheKeyAccess.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheKeyAccess_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheRendering.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheRendering.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheRenderingEngine.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheRenderingEngine_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheRendering_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheSafeKeyAccess.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Rendering/GRMustacheTagDelegate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/GRMustacheExpressionGenerator.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/GRMustacheExpressionGenerator_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/GRMustacheTemplateGenerator.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/GRMustacheTemplateGenerator_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/NSFormatter+GRMustache.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/NSFormatter+GRMustache.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/NSValueTransformer+GRMustache.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/NSValueTransformer+GRMustache.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheEachFilter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheEachFilter_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheHTMLLibrary.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheHTMLLibrary_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheJavascriptLibrary.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheJavascriptLibrary_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheLocalizer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheLocalizer.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheStandardLibrary.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheStandardLibrary_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheURLLibrary.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Services/StandardLibrary/GRMustacheURLLibrary_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheAvailabilityMacros.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheAvailabilityMacros_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheBuffer_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheContentType.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheError.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheError.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheTranslateCharacters.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Shared/GRMustacheTranslateCharacters_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Templates/GRMustacheTemplate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Templates/GRMustacheTemplate.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Templates/GRMustacheTemplateRepository.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Templates/GRMustacheTemplateRepository.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Templates/GRMustacheTemplateRepository_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/GRMustache/src/classes/Templates/GRMustacheTemplate_private.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/JRSwizzle/JRSwizzle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/JRSwizzle/JRSwizzle.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/GRMustache/GRMustache-Private.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/GRMustache/GRMustache-dummy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/GRMustache/GRMustache-prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/GRMustache/GRMustache.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/JRSwizzle/JRSwizzle-Private.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/JRSwizzle/JRSwizzle-dummy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/JRSwizzle/JRSwizzle-prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/JRSwizzle/JRSwizzle.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.markdown" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-dummy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods-resources.sh" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods/Pods.release.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/baha/AppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/baha/AppDelegate.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/baha/Base.lproj/LaunchScreen.xib" isTestSource="false" />
@@ -45,6 +158,7 @@
       <sourceFolder url="file://$MODULE_DIR$/baha/l10n/en.lproj/Localizable.strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/baha/main.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/baha/res/pbdb.db" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/baha/res/prayer_template.mustache" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -131,6 +245,8 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.1.0/include" />
           <root url="file:///Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Frameworks/DTPerformanceSession.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Frameworks/InterfaceBuilderKit.framework/Headers" />
+          <root url="file://$MODULE_DIR$/Pods/Headers/Private" />
+          <root url="file://$MODULE_DIR$/Pods/Headers/Public" />
         </CLASSES>
         <SOURCES>
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework/Headers" />
@@ -213,6 +329,8 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.1.0/include" />
           <root url="file:///Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Frameworks/DTPerformanceSession.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Frameworks/InterfaceBuilderKit.framework/Headers" />
+          <root url="file://$MODULE_DIR$/Pods/Headers/Private" />
+          <root url="file://$MODULE_DIR$/Pods/Headers/Public" />
         </SOURCES>
       </library>
     </orderEntry>

@@ -12,6 +12,7 @@
 
 typedef enum {
     SettingsLanguagesSection,
+    SettingsThemeSection,
     SettingsAboutSection,
     SettingsNumSections,
 } SettingsSections;
@@ -58,6 +59,10 @@ typedef enum {
     [Prefs.shared setLanguage:l enabled:control.on];
 }
 
+- (void)onThemeChanged:(UISwitch*)control {
+    Prefs.shared.useClassicTheme = control.on;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
@@ -89,6 +94,9 @@ typedef enum {
     if (section == SettingsLanguagesSection) {
         return self.allLanguages.count;
     }
+    if (section == SettingsThemeSection) {
+        return 1;
+    }
     if (section == SettingsAboutSection) {
         return 1;
     }
@@ -115,8 +123,13 @@ typedef enum {
         UISwitch *s = self.languageToggles[indexPath.row];
         s.on = [Prefs.shared isLanguageEnabled:lang];
         cell.accessoryView = s;
-    }
-    else if (indexPath.section == SettingsAboutSection) {
+    } else if (indexPath.section == SettingsThemeSection) {
+        cell.textLabel.text = NSLocalizedString(@"use_classic_prayer_theme", nil);
+        UISwitch *s = [[UISwitch alloc] initWithFrame:CGRectZero];
+        s.on = Prefs.shared.useClassicTheme;
+        [s addTarget:self action:@selector(onThemeChanged:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = s;
+    } else if (indexPath.section == SettingsAboutSection) {
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.textLabel.text = NSLocalizedString(@"ABOUT", nil);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

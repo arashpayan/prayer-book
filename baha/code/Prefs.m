@@ -10,10 +10,11 @@
 #import "PBLanguage.h"
 #import "PrayerDatabase.h"
 
+NSString* const NotificationThemeChanged = @"sh.ara.ThemeChanged";
 
 @implementation Prefs
 
-static NSString *kPrefUseClassicTheme = @"PrefUseClassicTheme";
+#define USE_CLASSIC_THEME @"UseClassicTheme"
 
 + (Prefs *)shared {
     static Prefs *singleton = nil;
@@ -70,6 +71,16 @@ static NSString *kPrefUseClassicTheme = @"PrefUseClassicTheme";
 
     [[NSNotificationCenter defaultCenter] postNotificationName:PBNotificationLanguagesPreferenceChanged
                                                         object:nil];
+}
+
+- (BOOL)useClassicTheme {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud boolForKey:USE_CLASSIC_THEME];
+}
+
+- (void)setUseClassicTheme:(BOOL)useClassicTheme {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:useClassicTheme forKey:USE_CLASSIC_THEME];
 }
 
 @end

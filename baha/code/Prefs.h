@@ -6,12 +6,14 @@
 //  Copyright (c) 2014 Arash Payan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+@import Foundation;
 @class PBLanguage;
+
+extern NSString* const  NotificationThemeChanged;
 
 @interface Prefs : NSObject
 
+@property (nonatomic, readwrite) BOOL useClassicTheme;
 + (Prefs *)shared;
 - (NSArray*)enabledLanguages;
 - (BOOL)isLanguageEnabled:(PBLanguage*)lang;
