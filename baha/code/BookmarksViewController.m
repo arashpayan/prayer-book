@@ -8,6 +8,7 @@
 
 #import "BookmarksViewController.h"
 #import "PrayerViewController.h"
+#import "Prefs.h"
 
 @interface BookmarksViewController ()
 
@@ -46,8 +47,8 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
-	NSNumber *bookmark = self.bookmarks[indexPath.row];
-	Prayer *prayer = [[PrayerDatabase sharedInstance] prayerWithId:[bookmark longValue]];
+	NSNumber *bookmark = self.bookmarks[(NSUInteger) indexPath.row];
+	Prayer *prayer = [PrayerDatabase.sharedInstance prayerWithId:bookmark.longValue];
 	cell.title.text = prayer.title;
 	cell.subtitle.text = prayer.category;
 	
@@ -56,8 +57,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSNumber *bookmark = self.bookmarks[indexPath.row];
-	Prayer *prayer = [[PrayerDatabase sharedInstance] prayerWithId:[bookmark longValue]];
+	NSNumber *bookmark = self.bookmarks[(NSUInteger) indexPath.row];
+	Prayer *prayer = [PrayerDatabase.sharedInstance prayerWithId:bookmark.longValue];
 	
 	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:prayer];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
@@ -69,8 +70,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[[PrayerDatabase sharedInstance] removeBookmark:[self.bookmarks[indexPath.row] longValue]];
-		self.bookmarks = [[PrayerDatabase sharedInstance] getBookmarks];
+        NSNumber *bmark = self.bookmarks[indexPath.row];
+        [Prefs.shared deleteBookmark:bmark.longValue];
+        self.bookmarks = Prefs.shared.bookmarks;
 		
 		[tableView reloadData];
 		
@@ -89,7 +91,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	self.bookmarks = [[PrayerDatabase sharedInstance] getBookmarks];
+	self.bookmarks = Prefs.shared.bookmarks;
 	
 	if ([self.bookmarks count] > 0)
 		[self.navigationItem.rightBarButtonItem setEnabled:YES];

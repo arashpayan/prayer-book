@@ -15,6 +15,7 @@ NSString* const NotificationThemeChanged = @"sh.ara.ThemeChanged";
 @implementation Prefs
 
 #define USE_CLASSIC_THEME @"UseClassicTheme"
+#define BOOKMARKS_PREF @"BookmarksPrefKey"
 
 + (Prefs *)shared {
     static Prefs *singleton = nil;
@@ -81,6 +82,32 @@ NSString* const NotificationThemeChanged = @"sh.ara.ThemeChanged";
 - (void)setUseClassicTheme:(BOOL)useClassicTheme {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:useClassicTheme forKey:USE_CLASSIC_THEME];
+}
+
+- (NSArray *)bookmarks {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *bookmarks = [ud objectForKey:BOOKMARKS_PREF];
+    return bookmarks;
+}
+
+- (void)bookmark:(long)prayerID {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *bookmarks = [[ud objectForKey:BOOKMARKS_PREF] mutableCopy];
+    [bookmarks addObject:@(prayerID)];
+    [ud setObject:bookmarks forKey:BOOKMARKS_PREF];
+}
+
+- (void)deleteBookmark:(long)prayerID {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *bookmarks = [[ud objectForKey:BOOKMARKS_PREF] mutableCopy];
+    [bookmarks removeObject:@(prayerID)];
+    [ud setObject:bookmarks forKey:BOOKMARKS_PREF];
+}
+
+- (BOOL)isBookmarked:(long)prayerID {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *bookmarks = [[ud objectForKey:BOOKMARKS_PREF] mutableCopy];
+    return [bookmarks containsObject:@(prayerID)];
 }
 
 @end

@@ -20,7 +20,6 @@ extern NSString *const kBookmarkKeyTitle;
 
 extern NSString *const kRecentsKeyCategory;
 extern NSString *const kRecentsKeyTitle;
-extern NSString *const kRecentsKeyAccessTime;
 
 extern NSString *const PBNotificationLanguagesPreferenceChanged;
 
@@ -36,13 +35,9 @@ extern NSString *const kPrefsFontSize;
 - (NSArray*)categoriesForLanguage:(PBLanguage *)aLanguage;
 - (NSArray*)prayersForCategory:(NSString*)category language:(PBLanguage *)language;
 - (int)numberOfPrayersForCategory:(NSString*)category language:(PBLanguage *)lang;
-- (void)addBookmark:(long)prayerId;
-- (BOOL)prayerIsBookmarked:(long)prayerId;
-- (NSArray*)getBookmarks;
 - (void)clearRecents;
 - (NSArray*)getRecent;
 - (void)accessedPrayer:(long)prayerId;
-- (void)removeBookmark:(long)prayerId;
 - (Prayer*)prayerWithId:(long)prayerId;
 - (NSArray*)searchWithKeywords:(NSArray*)keywords;
 

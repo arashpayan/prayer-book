@@ -18,14 +18,12 @@
 		UIColor *whiteColor = [UIColor whiteColor];
 		
 		self.title = [[UILabel alloc] initWithFrame:CGRectZero];
-		self.title.backgroundColor = whiteColor;
 		self.title.textColor = blackColor;
 		self.title.highlightedTextColor = whiteColor;
 		self.title.opaque = YES;
 		self.title.font = [UIFont systemFontOfSize:16];
 		
 		self.subtitle = [[UILabel alloc] initWithFrame:CGRectMake(PBUI.cellMargin, 28, 200, 14)];
-		self.subtitle.backgroundColor = whiteColor;
 		self.subtitle.textColor = [UIColor colorWithRed:130.0/255.0 green:130.0/255.0 blue:130.0/255.0 alpha:1];
 		self.subtitle.highlightedTextColor = whiteColor;
 		self.subtitle.opaque = YES;

@@ -18,7 +18,6 @@ NSString *const kBookmarkKeyTitle			= @"BookmarkKeyTitle";
 
 NSString *const kRecentsKeyCategory			= @"RecentsKeyCategory";
 NSString *const kRecentsKeyTitle			= @"RecentsKeyTitle";
-NSString *const kRecentsKeyAccessTime		= @"RecentsKeyAccessTime";
 
 NSString *const kPrefsFontSize				= @"fontSizePref";
 
@@ -28,7 +27,6 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 
 @interface PrayerDatabase ()
 
-@property (nonatomic, strong) NSMutableArray *bookmarkedPrayers;
 @property (nonatomic, strong) NSMutableDictionary *categoryCountCache;
 @property (nonatomic, strong) NSMutableArray *recentPrayers;
 
@@ -63,8 +61,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		// initialize the empty category count cache
 		self.categoryCountCache = [[NSMutableDictionary alloc] init];
 		
-		// cache the bookmarks and recents
-		[self getBookmarks];
+		// cache the recents
 		[self getRecent];
 	}
 	
@@ -91,7 +88,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 			int rc = sqlite3_step(searchStmt);
 			if (rc == SQLITE_ROW) {
 				long prayerId = sqlite3_column_int(searchStmt, 0);
-				[newBookmarks addObject:[NSNumber numberWithLong:prayerId]];
+				[newBookmarks addObject:@(prayerId)];
 			}
 			
 			sqlite3_finalize(searchStmt);
@@ -123,7 +120,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 			if (rc == SQLITE_ROW)
 			{
 				long prayerId = sqlite3_column_int(searchStmt, 0);
-				[newRecents addObject:[NSNumber numberWithLong:prayerId]];
+				[newRecents addObject:@(prayerId)];
 			}
 				
 				sqlite3_finalize(searchStmt);
@@ -139,7 +136,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	
 	// fix the bug that caused the app to crash at launch in v1.1
 	NSMutableArray *saveState = [[NSMutableArray alloc] init];
-	[saveState addObject:[NSNumber numberWithInt:0]];
+	[saveState addObject:@0];
     [[NSUserDefaults standardUserDefaults] setObject:saveState forKey:@"savedState"];
 	
 	// update our db version number
@@ -190,7 +187,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		return categories;
 	}
 	
-	while ((rc = sqlite3_step(categoriesStmt)) == SQLITE_ROW)
+	while (sqlite3_step(categoriesStmt) == SQLITE_ROW)
 	{
 		[categories addObject:[NSString stringWithUTF8String:(const char*)sqlite3_column_text(categoriesStmt, 0)]];
 	}
@@ -198,15 +195,6 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	sqlite3_finalize(categoriesStmt);
 
     return categories;
-}
-
-- (NSDictionary*)categories {
-	NSMutableDictionary *categories = [[NSMutableDictionary alloc] init];
-    for (PBLanguage *l in PBLanguage.all) {
-        categories[l] = [self categoriesForLanguage:l];
-    }
-	
-	return categories;
 }
 
 - (NSArray*)prayersForCategory:(NSString*)category language:(PBLanguage *)language {
@@ -227,7 +215,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	if (rc != SQLITE_OK)
 		NSLog(@"Problem preparing getPrayersStmt in getPrayersForCategory (%d): %s", rc, sqlite3_errmsg(dbHandle));
 	
-	while ((rc = sqlite3_step(getPrayersStmt)) == SQLITE_ROW)
+	while (sqlite3_step(getPrayersStmt) == SQLITE_ROW)
 	{
 		long prayerId = sqlite3_column_int(getPrayersStmt, 0);
 		NSString *prayerText = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 1)];
@@ -283,38 +271,6 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	self.categoryCountCache[category] = @(numPrayers);
 	
 	return numPrayers;
-}
-
-- (NSArray*)getBookmarks {
-	if (self.bookmarkedPrayers == nil) {
-        NSArray *tmp = [[NSUserDefaults standardUserDefaults] arrayForKey:kBookmarksPrefKey];
-		
-		if (tmp == nil) {
-			// if there is no bookmark list, we'll make an empty one
-			self.bookmarkedPrayers = [[NSMutableArray alloc] init];
-		} else {
-			self.bookmarkedPrayers = [NSMutableArray arrayWithCapacity:[tmp count]];
-			[self.bookmarkedPrayers addObjectsFromArray:tmp];
-		}
-	}
-	
-	return [NSArray arrayWithArray:self.bookmarkedPrayers];
-}
-
-- (BOOL)prayerIsBookmarked:(long)prayerId {	
-	return [self.bookmarkedPrayers containsObject:@(prayerId)];
-}
-
-- (void)addBookmark:(long)prayerId {
-    [self.bookmarkedPrayers addObject:@(prayerId)];
-	
-    [[NSUserDefaults standardUserDefaults] setObject:self.bookmarkedPrayers forKey:kBookmarksPrefKey];
-}
-
-- (void)removeBookmark:(long)prayerId {
-    [self.bookmarkedPrayers removeObject:@(prayerId)];
-	
-    [[NSUserDefaults standardUserDefaults] setObject:self.bookmarkedPrayers forKey:kBookmarksPrefKey];
 }
 
 - (void)clearRecents {
@@ -423,7 +379,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     NSMutableString *langClause = [NSMutableString new];
     NSArray *enabledLangs = Prefs.shared.enabledLanguages;
     for (int i=0; i<enabledLangs.count; i++) {
-        PBLanguage *l = enabledLangs[i];
+        PBLanguage *l = enabledLangs[(NSUInteger) i];
         if (i == enabledLangs.count-1) {
             [langClause appendFormat:@"language='%@'", l.code];
         } else {
@@ -443,16 +399,16 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	if (rc != SQLITE_OK)
 		NSLog(@"Problem preparing searchWithKeywordsStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
 	
-	while ((rc = sqlite3_step(searchStmt)) == SQLITE_ROW)
+	while (sqlite3_step(searchStmt) == SQLITE_ROW)
 	{
-		NSNumber *prayerId = [NSNumber numberWithLong:sqlite3_column_int(searchStmt, 0)];
+		NSNumber *prayerId = @(sqlite3_column_int(searchStmt, 0));
 		// check for it in the cache
 		Prayer *currPrayer = nil;
 		if ((currPrayer = (Prayer*)prayerCache[prayerId]) == nil)
 		{
 			currPrayer = [self prayerWithId:[prayerId longValue]];
 			// cache it
-			[prayerCache setObject:currPrayer forKey:prayerId];
+			prayerCache[prayerId] = currPrayer;
 		}
 		
 		[results addObject:currPrayer];

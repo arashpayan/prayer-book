@@ -10,7 +10,7 @@
 #import "Prefs.h"
 #import <GRMustache.h>
 
-@interface PrayerViewController () <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
+@interface PrayerViewController () <MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, readwrite) Prayer *prayer;
 @property (nonatomic, readwrite) UIWebView *webView;
@@ -35,19 +35,14 @@
 	return self;
 }
 
-- (BOOL)bookmarkingEnabled {
-	return ![[PrayerDatabase sharedInstance] prayerIsBookmarked:self.prayer.prayerId];
-}
-
-- (void)promptToBookmark {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:NSLocalizedString(@"CANCEL", NULL)
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:NSLocalizedString(@"ADD_BOOKMARK", NULL), nil];
-	
-	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-	[actionSheet showInView:self.tabBarController.view];
+- (void)toggleBookmark {
+    if ([Prefs.shared isBookmarked:self.prayer.prayerId]) {
+        [Prefs.shared deleteBookmark:self.prayer.prayerId];
+        self.bookmarkItem.image = [UIImage imageNamed:@"ic_bookmark_border"];
+    } else {
+        [Prefs.shared bookmark:self.prayer.prayerId];
+        self.bookmarkItem.image = [UIImage imageNamed:@"ic_bookmark"];
+    }
 }
 
 - (void)mailPrayer {
@@ -132,26 +127,32 @@
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
                                                                                    action:nil];
-    
-    self.increaseSizeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarBigger"]
+
+    self.increaseSizeItem = [[UIBarButtonItem alloc] initWithTitle:@"A+"
                                                              style:UIBarButtonItemStylePlain
                                                             target:self
                                                             action:@selector(increaseTextSize)];
     self.increaseSizeItem.width = 38;
-    
-    self.decreaseSizeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarSmaller"]
+
+    self.decreaseSizeItem = [[UIBarButtonItem alloc] initWithTitle:@"A-"
                                                              style:UIBarButtonItemStylePlain
                                                             target:self
                                                             action:@selector(decreaseTextSize)];
     self.decreaseSizeItem.width = 38;
-    
-    self.bookmarkItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarBookmark"]
+
+    UIImage *bookmarkImg;
+    if ([Prefs.shared isBookmarked:self.prayer.prayerId]) {
+        bookmarkImg = [UIImage imageNamed:@"ic_bookmark"];
+    } else {
+        bookmarkImg = [UIImage imageNamed:@"ic_bookmark_border"];
+    }
+    self.bookmarkItem = [[UIBarButtonItem alloc] initWithImage:bookmarkImg
                                                          style:UIBarButtonItemStylePlain
                                                         target:self
-                                                        action:@selector(promptToBookmark)];
+                                                        action:@selector(toggleBookmark)];
     self.bookmarkItem.width = 38;
     
-    UIBarButtonItem *emailItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolBarShare"]
+    UIBarButtonItem *emailItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"]
                                                                         style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(mailPrayer)];
@@ -246,15 +247,6 @@
 - (void)refreshTextSizeButtons {
     self.increaseSizeItem.enabled = [self increaseTextSizeActionEnabled];
     self.decreaseSizeItem.enabled = [self decreaseTextSizeActionEnabled];
-}
-
-#pragma mark - UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [PrayerDatabase.sharedInstance addBookmark:self.prayer.prayerId];
-        self.bookmarkItem.enabled = NO;
-    }
 }
 
 #pragma mark - UIScrollViewDelegate
