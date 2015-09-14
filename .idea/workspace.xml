@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11ba3b6c-2186-4ece-8811-a6de7eb26b1e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baha/code/BookmarksViewController.m" afterPath="$PROJECT_DIR$/baha/code/BookmarksViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baha/code/CategoriesController.m" afterPath="$PROJECT_DIR$/baha/code/CategoriesController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baha/code/PrayerDatabase.h" afterPath="$PROJECT_DIR$/baha/code/PrayerDatabase.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baha/code/PrayerViewController.m" afterPath="$PROJECT_DIR$/baha/code/PrayerViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="11ba3b6c-2186-4ece-8811-a6de7eb26b1e" name="Default" comment="" />
     <ignored path="baha.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
