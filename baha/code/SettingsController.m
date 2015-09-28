@@ -31,9 +31,9 @@ typedef enum {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Settings", nil);
-        self.tabBarItem.title = NSLocalizedString(@"Settings", nil);
-        self.tabBarItem.image = [UIImage imageNamed:@"ic_settings"];
+        self.title = NSLocalizedString(@"languages", nil);
+        self.tabBarItem.title = NSLocalizedString(@"languages", nil);
+        self.tabBarItem.image = [UIImage imageNamed:@"ic_language"];
         self.tabBarItem.tag = 4;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
