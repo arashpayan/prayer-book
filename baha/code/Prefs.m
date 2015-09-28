@@ -93,8 +93,12 @@ NSString* const NotificationThemeChanged = @"sh.ara.ThemeChanged";
 - (void)bookmark:(long)prayerID {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSMutableArray *bookmarks = [[ud objectForKey:BOOKMARKS_PREF] mutableCopy];
+    if (bookmarks == nil) {
+        bookmarks = [NSMutableArray new];
+    }
     [bookmarks addObject:@(prayerID)];
     [ud setObject:bookmarks forKey:BOOKMARKS_PREF];
+    [ud synchronize];
 }
 
 - (void)deleteBookmark:(long)prayerID {
@@ -102,6 +106,7 @@ NSString* const NotificationThemeChanged = @"sh.ara.ThemeChanged";
     NSMutableArray *bookmarks = [[ud objectForKey:BOOKMARKS_PREF] mutableCopy];
     [bookmarks removeObject:@(prayerID)];
     [ud setObject:bookmarks forKey:BOOKMARKS_PREF];
+    [ud synchronize];
 }
 
 - (BOOL)isBookmarked:(long)prayerID {
