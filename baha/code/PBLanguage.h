@@ -21,6 +21,7 @@
 + (PBLanguage *)french;
 + (PBLanguage *)dutch;
 + (PBLanguage *)slovak;
++ (PBLanguage *)icelandic;
 
 + (PBLanguage *)languageFromCode:(NSString *)code;
 

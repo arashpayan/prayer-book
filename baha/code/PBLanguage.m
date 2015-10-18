@@ -40,11 +40,12 @@
             PBLanguage.czech,
             PBLanguage.english,
             PBLanguage.spanish,
-            PBLanguage.persian,
-            PBLanguage.fijian,
             PBLanguage.french,
+            PBLanguage.icelandic,
             PBLanguage.dutch,
-            PBLanguage.slovak
+            PBLanguage.slovak,
+            PBLanguage.fijian,
+            PBLanguage.persian
     ];
 }
 
@@ -78,6 +79,10 @@
 
 + (PBLanguage *)slovak {
     return [PBLanguage languageWithCode:@"sk" humanName:@"Slovenčina" rtl:NO];
+}
+
++ (PBLanguage *)icelandic {
+    return [PBLanguage languageWithCode:@"is" humanName:@"íslenska" rtl:NO];
 }
 
 + (PBLanguage *)languageFromCode:(NSString *)code {

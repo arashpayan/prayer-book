@@ -19,3 +19,6 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.xcuserstate
+
+# AppCode
+.idea/workspace.xml
