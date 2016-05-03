@@ -38,6 +38,7 @@
 + (NSArray *)all {
     return @[
             PBLanguage.czech,
+            PBLanguage.german,
             PBLanguage.english,
             PBLanguage.spanish,
             PBLanguage.french,
@@ -51,6 +52,10 @@
 
 + (PBLanguage *)czech {
     return [PBLanguage languageWithCode:@"cs" humanName:@"Čeština" rtl:NO];
+}
+
++ (PBLanguage *)german {
+    return [PBLanguage languageWithCode:@"de" humanName:@"Deutsch" rtl:NO];
 }
 
 + (PBLanguage *)english {
