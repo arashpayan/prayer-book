@@ -45,6 +45,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		{
 			NSLog(@"Can't open the database: %s", sqlite3_errmsg(dbHandle));
 		}
+        
+        // initialize the empty category count cache
+        self.categoryCountCache = [[NSMutableDictionary alloc] init];
 		
 		NSInteger dbVersion = [[NSUserDefaults standardUserDefaults] integerForKey:kDatabaseVersionNumber];
         switch (dbVersion) {
@@ -54,15 +57,11 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
                 [self migrateDbFrom1To2];
             case 2:
                 [self migrateDbFrom2To3];
+            case 3:
+                [self migrateDbFrom3To4];
             default:
                 break;
         }
-
-		// initialize the empty category count cache
-		self.categoryCountCache = [[NSMutableDictionary alloc] init];
-		
-		// cache the recents
-		[self getRecent];
 	}
 	
 	return self;
@@ -154,6 +153,23 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	NSLog(@"migratedDBFrom2To3");
 }
 
+- (void)migrateDbFrom3To4 {
+    // clear the recents because the english prayer ids have changed
+    [self clearRecents];
+    
+    // inspect each bookmark. If the prayer id no longer exists, remove it
+    NSArray *bookmarks = Prefs.shared.bookmarks;
+    for (NSNumber *bookmarkId in bookmarks) {
+        Prayer *prayer = [self prayerWithId:bookmarkId.longValue];
+        if (prayer == nil) {
+            [Prefs.shared deleteBookmark:bookmarkId.longValue];
+        }
+    }
+    
+    // update our db version number
+    [[NSUserDefaults standardUserDefaults] setInteger:4 forKey:kDatabaseVersionNumber];
+}
+    
 + (PrayerDatabase*)sharedInstance {
 	static PrayerDatabase *prayerDatabase;
 	
