@@ -295,7 +295,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kRecentsPrefKey];
 }
 
-- (NSArray*)getRecent {
+- (NSArray*)recents {
 	if (self.recentPrayers == nil) {
         NSArray *tmp = [[NSUserDefaults standardUserDefaults] objectForKey:kRecentsPrefKey];
 

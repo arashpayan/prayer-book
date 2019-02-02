@@ -46,7 +46,7 @@
 
 - (void)clearRecents {
     [[PrayerDatabase sharedInstance] clearRecents];
-    self.recentPrayers = [[PrayerDatabase sharedInstance] getRecent];
+    self.recentPrayers = [[PrayerDatabase sharedInstance] recents];
     
     [self.tableView reloadData];
 }
@@ -62,7 +62,6 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
 	PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
@@ -94,22 +93,20 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 50;
+    return PrayerCell.preferredHeight;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	self.recentPrayers = [[PrayerDatabase sharedInstance] getRecent];
+	self.recentPrayers = [[PrayerDatabase sharedInstance] recents];
+    [self.tableView reloadData];
 	
 	if ([self.recentPrayers count] > 0)
 		[self.navigationItem.rightBarButtonItem setEnabled:YES];
 	else
 		[self.navigationItem.rightBarButtonItem setEnabled:NO];
-	
-	// force the reload, because UIKit caches the table
-	[self.tableView reloadData];
-    
+
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
 

@@ -34,7 +34,7 @@ extern NSString *const kPrefsFontSize;
 - (NSArray*)prayersForCategory:(NSString*)category language:(PBLanguage *)language;
 - (int)numberOfPrayersForCategory:(NSString*)category language:(PBLanguage *)lang;
 - (void)clearRecents;
-- (NSArray*)getRecent;
+- (NSArray*)recents;
 - (void)accessedPrayer:(long)prayerId;
 - (Prayer*)prayerWithId:(long)prayerId;
 - (NSArray*)searchWithKeywords:(NSArray*)keywords;

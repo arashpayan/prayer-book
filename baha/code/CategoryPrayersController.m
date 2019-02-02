@@ -29,7 +29,6 @@
 	return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [self.prayers count];
 }
@@ -51,14 +50,13 @@
 	return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	PrayerViewController *prayerViewController = [[PrayerViewController alloc] initWithPrayer:self.prayers[indexPath.row]];
 	[[self navigationController] pushViewController:prayerViewController animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 56;
+	return PrayerCell.preferredHeight;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {

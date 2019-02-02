@@ -12,7 +12,7 @@
 
 @interface BookmarksViewController ()
 
-@property (nonatomic, strong) NSArray *bookmarks;
+@property (nonatomic, strong) NSArray<NSNumber*> *bookmarks;
 
 @end
 
@@ -32,13 +32,11 @@
 	return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [self.bookmarks count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
 	PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
@@ -54,7 +52,6 @@
 	
 	return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSNumber *bookmark = self.bookmarks[(NSUInteger) indexPath.row];
@@ -85,18 +82,21 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 50;
+	return PrayerCell.preferredHeight;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	self.bookmarks = Prefs.shared.bookmarks;
+    // check if the list of bookmarks has changed
+    NSArray<NSNumber*> *bkmrks = Prefs.shared.bookmarks;
+    if (![bkmrks isEqualToArray:self.bookmarks]) {
+        self.bookmarks = bkmrks;
+        [self.tableView reloadData];
+    }
 
 	[self.navigationItem.rightBarButtonItem setEnabled:[self.bookmarks count] > 0];
-	
-	[self.tableView reloadData];
-    
+
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
 

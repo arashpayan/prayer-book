@@ -84,7 +84,7 @@ NSString* const NotificationThemeChanged = @"sh.ara.ThemeChanged";
     [ud setBool:useClassicTheme forKey:USE_CLASSIC_THEME];
 }
 
-- (NSArray *)bookmarks {
+- (NSArray<NSNumber*> *)bookmarks {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSMutableArray *bookmarks = [ud objectForKey:BOOKMARKS_PREF];
     return bookmarks;

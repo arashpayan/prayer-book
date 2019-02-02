@@ -43,6 +43,10 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	[super setSelected:selected animated:animated];
 	// Configure the view for the selected state
+    
+    self.title.highlighted = selected;
+    self.subtitle.highlighted = selected;
+    self.rightLabel.highlighted = selected;
 }
 
 - (void)layoutSubviews {
@@ -71,6 +75,10 @@
                                      CGRectGetMaxY(self.title.frame) + 4,
                                      leftWidth,
                                      self.subtitle.bounds.size.height);
+}
+
++ (CGFloat)preferredHeight {
+    return 56;
 }
 
 @end

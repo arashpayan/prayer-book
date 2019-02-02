@@ -19,7 +19,7 @@ extern NSString* const  NotificationThemeChanged;
 - (BOOL)isLanguageEnabled:(PBLanguage*)lang;
 - (void)setLanguage:(PBLanguage *)lang enabled:(BOOL)shouldEnable;
 
-- (NSArray *)bookmarks;
+- (NSArray<NSNumber*> *)bookmarks;
 - (void)bookmark:(long)prayerID;
 - (void)deleteBookmark:(long)prayerID;
 - (BOOL)isBookmarked:(long)prayerID;

@@ -16,5 +16,6 @@
 @property (nonatomic, strong) UILabel *rightLabel;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
++ (CGFloat)preferredHeight;
 
 @end
