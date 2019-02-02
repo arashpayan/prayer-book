@@ -13,7 +13,7 @@
 + (CGFloat)cellMargin {
     static CGFloat margin = 0;
     if (margin == 0) {
-        if ([UIDevice.currentDevice.model rangeOfString:@"ipad" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
             margin = 18;
         } else {
             margin = 16;
