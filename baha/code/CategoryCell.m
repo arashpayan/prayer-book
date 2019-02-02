@@ -36,7 +36,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGRect countRect = CGRectMake(CGRectGetMaxX(self.contentView.bounds)-44, 12, 32, 20);
+    CGRect countRect = CGRectMake(CGRectGetMaxX(self.contentView.bounds)-32, 12, 32, 20);
     self.countLabel.frame = countRect;
     self.roundedRectangle.frame = countRect;
     

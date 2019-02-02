@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PrayerDatabase.h"
-#import "PrayerTableCell.h"
+#import "PrayerCell.h"
 
 @interface RecentViewController : UITableViewController <UIActionSheetDelegate>
 

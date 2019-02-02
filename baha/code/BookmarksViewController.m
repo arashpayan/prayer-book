@@ -41,9 +41,9 @@
 	
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
-	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
-		cell = [[PrayerTableCell alloc] initWithReuseIdentifier:MyIdentifier];
+		cell = [[PrayerCell alloc] initWithReuseIdentifier:MyIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell

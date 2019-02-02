@@ -7,7 +7,7 @@
 //
 
 #import "SearchViewController.h"
-#import "PrayerTableCell.h"
+#import "PrayerCell.h"
 #import "PrayerDatabase.h"
 #import "PrayerViewController.h"
 
@@ -85,9 +85,9 @@ dispatch_queue_t SEARCH_QUEUE;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *MyIdentifier = @"UnselectedIdentifier";
 	
-	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
-		cell = [[PrayerTableCell alloc] initWithReuseIdentifier:MyIdentifier];
+		cell = [[PrayerCell alloc] initWithReuseIdentifier:MyIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell

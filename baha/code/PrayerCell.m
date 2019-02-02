@@ -6,22 +6,19 @@
 //  Copyright 2008 Arash Payan. All rights reserved.
 //
 
-#import "PrayerTableCell.h"
+#import "PrayerCell.h"
 #import "PBUI.h"
 
-@implementation PrayerTableCell
+@implementation PrayerCell
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
 		// Initialization code
-		UIColor *blackColor = [UIColor blackColor];
 		UIColor *whiteColor = [UIColor whiteColor];
 		
 		self.title = [[UILabel alloc] initWithFrame:CGRectZero];
-		self.title.textColor = blackColor;
+        self.title.font = [UIFont systemFontOfSize:16];
 		self.title.highlightedTextColor = whiteColor;
-		self.title.opaque = YES;
-		self.title.font = [UIFont systemFontOfSize:16];
 		
 		self.subtitle = [[UILabel alloc] initWithFrame:CGRectMake(PBUI.cellMargin, 28, 200, 14)];
 		self.subtitle.textColor = [UIColor colorWithRed:130.0/255.0 green:130.0/255.0 blue:130.0/255.0 alpha:1];
@@ -48,14 +45,32 @@
 	// Configure the view for the selected state
 }
 
-- (void)setFrame:(CGRect)frame {
-	CGRect titleRect = CGRectMake(PBUI.cellMargin, 4, CGRectGetMaxX(frame)-40, 20);
-	self.title.frame = titleRect;
-	
-	CGRect rightRect = CGRectMake(CGRectGetMaxX(frame)-135, 28, 100, 14);
-	self.rightLabel.frame = rightRect;
-	
-	[super setFrame:frame];
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat height = self.contentView.bounds.size.height;
+    CGFloat width = self.contentView.bounds.size.width;
+    
+    [self.rightLabel sizeToFit];
+    self.rightLabel.center = CGPointMake(width - self.rightLabel.bounds.size.width/2.0,
+                                         CGRectGetMaxY(self.contentView.bounds)/2.0);
+    
+    CGFloat leftWidth = CGRectGetMinX(self.rightLabel.frame) - 12 - PBUI.cellMargin;
+    
+    // calculate the total amount of height we need
+    [self.title sizeToFit];
+    [self.subtitle sizeToFit];
+    CGFloat neededHeight = self.title.bounds.size.height + 4 + self.subtitle.bounds.size.height;
+    
+    self.title.frame = CGRectMake(PBUI.cellMargin,
+                                  (height-neededHeight)/2.0,
+                                  leftWidth,
+                                  self.title.bounds.size.height);
+    
+    self.subtitle.frame = CGRectMake(PBUI.cellMargin,
+                                     CGRectGetMaxY(self.title.frame) + 4,
+                                     leftWidth,
+                                     self.subtitle.bounds.size.height);
 }
 
 @end

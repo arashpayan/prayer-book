@@ -7,6 +7,7 @@
 //
 
 #import "CategoryPrayersController.h"
+#import "PBLocalization.h"
 
 
 @implementation CategoryPrayersController
@@ -33,21 +34,19 @@
 	return [self.prayers count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *MyIdentifier = @"SomeIdentifier";
 	
-	PrayerTableCell *cell = (PrayerTableCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
-		//cell = [[[PrayerTableCell alloc] initWithFrame:CGRectMake(0,0,0,0) reuseIdentifier:MyIdentifier] autorelease];
-		cell = [[PrayerTableCell alloc] initWithReuseIdentifier:MyIdentifier];
+		cell = [[PrayerCell alloc] initWithReuseIdentifier:MyIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	// Configure the cell
 	Prayer *selectedPrayer = self.prayers[indexPath.row];
-	cell.title.text = selectedPrayer.title;
+    cell.title.text = selectedPrayer.title;
 	cell.subtitle.text = selectedPrayer.author;
-	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", selectedPrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
+	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", selectedPrayer.wordCount, l10n(@"WORDS")];
 	
 	return cell;
 }
@@ -59,7 +58,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 50;
+	return 56;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {

@@ -8,7 +8,7 @@
 
 @import UIKit;
 #import "PrayerDatabase.h"
-#import "PrayerTableCell.h"
+#import "PrayerCell.h"
 
 
 @interface BookmarksViewController : UITableViewController

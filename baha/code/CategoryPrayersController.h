@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "PrayerViewController.h"
-#import "PrayerTableCell.h"
+#import "PrayerCell.h"
 
 @interface CategoryPrayersController : UITableViewController
 

@@ -10,7 +10,7 @@
 		58C3406A878AA6D173409CDE /* PBUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34D21B192B7E54499B62E /* PBUI.m */; };
 		58C341525CDC319D31D8F43B /* RoundedRectangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3428619E80B6C419196FD /* RoundedRectangleView.m */; };
 		58C341BF180D0E056AFFEFE7 /* CategoriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C342258D0FEA0D3369CFDA /* CategoriesController.m */; };
-		58C342B5EF03CBA999CC1848 /* PrayerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34CF48FEC7074B0389039 /* PrayerTableCell.m */; };
+		58C342B5EF03CBA999CC1848 /* PrayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34CF48FEC7074B0389039 /* PrayerCell.m */; };
 		58C342EBA988C3DF300969EE /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34508F58480DF9F92770D /* CategoryCell.m */; };
 		58C343F37D92EB4702881EB8 /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34295109A153CB593DE58 /* PrayerViewController.m */; };
 		58C344F06C33D1D9FE8EFB9B /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3427FE7B403AA10930A45 /* SettingsController.m */; };
@@ -78,8 +78,8 @@
 		58C34C5E1DD195AD16C116AD /* Prayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prayer.m; sourceTree = "<group>"; };
 		58C34C6F9D064F9BBD2D1ABE /* PBLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBLanguage.h; sourceTree = "<group>"; };
 		58C34CE5B6B644194DB4E4E9 /* PrayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerViewController.h; sourceTree = "<group>"; };
-		58C34CEAC0B445517806E7A4 /* PrayerTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerTableCell.h; sourceTree = "<group>"; };
-		58C34CF48FEC7074B0389039 /* PrayerTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerTableCell.m; sourceTree = "<group>"; };
+		58C34CEAC0B445517806E7A4 /* PrayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrayerCell.h; sourceTree = "<group>"; };
+		58C34CF48FEC7074B0389039 /* PrayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerCell.m; sourceTree = "<group>"; };
 		58C34D21B192B7E54499B62E /* PBUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBUI.m; sourceTree = "<group>"; };
 		58C34DD860A0AFABE6570315 /* Prefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prefs.m; sourceTree = "<group>"; };
 		58C34E629C0DDB0DAB63FF74 /* CategoryPrayersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPrayersController.m; sourceTree = "<group>"; };
@@ -186,14 +186,16 @@
 				58C34E6396F3A2F0DB7E9656 /* NSString_CategoryCompare.m */,
 				58C34C6F9D064F9BBD2D1ABE /* PBLanguage.h */,
 				58C3464C580AA1F9D42E9C7D /* PBLanguage.m */,
+				5B1C74D5220523FC002604BE /* PBLocalization.h */,
+				5B1C74D3220523BD002604BE /* PBLocalization.m */,
 				58C34496F4E48A2701FB1787 /* PBUI.h */,
 				58C34D21B192B7E54499B62E /* PBUI.m */,
 				58C344FF2B9E79848028DB9B /* Prayer.h */,
 				58C34C5E1DD195AD16C116AD /* Prayer.m */,
 				58C34B7CF59DBB6C40716E37 /* PrayerDatabase.h */,
 				58C3469A5F197964F2F1C31A /* PrayerDatabase.m */,
-				58C34CEAC0B445517806E7A4 /* PrayerTableCell.h */,
-				58C34CF48FEC7074B0389039 /* PrayerTableCell.m */,
+				58C34CEAC0B445517806E7A4 /* PrayerCell.h */,
+				58C34CF48FEC7074B0389039 /* PrayerCell.m */,
 				58C34CE5B6B644194DB4E4E9 /* PrayerViewController.h */,
 				58C34295109A153CB593DE58 /* PrayerViewController.m */,
 				58C34455C7578B66F8F7E806 /* Prefs.h */,
@@ -206,8 +208,6 @@
 				58C3467231CFD026391A4E38 /* SearchViewController.m */,
 				58C343608B5973C2F4D0FC28 /* SettingsController.h */,
 				58C3427FE7B403AA10930A45 /* SettingsController.m */,
-				5B1C74D5220523FC002604BE /* PBLocalization.h */,
-				5B1C74D3220523BD002604BE /* PBLocalization.m */,
 			);
 			path = code;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 				58C345E6F490C5B77E59B64A /* SearchViewController.m in Sources */,
 				58C34BBF43107278B0CBC4E4 /* BookmarksViewController.m in Sources */,
 				58C347BD2B56F1947767E66C /* RecentViewController.m in Sources */,
-				58C342B5EF03CBA999CC1848 /* PrayerTableCell.m in Sources */,
+				58C342B5EF03CBA999CC1848 /* PrayerCell.m in Sources */,
 				58C342EBA988C3DF300969EE /* CategoryCell.m in Sources */,
 				58C3406A878AA6D173409CDE /* PBUI.m in Sources */,
 				58C341525CDC319D31D8F43B /* RoundedRectangleView.m in Sources */,

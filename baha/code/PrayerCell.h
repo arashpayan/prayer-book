@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PrayerTableCell : UITableViewCell
+@interface PrayerCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UILabel *subtitle;

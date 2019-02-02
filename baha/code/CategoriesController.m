@@ -81,8 +81,7 @@
 	static NSString *myIdentifier = @"someIdentifier";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myIdentifier];
-	if (cell == nil)		
-	{
+	if (cell == nil) {
 		cell = [[CategoryCell alloc] initWithReuseIdentifier:myIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
