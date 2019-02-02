@@ -156,7 +156,7 @@ typedef enum {
     if (indexPath.section == SettingsAboutSection) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://arashpayan.com/in_app_pages/prayer_book/about"]];
+        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://arashpayan.com/in_app_pages/prayer_book/about"] options:@{} completionHandler:nil];
     }
 }
 
