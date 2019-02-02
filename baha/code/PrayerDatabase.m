@@ -36,13 +36,11 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 
 - (id)init {
 	self = [super init];
-	if (self)
-	{
+	if (self) {
 		// get the path to the prayers database
 		NSString *dbPath = [[NSBundle mainBundle] pathForResource:@"pbdb" ofType:@"db"];
 		int rc = sqlite3_open([dbPath UTF8String], &dbHandle);
-		if (rc != SQLITE_OK)
-		{
+		if (rc != SQLITE_OK) {
 			NSLog(@"Can't open the database: %s", sqlite3_errmsg(dbHandle));
 		}
         
@@ -98,11 +96,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	
 	// check for recents
 	NSArray *recents = [[NSUserDefaults standardUserDefaults] arrayForKey:kRecentsPrefKey];
-	if (recents != nil)
-	{
+	if (recents != nil) {
 		NSMutableArray *newRecents = [NSMutableArray arrayWithCapacity:50];
-		for (NSDictionary *recent in recents)
-		{
+		for (NSDictionary *recent in recents) {
 			NSString *category = recent[kRecentsKeyCategory];
 			NSString *title = recent[kRecentsKeyTitle];
 			
@@ -116,13 +112,12 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 							   0);
 			
 			int rc = sqlite3_step(searchStmt);
-			if (rc == SQLITE_ROW)
-			{
+			if (rc == SQLITE_ROW) {
 				long prayerId = sqlite3_column_int(searchStmt, 0);
 				[newRecents addObject:@(prayerId)];
 			}
 				
-				sqlite3_finalize(searchStmt);
+            sqlite3_finalize(searchStmt);
 		}
 		
         [[NSUserDefaults standardUserDefaults] setObject:newRecents forKey:kRecentsPrefKey];
@@ -173,12 +168,11 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 + (PrayerDatabase*)sharedInstance {
 	static PrayerDatabase *prayerDatabase;
 	
-	if (prayerDatabase == nil)
-	{
-		@synchronized(self)
-		{
-			if (prayerDatabase == nil)
+	if (prayerDatabase == nil) {
+		@synchronized(self) {
+            if (prayerDatabase == nil) {
 				prayerDatabase = [[PrayerDatabase alloc] init];
+            }
 		}
 	}
 	
@@ -197,14 +191,12 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 								&categoriesStmt,
 								0);
 	
-	if (rc != SQLITE_OK)
-	{
+	if (rc != SQLITE_OK) {
 		NSLog(@"Problem preparing categoriesForLanguageStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
 		return categories;
 	}
 	
-	while (sqlite3_step(categoriesStmt) == SQLITE_ROW)
-	{
+	while (sqlite3_step(categoriesStmt) == SQLITE_ROW) {
 		[categories addObject:[NSString stringWithUTF8String:(const char*)sqlite3_column_text(categoriesStmt, 0)]];
 	}
 	
@@ -228,11 +220,11 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 								&getPrayersStmt,
 								0);
 	
-	if (rc != SQLITE_OK)
+    if (rc != SQLITE_OK) {
 		NSLog(@"Problem preparing getPrayersStmt in getPrayersForCategory (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    }
 	
-	while (sqlite3_step(getPrayersStmt) == SQLITE_ROW)
-	{
+	while (sqlite3_step(getPrayersStmt) == SQLITE_ROW) {
 		long prayerId = sqlite3_column_int(getPrayersStmt, 0);
 		NSString *prayerText = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 1)];
 		NSString *openingWords = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayersStmt, 2)];
@@ -272,14 +264,16 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 								&countPrayersStmt,
 								0);
 	
-	if (rc != SQLITE_OK)
+    if (rc != SQLITE_OK) {
 		NSLog(@"Problem preparing countPrayersStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    }
 	
 	rc = sqlite3_step(countPrayersStmt);
-	if (rc == SQLITE_ROW)
+    if (rc == SQLITE_ROW) {
 		numPrayers = sqlite3_column_int(countPrayersStmt, 0);
-	else
+    } else {
 		NSLog(@"Problem obtaining result from countPrayersStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    }
 	
 	sqlite3_finalize(countPrayersStmt);
 	
@@ -331,13 +325,13 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 								&getPrayerStmt,
 								0);
 	
-	if (rc != SQLITE_OK)
+    if (rc != SQLITE_OK) {
 		NSLog(@"Problem preparing getPrayerStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    }
 	
 	Prayer *prayer = nil;
 	rc = sqlite3_step(getPrayerStmt);
-	if (rc == SQLITE_ROW)
-	{
+	if (rc == SQLITE_ROW) {
 		prayer = [Prayer new];
 		prayer.category = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 0)];
 		prayer.text = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(getPrayerStmt, 1)];
@@ -357,8 +351,9 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 
 - (NSArray*)searchWithKeywords:(NSArray*)keywords {
 	static NSMutableDictionary *prayerCache = nil;
-	if (prayerCache == nil)
+    if (prayerCache == nil) {
 		prayerCache = [[NSMutableDictionary alloc] init];
+    }
 	
 	NSMutableArray *results = [[NSMutableArray alloc] init];
 	
@@ -367,28 +362,27 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	[query appendString:@"SELECT id FROM prayers WHERE"];
 	NSMutableArray *expressions = [NSMutableArray arrayWithCapacity:5];
 	BOOL firstExpression = YES;
-	for (NSString *keyword in keywords)
-	{
-		if ([keyword lengthOfBytesUsingEncoding:NSUTF8StringEncoding] == 0)
+	for (NSString *keyword in keywords) {
+        if ([keyword lengthOfBytesUsingEncoding:NSUTF8StringEncoding] == 0) {
 			continue;
-		if (!firstExpression)
+        }
+        if (!firstExpression) {
 			[query appendFormat:@" AND"];
-		else
+        } else {
 			firstExpression = NO;
+        }
 		
 		[query appendFormat:@" searchText LIKE '%%%@%%'", keyword];
 		[expressions addObject:keyword];
 	}
 	
-	if ([expressions count] == 0)
-	{
+	if ([expressions count] == 0) {
 		// means there were no valid keywords, and we need to return an empty set of results
 		return results;
-	}
-	else if ([expressions count] == 1)
-	{
-		if ([expressions[0] lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < 3)
+	} else if ([expressions count] == 1) {
+        if ([expressions[0] lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < 3) {
 			return results;	// this is too short of a query, so exit
+        }
 	}
 	
 	// now limit our search by language
@@ -412,16 +406,15 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 								(int)[query lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
 								&searchStmt,
 								0);
-	if (rc != SQLITE_OK)
-		NSLog(@"Problem preparing searchWithKeywordsStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    if (rc != SQLITE_OK) {
+        NSLog(@"Problem preparing searchWithKeywordsStmt (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    }
 	
-	while (sqlite3_step(searchStmt) == SQLITE_ROW)
-	{
+	while (sqlite3_step(searchStmt) == SQLITE_ROW) {
 		NSNumber *prayerId = @(sqlite3_column_int(searchStmt, 0));
 		// check for it in the cache
 		Prayer *currPrayer = nil;
-		if ((currPrayer = (Prayer*)prayerCache[prayerId]) == nil)
-		{
+		if ((currPrayer = (Prayer*)prayerCache[prayerId]) == nil) {
 			currPrayer = [self prayerWithId:[prayerId longValue]];
 			// cache it
 			prayerCache[prayerId] = currPrayer;
@@ -429,6 +422,8 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 		
 		[results addObject:currPrayer];
 	}
+    
+    sqlite3_finalize(searchStmt);
 	
 	return results;
 }
