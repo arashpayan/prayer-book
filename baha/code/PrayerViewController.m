@@ -8,6 +8,7 @@
 
 #import "PrayerViewController.h"
 #import "Prefs.h"
+#import "PBLocalization.h"
 #import <GRMustache.h>
 
 @interface PrayerViewController () <MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
@@ -54,12 +55,11 @@
         [self presentViewController:mailController animated:YES completion:nil];
 	} else {
 		// notify the user they need to setup their email
-		UIAlertView *mailErrorMsg = [[UIAlertView alloc] initWithTitle:nil
-                                                               message:NSLocalizedString(@"MAIL_ERR_MSG", NULL)
-                                                              delegate:nil
-                                                     cancelButtonTitle:@"OK"
-                                                     otherButtonTitles:nil];
-		[mailErrorMsg show];
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil
+                                                                    message:l10n(@"MAIL_ERR_MSG")
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+        [ac addAction:[UIAlertAction actionWithTitle:nil style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:ac animated:YES completion:nil];
 	}
 }
 

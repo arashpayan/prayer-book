@@ -8,6 +8,7 @@
 
 #import "RecentViewController.h"
 #import "PrayerViewController.h"
+#import "PBLocalization.h"
 
 @interface RecentViewController ()
 
@@ -25,28 +26,29 @@
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLEAR", nil)
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
-                                                                                 action:@selector(clearRecent)];
+                                                                                 action:@selector(clearRecentsAction)];
 	}
 	return self;
 }
 
-- (void)clearRecent {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:NSLocalizedString(@"CANCEL", nil)
-                                               destructiveButtonTitle:NSLocalizedString(@"CLEAR_ALL_RECENTS", nil)
-                                                    otherButtonTitles:nil];
-	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-	[actionSheet showInView:self.tabBarController.view];
+- (void)clearRecentsAction {
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil
+                                                                message:nil
+                                                         preferredStyle:UIAlertControllerStyleActionSheet];
+    [ac addAction:[UIAlertAction actionWithTitle:l10n(@"CLEAR_ALL_RECENTS") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self clearRecents];
+    }]];
+    [ac addAction:[UIAlertAction actionWithTitle:l10n(@"CANCEL")
+                                           style:UIAlertActionStyleCancel
+                                         handler:nil]];
+    [self presentViewController:ac animated:YES completion:nil];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 0) {
-		[[PrayerDatabase sharedInstance] clearRecents];
-		self.recentPrayers = [[PrayerDatabase sharedInstance] getRecent];
-
-		[self.tableView reloadData];
-	}
+- (void)clearRecents {
+    [[PrayerDatabase sharedInstance] clearRecents];
+    self.recentPrayers = [[PrayerDatabase sharedInstance] getRecent];
+    
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

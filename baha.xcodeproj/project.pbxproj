@@ -27,6 +27,7 @@
 		58C34F777495F8682747753B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C34D5F172DCE8658A2AF13 /* Localizable.strings */; };
 		58C34F84DD5F13C634807A70 /* prayer_template.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 58C3444257C040AD30A69581 /* prayer_template.mustache */; };
 		58C34FC9385B18A9468083EA /* NSString_CategoryCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34E6396F3A2F0DB7E9656 /* NSString_CategoryCompare.m */; };
+		5B1C74D4220523BD002604BE /* PBLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74D3220523BD002604BE /* PBLocalization.m */; };
 		5B3315361BB9A6290056D3E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3315141BB9A6290056D3E2 /* InfoPlist.strings */; };
 		5B3315371BB9A6290056D3E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3315161BB9A6290056D3E2 /* Localizable.strings */; };
 		5B3315381BB9A6290056D3E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3315191BB9A6290056D3E2 /* InfoPlist.strings */; };
@@ -86,6 +87,8 @@
 		58C34E668DE62409DED62F20 /* BookmarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksViewController.m; sourceTree = "<group>"; };
 		58C34E8F3A1AEB21E37850CD /* pbdb.db */ = {isa = PBXFileReference; lastKnownFileType = file.db; path = pbdb.db; sourceTree = "<group>"; };
 		58C34F3FC723EB377F32CC56 /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksViewController.h; sourceTree = "<group>"; };
+		5B1C74D3220523BD002604BE /* PBLocalization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBLocalization.m; sourceTree = "<group>"; };
+		5B1C74D5220523FC002604BE /* PBLocalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBLocalization.h; sourceTree = "<group>"; };
 		5B3315151BB9A6290056D3E2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = InfoPlist.strings; sourceTree = "<group>"; };
 		5B3315171BB9A6290056D3E2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		5B33151A1BB9A6290056D3E2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				58C3467231CFD026391A4E38 /* SearchViewController.m */,
 				58C343608B5973C2F4D0FC28 /* SettingsController.h */,
 				58C3427FE7B403AA10930A45 /* SettingsController.m */,
+				5B1C74D5220523FC002604BE /* PBLocalization.h */,
+				5B1C74D3220523BD002604BE /* PBLocalization.m */,
 			);
 			path = code;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1C74D4220523BD002604BE /* PBLocalization.m in Sources */,
 				5BB0D5DC1BA371A9005DE06E /* AppDelegate.m in Sources */,
 				5BB0D5D91BA371A9005DE06E /* main.m in Sources */,
 				58C343F37D92EB4702881EB8 /* PrayerViewController.m in Sources */,
