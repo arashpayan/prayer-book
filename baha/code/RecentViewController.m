@@ -102,10 +102,11 @@
 	self.recentPrayers = [[PrayerDatabase sharedInstance] recents];
     [self.tableView reloadData];
 	
-	if ([self.recentPrayers count] > 0)
+    if ([self.recentPrayers count] > 0) {
 		[self.navigationItem.rightBarButtonItem setEnabled:YES];
-	else
+    } else {
 		[self.navigationItem.rightBarButtonItem setEnabled:NO];
+    }
 
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
