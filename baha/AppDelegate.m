@@ -35,7 +35,7 @@
 
     SearchViewController *searchController = [SearchViewController new];
     UINavigationController *searchNavController = [[UINavigationController alloc] initWithRootViewController:searchController];
-\
+
     SettingsController *settingsController = [SettingsController new];
 
     UITabBarController *tabBarController = [UITabBarController new];
