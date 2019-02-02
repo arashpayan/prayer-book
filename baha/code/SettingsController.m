@@ -79,8 +79,13 @@ typedef enum {
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    UIUserInterfaceIdiom idiom = UIDevice.currentDevice.userInterfaceIdiom;
+    if (idiom == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    
+    return UIInterfaceOrientationMaskAll;
 }
 
 #pragma mark - Table view data source

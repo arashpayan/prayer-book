@@ -100,8 +100,13 @@
     [self.navigationController setToolbarHidden:YES animated:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    UIUserInterfaceIdiom idiom = UIDevice.currentDevice.userInterfaceIdiom;
+    if (idiom == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    
+    return UIInterfaceOrientationMaskAll;
 }
 
 @end

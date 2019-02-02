@@ -55,8 +55,13 @@ dispatch_queue_t SEARCH_QUEUE;
 	self.view = self.table;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-	return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    UIUserInterfaceIdiom idiom = UIDevice.currentDevice.userInterfaceIdiom;
+    if (idiom == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    
+    return UIInterfaceOrientationMaskAll;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
