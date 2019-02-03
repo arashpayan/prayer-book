@@ -40,7 +40,7 @@
     UIToolbar.appearance.barTintColor = PBUI.blue;
     UIToolbar.appearance.tintColor = UIColor.whiteColor;
     
-    UISwitch.appearance.onTintColor = PBUI.blue;
+    UISwitch.appearance.onTintColor = PBUI.yellow;
 }
 
 #pragma mark - Brand colors
