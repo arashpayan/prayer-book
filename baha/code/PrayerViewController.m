@@ -10,11 +10,12 @@
 #import "Prefs.h"
 #import "PBLocalization.h"
 #import <GRMustache.h>
+@import WebKit;
 
 @interface PrayerViewController () <MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, readwrite) Prayer *prayer;
-@property (nonatomic, readwrite) UIWebView *webView;
+@property (nonatomic, readwrite) WKWebView *webView;
 @property (nonatomic, readwrite) UIBarButtonItem *increaseSizeItem;
 @property (nonatomic, readwrite) UIBarButtonItem *decreaseSizeItem;
 @property (nonatomic, readwrite) UIBarButtonItem *bookmarkItem;
@@ -109,13 +110,10 @@
 }
 
 - (void)loadView {
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.webView.autoresizesSubviews = YES;
-    self.webView.backgroundColor = [UIColor whiteColor];
-    self.webView.opaque = NO;
+    WKWebViewConfiguration *cfg = [WKWebViewConfiguration new];
+    self.webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:cfg];
     self.webView.scrollView.delegate = self;
-
+    
     self.view = self.webView;
 }
 
