@@ -11,6 +11,7 @@
 #import "BookmarksViewController.h"
 #import "RecentViewController.h"
 #import "SettingsController.h"
+#import "PBUI.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [PBUI installTheme];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
 

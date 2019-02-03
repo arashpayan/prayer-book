@@ -11,5 +11,9 @@
 @interface PBUI : NSObject
 
 + (CGFloat)cellMargin;
++ (void)installTheme;
+
++ (UIColor*)blue;
++ (UIColor*)yellow;
 
 @end
