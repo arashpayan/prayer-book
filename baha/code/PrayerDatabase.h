@@ -37,7 +37,7 @@ extern NSString *const kPrefsFontSize;
 - (NSArray*)recents;
 - (void)accessedPrayer:(long)prayerId;
 - (Prayer*)prayerWithId:(long)prayerId;
-- (NSArray*)searchWithKeywords:(NSArray*)keywords;
+- (NSArray<Prayer*>*)searchWithKeywords:(NSArray*)keywords;
 
 - (void)migrateDbFromNilTo1;
 - (void)migrateDbFrom1To2;

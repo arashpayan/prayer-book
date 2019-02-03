@@ -10,7 +10,6 @@
 #import "CategoriesController.h"
 #import "BookmarksViewController.h"
 #import "RecentViewController.h"
-#import "SearchViewController.h"
 #import "SettingsController.h"
 
 @interface AppDelegate ()
@@ -33,13 +32,10 @@
     RecentViewController *recentController = [RecentViewController new];
     UINavigationController *recentNavController = [[UINavigationController alloc] initWithRootViewController:recentController];
 
-    SearchViewController *searchController = [SearchViewController new];
-    UINavigationController *searchNavController = [[UINavigationController alloc] initWithRootViewController:searchController];
-
     SettingsController *settingsController = [SettingsController new];
 
     UITabBarController *tabBarController = [UITabBarController new];
-    [tabBarController setViewControllers:@[pcvcNavController, bookmarksNavController, recentNavController, searchNavController, settingsController]];
+    [tabBarController setViewControllers:@[pcvcNavController, bookmarksNavController, recentNavController, settingsController]];
 
     self.window.rootViewController = tabBarController;
 

@@ -8,6 +8,7 @@
 
 #import "CategoriesController.h"
 #import "Prefs.h"
+#import "PBSearchController.h"
 
 @interface CategoriesController ()
 
@@ -38,6 +39,15 @@
 	return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_search"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(showSearchController)];
+}
+
 - (void)languagesPreferenceChanged:(NSNotification*)notification {
     [self loadLanguages];
     
@@ -57,6 +67,11 @@
     }
 }
 
+- (void)showSearchController {
+    PBSearchController *pbsc = [PBSearchController new];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pbsc];
+    [self presentViewController:nc animated:YES completion:nil];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.enabledLanguages.count;

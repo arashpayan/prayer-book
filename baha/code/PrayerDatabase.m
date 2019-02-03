@@ -309,6 +309,10 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 - (void)accessedPrayer:(long)prayerId {
 	NSNumber *entry = @(prayerId);
 	
+    // make sure we've loaded up the recents first
+    if (self.recentPrayers == nil) {
+        [self recents];
+    }
 	[self.recentPrayers removeObject:entry];	// if it's even there
 	[self.recentPrayers insertObject:entry atIndex:0];
 	
@@ -349,13 +353,13 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
 	return prayer;
 }
 
-- (NSArray*)searchWithKeywords:(NSArray*)keywords {
+- (NSArray<Prayer*>*)searchWithKeywords:(NSArray*)keywords {
 	static NSMutableDictionary *prayerCache = nil;
     if (prayerCache == nil) {
 		prayerCache = [[NSMutableDictionary alloc] init];
     }
 	
-	NSMutableArray *results = [[NSMutableArray alloc] init];
+	NSMutableArray<Prayer*> *results = [NSMutableArray new];
 	
 	// build a query with the keywords
 	NSMutableString *query = [[NSMutableString alloc] init];

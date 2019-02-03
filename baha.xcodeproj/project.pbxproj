@@ -15,7 +15,6 @@
 		58C343F37D92EB4702881EB8 /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34295109A153CB593DE58 /* PrayerViewController.m */; };
 		58C344F06C33D1D9FE8EFB9B /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3427FE7B403AA10930A45 /* SettingsController.m */; };
 		58C3457C87FED0DC1DE850C6 /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3469A5F197964F2F1C31A /* PrayerDatabase.m */; };
-		58C345E6F490C5B77E59B64A /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3467231CFD026391A4E38 /* SearchViewController.m */; };
 		58C347BD2B56F1947767E66C /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34C2AB533DAB13ACE4865 /* RecentViewController.m */; };
 		58C34858353ACA57A320CA51 /* CategoryPrayersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34E629C0DDB0DAB63FF74 /* CategoryPrayersController.m */; };
 		58C34BBF43107278B0CBC4E4 /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34E668DE62409DED62F20 /* BookmarksViewController.m */; };
@@ -28,6 +27,8 @@
 		58C34F84DD5F13C634807A70 /* prayer_template.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 58C3444257C040AD30A69581 /* prayer_template.mustache */; };
 		58C34FC9385B18A9468083EA /* NSString_CategoryCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34E6396F3A2F0DB7E9656 /* NSString_CategoryCompare.m */; };
 		5B1C74D4220523BD002604BE /* PBLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74D3220523BD002604BE /* PBLocalization.m */; };
+		5B1C74D822058987002604BE /* PBSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74D722058987002604BE /* PBSearchController.m */; };
+		5B1C74DB22058CF0002604BE /* PrayerResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74DA22058CF0002604BE /* PrayerResultsController.m */; };
 		5B3315361BB9A6290056D3E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3315141BB9A6290056D3E2 /* InfoPlist.strings */; };
 		5B3315371BB9A6290056D3E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3315161BB9A6290056D3E2 /* Localizable.strings */; };
 		5B3315381BB9A6290056D3E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3315191BB9A6290056D3E2 /* InfoPlist.strings */; };
@@ -66,9 +67,7 @@
 		58C344FF2B9E79848028DB9B /* Prayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prayer.h; sourceTree = "<group>"; };
 		58C34508F58480DF9F92770D /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		58C3464C580AA1F9D42E9C7D /* PBLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBLanguage.m; sourceTree = "<group>"; };
-		58C3467231CFD026391A4E38 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		58C3469A5F197964F2F1C31A /* PrayerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerDatabase.m; sourceTree = "<group>"; };
-		58C347B86BF56B139B79ADB0 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		58C348608DF518EFE1A6E9DA /* CategoryPrayersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPrayersController.h; sourceTree = "<group>"; };
 		58C3491D2127D62829C63403 /* RecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentViewController.h; sourceTree = "<group>"; };
 		58C34A785F8C919ABE48D565 /* CategoriesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesController.h; sourceTree = "<group>"; };
@@ -89,6 +88,10 @@
 		58C34F3FC723EB377F32CC56 /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksViewController.h; sourceTree = "<group>"; };
 		5B1C74D3220523BD002604BE /* PBLocalization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBLocalization.m; sourceTree = "<group>"; };
 		5B1C74D5220523FC002604BE /* PBLocalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBLocalization.h; sourceTree = "<group>"; };
+		5B1C74D622058987002604BE /* PBSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBSearchController.h; sourceTree = "<group>"; };
+		5B1C74D722058987002604BE /* PBSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBSearchController.m; sourceTree = "<group>"; };
+		5B1C74D922058CF0002604BE /* PrayerResultsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrayerResultsController.h; sourceTree = "<group>"; };
+		5B1C74DA22058CF0002604BE /* PrayerResultsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrayerResultsController.m; sourceTree = "<group>"; };
 		5B3315151BB9A6290056D3E2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = InfoPlist.strings; sourceTree = "<group>"; };
 		5B3315171BB9A6290056D3E2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		5B33151A1BB9A6290056D3E2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				58C3464C580AA1F9D42E9C7D /* PBLanguage.m */,
 				5B1C74D5220523FC002604BE /* PBLocalization.h */,
 				5B1C74D3220523BD002604BE /* PBLocalization.m */,
+				5B1C74D622058987002604BE /* PBSearchController.h */,
+				5B1C74D722058987002604BE /* PBSearchController.m */,
 				58C34496F4E48A2701FB1787 /* PBUI.h */,
 				58C34D21B192B7E54499B62E /* PBUI.m */,
 				58C344FF2B9E79848028DB9B /* Prayer.h */,
@@ -196,6 +201,8 @@
 				58C3469A5F197964F2F1C31A /* PrayerDatabase.m */,
 				58C34CEAC0B445517806E7A4 /* PrayerCell.h */,
 				58C34CF48FEC7074B0389039 /* PrayerCell.m */,
+				5B1C74D922058CF0002604BE /* PrayerResultsController.h */,
+				5B1C74DA22058CF0002604BE /* PrayerResultsController.m */,
 				58C34CE5B6B644194DB4E4E9 /* PrayerViewController.h */,
 				58C34295109A153CB593DE58 /* PrayerViewController.m */,
 				58C34455C7578B66F8F7E806 /* Prefs.h */,
@@ -204,8 +211,6 @@
 				58C34C2AB533DAB13ACE4865 /* RecentViewController.m */,
 				58C34A905F09A123D76FE6A3 /* RoundedRectangleView.h */,
 				58C3428619E80B6C419196FD /* RoundedRectangleView.m */,
-				58C347B86BF56B139B79ADB0 /* SearchViewController.h */,
-				58C3467231CFD026391A4E38 /* SearchViewController.m */,
 				58C343608B5973C2F4D0FC28 /* SettingsController.h */,
 				58C3427FE7B403AA10930A45 /* SettingsController.m */,
 			);
@@ -475,6 +480,7 @@
 				5B1C74D4220523BD002604BE /* PBLocalization.m in Sources */,
 				5BB0D5DC1BA371A9005DE06E /* AppDelegate.m in Sources */,
 				5BB0D5D91BA371A9005DE06E /* main.m in Sources */,
+				5B1C74DB22058CF0002604BE /* PrayerResultsController.m in Sources */,
 				58C343F37D92EB4702881EB8 /* PrayerViewController.m in Sources */,
 				58C341BF180D0E056AFFEFE7 /* CategoriesController.m in Sources */,
 				58C3457C87FED0DC1DE850C6 /* PrayerDatabase.m in Sources */,
@@ -482,12 +488,12 @@
 				58C34858353ACA57A320CA51 /* CategoryPrayersController.m in Sources */,
 				58C34C5A846C42544668BCF8 /* Prefs.m in Sources */,
 				58C344F06C33D1D9FE8EFB9B /* SettingsController.m in Sources */,
-				58C345E6F490C5B77E59B64A /* SearchViewController.m in Sources */,
 				58C34BBF43107278B0CBC4E4 /* BookmarksViewController.m in Sources */,
 				58C347BD2B56F1947767E66C /* RecentViewController.m in Sources */,
 				58C342B5EF03CBA999CC1848 /* PrayerCell.m in Sources */,
 				58C342EBA988C3DF300969EE /* CategoryCell.m in Sources */,
 				58C3406A878AA6D173409CDE /* PBUI.m in Sources */,
+				5B1C74D822058987002604BE /* PBSearchController.m in Sources */,
 				58C341525CDC319D31D8F43B /* RoundedRectangleView.m in Sources */,
 				58C34FC9385B18A9468083EA /* NSString_CategoryCompare.m in Sources */,
 				58C34EFFBBC8F180B1C24A19 /* Prayer.m in Sources */,
