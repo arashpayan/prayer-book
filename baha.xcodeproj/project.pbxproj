@@ -13,7 +13,7 @@
 		58C342B5EF03CBA999CC1848 /* PrayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34CF48FEC7074B0389039 /* PrayerCell.m */; };
 		58C342EBA988C3DF300969EE /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34508F58480DF9F92770D /* CategoryCell.m */; };
 		58C343F37D92EB4702881EB8 /* PrayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34295109A153CB593DE58 /* PrayerViewController.m */; };
-		58C344F06C33D1D9FE8EFB9B /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3427FE7B403AA10930A45 /* SettingsController.m */; };
+		58C344F06C33D1D9FE8EFB9B /* LanguagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3427FE7B403AA10930A45 /* LanguagesController.m */; };
 		58C3457C87FED0DC1DE850C6 /* PrayerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3469A5F197964F2F1C31A /* PrayerDatabase.m */; };
 		58C347BD2B56F1947767E66C /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34C2AB533DAB13ACE4865 /* RecentViewController.m */; };
 		58C34858353ACA57A320CA51 /* CategoryPrayersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C34E629C0DDB0DAB63FF74 /* CategoryPrayersController.m */; };
@@ -47,7 +47,10 @@
 		5BB0D5DC1BA371A9005DE06E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0D5DB1BA371A9005DE06E /* AppDelegate.m */; };
 		5BB0D5E41BA371A9005DE06E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB0D5E31BA371A9005DE06E /* Images.xcassets */; };
 		5BB0D5E71BA371A9005DE06E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB0D5E51BA371A9005DE06E /* LaunchScreen.xib */; };
-		5BBEDE851CD85CFF004CC079 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5BBEDE841CD85CFF004CC079 /* de.lproj */; };
+		5BF062C22207981500DC5AFB /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF062C12207981500DC5AFB /* AboutController.m */; };
+		5BF062C422079AC300DC5AFB /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 5BF062C322079AC300DC5AFB /* about.html */; };
+		5BF062CA2207DE0C00DC5AFB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BF062C62207DE0C00DC5AFB /* Localizable.strings */; };
+		5BF062CB2207DE0C00DC5AFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BF062C82207DE0C00DC5AFB /* InfoPlist.strings */; };
 		D9FD1B703E6E0A69956DC7FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B387F3177F6FCAF137B86E7B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -56,10 +59,10 @@
 		58C340E85F7C5C5CEBFFCD55 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = ../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = "<group>"; };
 		58C3411444E920B49C6CE4D5 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		58C342258D0FEA0D3369CFDA /* CategoriesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesController.m; sourceTree = "<group>"; };
-		58C3427FE7B403AA10930A45 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		58C3427FE7B403AA10930A45 /* LanguagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagesController.m; sourceTree = "<group>"; };
 		58C3428619E80B6C419196FD /* RoundedRectangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectangleView.m; sourceTree = "<group>"; };
 		58C34295109A153CB593DE58 /* PrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrayerViewController.m; sourceTree = "<group>"; };
-		58C343608B5973C2F4D0FC28 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		58C343608B5973C2F4D0FC28 /* LanguagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagesController.h; sourceTree = "<group>"; };
 		58C3444257C040AD30A69581 /* prayer_template.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.mustache; path = prayer_template.mustache; sourceTree = "<group>"; };
 		58C34455C7578B66F8F7E806 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefs.h; sourceTree = "<group>"; };
 		58C34496F4E48A2701FB1787 /* PBUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBUI.h; sourceTree = "<group>"; };
@@ -113,7 +116,11 @@
 		5BB0D5DB1BA371A9005DE06E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5BB0D5E31BA371A9005DE06E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BB0D5E61BA371A9005DE06E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5BBEDE841CD85CFF004CC079 /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = de.lproj; sourceTree = "<group>"; };
+		5BF062C02207981500DC5AFB /* AboutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		5BF062C12207981500DC5AFB /* AboutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		5BF062C322079AC300DC5AFB /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		5BF062C72207DE0C00DC5AFB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
+		5BF062C92207DE0C00DC5AFB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = InfoPlist.strings; sourceTree = "<group>"; };
 		76E896EC5354428D79D6EE6E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B387F3177F6FCAF137B86E7B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1760EC305A158A4F665178 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,7 +151,7 @@
 		58C340EDAAA4450D22AAAB2C /* l10n */ = {
 			isa = PBXGroup;
 			children = (
-				5BBEDE841CD85CFF004CC079 /* de.lproj */,
+				5BF062C52207DE0C00DC5AFB /* de.lproj */,
 				5B3315131BB9A6290056D3E2 /* es.lproj */,
 				5B3315181BB9A6290056D3E2 /* fr.lproj */,
 				5B33151D1BB9A6290056D3E2 /* id.lproj */,
@@ -160,6 +167,7 @@
 		58C34135B285210152E56EB5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				5BF062C322079AC300DC5AFB /* about.html */,
 				58C34E8F3A1AEB21E37850CD /* pbdb.db */,
 				58C3444257C040AD30A69581 /* prayer_template.mustache */,
 			);
@@ -169,6 +177,7 @@
 		58C342E7BFAEECA9A1E285CA /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				5BB0D5D71BA371A9005DE06E /* Info.plist */,
 				58C34D5F172DCE8658A2AF13 /* Localizable.strings */,
 			);
 			path = en.lproj;
@@ -177,6 +186,8 @@
 		58C34DF3D166CB8178FCC726 /* code */ = {
 			isa = PBXGroup;
 			children = (
+				5BF062C02207981500DC5AFB /* AboutController.h */,
+				5BF062C12207981500DC5AFB /* AboutController.m */,
 				58C34F3FC723EB377F32CC56 /* BookmarksViewController.h */,
 				58C34E668DE62409DED62F20 /* BookmarksViewController.m */,
 				58C34A785F8C919ABE48D565 /* CategoriesController.h */,
@@ -211,8 +222,8 @@
 				58C34C2AB533DAB13ACE4865 /* RecentViewController.m */,
 				58C34A905F09A123D76FE6A3 /* RoundedRectangleView.h */,
 				58C3428619E80B6C419196FD /* RoundedRectangleView.m */,
-				58C343608B5973C2F4D0FC28 /* SettingsController.h */,
-				58C3427FE7B403AA10930A45 /* SettingsController.m */,
+				58C343608B5973C2F4D0FC28 /* LanguagesController.h */,
+				58C3427FE7B403AA10930A45 /* LanguagesController.m */,
 			);
 			path = code;
 			sourceTree = "<group>";
@@ -316,10 +327,18 @@
 		5BB0D5D61BA371A9005DE06E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5BB0D5D71BA371A9005DE06E /* Info.plist */,
 				5BB0D5D81BA371A9005DE06E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5BF062C52207DE0C00DC5AFB /* de.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				5BF062C62207DE0C00DC5AFB /* Localizable.strings */,
+				5BF062C82207DE0C00DC5AFB /* InfoPlist.strings */,
+			);
+			path = de.lproj;
 			sourceTree = "<group>";
 		};
 		669BC388AEB69F61A94E5155 /* Frameworks */ = {
@@ -383,6 +402,7 @@
 				it,
 				nl,
 				ru,
+				de,
 			);
 			mainGroup = 5BB0D5CA1BA371A9005DE06E;
 			productRefGroup = 5BB0D5D41BA371A9005DE06E /* Products */;
@@ -408,7 +428,9 @@
 				5B33153B1BB9A6290056D3E2 /* Localizable.strings in Resources */,
 				5B3315421BB9A6290056D3E2 /* InfoPlist.strings in Resources */,
 				5B3315361BB9A6290056D3E2 /* InfoPlist.strings in Resources */,
+				5BF062CB2207DE0C00DC5AFB /* InfoPlist.strings in Resources */,
 				5BB0D5E41BA371A9005DE06E /* Images.xcassets in Resources */,
+				5BF062CA2207DE0C00DC5AFB /* Localizable.strings in Resources */,
 				5B3315391BB9A6290056D3E2 /* Localizable.strings in Resources */,
 				5B3315371BB9A6290056D3E2 /* Localizable.strings in Resources */,
 				58C34CCD959CA8AB31521960 /* pbdb.db in Resources */,
@@ -417,7 +439,7 @@
 				58C34F777495F8682747753B /* Localizable.strings in Resources */,
 				5B3315431BB9A6290056D3E2 /* Localizable.strings in Resources */,
 				58C34F84DD5F13C634807A70 /* prayer_template.mustache in Resources */,
-				5BBEDE851CD85CFF004CC079 /* de.lproj in Resources */,
+				5BF062C422079AC300DC5AFB /* about.html in Resources */,
 				5B33153A1BB9A6290056D3E2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,9 +509,10 @@
 				58C34CCE35B478061867DB7E /* PBLanguage.m in Sources */,
 				58C34858353ACA57A320CA51 /* CategoryPrayersController.m in Sources */,
 				58C34C5A846C42544668BCF8 /* Prefs.m in Sources */,
-				58C344F06C33D1D9FE8EFB9B /* SettingsController.m in Sources */,
+				58C344F06C33D1D9FE8EFB9B /* LanguagesController.m in Sources */,
 				58C34BBF43107278B0CBC4E4 /* BookmarksViewController.m in Sources */,
 				58C347BD2B56F1947767E66C /* RecentViewController.m in Sources */,
+				5BF062C22207981500DC5AFB /* AboutController.m in Sources */,
 				58C342B5EF03CBA999CC1848 /* PrayerCell.m in Sources */,
 				58C342EBA988C3DF300969EE /* CategoryCell.m in Sources */,
 				58C3406A878AA6D173409CDE /* PBUI.m in Sources */,
@@ -631,6 +654,22 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
+		5BF062C62207DE0C00DC5AFB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BF062C72207DE0C00DC5AFB /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		5BF062C82207DE0C00DC5AFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BF062C92207DE0C00DC5AFB /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -746,7 +785,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = baha/Info.plist;
+				INFOPLIST_FILE = baha/l10n/en.lproj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arashpayan.prayerbook;
@@ -761,7 +800,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = baha/Info.plist;
+				INFOPLIST_FILE = baha/l10n/en.lproj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arashpayan.prayerbook;

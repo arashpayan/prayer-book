@@ -1,31 +1,30 @@
 //
-//  SettingsController.m
+//  LanguagesController.m
 //  BahaiWritings
 //
 //  Created by Arash Payan on 9/11/11.
-//  Copyright 2011 Paxdot. All rights reserved.
 //
 
-#import "SettingsController.h"
+#import "LanguagesController.h"
 #import "PrayerDatabase.h"
 #import "Prefs.h"
 
 typedef enum {
     SettingsLanguagesSection,
     SettingsThemeSection,
-    SettingsAboutSection,
+//    SettingsAboutSection,
     SettingsNumSections,
 } SettingsSections;
 
 
-@interface SettingsController ()
+@interface LanguagesController ()
 
 @property (nonatomic, readwrite) NSArray *allLanguages;
 @property (nonatomic, readwrite) NSMutableArray *languageToggles;
 
 @end
 
-@implementation SettingsController
+@implementation LanguagesController
 
 - (id)init {
     self = [super initWithStyle:UITableViewStyleGrouped];
@@ -102,9 +101,6 @@ typedef enum {
     if (section == SettingsThemeSection) {
         return 1;
     }
-    if (section == SettingsAboutSection) {
-        return 1;
-    }
     
     [NSException raise:@"InvalidSection" format:@"Invalid section number %ld", (long)section];
     return 0;   // keep the compiler from complaining
@@ -134,31 +130,17 @@ typedef enum {
         s.on = Prefs.shared.useClassicTheme;
         [s addTarget:self action:@selector(onThemeChanged:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = s;
-    } else if (indexPath.section == SettingsAboutSection) {
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.textLabel.text = NSLocalizedString(@"ABOUT", nil);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == SettingsLanguagesSection)
-        return NSLocalizedString(@"Prayer Languages", nil);
-    
-    return nil;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == SettingsAboutSection) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-        [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"https://arashpayan.com/in_app_pages/prayer_book/about"] options:@{} completionHandler:nil];
-    }
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if (section == SettingsLanguagesSection)
+//        return NSLocalizedString(@"Prayer Languages", nil);
+//
+//    return nil;
+//}
 
 #pragma mark - Memory Management
 

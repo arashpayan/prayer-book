@@ -10,7 +10,8 @@
 #import "CategoriesController.h"
 #import "BookmarksViewController.h"
 #import "RecentViewController.h"
-#import "SettingsController.h"
+#import "LanguagesController.h"
+#import "AboutController.h"
 #import "PBUI.h"
 
 @interface AppDelegate ()
@@ -22,7 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [PBUI installTheme];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = [UIColor whiteColor];
 
     CategoriesController *pcvc = [CategoriesController new];
@@ -34,10 +35,14 @@
     RecentViewController *recentController = [RecentViewController new];
     UINavigationController *recentNavController = [[UINavigationController alloc] initWithRootViewController:recentController];
 
-    SettingsController *settingsController = [SettingsController new];
+    LanguagesController *settingsController = [LanguagesController new];
+    UINavigationController *languagesNC = [[UINavigationController alloc] initWithRootViewController:settingsController];
+
+    AboutController *about = [AboutController new];
+    UINavigationController *aboutNC = [[UINavigationController alloc] initWithRootViewController:about];
 
     UITabBarController *tabBarController = [UITabBarController new];
-    [tabBarController setViewControllers:@[pcvcNavController, bookmarksNavController, recentNavController, settingsController]];
+    [tabBarController setViewControllers:@[pcvcNavController, bookmarksNavController, recentNavController, languagesNC, aboutNC]];
 
     self.window.rootViewController = tabBarController;
 
