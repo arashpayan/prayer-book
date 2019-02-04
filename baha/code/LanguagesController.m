@@ -125,7 +125,7 @@ typedef enum {
         s.on = [Prefs.shared isLanguageEnabled:lang];
         cell.accessoryView = s;
     } else if (indexPath.section == SettingsThemeSection) {
-        cell.textLabel.text = NSLocalizedString(@"use_classic_prayer_theme", nil);
+        cell.textLabel.text = NSLocalizedString(@"use_classic_prayer_theme_capitalized", nil);
         UISwitch *s = [[UISwitch alloc] initWithFrame:CGRectZero];
         s.on = Prefs.shared.useClassicTheme;
         [s addTarget:self action:@selector(onThemeChanged:) forControlEvents:UIControlEventValueChanged];

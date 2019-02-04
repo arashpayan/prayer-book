@@ -27,9 +27,9 @@
         self.languageCategories = [NSMutableArray new];
         [self loadLanguages];
 		
-		self.title = NSLocalizedString(@"CATEGORIES", nil);
+		self.title = NSLocalizedString(@"categories", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"ic_toc"];
-        self.tabBarItem.title = NSLocalizedString(@"PRAYERS", nil);
+        self.tabBarItem.title = NSLocalizedString(@"prayers", nil);
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(languagesPreferenceChanged:)

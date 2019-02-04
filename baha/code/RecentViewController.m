@@ -21,9 +21,9 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
-		self.title = NSLocalizedString(@"RECENTS", nil);
+		self.title = NSLocalizedString(@"recents", nil);
 		self.tabBarItem.image = [UIImage imageNamed:@"ic_history"];
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLEAR", nil)
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"clear", nil)
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(clearRecentsAction)];
@@ -35,10 +35,10 @@
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil
                                                                 message:nil
                                                          preferredStyle:UIAlertControllerStyleActionSheet];
-    [ac addAction:[UIAlertAction actionWithTitle:l10n(@"CLEAR_ALL_RECENTS") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    [ac addAction:[UIAlertAction actionWithTitle:l10n(@"clear_all_recents") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self clearRecents];
     }]];
-    [ac addAction:[UIAlertAction actionWithTitle:l10n(@"CANCEL")
+    [ac addAction:[UIAlertAction actionWithTitle:l10n(@"cancel")
                                            style:UIAlertActionStyleCancel
                                          handler:nil]];
     [self presentViewController:ac animated:YES completion:nil];
@@ -64,7 +64,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
-	PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	PrayerCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if (cell == nil) {
 		cell = [[PrayerCell alloc] initWithReuseIdentifier:MyIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -74,7 +74,7 @@
 	Prayer *thePrayer = [[PrayerDatabase sharedInstance] prayerWithId:[entry longValue]];
 	cell.title.text = thePrayer.title;
 	cell.subtitle.text = thePrayer.category;
-	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", thePrayer.wordCount, NSLocalizedString(@"WORDS", NULL)];
+	cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", thePrayer.wordCount, NSLocalizedString(@"words", NULL)];
 	
 	return cell;
 }

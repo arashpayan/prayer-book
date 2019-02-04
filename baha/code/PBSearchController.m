@@ -38,7 +38,7 @@ dispatch_queue_t SEARCH_WORK_QUEUE;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                            target:self
                                                                                            action:@selector(onDoneAction)];
-    self.navigationItem.title = l10n(@"SEARCH");
+    self.navigationItem.title = l10n(@"search");
     
     return self;
 }

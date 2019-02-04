@@ -46,7 +46,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *Identifier = @"Identifier";
     
-    PrayerCell *cell = (PrayerCell*)[tableView dequeueReusableCellWithIdentifier:Identifier];
+    PrayerCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if (cell == nil) {
         cell = [[PrayerCell alloc] initWithReuseIdentifier:Identifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -55,7 +55,7 @@
     Prayer *prayer = self.results[indexPath.row];
     cell.title.text = prayer.title;
     cell.subtitle.text = prayer.category;
-    cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", prayer.wordCount, l10n(@"WORDS")];
+    cell.rightLabel.text = [NSString stringWithFormat:@"%@ %@", prayer.wordCount, l10n(@"words")];
     
     return cell;
 }

@@ -20,7 +20,7 @@
 
 - (id)init {
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
-        self.title = NSLocalizedString(@"BOOKMARKS", nil);
+        self.title = NSLocalizedString(@"bookmarks", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"ic_collections_bookmark"];
 		self.navigationItem.rightBarButtonItem = [self editButtonItem];
 	}

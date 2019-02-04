@@ -57,7 +57,7 @@
 	} else {
 		// notify the user they need to setup their email
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil
-                                                                    message:l10n(@"MAIL_ERR_MSG")
+                                                                    message:l10n(@"mail_err_msg")
                                                              preferredStyle:UIAlertControllerStyleAlert];
         [ac addAction:[UIAlertAction actionWithTitle:nil style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:ac animated:YES completion:nil];
