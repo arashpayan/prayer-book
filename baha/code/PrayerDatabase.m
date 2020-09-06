@@ -57,6 +57,8 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
                 [self migrateDbFrom2To3];
             case 3:
                 [self migrateDbFrom3To4];
+            case 4:
+                [self migrateDbFrom4To5];
             default:
                 break;
         }
@@ -164,7 +166,24 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     // update our db version number
     [[NSUserDefaults standardUserDefaults] setInteger:4 forKey:kDatabaseVersionNumber];
 }
+
+- (void)migrateDbFrom4To5 {
+    // clear the recents because the spanish prayer ids have changed
+    [self clearRecents];
     
+    // inspect each bookmark. If the prayer id no longer exists, remove it
+    NSArray *bookmarks = Prefs.shared.bookmarks;
+    for (NSNumber *bookmarkId in bookmarks) {
+        Prayer *prayer = [self prayerWithId:bookmarkId.longValue];
+        if (prayer == nil) {
+            [Prefs.shared deleteBookmark:bookmarkId.longValue];
+        }
+    }
+    
+    // update our db version number
+    [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:kDatabaseVersionNumber];
+}
+
 + (PrayerDatabase*)sharedInstance {
 	static PrayerDatabase *prayerDatabase;
 	
@@ -319,6 +338,29 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     [[NSUserDefaults standardUserDefaults] setObject:self.recentPrayers forKey:kRecentsPrefKey];
 }
 
+- (NSString*)searchTextWithPrayerId:(long)prayerId {
+    NSString *sql = [NSString stringWithFormat:@"SELECT searchText FROM prayers WHERE id=%ld", prayerId];
+    sqlite3_stmt *stmt;
+    
+    int rc = sqlite3_prepare_v2(dbHandle,
+                                sql.UTF8String,
+                                (int)[sql lengthOfBytesUsingEncoding:NSUTF8StringEncoding],
+                                &stmt,
+                                0);
+    if (rc != SQLITE_OK) {
+        NSLog(@"Problem preparing stmt for searchTextWithPrayerId (%d): %s", rc, sqlite3_errmsg(dbHandle));
+    }
+    
+    NSString *text = nil;
+    rc = sqlite3_step(stmt);
+    if (rc == SQLITE_ROW) {
+        text = [NSString stringWithUTF8String:(const char*)sqlite3_column_text(stmt, 0)];
+    }
+    
+    sqlite3_finalize(stmt);
+    return text;
+}
+    
 - (Prayer*)prayerWithId:(long)prayerId {
 	NSString *getPrayerSQL = [NSString stringWithFormat:@"SELECT category, prayerText, openingWords, citation, author, language, wordCount FROM prayers WHERE id=%ld", prayerId];
 	sqlite3_stmt *getPrayerStmt;

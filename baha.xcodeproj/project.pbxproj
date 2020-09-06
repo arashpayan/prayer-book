@@ -432,7 +432,7 @@
 			};
 			buildConfigurationList = 5BB0D5CE1BA371A9005DE06E /* Build configuration list for PBXProject "baha" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

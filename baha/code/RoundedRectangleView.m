@@ -15,7 +15,7 @@
 	if (self = [super initWithFrame:frame]) {
 		// Initialization code
 		radius = 10;
-		self.opaque = YES;
+		self.opaque = NO;
 	}
 	return self;
 }
@@ -25,18 +25,11 @@
 	// Drawing code
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	if (!highlighted)
-		CGContextSetRGBFillColor(context, 1, 1, 1, 1);
-	else
-		CGContextSetRGBFillColor(context, 1, 1, 1, 0);
-	CGContextFillRect(context, rect);
-	
-	if (!highlighted)
-	{
+	if (!highlighted) {
 		CGContextSetRGBFillColor(context, 200.0/255.0, 200.0/255.0, 200.0/255.0, 1);
-	}
-	else
+	} else {
 		CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+    }
 	
 	int xMin = CGRectGetMinX(rect);
 	int xMax = CGRectGetMaxX(rect);
@@ -76,6 +69,7 @@
 
 - (void)setHighlighted:(BOOL)isHighlighted {
 	highlighted = isHighlighted;
+    [self setNeedsDisplay];
 }
 
 @end
