@@ -2,17 +2,10 @@
 //  AppDelegate.m
 //  baha
 //
-//  Created by Arash Payan on 9/11/15.
-//  Copyright (c) 2015 Arash Payan. All rights reserved.
+//  Created by Arash on 3/23/23.
 //
 
 #import "AppDelegate.h"
-#import "CategoriesController.h"
-#import "BookmarksViewController.h"
-#import "RecentViewController.h"
-#import "LanguagesController.h"
-#import "AboutController.h"
-#import "PBUI.h"
 
 @interface AppDelegate ()
 
@@ -22,34 +15,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [PBUI installTheme];
-    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-
-    CategoriesController *pcvc = [CategoriesController new];
-    UINavigationController *pcvcNavController = [[UINavigationController alloc] initWithRootViewController:pcvc];
-
-    BookmarksViewController *bookmarksController = [BookmarksViewController new];
-    UINavigationController *bookmarksNavController = [[UINavigationController alloc] initWithRootViewController:bookmarksController];
-
-    RecentViewController *recentController = [RecentViewController new];
-    UINavigationController *recentNavController = [[UINavigationController alloc] initWithRootViewController:recentController];
-
-    LanguagesController *settingsController = [LanguagesController new];
-    UINavigationController *languagesNC = [[UINavigationController alloc] initWithRootViewController:settingsController];
-
-    AboutController *about = [AboutController new];
-    UINavigationController *aboutNC = [[UINavigationController alloc] initWithRootViewController:about];
-
-    UITabBarController *tabBarController = [UITabBarController new];
-    [tabBarController setViewControllers:@[pcvcNavController, bookmarksNavController, recentNavController, languagesNC, aboutNC]];
-
-    self.window.rootViewController = tabBarController;
-
-    [self.window makeKeyAndVisible];
-
-
+    // Override point for customization after application launch.
     return YES;
 }
+
+
+#pragma mark - UISceneSession lifecycle
+
+
+- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
+    // Called when a new scene session is being created.
+    // Use this method to select a configuration to create the new scene with.
+    
+    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
+}
+
+
+- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
+    // Called when the user discards a scene session.
+    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+}
+
 
 @end

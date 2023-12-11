@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="{{layoutDirection}}">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
+        <title>Prayer</title>
+
+        <style type="text/css">
+
+        #prayer p {
+            margin: 0 0px .75em 0px;
+            color: {{textColor}};
+            font: normal {{fontWidth}}em/{{fontHeight}}em {{font}};
+            clear: both;
+            text-indent: 1em;
+        }
+
+        #prayer p.opening {
+            text-indent: 0;
+        }
+
+        body {
+            padding: 8px;
+            background: {{backgroundColor}};
+        }
+
+        #prayer p.commentcaps {
+            font: normal {{commentSize}}em sans-serif;
+            color: {{commentTextColor}};
+            text-transform: uppercase;
+            margin: 0 0px 20px 5px;
+            text-indent: 0;
+        }
+
+        #prayer p.comment {
+            font: normal {{commentSize}}em sans-serif;
+            color: {{commentTextColor}};
+            margin: 0 0px .825em 1.5em;
+            text-indent: 0;
+        }
+
+        #prayer p.noindent {
+            text-indent: 0;
+            margin-bottom: .25em;
+        }
+
+        #prayer p.commentnoindent {
+            font: normal {{commentSize}}em sans-serif;
+            color: {{commentTextColor}};
+            margin: 0 0px 15px 5px;
+            text-indent: 0;
+        }
+
+        #prayer h4#author {
+            float: right;
+            margin: 0 4px 4px 0;
+            font: {{italicOrNothing}} {{authorWidth}}em/{{authorHeight}}em {{font}};
+            color: {{versalAndAuthorColor}};
+            text-indent: 0.325em;
+            font-weight: normal;
+            font-size: 1.25em;
+        }
+
+        span.versal {
+            float: left;
+            display: inline;
+            position: relative;
+            color: {{versalAndAuthorColor}};
+            font: normal {{versalWidth}}em/{{versalHeight}}em {{font}};
+            margin: .115em .15em 0 0em;
+            padding: 0;
+        }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="prayer">
+        {{prayer}}
+
+        <h4 id="author">{{author}}</h4>
+
+        {{citation}}
+
+        </div>
+
+    </body>
+
+</html>
