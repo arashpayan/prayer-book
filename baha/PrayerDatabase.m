@@ -230,7 +230,7 @@ NSString *const PBNotificationLanguagesPreferenceChanged    = @"PBNotificationLa
     }
 	
 	NSMutableArray *prayers = [[NSMutableArray alloc] init];
-	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, wordCount FROM prayers WHERE category=\"%@\" AND language=\"%@\"", category, language.code];
+	NSString *getPrayersSQL = [NSString stringWithFormat:@"SELECT id, prayerText, openingWords, citation, author, wordCount FROM prayers WHERE category=\"%@\" AND language=\"%@\" ORDER BY openingWords ASC", category, language.code];
 	sqlite3_stmt *getPrayersStmt;
 	
 	int rc = sqlite3_prepare_v2(dbHandle,
